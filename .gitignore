@@ -1,0 +1,24 @@
+# Node
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# データ(生・中間・埋め込み)
+data/raw/
+data/interim/
+data/processed/embeddings/
+models/
+
+# 検品の出力
+artifacts/screenshots/
+
+# 環境
+.env*
+!.env.example

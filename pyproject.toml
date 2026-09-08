@@ -1,0 +1,40 @@
+[project]
+name = "jinja-origin-atlas-ai"
+version = "0.1.0"
+description = "Jinja Origin Atlas AI — 日本全国の神社を公開情報から地図・AI 意味解析で探索する"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "httpx>=0.28",
+  "orjson>=3.10",
+  "pydantic>=2.9",
+  "jsonschema>=4.23",
+  "tenacity>=9.0",
+  "rapidfuzz>=3.10",
+  "pandas>=2.2",
+  "pyarrow>=18.0",
+  "pillow>=11.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3"]
+gis = ["geopandas>=1.0", "shapely>=2.0", "pyproj>=3.7"]
+ml = [
+  "torch>=2.5",
+  "transformers>=4.46",
+  "sentence-transformers>=3.3",
+  "scikit-learn>=1.5",
+  "umap-learn>=0.5",
+  "hdbscan>=0.8.40",
+  "faiss-cpu>=1.9",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+  "unit: 単体",
+  "integration: 結合",
+  "validation: 出荷物検証",
+  "network: 外部ネットワークに触れる(既定で除外)",
+]
+addopts = "-m 'not network'"
+pythonpath = ["."]

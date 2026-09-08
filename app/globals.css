@@ -1,0 +1,154 @@
+:root {
+  color-scheme: light;
+  --bg: #faf8f4;
+  --panel: #ffffff;
+  --ink: #1c1917;
+  --ink-mute: #57534e;
+  --line: #e0dbd2;
+  --vermilion: #b7410e;
+  --vermilion-soft: #d8734a;
+  --evidence: #1f5673;
+  --tradition: #7a5c2e;
+  --ai: #5b4b8a;
+  --footer-h: 40px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  padding-bottom: var(--footer-h);
+}
+
+a {
+  color: var(--evidence);
+}
+
+main {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 2rem;
+}
+
+h1 {
+  font-size: 1.6rem;
+  letter-spacing: 0.04em;
+  margin: 0 0 0.25rem;
+}
+
+h2 {
+  font-size: 1.15rem;
+  margin: 2rem 0 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid var(--line);
+}
+
+.lede {
+  color: var(--ink-mute);
+  margin: 0 0 1.5rem;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  padding: 0.6rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.nav a {
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.nav strong {
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  margin-right: 0.5rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+th,
+td {
+  border: 1px solid var(--line);
+  padding: 0.35rem 0.6rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: #f2ede5;
+  font-weight: 600;
+}
+
+.scroll-x {
+  overflow-x: auto;
+}
+
+/* 三区分の帯 — 史実 / 伝承 / AI を視覚的に分離する(SPEC F-14 / G-13) */
+.band {
+  border-left: 4px solid var(--line);
+  padding: 0.5rem 0.9rem;
+  margin: 0.75rem 0;
+  background: var(--panel);
+}
+.band-evidence { border-left-color: var(--evidence); }
+.band-tradition { border-left-color: var(--tradition); }
+.band-ai { border-left-color: var(--ai); }
+.band h3 {
+  margin: 0 0 0.3rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-mute);
+}
+
+.notice {
+  background: #f4f1ea;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  font-size: 0.88rem;
+  color: var(--ink-mute);
+}
+
+/* fleet: fixed footer */
+.site-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--footer-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  background: var(--panel);
+  border-top: 1px solid var(--line);
+  font-size: 0.78rem;
+  color: var(--ink-mute);
+  z-index: 50;
+  padding: 0 0.75rem;
+}
+.site-footer a {
+  color: var(--ink-mute);
+}
+/* /fleet: fixed footer */

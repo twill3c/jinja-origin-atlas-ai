@@ -1,0 +1,14 @@
+{
+ "osm_elements_read": 3152,
+ "shrines": 3152,
+ "with_name": 2570,
+ "without_name": 582,
+ "with_osm_wikidata_tag": 834,
+ "dropped": {
+  "座標なし": 0,
+  "日本の外接矩形外": 0,
+  "ID 重複": 0
+ },
+ "bytes_geojson": 559168,
+ "bytes_catalog": 1013008
+}

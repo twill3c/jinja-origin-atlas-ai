@@ -1,0 +1,50 @@
+{
+  "_provenance": {
+    "source": "ジャパンサーチ 開発者向け簡易Web APIガイド 3.2.2.1 common.contentsRightsType のコード値表",
+    "source_url": "https://jpsearch.go.jp/static/developer/webapi/ch3_search_api.html",
+    "retrieved_at": "2026-09-08",
+    "cross_checked_against": "実 API の rights ファセット(https://jpsearch.go.jp/api/item/search/jps-cross?keyword=神社)",
+    "cross_check_note": "2026-09-08 実測。ファセットに現れたコード集合はこの表と完全に一致した(18 コード)。仕様書 V1.0 §6.3 の ALLOW+DENY 集合は edu / noncom / com / ccbysa の 4 コードを欠いていた"
+  },
+  "codes": {
+    "edu": "教育利用",
+    "noncom": "非商用利用",
+    "com": "商用利用",
+    "cc0": "CC0",
+    "pdm": "PDM",
+    "ccby": "CC BY(表示)",
+    "ccbysa": "CC BY-SA(表示—継承)",
+    "ccbynd": "CC BY-ND(表示—改変禁止)",
+    "ccbync": "CC BY-NC(表示—非営利)",
+    "ccbyncsa": "CC BY-NC-SA(表示—非営利—継承)",
+    "ccbyncnd": "CC BY-NC-ND(表示—非営利—改変禁止)",
+    "incr": "著作権あり",
+    "incr_edu": "著作権あり-教育目的の利用可",
+    "nocr_cont": "著作権なし-契約による制限あり",
+    "nocr_other": "著作権なし-他の法的制限あり",
+    "uneval": "著作権未評価",
+    "undet": "著作権未決定-裁定制度利用著作物",
+    "others": "該当なし"
+  },
+  "observed_facet_2026_09_08": {
+    "_note": "keyword=神社 の rights ファセット。hit=224,083。ファセットは多値なので合計はヒット数と一致しない",
+    "others": 85514,
+    "incr": 39956,
+    "edu": 31112,
+    "noncom": 21764,
+    "com": 21061,
+    "incr_edu": 9348,
+    "ccby": 8697,
+    "pdm": 8572,
+    "ccbysa": 3149,
+    "uneval": 2730,
+    "nocr_cont": 1768,
+    "undet": 1154,
+    "ccbyncnd": 1038,
+    "ccbynd": 803,
+    "cc0": 643,
+    "ccbync": 481,
+    "ccbyncsa": 222,
+    "nocr_other": 3
+  }
+}

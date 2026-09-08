@@ -139,6 +139,25 @@ async function main() {
     );
     check("描かれた要素がすべて表示範囲の中にある", geo.outOfView === 0, `範囲外=${geo.outOfView}`);
 
+    // --- 幾何: キャンバスが器を埋めているか -------------------------------
+    // 器の上に要素を足すと、MapLibre のキャンバスが初期化時の寸法のまま取り残され、
+    // 地図の中に空白の帯ができる。**要素の在存も横溢れも正常なので捕まらない**ので、
+    // 矩形どうしを突き合わせる(2026-09-08 に目視でのみ見つかった欠陥の再発防止)。
+    const fit = await page.evaluate(() => {
+      const c = document.querySelector(".maplibregl-canvas");
+      // 比べる相手は**地図の器そのもの**である。親要素を取るとコンポーネント全体
+      // (しぼりの fieldset や説明文を含む)と比べてしまい、常に落ちる。
+      const box = c.closest(".maplibregl-map");
+      const a = c.getBoundingClientRect();
+      const b = box.getBoundingClientRect();
+      return { cw: Math.round(a.width), ch: Math.round(a.height),
+               bw: Math.round(b.width), bh: Math.round(b.height),
+               dx: Math.round(a.left - b.left), dy: Math.round(a.top - b.top) };
+    });
+    check("キャンバスが器を埋めている(空白の帯がない)",
+      Math.abs(fit.cw - fit.bw) <= 2 && Math.abs(fit.ch - fit.bh) <= 2 &&
+      Math.abs(fit.dx) <= 2 && Math.abs(fit.dy) <= 2, JSON.stringify(fit));
+
     // --- 陽性対照: この検品器は実際に異常を捕まえるか --------------------
     // 状態を変えたら再描画を待ってから読む。同期的に読むと変更前の値が返り、
     // 対照は「撃たない」形で静かに死ぬ(HC-222)。
@@ -174,6 +193,54 @@ async function main() {
     const zoomAfter = await page.evaluate(() => window.__jinjaMap.getZoom());
     check("クラスタを押すと拡大する", clicked && zoomAfter > zoomBefore, `${zoomBefore} → ${zoomAfter}`);
 
+    // --- 系統のしぼり: 操作が届いた証拠を見る(HC-138) ----------------------
+    console.log("系統のしぼり");
+    const box = page.locator('fieldset input[type="checkbox"]').first();
+    const label = await page.locator("fieldset label").first().innerText();
+    await box.scrollIntoViewIfNeeded();
+    await box.check();
+    await page.evaluate(() => new Promise((r) => window.__jinjaMap.once("idle", r)));
+    await page.waitForTimeout(600);
+    // 内部の _data を覗かない。公開 API の querySourceFeatures / queryRenderedFeatures で見る(HC-080)。
+    const hl = await page.evaluate(() => {
+      const m = window.__jinjaMap;
+      return {
+        highlighted: m.querySourceFeatures("highlight").length,
+        clusterColor: m.getPaintProperty("clusters", "circle-color"),
+        rendered: m.queryRenderedFeatures({ layers: ["highlight-point"] }).length,
+      };
+    });
+    check("しぼると強調レイヤーに要素が入る", hl.highlighted > 0, JSON.stringify(hl));
+    check("しぼると残りが無彩色に落ちる", hl.clusterColor === "#8a8580", String(hl.clusterColor));
+    check("強調が実際に描画されている", hl.rendered > 0, `凡例=${label.trim()} 描画=${hl.rendered}`);
+
+    await box.uncheck();
+    await page.evaluate(() => new Promise((r) => window.__jinjaMap.once("idle", r)));
+    const cleared = await page.evaluate(() => ({
+      rendered: window.__jinjaMap.queryRenderedFeatures({ layers: ["highlight-point"] }).length,
+      clusterColor: window.__jinjaMap.getPaintProperty("clusters", "circle-color"),
+    }));
+    check("しぼりを外すと元に戻る",
+      cleared.rendered === 0 && cleared.clusterColor === "#b7410e", JSON.stringify(cleared));
+
+    // --- 神社詳細ページ ---------------------------------------------------
+    console.log("神社詳細");
+    const shrineIds = Object.keys(
+      JSON.parse(await readFile(path.join(OUT, "data/catalog/shrines.min.json"), "utf-8"))
+        .shrines.filter((s) => s.external_ids.wikidata && s.name.ja)
+        .slice(0, 1)
+        .reduce((a, s) => ({ ...a, [s.id]: 1 }), {}),
+    );
+    if (shrineIds.length) {
+      const r2 = await page.goto(`${base}/shrine/${shrineIds[0]}/`, { waitUntil: "domcontentloaded" });
+      check("詳細ページが開く", r2?.status() === 200, `${shrineIds[0]} status=${r2?.status()}`);
+      const body = await page.locator("body").innerText();
+      check("詳細に三区分の見出しが出ている",
+        body.includes("公開データで確認できること") && body.includes("社伝") && body.includes("AI が文章から測ったこと"));
+      check("詳細に出典が出ている", body.includes("OpenStreetMap") && body.includes("Wikidata"));
+      check("名寄せに直リンクを使っていないことが書かれている", body.includes("使っていない"));
+    }
+
     // --- 複数の画面幅で横溢れを見る(HC-078) ------------------------------
     console.log("画面幅");
     for (const [w, h] of [[360, 780], [768, 900], [1280, 900], [1680, 1000]]) {
@@ -205,10 +272,33 @@ async function main() {
         await page.goto(`${base}${route}`, { waitUntil: "networkidle" });
         if (route === "/map/") {
           await page.waitForFunction(() => window.__jinjaMap?.isStyleLoaded?.() === true, { timeout: 30000 });
-          await page.waitForTimeout(2500);
+          // 撮影の前に再描画を強制する。WebGL の描画バッファは保持されないので、
+          // 直前に描き直さないと**古い(あるいは空の)バッファ**が写る(HC-194)。
+          await page.evaluate(async () => {
+            const m = window.__jinjaMap;
+            m.resize();
+            await new Promise((r) => m.once("idle", r));
+            await new Promise((r) => { m.triggerRepaint(); m.once("render", r); });
+          });
+          await page.waitForTimeout(1500);
         }
-        // 固定フッタが途中に焼き込まれるので fullPage は使わない(HC-194)
-        await page.screenshot({ path: path.join(SHOTS, `${name}.png`) });
+        // **撮影は嘘をつく**(HC-194)。固定フッタはキャンバスの上に焼き込まれ、
+        // ビューポート撮影では地図の上下に「空白の帯」が写る —— fullPage でなくても起きる。
+        // 2026-09-08 にこれを実装の欠陥と誤診して 3 度直そうとした。
+        // 地図は**要素単位で**撮り、フッタは撮影中だけ退ける。
+        await page.evaluate(() => {
+          const f = document.querySelector(".site-footer");
+          if (f) f.style.visibility = "hidden";
+        });
+        if (route === "/map/") {
+          await page.locator(".maplibregl-map").screenshot({ path: path.join(SHOTS, `${name}.png`) });
+        } else {
+          await page.screenshot({ path: path.join(SHOTS, `${name}.png`) });
+        }
+        await page.evaluate(() => {
+          const f = document.querySelector(".site-footer");
+          if (f) f.style.visibility = "";
+        });
         console.log(`  撮影 → artifacts/screenshots/${name}.png`);
       }
     }

@@ -1,0 +1,7673 @@
+{
+ "osm_records": 3152,
+ "wikidata_records_with_coord": 16908,
+ "oracle_pairs": 825,
+ "oracle_conflicts": 0,
+ "oracle_directions": {
+  "osm_tag": 744,
+  "both": 79,
+  "wd_id": 2
+ },
+ "calibration_n": 411,
+ "holdout_n": 414,
+ "calibration_sweep": [
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.5,
+   "auto_merged": 404,
+   "auto_correct": 403,
+   "precision": 0.9975,
+   "recall": 0.9805
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.52,
+   "auto_merged": 404,
+   "auto_correct": 403,
+   "precision": 0.9975,
+   "recall": 0.9805
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.54,
+   "auto_merged": 404,
+   "auto_correct": 403,
+   "precision": 0.9975,
+   "recall": 0.9805
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.56,
+   "auto_merged": 404,
+   "auto_correct": 403,
+   "precision": 0.9975,
+   "recall": 0.9805
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.58,
+   "auto_merged": 400,
+   "auto_correct": 399,
+   "precision": 0.9975,
+   "recall": 0.9708
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.6,
+   "auto_merged": 395,
+   "auto_correct": 395,
+   "precision": 1.0,
+   "recall": 0.9611
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.62,
+   "auto_merged": 377,
+   "auto_correct": 377,
+   "precision": 1.0,
+   "recall": 0.9173
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.64,
+   "auto_merged": 365,
+   "auto_correct": 365,
+   "precision": 1.0,
+   "recall": 0.8881
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.66,
+   "auto_merged": 327,
+   "auto_correct": 327,
+   "precision": 1.0,
+   "recall": 0.7956
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.68,
+   "auto_merged": 319,
+   "auto_correct": 319,
+   "precision": 1.0,
+   "recall": 0.7762
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.7,
+   "auto_merged": 314,
+   "auto_correct": 314,
+   "precision": 1.0,
+   "recall": 0.764
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.72,
+   "auto_merged": 35,
+   "auto_correct": 35,
+   "precision": 1.0,
+   "recall": 0.0852
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.74,
+   "auto_merged": 35,
+   "auto_correct": 35,
+   "precision": 1.0,
+   "recall": 0.0852
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.76,
+   "auto_merged": 32,
+   "auto_correct": 32,
+   "precision": 1.0,
+   "recall": 0.0779
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.78,
+   "auto_merged": 31,
+   "auto_correct": 31,
+   "precision": 1.0,
+   "recall": 0.0754
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.8,
+   "auto_merged": 2,
+   "auto_correct": 2,
+   "precision": 1.0,
+   "recall": 0.0049
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.82,
+   "auto_merged": 2,
+   "auto_correct": 2,
+   "precision": 1.0,
+   "recall": 0.0049
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.84,
+   "auto_merged": 2,
+   "auto_correct": 2,
+   "precision": 1.0,
+   "recall": 0.0049
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.86,
+   "auto_merged": 2,
+   "auto_correct": 2,
+   "precision": 1.0,
+   "recall": 0.0049
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.88,
+   "auto_merged": 2,
+   "auto_correct": 2,
+   "precision": 1.0,
+   "recall": 0.0049
+  },
+  {
+   "split": "calibration",
+   "n": 411,
+   "top1_correct": 408,
+   "top1_rate": 0.9927,
+   "threshold": 0.9,
+   "auto_merged": 0,
+   "auto_correct": 0,
+   "precision": null,
+   "recall": 0.0
+  }
+ ],
+ "rows": [
+  {
+   "osm_id": "jinja_n260408025",
+   "split": "calibration",
+   "truth_qid": "Q11567255",
+   "picked_qid": "Q11567255",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n340381542",
+   "split": "calibration",
+   "truth_qid": "Q11492406",
+   "picked_qid": "Q11492406",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n417434075",
+   "split": "holdout",
+   "truth_qid": "Q107410077",
+   "picked_qid": "Q107410077",
+   "picked_score": 0.6470588235294118,
+   "truth_score": 0.6470588235294118,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n427893000",
+   "split": "holdout",
+   "truth_qid": "Q11614668",
+   "picked_qid": "Q11614668",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n440069983",
+   "split": "calibration",
+   "truth_qid": "Q11495429",
+   "picked_qid": "Q11495429",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n443397545",
+   "split": "calibration",
+   "truth_qid": "Q11361507",
+   "picked_qid": "Q11361507",
+   "picked_score": 0.56,
+   "truth_score": 0.56,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n452559429",
+   "split": "holdout",
+   "truth_qid": "Q11630006",
+   "picked_qid": "Q11630006",
+   "picked_score": 0.625,
+   "truth_score": 0.625,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n480835382",
+   "split": "calibration",
+   "truth_qid": "Q11550316",
+   "picked_qid": "Q11550316",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n506214950",
+   "split": "holdout",
+   "truth_qid": "Q111548907",
+   "picked_qid": "Q111548907",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n552697551",
+   "split": "calibration",
+   "truth_qid": "Q97181309",
+   "picked_qid": "Q97181309",
+   "picked_score": 0.575,
+   "truth_score": 0.575,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n563674244",
+   "split": "calibration",
+   "truth_qid": "Q97310665",
+   "picked_qid": "Q97310665",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n598176845",
+   "split": "calibration",
+   "truth_qid": "Q11465232",
+   "picked_qid": "Q11465232",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n633212807",
+   "split": "calibration",
+   "truth_qid": "Q97310653",
+   "picked_qid": "Q97310653",
+   "picked_score": 0.6000000000000001,
+   "truth_score": 0.6000000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n665718732",
+   "split": "holdout",
+   "truth_qid": "Q11391840",
+   "picked_qid": "Q11391840",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n691471427",
+   "split": "holdout",
+   "truth_qid": "Q11480702",
+   "picked_qid": "Q11480702",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n701854488",
+   "split": "holdout",
+   "truth_qid": "Q11619012",
+   "picked_qid": "Q11619012",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n703040018",
+   "split": "holdout",
+   "truth_qid": "Q1442645",
+   "picked_qid": "Q1442645",
+   "picked_score": 0.6625000000000001,
+   "truth_score": 0.6625000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n724639010",
+   "split": "holdout",
+   "truth_qid": "Q97207677",
+   "picked_qid": "Q97207677",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n730163368",
+   "split": "calibration",
+   "truth_qid": "Q109658463",
+   "picked_qid": "Q109658463",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n735982292",
+   "split": "calibration",
+   "truth_qid": "Q95746551",
+   "picked_qid": "Q95746551",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n752170375",
+   "split": "calibration",
+   "truth_qid": "Q109343922",
+   "picked_qid": "Q109343922",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n843098167",
+   "split": "calibration",
+   "truth_qid": "Q11465598",
+   "picked_qid": "Q11465598",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n849454032",
+   "split": "holdout",
+   "truth_qid": "Q97171622",
+   "picked_qid": "Q97171622",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n892732726",
+   "split": "calibration",
+   "truth_qid": "Q11405346",
+   "picked_qid": "Q11405346",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1025845868",
+   "split": "calibration",
+   "truth_qid": "Q11509587",
+   "picked_qid": "Q11509587",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1076647709",
+   "split": "holdout",
+   "truth_qid": "Q97613665",
+   "picked_qid": "Q97613665",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1080054340",
+   "split": "calibration",
+   "truth_qid": "Q22117774",
+   "picked_qid": "Q22117774",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1163038923",
+   "split": "calibration",
+   "truth_qid": "Q97176919",
+   "picked_qid": "Q97176919",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1177182569",
+   "split": "calibration",
+   "truth_qid": "Q21019294",
+   "picked_qid": "Q21019294",
+   "picked_score": 0.5990000502689365,
+   "truth_score": 0.5990000502689365,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1216112185",
+   "split": "holdout",
+   "truth_qid": "Q97310702",
+   "picked_qid": "Q97310702",
+   "picked_score": 0.6000000000000001,
+   "truth_score": 0.6000000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1216145567",
+   "split": "calibration",
+   "truth_qid": "Q11549605",
+   "picked_qid": "Q11549605",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1240105704",
+   "split": "holdout",
+   "truth_qid": "Q28691732",
+   "picked_qid": "Q28691732",
+   "picked_score": 0.6928691666866831,
+   "truth_score": 0.6928691666866831,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1385629844",
+   "split": "calibration",
+   "truth_qid": "Q111903401",
+   "picked_qid": "Q111903401",
+   "picked_score": 0.625,
+   "truth_score": 0.625,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1417894918",
+   "split": "calibration",
+   "truth_qid": "Q106852594",
+   "picked_qid": "Q106852594",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1492967574",
+   "split": "calibration",
+   "truth_qid": "Q11443284",
+   "picked_qid": "Q11443284",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1501305695",
+   "split": "calibration",
+   "truth_qid": "Q3571318",
+   "picked_qid": "Q3571318",
+   "picked_score": 0.7957988631763208,
+   "truth_score": 0.7957988631763208,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1549902438",
+   "split": "calibration",
+   "truth_qid": "Q112389921",
+   "picked_qid": "Q112389921",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1586672879",
+   "split": "calibration",
+   "truth_qid": "Q106852599",
+   "picked_qid": "Q106852599",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1592970386",
+   "split": "holdout",
+   "truth_qid": "Q11528832",
+   "picked_qid": "Q11528832",
+   "picked_score": 0.625,
+   "truth_score": 0.625,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1599759577",
+   "split": "holdout",
+   "truth_qid": "Q11391057",
+   "picked_qid": "Q11391057",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1604916381",
+   "split": "calibration",
+   "truth_qid": "Q118984921",
+   "picked_qid": "Q118984921",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1656983002",
+   "split": "holdout",
+   "truth_qid": "Q18700589",
+   "picked_qid": "Q18700589",
+   "picked_score": 0.6823529411764706,
+   "truth_score": 0.6823529411764706,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1657233012",
+   "split": "calibration",
+   "truth_qid": "Q11625297",
+   "picked_qid": "Q11625297",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1684822633",
+   "split": "holdout",
+   "truth_qid": "Q97209982",
+   "picked_qid": "Q97209982",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1697842370",
+   "split": "holdout",
+   "truth_qid": "Q11400180",
+   "picked_qid": "Q11400180",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1706470036",
+   "split": "holdout",
+   "truth_qid": "Q97210535",
+   "picked_qid": "Q97210535",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1712317845",
+   "split": "calibration",
+   "truth_qid": "Q11577231",
+   "picked_qid": "Q11577231",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1730486362",
+   "split": "calibration",
+   "truth_qid": "Q106852617",
+   "picked_qid": "Q106852617",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1742494349",
+   "split": "calibration",
+   "truth_qid": "Q51199197",
+   "picked_qid": "Q51199197",
+   "picked_score": 0.6993189279817346,
+   "truth_score": 0.6993189279817346,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1750503477",
+   "split": "holdout",
+   "truth_qid": "Q106852622",
+   "picked_qid": "Q106852622",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1750965329",
+   "split": "calibration",
+   "truth_qid": "Q11510576",
+   "picked_qid": "Q11510576",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1763344626",
+   "split": "holdout",
+   "truth_qid": "Q11597242",
+   "picked_qid": "Q11597242",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1766121443",
+   "split": "calibration",
+   "truth_qid": "Q85883840",
+   "picked_qid": "Q85883840",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1800679016",
+   "split": "calibration",
+   "truth_qid": "Q135193309",
+   "picked_qid": "Q135193309",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1826041316",
+   "split": "holdout",
+   "truth_qid": "Q111280245",
+   "picked_qid": "Q111280245",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1832768988",
+   "split": "holdout",
+   "truth_qid": "Q97176278",
+   "picked_qid": "Q97176278",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1872595035",
+   "split": "calibration",
+   "truth_qid": "Q106852466",
+   "picked_qid": "Q106852466",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1875593175",
+   "split": "holdout",
+   "truth_qid": "Q106852615",
+   "picked_qid": "Q106852615",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1877858727",
+   "split": "holdout",
+   "truth_qid": "Q11385386",
+   "picked_qid": "Q106852462",
+   "picked_score": 0.2036170851955412,
+   "truth_score": 0.1714285714285714,
+   "correct_top1": false
+  },
+  {
+   "osm_id": "jinja_n1894070052",
+   "split": "holdout",
+   "truth_qid": "Q97376109",
+   "picked_qid": "Q97376109",
+   "picked_score": 0.55,
+   "truth_score": 0.55,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1896518223",
+   "split": "calibration",
+   "truth_qid": "Q97195849",
+   "picked_qid": "Q97195849",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1905734680",
+   "split": "calibration",
+   "truth_qid": "Q97195467",
+   "picked_qid": "Q97195467",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1906574194",
+   "split": "calibration",
+   "truth_qid": "Q24865214",
+   "picked_qid": "Q24865214",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1909437670",
+   "split": "calibration",
+   "truth_qid": "Q11482357",
+   "picked_qid": "Q11482357",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1920496049",
+   "split": "holdout",
+   "truth_qid": "Q115331580",
+   "picked_qid": "Q115331580",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1920523058",
+   "split": "holdout",
+   "truth_qid": "Q115322715",
+   "picked_qid": "Q115322715",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1920550360",
+   "split": "calibration",
+   "truth_qid": "Q115331437",
+   "picked_qid": "Q115331437",
+   "picked_score": 0.6181818181818182,
+   "truth_score": 0.6181818181818182,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1920582758",
+   "split": "calibration",
+   "truth_qid": "Q22119884",
+   "picked_qid": "Q22119884",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1933274592",
+   "split": "calibration",
+   "truth_qid": "Q97310725",
+   "picked_qid": "Q97310725",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1975522149",
+   "split": "calibration",
+   "truth_qid": "Q11366822",
+   "picked_qid": "Q11366822",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1980843350",
+   "split": "calibration",
+   "truth_qid": "Q115294099",
+   "picked_qid": "Q115294099",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1981080216",
+   "split": "holdout",
+   "truth_qid": "Q115263244",
+   "picked_qid": "Q115263244",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1985833634",
+   "split": "holdout",
+   "truth_qid": "Q21019097",
+   "picked_qid": "Q21019097",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1986819074",
+   "split": "holdout",
+   "truth_qid": "Q114565276",
+   "picked_qid": "Q114565276",
+   "picked_score": 0.6666666666666667,
+   "truth_score": 0.6666666666666667,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1988916812",
+   "split": "holdout",
+   "truth_qid": "Q114021664",
+   "picked_qid": "Q114021664",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1989041398",
+   "split": "calibration",
+   "truth_qid": "Q28691730",
+   "picked_qid": "Q28691730",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1989840675",
+   "split": "holdout",
+   "truth_qid": "Q95744219",
+   "picked_qid": "Q95744219",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1989928694",
+   "split": "calibration",
+   "truth_qid": "Q115192081",
+   "picked_qid": "Q115192081",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1991079396",
+   "split": "holdout",
+   "truth_qid": "Q114237475",
+   "picked_qid": "Q114237475",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2002201044",
+   "split": "calibration",
+   "truth_qid": "Q95746360",
+   "picked_qid": "Q95746360",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2039365695",
+   "split": "calibration",
+   "truth_qid": "Q118960981",
+   "picked_qid": "Q118960981",
+   "picked_score": 0.6000000000000001,
+   "truth_score": 0.6000000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2100794330",
+   "split": "holdout",
+   "truth_qid": "Q11568958",
+   "picked_qid": "Q11568958",
+   "picked_score": 0.6562546886711862,
+   "truth_score": 0.6562546886711862,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2107135742",
+   "split": "holdout",
+   "truth_qid": "Q97279421",
+   "picked_qid": "Q97279421",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2119034593",
+   "split": "calibration",
+   "truth_qid": "Q134930157",
+   "picked_qid": "Q134930157",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2119605264",
+   "split": "calibration",
+   "truth_qid": "Q131925927",
+   "picked_qid": "Q131925927",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2130321093",
+   "split": "calibration",
+   "truth_qid": "Q21018911",
+   "picked_qid": "Q21018911",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2139804393",
+   "split": "holdout",
+   "truth_qid": "Q97203447",
+   "picked_qid": "Q97203447",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2146878969",
+   "split": "holdout",
+   "truth_qid": "Q106852451",
+   "picked_qid": "Q106852451",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2155516780",
+   "split": "calibration",
+   "truth_qid": "Q11357253",
+   "picked_qid": "Q11357253",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2158708050",
+   "split": "holdout",
+   "truth_qid": "Q119929547",
+   "picked_qid": "Q119929547",
+   "picked_score": 0.6978771222518386,
+   "truth_score": 0.6978771222518386,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2166653584",
+   "split": "holdout",
+   "truth_qid": "Q115466869",
+   "picked_qid": "Q115466869",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2189183296",
+   "split": "holdout",
+   "truth_qid": "Q65270637",
+   "picked_qid": "Q65270637",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2244671842",
+   "split": "holdout",
+   "truth_qid": "Q11378221",
+   "picked_qid": "Q11378221",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2258202675",
+   "split": "holdout",
+   "truth_qid": "Q106852453",
+   "picked_qid": "Q106852453",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2268159655",
+   "split": "holdout",
+   "truth_qid": "Q97176287",
+   "picked_qid": "Q97176287",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2273573457",
+   "split": "holdout",
+   "truth_qid": "Q17224560",
+   "picked_qid": "Q17224560",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2279256797",
+   "split": "holdout",
+   "truth_qid": "Q97280595",
+   "picked_qid": "Q97280595",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2286261969",
+   "split": "holdout",
+   "truth_qid": "Q106852604",
+   "picked_qid": "Q106852604",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2315877380",
+   "split": "holdout",
+   "truth_qid": "Q109328988",
+   "picked_qid": "Q109328988",
+   "picked_score": 0.6799999999999999,
+   "truth_score": 0.6799999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2322688194",
+   "split": "holdout",
+   "truth_qid": "Q11513673",
+   "picked_qid": "Q11513673",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2332635674",
+   "split": "calibration",
+   "truth_qid": "Q97203464",
+   "picked_qid": "Q97203464",
+   "picked_score": 0.6181818181818182,
+   "truth_score": 0.6181818181818182,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2360061576",
+   "split": "calibration",
+   "truth_qid": "Q11552243",
+   "picked_qid": "Q11552243",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2366680454",
+   "split": "holdout",
+   "truth_qid": "Q111840261",
+   "picked_qid": "Q111840261",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2385950544",
+   "split": "calibration",
+   "truth_qid": "Q106852421",
+   "picked_qid": "Q106852421",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2467725073",
+   "split": "holdout",
+   "truth_qid": "Q97209677",
+   "picked_qid": "Q97209677",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2523231460",
+   "split": "holdout",
+   "truth_qid": "Q11651343",
+   "picked_qid": "Q11651343",
+   "picked_score": 0.6571428571428573,
+   "truth_score": 0.6571428571428573,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2561217662",
+   "split": "holdout",
+   "truth_qid": "Q11602795",
+   "picked_qid": "Q11602795",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2561249760",
+   "split": "holdout",
+   "truth_qid": "Q115047801",
+   "picked_qid": "Q115047801",
+   "picked_score": 0.5940759038311961,
+   "truth_score": 0.5940759038311961,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2578819073",
+   "split": "calibration",
+   "truth_qid": "Q11422761",
+   "picked_qid": "Q11422761",
+   "picked_score": 0.625,
+   "truth_score": 0.625,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2634673930",
+   "split": "calibration",
+   "truth_qid": "Q97192369",
+   "picked_qid": "Q97192369",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2728535263",
+   "split": "holdout",
+   "truth_qid": "Q119929555",
+   "picked_qid": "Q119929555",
+   "picked_score": 0.5646701734467829,
+   "truth_score": 0.5646701734467829,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2806173915",
+   "split": "calibration",
+   "truth_qid": "Q117808981",
+   "picked_qid": "Q117808981",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2886420142",
+   "split": "holdout",
+   "truth_qid": "Q11659839",
+   "picked_qid": "Q11659839",
+   "picked_score": 0.676923076923077,
+   "truth_score": 0.676923076923077,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2940465694",
+   "split": "holdout",
+   "truth_qid": "Q115313556",
+   "picked_qid": "Q115313556",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2947589638",
+   "split": "calibration",
+   "truth_qid": "Q22119349",
+   "picked_qid": "Q22119349",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2981211047",
+   "split": "calibration",
+   "truth_qid": "Q11557473",
+   "picked_qid": "Q11557473",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3006284185",
+   "split": "calibration",
+   "truth_qid": "Q119675507",
+   "picked_qid": "Q119675507",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3093563126",
+   "split": "calibration",
+   "truth_qid": "Q111906052",
+   "picked_qid": "Q111906052",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3110908054",
+   "split": "calibration",
+   "truth_qid": "Q106852450",
+   "picked_qid": "Q106852450",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3266218149",
+   "split": "holdout",
+   "truth_qid": "Q109784392",
+   "picked_qid": "Q109784392",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3291975065",
+   "split": "holdout",
+   "truth_qid": "Q97613682",
+   "picked_qid": "Q97613682",
+   "picked_score": 0.5961051730362512,
+   "truth_score": 0.5961051730362512,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3322856144",
+   "split": "calibration",
+   "truth_qid": "Q113494547",
+   "picked_qid": "Q113494547",
+   "picked_score": 0.6500000000000001,
+   "truth_score": 0.6500000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3322857585",
+   "split": "calibration",
+   "truth_qid": "Q113494396",
+   "picked_qid": "Q113494396",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3335909034",
+   "split": "holdout",
+   "truth_qid": "Q11359963",
+   "picked_qid": "Q11359963",
+   "picked_score": 0.6181818181818182,
+   "truth_score": 0.6181818181818182,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3371585685",
+   "split": "calibration",
+   "truth_qid": "Q120679282",
+   "picked_qid": "Q120679282",
+   "picked_score": 0.6307692307692307,
+   "truth_score": 0.6307692307692307,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3387046414",
+   "split": "holdout",
+   "truth_qid": "Q97176178",
+   "picked_qid": "Q97176178",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3387046418",
+   "split": "calibration",
+   "truth_qid": "Q111839564",
+   "picked_qid": "Q111839564",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3399170095",
+   "split": "holdout",
+   "truth_qid": "Q118114706",
+   "picked_qid": "Q118114706",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3399170172",
+   "split": "holdout",
+   "truth_qid": "Q63148045",
+   "picked_qid": "Q63148045",
+   "picked_score": 0.6571428571428573,
+   "truth_score": 0.6571428571428573,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3408525491",
+   "split": "calibration",
+   "truth_qid": "Q114816907",
+   "picked_qid": "Q114816907",
+   "picked_score": 0.6500000000000001,
+   "truth_score": 0.6500000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3409862206",
+   "split": "holdout",
+   "truth_qid": "Q112334821",
+   "picked_qid": "Q112334821",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3522650294",
+   "split": "holdout",
+   "truth_qid": "Q97195862",
+   "picked_qid": "Q97195862",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3602745685",
+   "split": "holdout",
+   "truth_qid": "Q97191546",
+   "picked_qid": "Q97191546",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3610871805",
+   "split": "holdout",
+   "truth_qid": "Q11480541",
+   "picked_qid": "Q11480541",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3633758321",
+   "split": "calibration",
+   "truth_qid": "Q109162634",
+   "picked_qid": "Q109162634",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3696384259",
+   "split": "calibration",
+   "truth_qid": "Q11369362",
+   "picked_qid": "Q11369362",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3700983688",
+   "split": "holdout",
+   "truth_qid": "Q97196810",
+   "picked_qid": "Q97196810",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3754135733",
+   "split": "holdout",
+   "truth_qid": "Q114564372",
+   "picked_qid": "Q114564372",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3780456475",
+   "split": "calibration",
+   "truth_qid": "Q85876834",
+   "picked_qid": "Q85876834",
+   "picked_score": 0.7000000000000001,
+   "truth_score": 0.7000000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3997528182",
+   "split": "holdout",
+   "truth_qid": "Q11587133",
+   "picked_qid": "Q11587133",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4045343393",
+   "split": "calibration",
+   "truth_qid": "Q11452618",
+   "picked_qid": "Q11452618",
+   "picked_score": 0.676923076923077,
+   "truth_score": 0.676923076923077,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4098948003",
+   "split": "calibration",
+   "truth_qid": "Q85878617",
+   "picked_qid": "Q85878617",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4099989491",
+   "split": "holdout",
+   "truth_qid": "Q111903373",
+   "picked_qid": "Q111903373",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4279773239",
+   "split": "holdout",
+   "truth_qid": "Q110915761",
+   "picked_qid": "Q110915761",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4344275278",
+   "split": "holdout",
+   "truth_qid": "Q134930558",
+   "picked_qid": "Q135069448",
+   "picked_score": 0.5714285714285714,
+   "truth_score": 0.55,
+   "correct_top1": false
+  },
+  {
+   "osm_id": "jinja_n4344275279",
+   "split": "calibration",
+   "truth_qid": "Q131925937",
+   "picked_qid": "Q131925937",
+   "picked_score": 0.6276642456357044,
+   "truth_score": 0.6276642456357044,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4344275281",
+   "split": "holdout",
+   "truth_qid": "Q110915859",
+   "picked_qid": "Q110915859",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4344283095",
+   "split": "calibration",
+   "truth_qid": "Q134930749",
+   "picked_qid": "Q134930749",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4367242090",
+   "split": "calibration",
+   "truth_qid": "Q117810936",
+   "picked_qid": "Q117810936",
+   "picked_score": 0.6000000000000001,
+   "truth_score": 0.6000000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4372806991",
+   "split": "holdout",
+   "truth_qid": "Q97172890",
+   "picked_qid": "Q97172890",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4382721541",
+   "split": "calibration",
+   "truth_qid": "Q106852607",
+   "picked_qid": "Q106852607",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4412771946",
+   "split": "calibration",
+   "truth_qid": "Q11464226",
+   "picked_qid": "Q11464226",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4438541989",
+   "split": "calibration",
+   "truth_qid": "Q11579596",
+   "picked_qid": "Q11579596",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4459864589",
+   "split": "calibration",
+   "truth_qid": "Q119409418",
+   "picked_qid": "Q119409418",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4534097160",
+   "split": "calibration",
+   "truth_qid": "Q95743371",
+   "picked_qid": "Q95743371",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4545325662",
+   "split": "calibration",
+   "truth_qid": "Q114825923",
+   "picked_qid": "Q114825923",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4555644711",
+   "split": "holdout",
+   "truth_qid": "Q126127724",
+   "picked_qid": "Q126127724",
+   "picked_score": 0.6915442539551411,
+   "truth_score": 0.6915442539551411,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4590351894",
+   "split": "calibration",
+   "truth_qid": "Q114827371",
+   "picked_qid": "Q114827371",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4607450721",
+   "split": "calibration",
+   "truth_qid": "Q114974759",
+   "picked_qid": "Q114974759",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4716326648",
+   "split": "holdout",
+   "truth_qid": "Q11580916",
+   "picked_qid": "Q11580916",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4718284296",
+   "split": "calibration",
+   "truth_qid": "Q118366477",
+   "picked_qid": "Q118366477",
+   "picked_score": 0.6181818181818182,
+   "truth_score": 0.6181818181818182,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4718293495",
+   "split": "calibration",
+   "truth_qid": "Q118358948",
+   "picked_qid": "Q118358948",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4718293497",
+   "split": "holdout",
+   "truth_qid": "Q118354745",
+   "picked_qid": "Q118354745",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4718293498",
+   "split": "calibration",
+   "truth_qid": "Q118358825",
+   "picked_qid": "Q118358825",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4718293502",
+   "split": "calibration",
+   "truth_qid": "Q118732510",
+   "picked_qid": "Q118732510",
+   "picked_score": 0.5636363636363636,
+   "truth_score": 0.5636363636363636,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4718299297",
+   "split": "calibration",
+   "truth_qid": "Q118361922",
+   "picked_qid": "Q118361922",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4718299302",
+   "split": "holdout",
+   "truth_qid": "Q118708001",
+   "picked_qid": "Q118708001",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4718301693",
+   "split": "holdout",
+   "truth_qid": "Q95745381",
+   "picked_qid": "Q95745381",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4718312391",
+   "split": "holdout",
+   "truth_qid": "Q118714267",
+   "picked_qid": "Q118714267",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4718312989",
+   "split": "holdout",
+   "truth_qid": "Q97190927",
+   "picked_qid": "Q97190927",
+   "picked_score": 0.6181818181818182,
+   "truth_score": 0.6181818181818182,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4809718887",
+   "split": "holdout",
+   "truth_qid": "Q106852636",
+   "picked_qid": "Q106852636",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4809718888",
+   "split": "holdout",
+   "truth_qid": "Q118985573",
+   "picked_qid": "Q118985573",
+   "picked_score": 0.6000000000000001,
+   "truth_score": 0.6000000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4843763822",
+   "split": "holdout",
+   "truth_qid": "Q97206557",
+   "picked_qid": "Q97206557",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4879949021",
+   "split": "calibration",
+   "truth_qid": "Q97183028",
+   "picked_qid": "Q97183028",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4881615524",
+   "split": "calibration",
+   "truth_qid": "Q123118557",
+   "picked_qid": "Q123118557",
+   "picked_score": 0.8999999999999999,
+   "truth_score": 0.8999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4947013276",
+   "split": "calibration",
+   "truth_qid": "Q113493086",
+   "picked_qid": "Q113493086",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4969266321",
+   "split": "calibration",
+   "truth_qid": "Q97613684",
+   "picked_qid": "Q97613684",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4969269821",
+   "split": "calibration",
+   "truth_qid": "Q106852606",
+   "picked_qid": "Q106852606",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5029793742",
+   "split": "holdout",
+   "truth_qid": "Q38277625",
+   "picked_qid": "Q38277625",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5058848180",
+   "split": "calibration",
+   "truth_qid": "Q118177976",
+   "picked_qid": "Q118177976",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5064281150",
+   "split": "holdout",
+   "truth_qid": "Q131925928",
+   "picked_qid": "Q131925928",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5266637262",
+   "split": "calibration",
+   "truth_qid": "Q97478945",
+   "picked_qid": "Q97478945",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5269570261",
+   "split": "holdout",
+   "truth_qid": "Q106852626",
+   "picked_qid": "Q106852626",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5278436429",
+   "split": "calibration",
+   "truth_qid": "Q11404090",
+   "picked_qid": "Q11404090",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5290130608",
+   "split": "holdout",
+   "truth_qid": "Q54153275",
+   "picked_qid": "Q54153275",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5314063676",
+   "split": "holdout",
+   "truth_qid": "Q110065528",
+   "picked_qid": "Q110065528",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5401158547",
+   "split": "holdout",
+   "truth_qid": "Q106852435",
+   "picked_qid": "Q106852435",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5417487055",
+   "split": "calibration",
+   "truth_qid": "Q134893103",
+   "picked_qid": "Q134893103",
+   "picked_score": 0.6000000000000001,
+   "truth_score": 0.6000000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5423177352",
+   "split": "calibration",
+   "truth_qid": "Q110259223",
+   "picked_qid": "Q110259223",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5434473706",
+   "split": "holdout",
+   "truth_qid": "Q11391090",
+   "picked_qid": "Q11391090",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5434719266",
+   "split": "calibration",
+   "truth_qid": "Q115191131",
+   "picked_qid": "Q115191131",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5457575666",
+   "split": "holdout",
+   "truth_qid": "Q112383656",
+   "picked_qid": "Q112383656",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5461236318",
+   "split": "calibration",
+   "truth_qid": "Q11391783",
+   "picked_qid": "Q11391783",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5470576073",
+   "split": "holdout",
+   "truth_qid": "Q97311494",
+   "picked_qid": "Q97311494",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5527743767",
+   "split": "calibration",
+   "truth_qid": "Q114020255",
+   "picked_qid": "Q114020255",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5527972695",
+   "split": "holdout",
+   "truth_qid": "Q85881513",
+   "picked_qid": "Q85881513",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5534032221",
+   "split": "holdout",
+   "truth_qid": "Q114353198",
+   "picked_qid": "Q114353198",
+   "picked_score": 0.6181818181818182,
+   "truth_score": 0.6181818181818182,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5534457285",
+   "split": "calibration",
+   "truth_qid": "Q114702456",
+   "picked_qid": "Q114702456",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5535328500",
+   "split": "holdout",
+   "truth_qid": "Q114555450",
+   "picked_qid": "Q114555450",
+   "picked_score": 0.6000000000000001,
+   "truth_score": 0.6000000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5535554754",
+   "split": "holdout",
+   "truth_qid": "Q114815841",
+   "picked_qid": "Q114815841",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5535554786",
+   "split": "calibration",
+   "truth_qid": "Q114194364",
+   "picked_qid": "Q114194364",
+   "picked_score": 0.6181818181818182,
+   "truth_score": 0.6181818181818182,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5536012329",
+   "split": "calibration",
+   "truth_qid": "Q114688785",
+   "picked_qid": "Q114688785",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5536012536",
+   "split": "holdout",
+   "truth_qid": "Q114678074",
+   "picked_qid": "Q114678074",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5549843799",
+   "split": "holdout",
+   "truth_qid": "Q11668442",
+   "picked_qid": "Q11668442",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5583019321",
+   "split": "holdout",
+   "truth_qid": "Q112242987",
+   "picked_qid": "Q112242987",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5583019389",
+   "split": "calibration",
+   "truth_qid": "Q106852598",
+   "picked_qid": "Q106852598",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5601218761",
+   "split": "calibration",
+   "truth_qid": "Q97196664",
+   "picked_qid": "Q97196664",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5617483565",
+   "split": "calibration",
+   "truth_qid": "Q115189280",
+   "picked_qid": "Q115189280",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5634968980",
+   "split": "holdout",
+   "truth_qid": "Q109375788",
+   "picked_qid": "Q109375788",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5635008515",
+   "split": "holdout",
+   "truth_qid": "Q109405783",
+   "picked_qid": "Q109405783",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5641851782",
+   "split": "holdout",
+   "truth_qid": "Q97215882",
+   "picked_qid": "Q97215882",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5650254066",
+   "split": "calibration",
+   "truth_qid": "Q113636886",
+   "picked_qid": "Q113636886",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5650254367",
+   "split": "holdout",
+   "truth_qid": "Q113629687",
+   "picked_qid": "Q113629687",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5657714165",
+   "split": "calibration",
+   "truth_qid": "Q117411837",
+   "picked_qid": "Q117411837",
+   "picked_score": 0.4,
+   "truth_score": 0.4,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5664092900",
+   "split": "holdout",
+   "truth_qid": "Q11442008",
+   "picked_qid": "Q11442008",
+   "picked_score": 0.3,
+   "truth_score": 0.3,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5674849958",
+   "split": "calibration",
+   "truth_qid": "Q111814374",
+   "picked_qid": "Q111814374",
+   "picked_score": 0.625,
+   "truth_score": 0.625,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5678877062",
+   "split": "calibration",
+   "truth_qid": "Q97213137",
+   "picked_qid": "Q97213137",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5679053251",
+   "split": "holdout",
+   "truth_qid": "Q97613677",
+   "picked_qid": "Q97613677",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5690522690",
+   "split": "calibration",
+   "truth_qid": "Q95746304",
+   "picked_qid": "Q95746304",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5695950893",
+   "split": "calibration",
+   "truth_qid": "Q113560414",
+   "picked_qid": "Q113560414",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5695951263",
+   "split": "calibration",
+   "truth_qid": "Q113555852",
+   "picked_qid": "Q113555852",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5697153062",
+   "split": "holdout",
+   "truth_qid": "Q113636783",
+   "picked_qid": "Q113636783",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5702226139",
+   "split": "holdout",
+   "truth_qid": "Q97207230",
+   "picked_qid": "Q97207230",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5726410100",
+   "split": "calibration",
+   "truth_qid": "Q106852602",
+   "picked_qid": "Q106852602",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5728309732",
+   "split": "holdout",
+   "truth_qid": "Q109406575",
+   "picked_qid": "Q109406575",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5731483228",
+   "split": "calibration",
+   "truth_qid": "Q97192096",
+   "picked_qid": "Q97192096",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5731532251",
+   "split": "holdout",
+   "truth_qid": "Q109567041",
+   "picked_qid": "Q109567041",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5733836426",
+   "split": "calibration",
+   "truth_qid": "Q118358960",
+   "picked_qid": "Q118358960",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5745528454",
+   "split": "calibration",
+   "truth_qid": "Q11596883",
+   "picked_qid": "Q11596883",
+   "picked_score": 0.6181818181818182,
+   "truth_score": 0.6181818181818182,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5745592074",
+   "split": "calibration",
+   "truth_qid": "Q118959173",
+   "picked_qid": "Q118959173",
+   "picked_score": 0.6000000000000001,
+   "truth_score": 0.6000000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5745592367",
+   "split": "calibration",
+   "truth_qid": "Q118869335",
+   "picked_qid": "Q118869335",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5746657968",
+   "split": "holdout",
+   "truth_qid": "Q97192121",
+   "picked_qid": "Q97192121",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5747966949",
+   "split": "calibration",
+   "truth_qid": "Q106852623",
+   "picked_qid": "Q106852623",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5747967163",
+   "split": "holdout",
+   "truth_qid": "Q120186626",
+   "picked_qid": "Q120186626",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5749125646",
+   "split": "holdout",
+   "truth_qid": "Q97182700",
+   "picked_qid": "Q97182700",
+   "picked_score": 0.6800409378077109,
+   "truth_score": 0.6800409378077109,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5749125988",
+   "split": "calibration",
+   "truth_qid": "Q97310435",
+   "picked_qid": "Q97310435",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5749126130",
+   "split": "calibration",
+   "truth_qid": "Q28682505",
+   "picked_qid": "Q28682505",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5758756084",
+   "split": "calibration",
+   "truth_qid": "Q113623970",
+   "picked_qid": "Q113623970",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5811932353",
+   "split": "calibration",
+   "truth_qid": "Q97311493",
+   "picked_qid": "Q97311493",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5853863456",
+   "split": "holdout",
+   "truth_qid": "Q59282569",
+   "picked_qid": "Q59282569",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5864638996",
+   "split": "calibration",
+   "truth_qid": "Q111903466",
+   "picked_qid": "Q111903466",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5884771763",
+   "split": "holdout",
+   "truth_qid": "Q130305232",
+   "picked_qid": "Q130305232",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5892004189",
+   "split": "calibration",
+   "truth_qid": "Q97478976",
+   "picked_qid": "Q97478976",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5896227112",
+   "split": "holdout",
+   "truth_qid": "Q38277615",
+   "picked_qid": "Q38277615",
+   "picked_score": 0.3961818174497991,
+   "truth_score": 0.3961818174497991,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5913730285",
+   "split": "holdout",
+   "truth_qid": "Q97613653",
+   "picked_qid": "Q97613653",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5921740312",
+   "split": "holdout",
+   "truth_qid": "Q106852465",
+   "picked_qid": "Q106852465",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5922388178",
+   "split": "calibration",
+   "truth_qid": "Q115299763",
+   "picked_qid": "Q115299763",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5928692074",
+   "split": "calibration",
+   "truth_qid": "Q120655312",
+   "picked_qid": "Q120655312",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5971809829",
+   "split": "holdout",
+   "truth_qid": "Q120973247",
+   "picked_qid": "Q120973247",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6004902950",
+   "split": "holdout",
+   "truth_qid": "Q106852621",
+   "picked_qid": "Q106852621",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6019602281",
+   "split": "calibration",
+   "truth_qid": "Q97188434",
+   "picked_qid": "Q97188434",
+   "picked_score": 0.6716666996392118,
+   "truth_score": 0.6716666996392118,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6021901152",
+   "split": "holdout",
+   "truth_qid": "Q85878086",
+   "picked_qid": "Q85878086",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6051279825",
+   "split": "holdout",
+   "truth_qid": "Q85881569",
+   "picked_qid": "Q85881569",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6054892585",
+   "split": "calibration",
+   "truth_qid": "Q106852592",
+   "picked_qid": "Q106852592",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6073137296",
+   "split": "calibration",
+   "truth_qid": "Q131450989",
+   "picked_qid": "Q131450989",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6110314135",
+   "split": "holdout",
+   "truth_qid": "Q52729406",
+   "picked_qid": "Q52729406",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6123250157",
+   "split": "calibration",
+   "truth_qid": "Q121862925",
+   "picked_qid": "Q121862925",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6125596826",
+   "split": "calibration",
+   "truth_qid": "Q95746491",
+   "picked_qid": "Q95746491",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6126222933",
+   "split": "holdout",
+   "truth_qid": "Q97341894",
+   "picked_qid": "Q97341894",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6129996030",
+   "split": "calibration",
+   "truth_qid": "Q97193373",
+   "picked_qid": "Q97193373",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6135577791",
+   "split": "holdout",
+   "truth_qid": "Q119929566",
+   "picked_qid": "Q119929566",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6135577812",
+   "split": "holdout",
+   "truth_qid": "Q43594496",
+   "picked_qid": "Q43594496",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6158841081",
+   "split": "holdout",
+   "truth_qid": "Q24868471",
+   "picked_qid": "Q24868471",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6170225006",
+   "split": "calibration",
+   "truth_qid": "Q97613675",
+   "picked_qid": "Q97613675",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6179312617",
+   "split": "holdout",
+   "truth_qid": "Q97210526",
+   "picked_qid": "Q97210526",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6188968885",
+   "split": "calibration",
+   "truth_qid": "Q97171631",
+   "picked_qid": "Q97171631",
+   "picked_score": 0.74,
+   "truth_score": 0.74,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6253926154",
+   "split": "calibration",
+   "truth_qid": "Q106852590",
+   "picked_qid": "Q106852590",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6264019122",
+   "split": "holdout",
+   "truth_qid": "Q97613691",
+   "picked_qid": "Q97613691",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6268640328",
+   "split": "calibration",
+   "truth_qid": "Q97209904",
+   "picked_qid": "Q97209904",
+   "picked_score": 0.6924594122930725,
+   "truth_score": 0.6924594122930725,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6285786897",
+   "split": "calibration",
+   "truth_qid": "Q115258015",
+   "picked_qid": "Q115258015",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6289073256",
+   "split": "calibration",
+   "truth_qid": "Q115097527",
+   "picked_qid": "Q115097527",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6325092858",
+   "split": "calibration",
+   "truth_qid": "Q97187890",
+   "picked_qid": "Q97187890",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6325886311",
+   "split": "holdout",
+   "truth_qid": "Q97189129",
+   "picked_qid": "Q97189129",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6345083221",
+   "split": "calibration",
+   "truth_qid": "Q116469453",
+   "picked_qid": "Q116469453",
+   "picked_score": 0.6500000000000001,
+   "truth_score": 0.6500000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6354051996",
+   "split": "calibration",
+   "truth_qid": "Q97279185",
+   "picked_qid": "Q97279185",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6362209835",
+   "split": "holdout",
+   "truth_qid": "Q11388013",
+   "picked_qid": "Q11388013",
+   "picked_score": 0.47500000000000003,
+   "truth_score": 0.47500000000000003,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6413988047",
+   "split": "calibration",
+   "truth_qid": "Q110064143",
+   "picked_qid": "Q110064143",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6438299634",
+   "split": "holdout",
+   "truth_qid": "Q11657681",
+   "picked_qid": null,
+   "picked_score": 0.0,
+   "truth_score": 0.3,
+   "correct_top1": false
+  },
+  {
+   "osm_id": "jinja_n6445238197",
+   "split": "calibration",
+   "truth_qid": "Q114564457",
+   "picked_qid": "Q114564457",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6445238245",
+   "split": "holdout",
+   "truth_qid": "Q114564825",
+   "picked_qid": "Q114564825",
+   "picked_score": 0.6181818181818182,
+   "truth_score": 0.6181818181818182,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6487810076",
+   "split": "calibration",
+   "truth_qid": "Q97201967",
+   "picked_qid": "Q97201967",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6497399779",
+   "split": "holdout",
+   "truth_qid": "Q114774814",
+   "picked_qid": "Q114774814",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6498702188",
+   "split": "calibration",
+   "truth_qid": "Q97203435",
+   "picked_qid": "Q97203435",
+   "picked_score": 0.74,
+   "truth_score": 0.74,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6533745959",
+   "split": "holdout",
+   "truth_qid": "Q114401040",
+   "picked_qid": "Q114401040",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6539440925",
+   "split": "calibration",
+   "truth_qid": "Q114022313",
+   "picked_qid": "Q114022313",
+   "picked_score": 0.6500000000000001,
+   "truth_score": 0.6500000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6539440992",
+   "split": "calibration",
+   "truth_qid": "Q114022028",
+   "picked_qid": "Q114022028",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6542426838",
+   "split": "holdout",
+   "truth_qid": "Q114023561",
+   "picked_qid": "Q114023561",
+   "picked_score": 0.625,
+   "truth_score": 0.625,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6546871293",
+   "split": "calibration",
+   "truth_qid": "Q106852632",
+   "picked_qid": "Q106852632",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6559074826",
+   "split": "holdout",
+   "truth_qid": "Q77267791",
+   "picked_qid": "Q77267791",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6605002103",
+   "split": "holdout",
+   "truth_qid": "Q114564336",
+   "picked_qid": "Q114564336",
+   "picked_score": 0.6181818181818182,
+   "truth_score": 0.6181818181818182,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6620805664",
+   "split": "calibration",
+   "truth_qid": "Q128867049",
+   "picked_qid": "Q128867049",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6628894050",
+   "split": "holdout",
+   "truth_qid": "Q113571026",
+   "picked_qid": "Q113571026",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6634633213",
+   "split": "calibration",
+   "truth_qid": "Q113556205",
+   "picked_qid": "Q113556205",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6651655773",
+   "split": "calibration",
+   "truth_qid": "Q97203393",
+   "picked_qid": "Q97203393",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6776229896",
+   "split": "calibration",
+   "truth_qid": "Q118768035",
+   "picked_qid": "Q118768035",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6815263408",
+   "split": "calibration",
+   "truth_qid": "Q113630426",
+   "picked_qid": "Q113630426",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6830635583",
+   "split": "holdout",
+   "truth_qid": "Q106852603",
+   "picked_qid": "Q106852603",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6832689587",
+   "split": "calibration",
+   "truth_qid": "Q106852589",
+   "picked_qid": "Q106852589",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6835373800",
+   "split": "holdout",
+   "truth_qid": "Q109329118",
+   "picked_qid": "Q109329118",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6868678288",
+   "split": "holdout",
+   "truth_qid": "Q111588242",
+   "picked_qid": "Q111588242",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6869918685",
+   "split": "holdout",
+   "truth_qid": "Q106852440",
+   "picked_qid": "Q106852440",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6871761684",
+   "split": "calibration",
+   "truth_qid": "Q112873437",
+   "picked_qid": "Q112873437",
+   "picked_score": 0.625,
+   "truth_score": 0.625,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6871761901",
+   "split": "holdout",
+   "truth_qid": "Q112872331",
+   "picked_qid": "Q112872331",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6885001864",
+   "split": "holdout",
+   "truth_qid": "Q43594862",
+   "picked_qid": "Q43594862",
+   "picked_score": 0.6000000000000001,
+   "truth_score": 0.6000000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6895938206",
+   "split": "holdout",
+   "truth_qid": "Q109375663",
+   "picked_qid": "Q109375663",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6912636275",
+   "split": "holdout",
+   "truth_qid": "Q109658781",
+   "picked_qid": "Q109658781",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6917417645",
+   "split": "calibration",
+   "truth_qid": "Q106852446",
+   "picked_qid": "Q106852446",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6919382563",
+   "split": "calibration",
+   "truth_qid": "Q113635731",
+   "picked_qid": "Q113635731",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n7019439898",
+   "split": "calibration",
+   "truth_qid": "Q106852625",
+   "picked_qid": "Q106852625",
+   "picked_score": 0.6181818181818182,
+   "truth_score": 0.6181818181818182,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n7019677196",
+   "split": "holdout",
+   "truth_qid": "Q109567667",
+   "picked_qid": "Q109567667",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n7019677286",
+   "split": "holdout",
+   "truth_qid": "Q109567648",
+   "picked_qid": "Q109567648",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n7063384410",
+   "split": "holdout",
+   "truth_qid": "Q97206526",
+   "picked_qid": "Q97206526",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n7064888171",
+   "split": "holdout",
+   "truth_qid": "Q11390597",
+   "picked_qid": "Q11390597",
+   "picked_score": 0.625,
+   "truth_score": 0.625,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n7094940778",
+   "split": "calibration",
+   "truth_qid": "Q113290529",
+   "picked_qid": "Q113290529",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n7128265996",
+   "split": "holdout",
+   "truth_qid": "Q109567013",
+   "picked_qid": "Q109567013",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n7274229094",
+   "split": "calibration",
+   "truth_qid": "Q113637099",
+   "picked_qid": "Q113637099",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n7275694868",
+   "split": "holdout",
+   "truth_qid": "Q121833170",
+   "picked_qid": "Q121833170",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n7511129120",
+   "split": "calibration",
+   "truth_qid": "Q11579591",
+   "picked_qid": "Q11579591",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n7653795130",
+   "split": "calibration",
+   "truth_qid": "Q106852385",
+   "picked_qid": "Q106852385",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n8515751461",
+   "split": "holdout",
+   "truth_qid": "Q114921485",
+   "picked_qid": "Q114921485",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n8931757668",
+   "split": "calibration",
+   "truth_qid": "Q120655433",
+   "picked_qid": "Q120655433",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n9199582341",
+   "split": "holdout",
+   "truth_qid": "Q11463267",
+   "picked_qid": "Q11463267",
+   "picked_score": 0.6534475407055946,
+   "truth_score": 0.6534475407055946,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n9268951451",
+   "split": "holdout",
+   "truth_qid": "Q106852438",
+   "picked_qid": "Q106852438",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n9401823450",
+   "split": "holdout",
+   "truth_qid": "Q106852448",
+   "picked_qid": "Q106852448",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n9403916994",
+   "split": "calibration",
+   "truth_qid": "Q97206543",
+   "picked_qid": "Q97206543",
+   "picked_score": 0.6181818181818182,
+   "truth_score": 0.6181818181818182,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n9671797545",
+   "split": "holdout",
+   "truth_qid": "Q111632741",
+   "picked_qid": "Q111632741",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n9689248807",
+   "split": "calibration",
+   "truth_qid": "Q115154465",
+   "picked_qid": "Q115154465",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n9710457511",
+   "split": "holdout",
+   "truth_qid": "Q24873400",
+   "picked_qid": "Q24873400",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n9718326140",
+   "split": "holdout",
+   "truth_qid": "Q111304814",
+   "picked_qid": "Q111304814",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n9863129810",
+   "split": "holdout",
+   "truth_qid": "Q112913929",
+   "picked_qid": "Q112913929",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n9963091511",
+   "split": "calibration",
+   "truth_qid": "Q113634745",
+   "picked_qid": "Q113634745",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n9963109571",
+   "split": "calibration",
+   "truth_qid": "Q113634793",
+   "picked_qid": "Q113634852",
+   "picked_score": 0.44982400312280485,
+   "truth_score": 0.40889862452783243,
+   "correct_top1": false
+  },
+  {
+   "osm_id": "jinja_n9963119666",
+   "split": "calibration",
+   "truth_qid": "Q113634852",
+   "picked_qid": "Q113634852",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n9966892774",
+   "split": "holdout",
+   "truth_qid": "Q113636005",
+   "picked_qid": "Q113636005",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n9990384124",
+   "split": "calibration",
+   "truth_qid": "Q11445942",
+   "picked_qid": "Q11445942",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n9996544474",
+   "split": "calibration",
+   "truth_qid": "Q114000008",
+   "picked_qid": "Q114000008",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n9996563879",
+   "split": "holdout",
+   "truth_qid": "Q97201652",
+   "picked_qid": "Q97201652",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n9996612490",
+   "split": "calibration",
+   "truth_qid": "Q114020503",
+   "picked_qid": "Q114020503",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n10041364608",
+   "split": "calibration",
+   "truth_qid": "Q28689226",
+   "picked_qid": "Q28689226",
+   "picked_score": 0.6571428571428573,
+   "truth_score": 0.6571428571428573,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n10068362339",
+   "split": "holdout",
+   "truth_qid": "Q106852464",
+   "picked_qid": "Q106852464",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n10083589585",
+   "split": "holdout",
+   "truth_qid": "Q114565310",
+   "picked_qid": "Q114565310",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n10153725930",
+   "split": "calibration",
+   "truth_qid": "Q115097999",
+   "picked_qid": "Q115097999",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n10154524068",
+   "split": "holdout",
+   "truth_qid": "Q119929560",
+   "picked_qid": "Q119929560",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n10158318764",
+   "split": "holdout",
+   "truth_qid": "Q115187053",
+   "picked_qid": "Q115187053",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n10158820519",
+   "split": "holdout",
+   "truth_qid": "Q115190414",
+   "picked_qid": "Q115190414",
+   "picked_score": 0.6470588235294118,
+   "truth_score": 0.6470588235294118,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n10177493281",
+   "split": "calibration",
+   "truth_qid": "Q97196707",
+   "picked_qid": "Q97196707",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n10270579641",
+   "split": "calibration",
+   "truth_qid": "Q119400184",
+   "picked_qid": "Q119400184",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n10285630891",
+   "split": "holdout",
+   "truth_qid": "Q22118972",
+   "picked_qid": "Q22118972",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n10794414659",
+   "split": "holdout",
+   "truth_qid": "Q119351602",
+   "picked_qid": "Q119351602",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n10861569166",
+   "split": "holdout",
+   "truth_qid": "Q119033311",
+   "picked_qid": "Q119033311",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n10866761676",
+   "split": "calibration",
+   "truth_qid": "Q118182433",
+   "picked_qid": "Q118182433",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n10913683909",
+   "split": "calibration",
+   "truth_qid": "Q118545547",
+   "picked_qid": "Q118545547",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n10981792044",
+   "split": "holdout",
+   "truth_qid": "Q119676940",
+   "picked_qid": "Q119676940",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n11583277411",
+   "split": "holdout",
+   "truth_qid": "Q131925898",
+   "picked_qid": "Q131925898",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n11708588003",
+   "split": "holdout",
+   "truth_qid": "Q11434948",
+   "picked_qid": "Q11434948",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n11998319828",
+   "split": "calibration",
+   "truth_qid": "Q135192860",
+   "picked_qid": "Q135192860",
+   "picked_score": 0.676923076923077,
+   "truth_score": 0.676923076923077,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n12111649056",
+   "split": "calibration",
+   "truth_qid": "Q11659360",
+   "picked_qid": "Q11659360",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n12265259879",
+   "split": "holdout",
+   "truth_qid": "Q135193311",
+   "picked_qid": "Q135193311",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n12538036885",
+   "split": "calibration",
+   "truth_qid": "Q131924400",
+   "picked_qid": "Q131924400",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n12790627761",
+   "split": "holdout",
+   "truth_qid": "Q134149661",
+   "picked_qid": "Q134149661",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n13521411997",
+   "split": "holdout",
+   "truth_qid": "Q125874183",
+   "picked_qid": "Q125874183",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n13521520880",
+   "split": "holdout",
+   "truth_qid": "Q119929557",
+   "picked_qid": "Q119929557",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n13546459573",
+   "split": "calibration",
+   "truth_qid": "Q11598496",
+   "picked_qid": "Q11598496",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w28846158",
+   "split": "holdout",
+   "truth_qid": "Q11579594",
+   "picked_qid": "Q11579594",
+   "picked_score": 0.5333333333333333,
+   "truth_score": 0.5333333333333333,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w32843696",
+   "split": "holdout",
+   "truth_qid": "Q97216001",
+   "picked_qid": "Q97216001",
+   "picked_score": 0.625,
+   "truth_score": 0.625,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w41293320",
+   "split": "calibration",
+   "truth_qid": "Q107410079",
+   "picked_qid": "Q107410079",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w46954688",
+   "split": "calibration",
+   "truth_qid": "Q11362061",
+   "picked_qid": "Q11362061",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w46983897",
+   "split": "holdout",
+   "truth_qid": "Q55532885",
+   "picked_qid": "Q55532885",
+   "picked_score": 0.6943660886413768,
+   "truth_score": 0.6943660886413768,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w49261637",
+   "split": "holdout",
+   "truth_qid": "Q11402307",
+   "picked_qid": "Q11402307",
+   "picked_score": 0.5636363636363636,
+   "truth_score": 0.5636363636363636,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w52890106",
+   "split": "holdout",
+   "truth_qid": "Q11549604",
+   "picked_qid": "Q11549604",
+   "picked_score": 0.6987625118005323,
+   "truth_score": 0.6987625118005323,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w55063235",
+   "split": "calibration",
+   "truth_qid": "Q97310655",
+   "picked_qid": "Q97310655",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w68519503",
+   "split": "holdout",
+   "truth_qid": "Q11390936",
+   "picked_qid": "Q11390936",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w87510469",
+   "split": "calibration",
+   "truth_qid": "Q113386352",
+   "picked_qid": "Q113386352",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w89431876",
+   "split": "calibration",
+   "truth_qid": "Q717682",
+   "picked_qid": "Q717682",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w92037459",
+   "split": "calibration",
+   "truth_qid": "Q670049",
+   "picked_qid": "Q670049",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w93416022",
+   "split": "calibration",
+   "truth_qid": "Q63788026",
+   "picked_qid": "Q63788026",
+   "picked_score": 0.6911430625316461,
+   "truth_score": 0.6911430625316461,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w94043293",
+   "split": "calibration",
+   "truth_qid": "Q121862598",
+   "picked_qid": "Q121862598",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w94062555",
+   "split": "holdout",
+   "truth_qid": "Q106852458",
+   "picked_qid": "Q106852458",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w95937718",
+   "split": "calibration",
+   "truth_qid": "Q11568951",
+   "picked_qid": "Q11568951",
+   "picked_score": 0.7181818181818181,
+   "truth_score": 0.7181818181818181,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w96217105",
+   "split": "holdout",
+   "truth_qid": "Q11631928",
+   "picked_qid": "Q11631928",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w96350126",
+   "split": "calibration",
+   "truth_qid": "Q11597221",
+   "picked_qid": "Q11597221",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w97689105",
+   "split": "holdout",
+   "truth_qid": "Q97166574",
+   "picked_qid": "Q97166574",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w98402891",
+   "split": "calibration",
+   "truth_qid": "Q3503320",
+   "picked_qid": "Q3503320",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w98883462",
+   "split": "calibration",
+   "truth_qid": "Q106852394",
+   "picked_qid": "Q106852394",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w100599675",
+   "split": "holdout",
+   "truth_qid": "Q11370953",
+   "picked_qid": "Q11370953",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w102792887",
+   "split": "calibration",
+   "truth_qid": "Q3126680",
+   "picked_qid": "Q3126680",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w105463021",
+   "split": "holdout",
+   "truth_qid": "Q11513668",
+   "picked_qid": "Q11513668",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w138921337",
+   "split": "holdout",
+   "truth_qid": "Q38275942",
+   "picked_qid": "Q38275942",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w139718087",
+   "split": "holdout",
+   "truth_qid": "Q11464224",
+   "picked_qid": "Q11464224",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w141293484",
+   "split": "holdout",
+   "truth_qid": "Q11647638",
+   "picked_qid": "Q11647638",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w143516722",
+   "split": "calibration",
+   "truth_qid": "Q11635471",
+   "picked_qid": "Q11635471",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w144430257",
+   "split": "calibration",
+   "truth_qid": "Q11524717",
+   "picked_qid": "Q11524717",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w145344085",
+   "split": "holdout",
+   "truth_qid": "Q708550",
+   "picked_qid": "Q708550",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w145660758",
+   "split": "calibration",
+   "truth_qid": "Q11646485",
+   "picked_qid": "Q11646485",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w147253545",
+   "split": "holdout",
+   "truth_qid": "Q97376108",
+   "picked_qid": "Q97376108",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w148790550",
+   "split": "holdout",
+   "truth_qid": "Q11391082",
+   "picked_qid": "Q11391082",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w149714788",
+   "split": "holdout",
+   "truth_qid": "Q3335477",
+   "picked_qid": "Q3335477",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w150624644",
+   "split": "holdout",
+   "truth_qid": "Q133357554",
+   "picked_qid": "Q133357554",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w156575117",
+   "split": "calibration",
+   "truth_qid": "Q11370954",
+   "picked_qid": "Q11370954",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w156919949",
+   "split": "holdout",
+   "truth_qid": "Q97176324",
+   "picked_qid": "Q97176324",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w156974973",
+   "split": "calibration",
+   "truth_qid": "Q120768776",
+   "picked_qid": "Q120768776",
+   "picked_score": 0.5800000000000001,
+   "truth_score": 0.5800000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w157812973",
+   "split": "calibration",
+   "truth_qid": "Q11658854",
+   "picked_qid": "Q11658854",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w158319653",
+   "split": "calibration",
+   "truth_qid": "Q97613695",
+   "picked_qid": "Q97613695",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w158406782",
+   "split": "calibration",
+   "truth_qid": "Q19930073",
+   "picked_qid": "Q19930073",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w159475012",
+   "split": "holdout",
+   "truth_qid": "Q11619016",
+   "picked_qid": "Q11619016",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w166908524",
+   "split": "calibration",
+   "truth_qid": "Q55450375",
+   "picked_qid": "Q55450375",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w170401331",
+   "split": "holdout",
+   "truth_qid": "Q107410075",
+   "picked_qid": "Q107410075",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w172007556",
+   "split": "holdout",
+   "truth_qid": "Q611678",
+   "picked_qid": "Q611678",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w174323712",
+   "split": "holdout",
+   "truth_qid": "Q43594517",
+   "picked_qid": "Q43594517",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w176607689",
+   "split": "calibration",
+   "truth_qid": "Q11668441",
+   "picked_qid": "Q11668441",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w179091082",
+   "split": "calibration",
+   "truth_qid": "Q1384780",
+   "picked_qid": "Q1384780",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w184855228",
+   "split": "holdout",
+   "truth_qid": "Q106852442",
+   "picked_qid": "Q106852442",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w185586336",
+   "split": "holdout",
+   "truth_qid": "Q11405353",
+   "picked_qid": "Q11405353",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w193285998",
+   "split": "holdout",
+   "truth_qid": "Q11549611",
+   "picked_qid": "Q11549611",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w195680376",
+   "split": "holdout",
+   "truth_qid": "Q11603911",
+   "picked_qid": "Q11603911",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w199784716",
+   "split": "holdout",
+   "truth_qid": "Q11390921",
+   "picked_qid": "Q11390921",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w199784720",
+   "split": "calibration",
+   "truth_qid": "Q119929563",
+   "picked_qid": "Q119929563",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w202049574",
+   "split": "holdout",
+   "truth_qid": "Q131925940",
+   "picked_qid": "Q131925940",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w209296887",
+   "split": "calibration",
+   "truth_qid": "Q106852624",
+   "picked_qid": "Q106852624",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w211286442",
+   "split": "calibration",
+   "truth_qid": "Q97186037",
+   "picked_qid": "Q97186037",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w214097918",
+   "split": "holdout",
+   "truth_qid": "Q97478947",
+   "picked_qid": "Q97478947",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w216889523",
+   "split": "holdout",
+   "truth_qid": "Q11370809",
+   "picked_qid": "Q11370809",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w217544141",
+   "split": "holdout",
+   "truth_qid": "Q3193657",
+   "picked_qid": "Q3193657",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w218873568",
+   "split": "holdout",
+   "truth_qid": "Q125367219",
+   "picked_qid": "Q125367219",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w220491267",
+   "split": "calibration",
+   "truth_qid": "Q2115862",
+   "picked_qid": "Q2115862",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w224442145",
+   "split": "holdout",
+   "truth_qid": "Q109927617",
+   "picked_qid": "Q109927617",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w224935646",
+   "split": "calibration",
+   "truth_qid": "Q115299067",
+   "picked_qid": "Q115299067",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w228028577",
+   "split": "calibration",
+   "truth_qid": "Q97197202",
+   "picked_qid": "Q97197202",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w228183373",
+   "split": "calibration",
+   "truth_qid": "Q115258130",
+   "picked_qid": "Q115258130",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w228462581",
+   "split": "calibration",
+   "truth_qid": "Q132042040",
+   "picked_qid": "Q132042040",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w229027130",
+   "split": "holdout",
+   "truth_qid": "Q121840419",
+   "picked_qid": "Q121840419",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w231407236",
+   "split": "calibration",
+   "truth_qid": "Q115252168",
+   "picked_qid": "Q115252168",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w231665817",
+   "split": "calibration",
+   "truth_qid": "Q11444172",
+   "picked_qid": "Q11444172",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w232769158",
+   "split": "calibration",
+   "truth_qid": "Q115264439",
+   "picked_qid": "Q115264439",
+   "picked_score": 0.6571428571428573,
+   "truth_score": 0.6571428571428573,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w233362923",
+   "split": "holdout",
+   "truth_qid": "Q11587853",
+   "picked_qid": "Q11587853",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w235078257",
+   "split": "calibration",
+   "truth_qid": "Q11605642",
+   "picked_qid": "Q11605642",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w235639469",
+   "split": "holdout",
+   "truth_qid": "Q11391084",
+   "picked_qid": "Q11391084",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w237177491",
+   "split": "holdout",
+   "truth_qid": "Q115189175",
+   "picked_qid": "Q115189175",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w237177493",
+   "split": "holdout",
+   "truth_qid": "Q113364471",
+   "picked_qid": "Q113364471",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w238156270",
+   "split": "holdout",
+   "truth_qid": "Q113364602",
+   "picked_qid": "Q113364602",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w238465922",
+   "split": "holdout",
+   "truth_qid": "Q106852391",
+   "picked_qid": "Q106852391",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w239953883",
+   "split": "calibration",
+   "truth_qid": "Q17215009",
+   "picked_qid": "Q17215009",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w241193890",
+   "split": "calibration",
+   "truth_qid": "Q11538090",
+   "picked_qid": "Q11538090",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w242961686",
+   "split": "calibration",
+   "truth_qid": "Q115228136",
+   "picked_qid": "Q115228136",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w243420620",
+   "split": "calibration",
+   "truth_qid": "Q11410141",
+   "picked_qid": "Q11410141",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w243433345",
+   "split": "calibration",
+   "truth_qid": "Q106852471",
+   "picked_qid": "Q106852471",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w243502638",
+   "split": "calibration",
+   "truth_qid": "Q17216575",
+   "picked_qid": "Q17216575",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w243504820",
+   "split": "calibration",
+   "truth_qid": "Q95743097",
+   "picked_qid": "Q95743097",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w243642221",
+   "split": "holdout",
+   "truth_qid": "Q97175484",
+   "picked_qid": "Q97175484",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w246752608",
+   "split": "calibration",
+   "truth_qid": "Q11526478",
+   "picked_qid": "Q11526478",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w249229824",
+   "split": "holdout",
+   "truth_qid": "Q95745373",
+   "picked_qid": "Q95745373",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w261746147",
+   "split": "calibration",
+   "truth_qid": "Q97196990",
+   "picked_qid": "Q97196990",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w261771962",
+   "split": "calibration",
+   "truth_qid": "Q115259842",
+   "picked_qid": "Q115259842",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w279067985",
+   "split": "calibration",
+   "truth_qid": "Q11674200",
+   "picked_qid": "Q11674200",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w279068003",
+   "split": "holdout",
+   "truth_qid": "Q115294524",
+   "picked_qid": "Q115294524",
+   "picked_score": 0.6181818181818182,
+   "truth_score": 0.6181818181818182,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w294300778",
+   "split": "calibration",
+   "truth_qid": "Q22120144",
+   "picked_qid": "Q22120144",
+   "picked_score": 0.4996206729909597,
+   "truth_score": 0.4996206729909597,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w303768856",
+   "split": "calibration",
+   "truth_qid": "Q21019858",
+   "picked_qid": "Q21019858",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w303959206",
+   "split": "calibration",
+   "truth_qid": "Q698078",
+   "picked_qid": "Q698078",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w305395576",
+   "split": "calibration",
+   "truth_qid": "Q11664824",
+   "picked_qid": "Q11664824",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w325664576",
+   "split": "calibration",
+   "truth_qid": "Q97165015",
+   "picked_qid": "Q97165015",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w325692053",
+   "split": "calibration",
+   "truth_qid": "Q11418419",
+   "picked_qid": "Q11418419",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w325692055",
+   "split": "calibration",
+   "truth_qid": "Q11618312",
+   "picked_qid": "Q11618312",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w328326191",
+   "split": "holdout",
+   "truth_qid": "Q11391065",
+   "picked_qid": "Q11391065",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w330742466",
+   "split": "holdout",
+   "truth_qid": "Q106852619",
+   "picked_qid": "Q106852619",
+   "picked_score": 0.625,
+   "truth_score": 0.625,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w331612051",
+   "split": "holdout",
+   "truth_qid": "Q111840554",
+   "picked_qid": "Q111840554",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w332658109",
+   "split": "calibration",
+   "truth_qid": "Q133359134",
+   "picked_qid": "Q133359134",
+   "picked_score": 0.6500000000000001,
+   "truth_score": 0.6500000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w334122643",
+   "split": "holdout",
+   "truth_qid": "Q11573004",
+   "picked_qid": "Q11573004",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w363543409",
+   "split": "calibration",
+   "truth_qid": "Q106852475",
+   "picked_qid": "Q106852475",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w363543410",
+   "split": "calibration",
+   "truth_qid": "Q106852582",
+   "picked_qid": "Q106852582",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w363543412",
+   "split": "holdout",
+   "truth_qid": "Q11602398",
+   "picked_qid": "Q11602398",
+   "picked_score": 0.7000000000000001,
+   "truth_score": 0.7000000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w363836351",
+   "split": "holdout",
+   "truth_qid": "Q115299539",
+   "picked_qid": "Q115299539",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w364603042",
+   "split": "calibration",
+   "truth_qid": "Q11657218",
+   "picked_qid": "Q11657218",
+   "picked_score": 0.676923076923077,
+   "truth_score": 0.676923076923077,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w374396948",
+   "split": "holdout",
+   "truth_qid": "Q85567286",
+   "picked_qid": "Q85567286",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w375904664",
+   "split": "calibration",
+   "truth_qid": "Q11549053",
+   "picked_qid": "Q11549053",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w389492580",
+   "split": "holdout",
+   "truth_qid": "Q97209891",
+   "picked_qid": "Q97209891",
+   "picked_score": 0.7830231838957891,
+   "truth_score": 0.7830231838957891,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w390235125",
+   "split": "calibration",
+   "truth_qid": "Q106852472",
+   "picked_qid": "Q106852472",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w390405283",
+   "split": "holdout",
+   "truth_qid": "Q101418080",
+   "picked_qid": "Q101418080",
+   "picked_score": 0.6625000000000001,
+   "truth_score": 0.6625000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w390405317",
+   "split": "calibration",
+   "truth_qid": "Q11664822",
+   "picked_qid": "Q11664822",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w391030346",
+   "split": "calibration",
+   "truth_qid": "Q111772327",
+   "picked_qid": "Q111772327",
+   "picked_score": 0.6500000000000001,
+   "truth_score": 0.6500000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w440560885",
+   "split": "calibration",
+   "truth_qid": "Q11667992",
+   "picked_qid": "Q11667992",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w442140635",
+   "split": "calibration",
+   "truth_qid": "Q115258187",
+   "picked_qid": "Q115258187",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w449791216",
+   "split": "calibration",
+   "truth_qid": "Q3342690",
+   "picked_qid": "Q3342690",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w451573914",
+   "split": "holdout",
+   "truth_qid": "Q11619212",
+   "picked_qid": "Q11619212",
+   "picked_score": 0.6993215024352195,
+   "truth_score": 0.6993215024352195,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w452682420",
+   "split": "holdout",
+   "truth_qid": "Q17229311",
+   "picked_qid": "Q17229311",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w464629204",
+   "split": "calibration",
+   "truth_qid": "Q335612",
+   "picked_qid": "Q335612",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w469908925",
+   "split": "holdout",
+   "truth_qid": "Q287165",
+   "picked_qid": "Q287165",
+   "picked_score": 0.6142253390677596,
+   "truth_score": 0.6142253390677596,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w472434151",
+   "split": "holdout",
+   "truth_qid": "Q11549608",
+   "picked_qid": "Q11549608",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w481152677",
+   "split": "holdout",
+   "truth_qid": "Q2868748",
+   "picked_qid": "Q2868748",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w500629094",
+   "split": "calibration",
+   "truth_qid": "Q72707416",
+   "picked_qid": "Q72707416",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w504552680",
+   "split": "holdout",
+   "truth_qid": "Q113667105",
+   "picked_qid": "Q113667105",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w504553390",
+   "split": "calibration",
+   "truth_qid": "Q113667160",
+   "picked_qid": "Q113667160",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w505810796",
+   "split": "calibration",
+   "truth_qid": "Q95745128",
+   "picked_qid": "Q95745128",
+   "picked_score": 0.6500000000000001,
+   "truth_score": 0.6500000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w506389175",
+   "split": "holdout",
+   "truth_qid": "Q114819482",
+   "picked_qid": "Q114819482",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w507282415",
+   "split": "holdout",
+   "truth_qid": "Q115048383",
+   "picked_qid": "Q115048383",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w507462590",
+   "split": "holdout",
+   "truth_qid": "Q11675149",
+   "picked_qid": "Q11675149",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w509411458",
+   "split": "holdout",
+   "truth_qid": "Q702042",
+   "picked_qid": "Q702042",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w511276638",
+   "split": "calibration",
+   "truth_qid": "Q11647638",
+   "picked_qid": "Q11647638",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w512578912",
+   "split": "calibration",
+   "truth_qid": "Q130689009",
+   "picked_qid": "Q130689009",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w514073834",
+   "split": "holdout",
+   "truth_qid": "Q11447192",
+   "picked_qid": "Q11447192",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w515820340",
+   "split": "calibration",
+   "truth_qid": "Q11361339",
+   "picked_qid": "Q11361339",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w516751953",
+   "split": "holdout",
+   "truth_qid": "Q335606",
+   "picked_qid": "Q335606",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w519468662",
+   "split": "calibration",
+   "truth_qid": "Q111906159",
+   "picked_qid": "Q111906159",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w525903597",
+   "split": "calibration",
+   "truth_qid": "Q134087893",
+   "picked_qid": "Q134087893",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w539768799",
+   "split": "calibration",
+   "truth_qid": "Q11491026",
+   "picked_qid": "Q11491026",
+   "picked_score": 0.8999999999999999,
+   "truth_score": 0.8999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w546743134",
+   "split": "calibration",
+   "truth_qid": "Q113667013",
+   "picked_qid": "Q113667013",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w561263948",
+   "split": "calibration",
+   "truth_qid": "Q134926154",
+   "picked_qid": "Q134926154",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w563014770",
+   "split": "holdout",
+   "truth_qid": "Q114815866",
+   "picked_qid": "Q114815866",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w564865331",
+   "split": "holdout",
+   "truth_qid": "Q17221220",
+   "picked_qid": "Q17221220",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w566265936",
+   "split": "calibration",
+   "truth_qid": "Q11496627",
+   "picked_qid": "Q11496627",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w572515963",
+   "split": "calibration",
+   "truth_qid": "Q98082797",
+   "picked_qid": "Q98082797",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w576806820",
+   "split": "calibration",
+   "truth_qid": "Q38277566",
+   "picked_qid": "Q38277566",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w577426015",
+   "split": "calibration",
+   "truth_qid": "Q112607794",
+   "picked_qid": "Q112607794",
+   "picked_score": 0.6000000000000001,
+   "truth_score": 0.6000000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w578923055",
+   "split": "holdout",
+   "truth_qid": "Q106852639",
+   "picked_qid": "Q106852639",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w579626254",
+   "split": "calibration",
+   "truth_qid": "Q11618315",
+   "picked_qid": "Q11618315",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w584075992",
+   "split": "calibration",
+   "truth_qid": "Q11495425",
+   "picked_qid": "Q11495425",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w586631862",
+   "split": "calibration",
+   "truth_qid": "Q11634808",
+   "picked_qid": "Q11634808",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w591133603",
+   "split": "holdout",
+   "truth_qid": "Q118182066",
+   "picked_qid": "Q118182066",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w597638443",
+   "split": "calibration",
+   "truth_qid": "Q11568955",
+   "picked_qid": "Q11568955",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w598060366",
+   "split": "holdout",
+   "truth_qid": "Q11573006",
+   "picked_qid": "Q11573006",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w602821147",
+   "split": "holdout",
+   "truth_qid": "Q107494084",
+   "picked_qid": "Q107494084",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w604041505",
+   "split": "calibration",
+   "truth_qid": "Q48758435",
+   "picked_qid": "Q48758435",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w604041509",
+   "split": "calibration",
+   "truth_qid": "Q106852581",
+   "picked_qid": "Q106852581",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w604233708",
+   "split": "holdout",
+   "truth_qid": "Q106852470",
+   "picked_qid": "Q106852470",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w605782028",
+   "split": "holdout",
+   "truth_qid": "Q11361253",
+   "picked_qid": "Q11361253",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w614070645",
+   "split": "calibration",
+   "truth_qid": "Q11359993",
+   "picked_qid": "Q11359993",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w615477910",
+   "split": "calibration",
+   "truth_qid": "Q120728121",
+   "picked_qid": "Q120728121",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w616231132",
+   "split": "calibration",
+   "truth_qid": "Q11504590",
+   "picked_qid": "Q11504590",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w616241895",
+   "split": "calibration",
+   "truth_qid": "Q654417",
+   "picked_qid": "Q654417",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w617161236",
+   "split": "holdout",
+   "truth_qid": "Q118213346",
+   "picked_qid": "Q118213346",
+   "picked_score": 0.8288888888888889,
+   "truth_score": 0.8288888888888889,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w627559033",
+   "split": "calibration",
+   "truth_qid": "Q11651146",
+   "picked_qid": "Q11651146",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w636823250",
+   "split": "calibration",
+   "truth_qid": "Q55538115",
+   "picked_qid": "Q55538115",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w639207330",
+   "split": "calibration",
+   "truth_qid": "Q11443190",
+   "picked_qid": "Q11443190",
+   "picked_score": 0.676923076923077,
+   "truth_score": 0.676923076923077,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w648645291",
+   "split": "calibration",
+   "truth_qid": "Q11459811",
+   "picked_qid": "Q11459811",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w649115399",
+   "split": "calibration",
+   "truth_qid": "Q97310706",
+   "picked_qid": "Q97310706",
+   "picked_score": 0.6181818181818182,
+   "truth_score": 0.6181818181818182,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w653707864",
+   "split": "calibration",
+   "truth_qid": "Q17215324",
+   "picked_qid": "Q17215324",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w653722475",
+   "split": "calibration",
+   "truth_qid": "Q114818992",
+   "picked_qid": "Q114818992",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w653744410",
+   "split": "calibration",
+   "truth_qid": "Q3514174",
+   "picked_qid": "Q3514174",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w653744413",
+   "split": "calibration",
+   "truth_qid": "Q545397",
+   "picked_qid": "Q545397",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w653744415",
+   "split": "calibration",
+   "truth_qid": "Q11614619",
+   "picked_qid": "Q11614619",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w669243897",
+   "split": "holdout",
+   "truth_qid": "Q11596884",
+   "picked_qid": "Q11596884",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w669317390",
+   "split": "holdout",
+   "truth_qid": "Q22120361",
+   "picked_qid": "Q22120361",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w669621505",
+   "split": "holdout",
+   "truth_qid": "Q11587730",
+   "picked_qid": "Q11587730",
+   "picked_score": 0.6988019667839769,
+   "truth_score": 0.6988019667839769,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w670883660",
+   "split": "calibration",
+   "truth_qid": "Q11677182",
+   "picked_qid": "Q11677182",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w670887005",
+   "split": "holdout",
+   "truth_qid": "Q120596593",
+   "picked_qid": "Q120596593",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w670892103",
+   "split": "holdout",
+   "truth_qid": "Q11430753",
+   "picked_qid": "Q11430753",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w677360951",
+   "split": "calibration",
+   "truth_qid": "Q115162901",
+   "picked_qid": "Q115162901",
+   "picked_score": 0.6000000000000001,
+   "truth_score": 0.6000000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w680884178",
+   "split": "holdout",
+   "truth_qid": "Q7797685",
+   "picked_qid": "Q7797685",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w680908887",
+   "split": "calibration",
+   "truth_qid": "Q10934922",
+   "picked_qid": "Q10934922",
+   "picked_score": 0.5989435120726527,
+   "truth_score": 0.5989435120726527,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w687716383",
+   "split": "calibration",
+   "truth_qid": "Q97310723",
+   "picked_qid": "Q97310723",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w688091675",
+   "split": "holdout",
+   "truth_qid": "Q78166404",
+   "picked_qid": "Q78166404",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w689280730",
+   "split": "calibration",
+   "truth_qid": "Q11441990",
+   "picked_qid": "Q11441990",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w693992374",
+   "split": "calibration",
+   "truth_qid": "Q106852468",
+   "picked_qid": "Q106852468",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w696901292",
+   "split": "calibration",
+   "truth_qid": "Q64589501",
+   "picked_qid": "Q64589501",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w697201703",
+   "split": "calibration",
+   "truth_qid": "Q3135503",
+   "picked_qid": "Q3135503",
+   "picked_score": 0.66,
+   "truth_score": 0.66,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w698623646",
+   "split": "calibration",
+   "truth_qid": "Q97216185",
+   "picked_qid": "Q97216185",
+   "picked_score": 0.625,
+   "truth_score": 0.625,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w702667948",
+   "split": "holdout",
+   "truth_qid": "Q11602401",
+   "picked_qid": "Q11602401",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w702671103",
+   "split": "holdout",
+   "truth_qid": "Q11480773",
+   "picked_qid": "Q11480773",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w709073210",
+   "split": "calibration",
+   "truth_qid": "Q17218974",
+   "picked_qid": "Q17218974",
+   "picked_score": 0.6580950873535315,
+   "truth_score": 0.6580950873535315,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w709073215",
+   "split": "holdout",
+   "truth_qid": "Q11570647",
+   "picked_qid": "Q11570647",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w715062821",
+   "split": "calibration",
+   "truth_qid": "Q11549612",
+   "picked_qid": "Q11549612",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w716178336",
+   "split": "holdout",
+   "truth_qid": "Q97280705",
+   "picked_qid": "Q97280705",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w727465328",
+   "split": "holdout",
+   "truth_qid": "Q28685916",
+   "picked_qid": "Q28685916",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w734036129",
+   "split": "calibration",
+   "truth_qid": "Q106852629",
+   "picked_qid": "Q106852629",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w740941451",
+   "split": "holdout",
+   "truth_qid": "Q11595842",
+   "picked_qid": "Q11595842",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w746823831",
+   "split": "calibration",
+   "truth_qid": "Q118773283",
+   "picked_qid": "Q118773283",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w764486215",
+   "split": "calibration",
+   "truth_qid": "Q106852610",
+   "picked_qid": "Q106852610",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w767796422",
+   "split": "calibration",
+   "truth_qid": "Q17217094",
+   "picked_qid": "Q17217094",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w769043842",
+   "split": "holdout",
+   "truth_qid": "Q11603463",
+   "picked_qid": "Q11603463",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w771095940",
+   "split": "holdout",
+   "truth_qid": "Q106852608",
+   "picked_qid": "Q106852608",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w777601032",
+   "split": "calibration",
+   "truth_qid": "Q119685799",
+   "picked_qid": "Q119685799",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w804289184",
+   "split": "holdout",
+   "truth_qid": "Q11442850",
+   "picked_qid": "Q11442850",
+   "picked_score": 0.625,
+   "truth_score": 0.625,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w806660730",
+   "split": "holdout",
+   "truth_qid": "Q97203409",
+   "picked_qid": "Q97203409",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w806842145",
+   "split": "holdout",
+   "truth_qid": "Q44393950",
+   "picked_qid": "Q44393950",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w819543472",
+   "split": "holdout",
+   "truth_qid": "Q111838589",
+   "picked_qid": "Q111838589",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w819890245",
+   "split": "holdout",
+   "truth_qid": "Q11354713",
+   "picked_qid": "Q11354713",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w826383325",
+   "split": "holdout",
+   "truth_qid": "Q123156376",
+   "picked_qid": "Q123156376",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w830286353",
+   "split": "holdout",
+   "truth_qid": "Q109063741",
+   "picked_qid": "Q109063741",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w831174925",
+   "split": "holdout",
+   "truth_qid": "Q106852454",
+   "picked_qid": "Q106852454",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w831174934",
+   "split": "calibration",
+   "truth_qid": "Q11676284",
+   "picked_qid": "Q11676284",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w865500039",
+   "split": "calibration",
+   "truth_qid": "Q97376118",
+   "picked_qid": "Q97376118",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w867580837",
+   "split": "holdout",
+   "truth_qid": "Q119929565",
+   "picked_qid": "Q119929565",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w953738420",
+   "split": "calibration",
+   "truth_qid": "Q106852399",
+   "picked_qid": "Q106852399",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w981883042",
+   "split": "holdout",
+   "truth_qid": "Q55532887",
+   "picked_qid": "Q55532887",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w984711629",
+   "split": "calibration",
+   "truth_qid": "Q106852614",
+   "picked_qid": "Q106852614",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w997808483",
+   "split": "calibration",
+   "truth_qid": "Q11596881",
+   "picked_qid": "Q11596881",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1002162931",
+   "split": "holdout",
+   "truth_qid": "Q109566032",
+   "picked_qid": "Q109566032",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1009063892",
+   "split": "holdout",
+   "truth_qid": "Q11549618",
+   "picked_qid": "Q11549618",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1009190918",
+   "split": "calibration",
+   "truth_qid": "Q109929443",
+   "picked_qid": "Q109929443",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1009211553",
+   "split": "calibration",
+   "truth_qid": "Q109926943",
+   "picked_qid": "Q109926943",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1009217419",
+   "split": "calibration",
+   "truth_qid": "Q109927163",
+   "picked_qid": "Q109927163",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1009219931",
+   "split": "holdout",
+   "truth_qid": "Q11387830",
+   "picked_qid": "Q11387830",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1011006318",
+   "split": "holdout",
+   "truth_qid": "Q97213452",
+   "picked_qid": "Q97213452",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1011212590",
+   "split": "calibration",
+   "truth_qid": "Q22120059",
+   "picked_qid": "Q22120059",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1019370734",
+   "split": "holdout",
+   "truth_qid": "Q106852605",
+   "picked_qid": "Q106852605",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1036873456",
+   "split": "calibration",
+   "truth_qid": "Q11657213",
+   "picked_qid": "Q11657213",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1056599536",
+   "split": "holdout",
+   "truth_qid": "Q106852641",
+   "picked_qid": "Q106852641",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1080703535",
+   "split": "calibration",
+   "truth_qid": "Q97172938",
+   "picked_qid": "Q97172938",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1108866806",
+   "split": "holdout",
+   "truth_qid": "Q11595179",
+   "picked_qid": "Q11595179",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1112684932",
+   "split": "calibration",
+   "truth_qid": "Q123156376",
+   "picked_qid": "Q123156376",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1121909294",
+   "split": "holdout",
+   "truth_qid": "Q97173845",
+   "picked_qid": "Q97173845",
+   "picked_score": 0.625,
+   "truth_score": 0.625,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1123278946",
+   "split": "holdout",
+   "truth_qid": "Q118732830",
+   "picked_qid": "Q118732830",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1135408001",
+   "split": "calibration",
+   "truth_qid": "Q106852460",
+   "picked_qid": "Q106852460",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1178554981",
+   "split": "holdout",
+   "truth_qid": "Q28690062",
+   "picked_qid": "Q28690062",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1188707614",
+   "split": "holdout",
+   "truth_qid": "Q119929549",
+   "picked_qid": "Q119929549",
+   "picked_score": 0.7181818181818181,
+   "truth_score": 0.7181818181818181,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1197544487",
+   "split": "calibration",
+   "truth_qid": "Q11404311",
+   "picked_qid": "Q11404311",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1198307730",
+   "split": "holdout",
+   "truth_qid": "Q121826527",
+   "picked_qid": "Q97278839",
+   "picked_score": 0.7526315789473684,
+   "truth_score": 0.7,
+   "correct_top1": false
+  },
+  {
+   "osm_id": "jinja_w1214278316",
+   "split": "calibration",
+   "truth_qid": "Q122983252",
+   "picked_qid": "Q122983252",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1214278319",
+   "split": "holdout",
+   "truth_qid": "Q113385781",
+   "picked_qid": "Q113385781",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1237208823",
+   "split": "calibration",
+   "truth_qid": "Q11538638",
+   "picked_qid": "Q11538638",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1252967400",
+   "split": "holdout",
+   "truth_qid": "Q38277801",
+   "picked_qid": "Q38277801",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1280666064",
+   "split": "holdout",
+   "truth_qid": "Q97210813",
+   "picked_qid": "Q97210813",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1297460706",
+   "split": "holdout",
+   "truth_qid": "Q11376985",
+   "picked_qid": "Q11376985",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1303851070",
+   "split": "holdout",
+   "truth_qid": "Q11596288",
+   "picked_qid": "Q11596288",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1324225686",
+   "split": "holdout",
+   "truth_qid": "Q97205022",
+   "picked_qid": "Q97205022",
+   "picked_score": 0.625,
+   "truth_score": 0.625,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1347108119",
+   "split": "calibration",
+   "truth_qid": "Q97478942",
+   "picked_qid": "Q97478942",
+   "picked_score": 0.625,
+   "truth_score": 0.625,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1352871353",
+   "split": "holdout",
+   "truth_qid": "Q97478963",
+   "picked_qid": "Q97478963",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1366077206",
+   "split": "calibration",
+   "truth_qid": "Q11373756",
+   "picked_qid": "Q11373756",
+   "picked_score": 0.6177241854948603,
+   "truth_score": 0.6177241854948603,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1375150723",
+   "split": "holdout",
+   "truth_qid": "Q106852616",
+   "picked_qid": "Q106852616",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1377094668",
+   "split": "holdout",
+   "truth_qid": "Q106852618",
+   "picked_qid": "Q106852618",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1388713416",
+   "split": "calibration",
+   "truth_qid": "Q6587276",
+   "picked_qid": "Q6587276",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1431443888",
+   "split": "calibration",
+   "truth_qid": "Q97280639",
+   "picked_qid": "Q97280639",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1521355872",
+   "split": "holdout",
+   "truth_qid": "Q106852423",
+   "picked_qid": "Q106852423",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1528033530",
+   "split": "calibration",
+   "truth_qid": "Q106852612",
+   "picked_qid": "Q106852612",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1530254991",
+   "split": "calibration",
+   "truth_qid": "Q30926305",
+   "picked_qid": "Q30926305",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1544839765",
+   "split": "holdout",
+   "truth_qid": "Q120811582",
+   "picked_qid": "Q120811582",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1545616417",
+   "split": "calibration",
+   "truth_qid": "Q97183020",
+   "picked_qid": "Q97183020",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1551778690",
+   "split": "calibration",
+   "truth_qid": "Q65247901",
+   "picked_qid": "Q65247901",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1551950383",
+   "split": "holdout",
+   "truth_qid": "Q11534620",
+   "picked_qid": "Q11534620",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_r3603909",
+   "split": "holdout",
+   "truth_qid": "Q287165",
+   "picked_qid": "Q287165",
+   "picked_score": 0.4,
+   "truth_score": 0.4,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_r17191054",
+   "split": "holdout",
+   "truth_qid": "Q11371508",
+   "picked_qid": "Q11371508",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1863871114",
+   "split": "calibration",
+   "truth_qid": "Q117236000",
+   "picked_qid": "Q117236000",
+   "picked_score": 0.6961228621638176,
+   "truth_score": 0.6961228621638176,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1964134696",
+   "split": "holdout",
+   "truth_qid": "Q11395081",
+   "picked_qid": "Q11395081",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2461655369",
+   "split": "holdout",
+   "truth_qid": "Q11352589",
+   "picked_qid": "Q11557476",
+   "picked_score": 0.7,
+   "truth_score": 0.24,
+   "correct_top1": false
+  },
+  {
+   "osm_id": "jinja_n3079313940",
+   "split": "holdout",
+   "truth_qid": "Q119929580",
+   "picked_qid": "Q119929580",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3079805899",
+   "split": "holdout",
+   "truth_qid": "Q11432135",
+   "picked_qid": "Q11432135",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4125177905",
+   "split": "calibration",
+   "truth_qid": "Q106388142",
+   "picked_qid": "Q106388142",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4459798089",
+   "split": "calibration",
+   "truth_qid": "Q11637232",
+   "picked_qid": "Q11637232",
+   "picked_score": 0.7693872638503307,
+   "truth_score": 0.7693872638503307,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4539620102",
+   "split": "holdout",
+   "truth_qid": "Q105949368",
+   "picked_qid": "Q105949368",
+   "picked_score": 0.8208791208791208,
+   "truth_score": 0.8208791208791208,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n7209712186",
+   "split": "holdout",
+   "truth_qid": "Q22117869",
+   "picked_qid": "Q22117869",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n8519210219",
+   "split": "holdout",
+   "truth_qid": "Q119929573",
+   "picked_qid": "Q119929573",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n9522304212",
+   "split": "calibration",
+   "truth_qid": "Q11647310",
+   "picked_qid": "Q11647310",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n10055316117",
+   "split": "calibration",
+   "truth_qid": "Q11459659",
+   "picked_qid": "Q11459659",
+   "picked_score": 0.611764705882353,
+   "truth_score": 0.611764705882353,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n13028076976",
+   "split": "calibration",
+   "truth_qid": "Q24872091",
+   "picked_qid": "Q24872091",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w146162698",
+   "split": "holdout",
+   "truth_qid": "Q11369789",
+   "picked_qid": "Q11369789",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w226883920",
+   "split": "holdout",
+   "truth_qid": "Q11469919",
+   "picked_qid": "Q11469919",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w226949641",
+   "split": "calibration",
+   "truth_qid": "Q402368",
+   "picked_qid": "Q402368",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w226990067",
+   "split": "calibration",
+   "truth_qid": "Q11644327",
+   "picked_qid": "Q11644327",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w251689285",
+   "split": "holdout",
+   "truth_qid": "Q117316433",
+   "picked_qid": "Q117316433",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w261988148",
+   "split": "holdout",
+   "truth_qid": "Q11553669",
+   "picked_qid": "Q11553669",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w487521633",
+   "split": "calibration",
+   "truth_qid": "Q11469626",
+   "picked_qid": "Q11469626",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w510452374",
+   "split": "holdout",
+   "truth_qid": "Q11597204",
+   "picked_qid": "Q11597204",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w892999427",
+   "split": "holdout",
+   "truth_qid": "Q119929574",
+   "picked_qid": "Q119929574",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1037236669",
+   "split": "holdout",
+   "truth_qid": "Q11572792",
+   "picked_qid": "Q11572792",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1181945359",
+   "split": "holdout",
+   "truth_qid": "Q118506919",
+   "picked_qid": "Q118506919",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1323583752",
+   "split": "holdout",
+   "truth_qid": "Q11401286",
+   "picked_qid": "Q11401286",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1329943878",
+   "split": "holdout",
+   "truth_qid": "Q130491892",
+   "picked_qid": "Q130491892",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1333279237",
+   "split": "calibration",
+   "truth_qid": "Q130491966",
+   "picked_qid": "Q130491966",
+   "picked_score": 0.62,
+   "truth_score": 0.62,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n310748654",
+   "split": "calibration",
+   "truth_qid": "Q17193550",
+   "picked_qid": "Q17193550",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n495915604",
+   "split": "holdout",
+   "truth_qid": "Q22704722",
+   "picked_qid": "Q22704722",
+   "picked_score": 0.6932855466045926,
+   "truth_score": 0.6932855466045926,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n720616194",
+   "split": "calibration",
+   "truth_qid": "Q11558239",
+   "picked_qid": "Q11558239",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1058638384",
+   "split": "holdout",
+   "truth_qid": "Q705635",
+   "picked_qid": "Q705635",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n1741489390",
+   "split": "calibration",
+   "truth_qid": "Q710302",
+   "picked_qid": "Q710302",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2034766314",
+   "split": "calibration",
+   "truth_qid": "Q11594015",
+   "picked_qid": "Q11594015",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2119309194",
+   "split": "holdout",
+   "truth_qid": "Q11499684",
+   "picked_qid": "Q11499684",
+   "picked_score": 0.4666666666666667,
+   "truth_score": 0.4666666666666667,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2130817418",
+   "split": "calibration",
+   "truth_qid": "Q135068808",
+   "picked_qid": "Q135068808",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2130817419",
+   "split": "calibration",
+   "truth_qid": "Q135068809",
+   "picked_qid": "Q135068809",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2269390924",
+   "split": "holdout",
+   "truth_qid": "Q123115002",
+   "picked_qid": "Q123115002",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2276903286",
+   "split": "holdout",
+   "truth_qid": "Q17225038",
+   "picked_qid": "Q17225038",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2484765205",
+   "split": "calibration",
+   "truth_qid": "Q710098",
+   "picked_qid": "Q710098",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n2578990303",
+   "split": "calibration",
+   "truth_qid": "Q30934330",
+   "picked_qid": "Q30934330",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3016613963",
+   "split": "calibration",
+   "truth_qid": "Q22118593",
+   "picked_qid": "Q22118593",
+   "picked_score": 0.597279077163077,
+   "truth_score": 0.597279077163077,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3047079375",
+   "split": "holdout",
+   "truth_qid": "Q11603769",
+   "picked_qid": "Q11603769",
+   "picked_score": 0.6956194712196946,
+   "truth_score": 0.6956194712196946,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3161020516",
+   "split": "holdout",
+   "truth_qid": "Q17994598",
+   "picked_qid": "Q17994598",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3191561648",
+   "split": "calibration",
+   "truth_qid": "Q11049290",
+   "picked_qid": "Q11049290",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3388720824",
+   "split": "holdout",
+   "truth_qid": "Q19841356",
+   "picked_qid": "Q19841356",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3388729230",
+   "split": "holdout",
+   "truth_qid": "Q20043143",
+   "picked_qid": "Q20043143",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n3894895018",
+   "split": "calibration",
+   "truth_qid": "Q11470816",
+   "picked_qid": "Q11470816",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4142095611",
+   "split": "calibration",
+   "truth_qid": "Q11477104",
+   "picked_qid": "Q11477104",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4161456227",
+   "split": "holdout",
+   "truth_qid": "Q11473738",
+   "picked_qid": "Q11473738",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4217019588",
+   "split": "calibration",
+   "truth_qid": "Q135068813",
+   "picked_qid": "Q135068813",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4603292216",
+   "split": "calibration",
+   "truth_qid": "Q11493857",
+   "picked_qid": "Q11493857",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4693046395",
+   "split": "calibration",
+   "truth_qid": "Q11660652",
+   "picked_qid": "Q11660652",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n4928957250",
+   "split": "holdout",
+   "truth_qid": "Q11631810",
+   "picked_qid": "Q11631810",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5238807960",
+   "split": "holdout",
+   "truth_qid": "Q22120080",
+   "picked_qid": "Q22120080",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5283806057",
+   "split": "holdout",
+   "truth_qid": "Q85875581",
+   "picked_qid": "Q85875581",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5320449843",
+   "split": "calibration",
+   "truth_qid": "Q11517252",
+   "picked_qid": "Q11517252",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5339156944",
+   "split": "holdout",
+   "truth_qid": "Q11354048",
+   "picked_qid": "Q11354048",
+   "picked_score": 0.6500000000000001,
+   "truth_score": 0.6500000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5363807403",
+   "split": "holdout",
+   "truth_qid": "Q11395508",
+   "picked_qid": "Q11395508",
+   "picked_score": 0.6835994334553567,
+   "truth_score": 0.6835994334553567,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5385030421",
+   "split": "calibration",
+   "truth_qid": "Q48763553",
+   "picked_qid": "Q48763553",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5395623794",
+   "split": "calibration",
+   "truth_qid": "Q11451877",
+   "picked_qid": "Q11451877",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5405692713",
+   "split": "calibration",
+   "truth_qid": "Q58875197",
+   "picked_qid": "Q58875197",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5439772629",
+   "split": "calibration",
+   "truth_qid": "Q135038756",
+   "picked_qid": "Q135038756",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5477073932",
+   "split": "holdout",
+   "truth_qid": "Q107306769",
+   "picked_qid": "Q107306769",
+   "picked_score": 0.6867570316397533,
+   "truth_score": 0.6867570316397533,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5666621301",
+   "split": "holdout",
+   "truth_qid": "Q54153262",
+   "picked_qid": "Q54153262",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n5914083460",
+   "split": "holdout",
+   "truth_qid": "Q58874491",
+   "picked_qid": "Q58874491",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6052069386",
+   "split": "calibration",
+   "truth_qid": "Q11430844",
+   "picked_qid": "Q11430844",
+   "picked_score": 0.6789825599565451,
+   "truth_score": 0.6789825599565451,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6342819704",
+   "split": "holdout",
+   "truth_qid": "Q112161861",
+   "picked_qid": "Q112161861",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6552148385",
+   "split": "calibration",
+   "truth_qid": "Q11537594",
+   "picked_qid": "Q11537594",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n6615924244",
+   "split": "holdout",
+   "truth_qid": "Q76386845",
+   "picked_qid": "Q76386845",
+   "picked_score": 0.5714285714285714,
+   "truth_score": 0.5714285714285714,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n7201443394",
+   "split": "holdout",
+   "truth_qid": "Q77578507",
+   "picked_qid": "Q77578507",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n7252145318",
+   "split": "calibration",
+   "truth_qid": "Q55532282",
+   "picked_qid": "Q55532282",
+   "picked_score": 0.6975696530576851,
+   "truth_score": 0.6975696530576851,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n7385165200",
+   "split": "holdout",
+   "truth_qid": "Q11607305",
+   "picked_qid": "Q11607305",
+   "picked_score": 0.6500000000000001,
+   "truth_score": 0.6500000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n7444972876",
+   "split": "holdout",
+   "truth_qid": "Q97341987",
+   "picked_qid": "Q97341987",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n7790578299",
+   "split": "holdout",
+   "truth_qid": "Q11434413",
+   "picked_qid": "Q11434413",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n7790578342",
+   "split": "calibration",
+   "truth_qid": "Q100551246",
+   "picked_qid": "Q100551246",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n8049002686",
+   "split": "holdout",
+   "truth_qid": "Q106852588",
+   "picked_qid": "Q106852588",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n8541054363",
+   "split": "calibration",
+   "truth_qid": "Q125688027",
+   "picked_qid": "Q125688027",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n9770013954",
+   "split": "holdout",
+   "truth_qid": "Q112085544",
+   "picked_qid": "Q112085544",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n10092618767",
+   "split": "calibration",
+   "truth_qid": "Q11498617",
+   "picked_qid": "Q11498617",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n10173910616",
+   "split": "holdout",
+   "truth_qid": "Q135068709",
+   "picked_qid": "Q135068709",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n10673282782",
+   "split": "holdout",
+   "truth_qid": "Q11435192",
+   "picked_qid": "Q11435192",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n11272994330",
+   "split": "calibration",
+   "truth_qid": "Q11451941",
+   "picked_qid": "Q139942459",
+   "picked_score": 0.5846153846153846,
+   "truth_score": 0.3,
+   "correct_top1": false
+  },
+  {
+   "osm_id": "jinja_n12032310215",
+   "split": "holdout",
+   "truth_qid": "Q11543776",
+   "picked_qid": "Q11543776",
+   "picked_score": 0.625,
+   "truth_score": 0.625,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n12105653296",
+   "split": "calibration",
+   "truth_qid": "Q18339120",
+   "picked_qid": "Q18339120",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n12105764691",
+   "split": "holdout",
+   "truth_qid": "Q123583251",
+   "picked_qid": "Q123583251",
+   "picked_score": 0.56,
+   "truth_score": 0.56,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n12737456902",
+   "split": "calibration",
+   "truth_qid": "Q133247747",
+   "picked_qid": "Q133247747",
+   "picked_score": 0.4,
+   "truth_score": 0.4,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_n13176446005",
+   "split": "calibration",
+   "truth_qid": "Q17191862",
+   "picked_qid": "Q17191862",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w31844031",
+   "split": "holdout",
+   "truth_qid": "Q709822",
+   "picked_qid": "Q709822",
+   "picked_score": 0.6887290201213305,
+   "truth_score": 0.6887290201213305,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w48434848",
+   "split": "holdout",
+   "truth_qid": "Q11415986",
+   "picked_qid": "Q11415986",
+   "picked_score": 0.5142857142857142,
+   "truth_score": 0.5142857142857142,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w98106482",
+   "split": "holdout",
+   "truth_qid": "Q700448",
+   "picked_qid": "Q1306606",
+   "picked_score": 0.7333333333333334,
+   "truth_score": 0.6909090909090909,
+   "correct_top1": false
+  },
+  {
+   "osm_id": "jinja_w98106488",
+   "split": "calibration",
+   "truth_qid": "Q701620",
+   "picked_qid": "Q701620",
+   "picked_score": 0.43246465025170855,
+   "truth_score": 0.43246465025170855,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w98106492",
+   "split": "holdout",
+   "truth_qid": "Q738971",
+   "picked_qid": "Q738971",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w116697355",
+   "split": "holdout",
+   "truth_qid": "Q11369376",
+   "picked_qid": "Q11369376",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w188463145",
+   "split": "calibration",
+   "truth_qid": "Q115617516",
+   "picked_qid": "Q115617516",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w289533663",
+   "split": "holdout",
+   "truth_qid": "Q21019695",
+   "picked_qid": "Q21019695",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w316011169",
+   "split": "holdout",
+   "truth_qid": "Q123114940",
+   "picked_qid": "Q123114940",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w319198861",
+   "split": "calibration",
+   "truth_qid": "Q11577577",
+   "picked_qid": "Q11577577",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w319336312",
+   "split": "calibration",
+   "truth_qid": "Q501266",
+   "picked_qid": "Q501266",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w327569236",
+   "split": "holdout",
+   "truth_qid": "Q106852642",
+   "picked_qid": "Q106852642",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w328903218",
+   "split": "holdout",
+   "truth_qid": "Q692714",
+   "picked_qid": "Q692714",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w332816179",
+   "split": "holdout",
+   "truth_qid": "Q583589",
+   "picked_qid": "Q583589",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w332821521",
+   "split": "holdout",
+   "truth_qid": "Q12742788",
+   "picked_qid": "Q12742788",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w333260074",
+   "split": "holdout",
+   "truth_qid": "Q11519667",
+   "picked_qid": "Q11519667",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w339352245",
+   "split": "calibration",
+   "truth_qid": "Q10928238",
+   "picked_qid": "Q10928238",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w343853160",
+   "split": "calibration",
+   "truth_qid": "Q276779",
+   "picked_qid": "Q276779",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w343925277",
+   "split": "calibration",
+   "truth_qid": "Q11574857",
+   "picked_qid": "Q11574857",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w345029419",
+   "split": "calibration",
+   "truth_qid": "Q11632526",
+   "picked_qid": "Q17993668",
+   "picked_score": 0.37124377934114683,
+   "truth_score": 0.3,
+   "correct_top1": false
+  },
+  {
+   "osm_id": "jinja_w350366584",
+   "split": "holdout",
+   "truth_qid": "Q135068810",
+   "picked_qid": "Q135068810",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w355207887",
+   "split": "holdout",
+   "truth_qid": "Q106852479",
+   "picked_qid": "Q106852479",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w368465614",
+   "split": "calibration",
+   "truth_qid": "Q11624431",
+   "picked_qid": "Q11624431",
+   "picked_score": 0.6230449451150617,
+   "truth_score": 0.6230449451150617,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w369017538",
+   "split": "calibration",
+   "truth_qid": "Q713177",
+   "picked_qid": "Q713177",
+   "picked_score": 0.6301966985821625,
+   "truth_score": 0.6301966985821625,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w379086092",
+   "split": "holdout",
+   "truth_qid": "Q11392320",
+   "picked_qid": "Q11392320",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w385559754",
+   "split": "calibration",
+   "truth_qid": "Q65278999",
+   "picked_qid": "Q65278999",
+   "picked_score": 0.7000000000000001,
+   "truth_score": 0.7000000000000001,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w388390166",
+   "split": "calibration",
+   "truth_qid": "Q11613316",
+   "picked_qid": "Q11613316",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w410311390",
+   "split": "calibration",
+   "truth_qid": "Q63148084",
+   "picked_qid": "Q63148084",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w432120699",
+   "split": "calibration",
+   "truth_qid": "Q662176",
+   "picked_qid": "Q662176",
+   "picked_score": 0.619905733409239,
+   "truth_score": 0.619905733409239,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w440751886",
+   "split": "holdout",
+   "truth_qid": "Q11604632",
+   "picked_qid": "Q11604632",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w478876774",
+   "split": "holdout",
+   "truth_qid": "Q11652030",
+   "picked_qid": "Q11652030",
+   "picked_score": 0.635339721643238,
+   "truth_score": 0.635339721643238,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w484247133",
+   "split": "holdout",
+   "truth_qid": "Q65248501",
+   "picked_qid": "Q65248501",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w489734652",
+   "split": "holdout",
+   "truth_qid": "Q11665839",
+   "picked_qid": "Q11665839",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w497475255",
+   "split": "holdout",
+   "truth_qid": "Q11608139",
+   "picked_qid": "Q11608139",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w500031448",
+   "split": "holdout",
+   "truth_qid": "Q11473495",
+   "picked_qid": "Q11473495",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w508046242",
+   "split": "holdout",
+   "truth_qid": "Q54153258",
+   "picked_qid": "Q54153258",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w509532974",
+   "split": "calibration",
+   "truth_qid": "Q38276670",
+   "picked_qid": "Q38276670",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w509534573",
+   "split": "calibration",
+   "truth_qid": "Q38276669",
+   "picked_qid": "Q38276669",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w517121102",
+   "split": "holdout",
+   "truth_qid": "Q11551131",
+   "picked_qid": "Q11551131",
+   "picked_score": 0.6830721814688334,
+   "truth_score": 0.6830721814688334,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w522894733",
+   "split": "calibration",
+   "truth_qid": "Q3201026",
+   "picked_qid": "Q3201026",
+   "picked_score": 0.7441701819986676,
+   "truth_score": 0.7441701819986676,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w545138183",
+   "split": "calibration",
+   "truth_qid": "Q135068669",
+   "picked_qid": "Q135068669",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w548311314",
+   "split": "calibration",
+   "truth_qid": "Q65269024",
+   "picked_qid": "Q65269024",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w550678114",
+   "split": "holdout",
+   "truth_qid": "Q11489342",
+   "picked_qid": "Q11489342",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w552764386",
+   "split": "holdout",
+   "truth_qid": "Q123114960",
+   "picked_qid": "Q123114960",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w554924931",
+   "split": "holdout",
+   "truth_qid": "Q11354999",
+   "picked_qid": "Q11354999",
+   "picked_score": 0.6062481336883271,
+   "truth_score": 0.6062481336883271,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w555300215",
+   "split": "holdout",
+   "truth_qid": "Q11359018",
+   "picked_qid": "Q11359018",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w559078675",
+   "split": "calibration",
+   "truth_qid": "Q17988913",
+   "picked_qid": "Q17988913",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w566020583",
+   "split": "holdout",
+   "truth_qid": "Q276781",
+   "picked_qid": "Q276781",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w582399910",
+   "split": "holdout",
+   "truth_qid": "Q17993668",
+   "picked_qid": "Q17993668",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w587637192",
+   "split": "holdout",
+   "truth_qid": "Q76259441",
+   "picked_qid": "Q76259441",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w596103882",
+   "split": "calibration",
+   "truth_qid": "Q17218661",
+   "picked_qid": "Q17218661",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w619903245",
+   "split": "holdout",
+   "truth_qid": "Q385141",
+   "picked_qid": "Q385141",
+   "picked_score": 0.6607329135774092,
+   "truth_score": 0.6607329135774092,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w627326016",
+   "split": "holdout",
+   "truth_qid": "Q11538723",
+   "picked_qid": "Q11538723",
+   "picked_score": 0.7285714285714285,
+   "truth_score": 0.7285714285714285,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w638445450",
+   "split": "calibration",
+   "truth_qid": "Q11410134",
+   "picked_qid": "Q11410134",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w638453452",
+   "split": "holdout",
+   "truth_qid": "Q11538748",
+   "picked_qid": "Q11538748",
+   "picked_score": 0.6986143856413207,
+   "truth_score": 0.6986143856413207,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w655290543",
+   "split": "holdout",
+   "truth_qid": "Q24859535",
+   "picked_qid": "Q24859535",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w656135926",
+   "split": "calibration",
+   "truth_qid": "Q11352601",
+   "picked_qid": "Q11352601",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w661172397",
+   "split": "calibration",
+   "truth_qid": "Q713021",
+   "picked_qid": "Q713021",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w662325159",
+   "split": "holdout",
+   "truth_qid": "Q11489361",
+   "picked_qid": "Q11489361",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w675593094",
+   "split": "calibration",
+   "truth_qid": "Q63148012",
+   "picked_qid": "Q63148012",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w678979411",
+   "split": "calibration",
+   "truth_qid": "Q11629957",
+   "picked_qid": "Q11629957",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w680468376",
+   "split": "holdout",
+   "truth_qid": "Q11434526",
+   "picked_qid": "Q11434526",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w681747088",
+   "split": "calibration",
+   "truth_qid": "Q705126",
+   "picked_qid": "Q705126",
+   "picked_score": 0.7978369518969352,
+   "truth_score": 0.7978369518969352,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w684545282",
+   "split": "holdout",
+   "truth_qid": "Q123114982",
+   "picked_qid": "Q123114982",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w686870840",
+   "split": "holdout",
+   "truth_qid": "Q17193111",
+   "picked_qid": "Q17193111",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w723687431",
+   "split": "holdout",
+   "truth_qid": "Q11659484",
+   "picked_qid": "Q11659484",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w726009455",
+   "split": "holdout",
+   "truth_qid": "Q11505112",
+   "picked_qid": "Q11505112",
+   "picked_score": 0.64,
+   "truth_score": 0.64,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w736954820",
+   "split": "calibration",
+   "truth_qid": "Q11548940",
+   "picked_qid": "Q11548940",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w738871502",
+   "split": "holdout",
+   "truth_qid": "Q56523409",
+   "picked_qid": "Q56523409",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w762386069",
+   "split": "calibration",
+   "truth_qid": "Q17209556",
+   "picked_qid": "Q17209556",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w779025479",
+   "split": "holdout",
+   "truth_qid": "Q17193235",
+   "picked_qid": "Q17193235",
+   "picked_score": 0.676923076923077,
+   "truth_score": 0.676923076923077,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w782963081",
+   "split": "calibration",
+   "truth_qid": "Q97220118",
+   "picked_qid": "Q97220118",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w801490102",
+   "split": "holdout",
+   "truth_qid": "Q11491512",
+   "picked_qid": "Q11491512",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w808232357",
+   "split": "calibration",
+   "truth_qid": "Q3594020",
+   "picked_qid": "Q3594020",
+   "picked_score": 0.6269960026409184,
+   "truth_score": 0.6269960026409184,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w834568281",
+   "split": "holdout",
+   "truth_qid": "Q11547467",
+   "picked_qid": "Q11547467",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w878533212",
+   "split": "calibration",
+   "truth_qid": "Q54153288",
+   "picked_qid": "Q54153288",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w882855129",
+   "split": "calibration",
+   "truth_qid": "Q104061132",
+   "picked_qid": "Q104061132",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w951909249",
+   "split": "holdout",
+   "truth_qid": "Q54153264",
+   "picked_qid": "Q135068876",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": false
+  },
+  {
+   "osm_id": "jinja_w1034370633",
+   "split": "holdout",
+   "truth_qid": "Q135068818",
+   "picked_qid": "Q135068818",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1036007113",
+   "split": "holdout",
+   "truth_qid": "Q63148006",
+   "picked_qid": "Q63148006",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1056244112",
+   "split": "holdout",
+   "truth_qid": "Q135038753",
+   "picked_qid": "Q135038753",
+   "picked_score": 0.625,
+   "truth_score": 0.625,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1060190064",
+   "split": "holdout",
+   "truth_qid": "Q11581010",
+   "picked_qid": "Q11581010",
+   "picked_score": 0.6376217904751333,
+   "truth_score": 0.6376217904751333,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1095292654",
+   "split": "calibration",
+   "truth_qid": "Q113874421",
+   "picked_qid": "Q113874421",
+   "picked_score": 0.66,
+   "truth_score": 0.66,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1099974043",
+   "split": "calibration",
+   "truth_qid": "Q113245315",
+   "picked_qid": "Q113245315",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1119464906",
+   "split": "calibration",
+   "truth_qid": "Q11633342",
+   "picked_qid": "Q11633342",
+   "picked_score": 0.6400557670590992,
+   "truth_score": 0.6400557670590992,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1120580087",
+   "split": "holdout",
+   "truth_qid": "Q113922706",
+   "picked_qid": "Q113922706",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1132102720",
+   "split": "holdout",
+   "truth_qid": "Q11463552",
+   "picked_qid": "Q11463552",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1134700578",
+   "split": "calibration",
+   "truth_qid": "Q110966585",
+   "picked_qid": "Q110966585",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1148394834",
+   "split": "holdout",
+   "truth_qid": "Q43594574",
+   "picked_qid": "Q43594574",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1148554950",
+   "split": "holdout",
+   "truth_qid": "Q17218751",
+   "picked_qid": "Q17218751",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1149044587",
+   "split": "holdout",
+   "truth_qid": "Q111551908",
+   "picked_qid": "Q111551908",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1151898785",
+   "split": "holdout",
+   "truth_qid": "Q11426034",
+   "picked_qid": "Q11426034",
+   "picked_score": 0.7759308862072284,
+   "truth_score": 0.7759308862072284,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1155362848",
+   "split": "holdout",
+   "truth_qid": "Q11472971",
+   "picked_qid": "Q11472971",
+   "picked_score": 0.76,
+   "truth_score": 0.76,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1218986436",
+   "split": "calibration",
+   "truth_qid": "Q11676429",
+   "picked_qid": "Q11676429",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1264419677",
+   "split": "calibration",
+   "truth_qid": "Q11518370",
+   "picked_qid": "Q11518370",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1265087961",
+   "split": "calibration",
+   "truth_qid": "Q17218077",
+   "picked_qid": "Q17218077",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1304786192",
+   "split": "calibration",
+   "truth_qid": "Q11650427",
+   "picked_qid": "Q11650427",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1317103349",
+   "split": "holdout",
+   "truth_qid": "Q11470816",
+   "picked_qid": "Q11470816",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1344678734",
+   "split": "calibration",
+   "truth_qid": "Q11482033",
+   "picked_qid": "Q11482033",
+   "picked_score": 0.5714285714285714,
+   "truth_score": 0.5714285714285714,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1371013249",
+   "split": "holdout",
+   "truth_qid": "Q135038794",
+   "picked_qid": "Q135038794",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1376738627",
+   "split": "calibration",
+   "truth_qid": "Q3195151",
+   "picked_qid": "Q3195151",
+   "picked_score": 0.6570865763864915,
+   "truth_score": 0.6570865763864915,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1376744520",
+   "split": "calibration",
+   "truth_qid": "Q500955",
+   "picked_qid": "Q500955",
+   "picked_score": 0.7999999999999999,
+   "truth_score": 0.7999999999999999,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1383668001",
+   "split": "holdout",
+   "truth_qid": "Q21019704",
+   "picked_qid": "Q21019704",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1551963981",
+   "split": "holdout",
+   "truth_qid": "Q11501172",
+   "picked_qid": "Q11501172",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1554873121",
+   "split": "calibration",
+   "truth_qid": "Q11450246",
+   "picked_qid": "Q11450246",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_r6822322",
+   "split": "holdout",
+   "truth_qid": "Q276830",
+   "picked_qid": "Q276830",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w802580172",
+   "split": "holdout",
+   "truth_qid": "Q6540880",
+   "picked_qid": "Q6540880",
+   "picked_score": 0.7,
+   "truth_score": 0.7,
+   "correct_top1": true
+  },
+  {
+   "osm_id": "jinja_w1281811613",
+   "split": "calibration",
+   "truth_qid": "Q125874183",
+   "picked_qid": "Q125874183",
+   "picked_score": 0.4,
+   "truth_score": 0.4,
+   "correct_top1": true
+  }
+ ]
+}

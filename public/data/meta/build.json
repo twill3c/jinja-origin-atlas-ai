@@ -1,14 +1,53 @@
 {
- "osm_elements_read": 3152,
  "shrines": 3152,
  "with_name": 2570,
  "without_name": 582,
  "with_osm_wikidata_tag": 834,
- "dropped": {
-  "座標なし": 0,
-  "日本の外接矩形外": 0,
-  "ID 重複": 0
+ "wikidata_records_with_coord": 16908,
+ "matched_auto": 955,
+ "matched_review": 109,
+ "unmatched": 2088,
+ "with_deities": 695,
+ "with_rank": 461,
+ "with_inception": 2,
+ "with_parent": 43,
+ "with_ja_wikipedia": 729,
+ "family_counts": {
+  "inari": 504,
+  "tenjin": 106,
+  "unknown": 1818,
+  "hachiman": 193,
+  "hakusan": 29,
+  "kumano": 57,
+  "gion_yasaka": 78,
+  "kashima_katori": 24,
+  "shinmei_ise": 94,
+  "suwa": 42,
+  "hie_sanno": 54,
+  "konpira": 31,
+  "akiba": 23,
+  "sumiyoshi": 17,
+  "kasuga": 36,
+  "atago": 24,
+  "munakata": 22
  },
- "bytes_geojson": 559168,
- "bytes_catalog": 1013008
+ "family_basis": {
+  "deity": 516,
+  "name": 818,
+  "none": 1818
+ },
+ "signal_agreement": {
+  "both_known": 343,
+  "agree": 340,
+  "disagree": 3,
+  "rate": 0.9913
+ },
+ "bytes_geojson": 618859,
+ "bytes_catalog": 1714832,
+ "japan_bbox": [
+  122.0,
+  20.2,
+  154.1,
+  45.8
+ ]
 }

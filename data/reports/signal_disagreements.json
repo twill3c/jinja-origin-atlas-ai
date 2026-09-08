@@ -1,0 +1,32 @@
+[
+ {
+  "id": "jinja_n5290130609",
+  "name": "八坂神社",
+  "by_deity": "hachiman",
+  "by_name": "gion_yasaka",
+  "deities": [
+   "八幡神",
+   "応神天皇"
+  ]
+ },
+ {
+  "id": "jinja_w639207330",
+  "name": "天祖諏訪神社",
+  "by_deity": "shinmei_ise",
+  "by_name": "suwa",
+  "deities": [
+   "トヨウケビメ",
+   "天照大神"
+  ]
+ },
+ {
+  "id": "jinja_w1289569116",
+  "name": "三社稲荷神社",
+  "by_deity": "hakusan",
+  "by_name": "inari",
+  "deities": [
+   "伊奘冉尊",
+   "菊理媛神"
+  ]
+ }
+]

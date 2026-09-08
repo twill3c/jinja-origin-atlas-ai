@@ -67,3 +67,48 @@ d("出荷アーティファクト", () => {
     expect(fs.existsSync(path.join(process.cwd(), ".next", "server", "app", "api"))).toBe(false);
   });
 });
+
+/**
+ * Python が書く JSON と TypeScript が読む型の契約。
+ * この検査が無かったため、`export/build_public.py` が build.json の欄を差し替えたとき
+ * pytest 116 件が全部緑のまま静的書き出しが TypeError で落ちた(HC-190)。
+ * **境界をまたぐ契約は、両側から触れる場所に置く。**
+ */
+describe("Python↔TypeScript の JSON 契約", () => {
+  const dataDir = path.join(process.cwd(), "public", "data");
+  const hasData = fs.existsSync(path.join(dataDir, "meta", "build.json"));
+  const t = hasData ? it : it.skip;
+
+  t("build.json が UI の読む数値欄をすべて持つ", async () => {
+    const { BUILD_REPORT_NUMERIC_KEYS } = await import("../lib/types");
+    const r = JSON.parse(fs.readFileSync(path.join(dataDir, "meta", "build.json"), "utf-8"));
+    for (const k of BUILD_REPORT_NUMERIC_KEYS) {
+      expect(typeof r[k], `build.json に ${k} が無い(または数値でない)`).toBe("number");
+    }
+    expect(typeof r.family_counts).toBe("object");
+    expect(typeof r.family_basis).toBe("object");
+    expect(typeof r.signal_agreement.both_known).toBe("number");
+    expect(typeof r.signal_agreement.agree).toBe("number");
+  });
+
+  t("陽性対照: 欄がひとつ欠けたら落ちる", async () => {
+    const { BUILD_REPORT_NUMERIC_KEYS } = await import("../lib/types");
+    const r = JSON.parse(fs.readFileSync(path.join(dataDir, "meta", "build.json"), "utf-8"));
+    // 対照が成り立つ前提 —— 検査対象の欄一覧が空でないこと
+    expect(BUILD_REPORT_NUMERIC_KEYS.length).toBeGreaterThan(5);
+    const broken = { ...r };
+    delete broken[BUILD_REPORT_NUMERIC_KEYS[0]];
+    const missing = BUILD_REPORT_NUMERIC_KEYS.filter((k) => typeof broken[k] !== "number");
+    expect(missing).toEqual([BUILD_REPORT_NUMERIC_KEYS[0]]);
+  });
+
+  t("families.min.json のラベルが GeoJSON の family 値をすべて覆う", () => {
+    const fam = JSON.parse(fs.readFileSync(path.join(dataDir, "catalog", "families.min.json"), "utf-8"));
+    const fc = JSON.parse(fs.readFileSync(path.join(dataDir, "osm", "shrines.min.geojson"), "utf-8"));
+    const used = new Set<string>(fc.features.map((f: { properties: { family: string } }) => f.properties.family));
+    expect(used.size).toBeGreaterThan(1);
+    for (const k of used) {
+      expect(Object.keys(fam.labels), `families.min.json に ${k} のラベルが無い`).toContain(k);
+    }
+  });
+});

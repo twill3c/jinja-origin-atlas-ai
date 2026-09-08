@@ -1,37 +1,6 @@
-import fs from "node:fs";
-import path from "node:path";
 import type { Metadata } from "next";
 import Link from "next/link";
-
-type Shrine = {
-  id: string;
-  name: { ja: string | null; kana: string | null; en: string | null };
-  aliases: string[];
-  location: { lat: number; lon: number; prefecture: string | null; municipality: string | null };
-  external_ids: { osm_type: string; osm_id: number; wikidata?: string; wikipedia?: string | null };
-  shrine_family: {
-    label: string;
-    label_ja: string;
-    basis: string;
-    confidence: number;
-    alternatives: string[];
-  };
-  deities?: { name: string; wikidata_id: string | null; source_ids: string[] }[];
-  shrine_rank?: { labels: string[]; source_ids: string[] };
-  foundation?: { structured?: { year_min: number; year_max: number; source_ids: string[] } };
-  documented_parents?: { qids: string[]; source_ids: string[] };
-  geography?: {
-    elevation_m?: number;
-    elevation_source?: string;
-    nearest_river_distance_m?: number;
-    nearest_river_name?: string;
-    nearest_river_note?: string;
-    coast_distance_m: number | null;
-  };
-  ja_wikipedia?: string;
-  match?: { score: number; distance_m: number; name_similarity: number; decision: string };
-  sources: string[];
-};
+import { jp, readAi, readCatalog, readCatalogIndex } from "@/lib/data";
 
 const BASIS_JA: Record<string, string> = {
   structured: "構造化データ(包括団体)",
@@ -42,15 +11,12 @@ const BASIS_JA: Record<string, string> = {
   none: "根拠なし",
 };
 
-function readCatalog(): Shrine[] {
-  const p = path.join(process.cwd(), "public", "data", "catalog", "shrines.min.json");
-  if (!fs.existsSync(p)) return [];
-  return (JSON.parse(fs.readFileSync(p, "utf-8")).shrines ?? []) as Shrine[];
-}
-
 /** 静的書き出しなので、詳細ページを作るのは属性を持つ神社だけにする。
- *  全件ぶん HTML を作ると出荷物が無用に膨らむ。 */
-function detailed(): Shrine[] {
+ *  全件ぶん HTML を作ると出荷物が無用に膨らむ。
+ *
+ *  **データはモジュール水準で一度だけ読む**(lib/data.ts)。ページごとに読み直すと
+ *  1,665 ページ × 3.3 MB を JSON.parse することになり、静的書き出しが十数分に伸びる。 */
+function detailed() {
   return readCatalog().filter((s) => s.external_ids.wikidata && s.name.ja);
 }
 
@@ -64,8 +30,8 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const s = detailed().find((x) => x.id === id);
-  if (!s) return { title: "神社 | Jinja Origin Atlas AI" };
+  const s = readCatalogIndex().get(id);
+  if (!s?.name.ja) return { title: "神社 | Jinja Origin Atlas AI" };
   return {
     title: `${s.name.ja} | Jinja Origin Atlas AI`,
     description: `${s.name.ja}の所在地・祭神・社格・地理情報。公開データに基づく。`,
@@ -74,8 +40,8 @@ export async function generateMetadata({
 
 export default async function ShrinePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const s = detailed().find((x) => x.id === id);
-  if (!s) {
+  const s = readCatalogIndex().get(id);
+  if (!s || !s.name.ja || !s.external_ids.wikidata) {
     return (
       <main>
         <h1>見つかりません</h1>
@@ -87,6 +53,9 @@ export default async function ShrinePage({ params }: { params: Promise<{ id: str
   }
 
   const fam = s.shrine_family;
+  const { labels: motifLabels, byId: aiById, shrines: aiAll } = readAi();
+  const ai = aiById.get(s.id) ?? null;
+  const aiCount = aiAll.length;
   const osmUrl = `https://www.openstreetmap.org/${s.external_ids.osm_type}/${s.external_ids.osm_id}`;
 
   return (
@@ -201,10 +170,50 @@ export default async function ShrinePage({ params }: { params: Promise<{ id: str
 
       <div className="band band-ai">
         <h3>C — AI が文章から測ったこと</h3>
-        <p style={{ margin: 0, color: "var(--ink-mute)" }}>
-          この神社にはまだ AI 意味分析が付いていない。
-          <Link href="/about-ai/">AI について</Link>
-        </p>
+        {ai ? (
+          <>
+            <p style={{ margin: 0, fontSize: "0.9rem" }}>
+              由緒モチーフの<strong>相対的な強さ</strong>(全体の中での位置。確率ではない):
+            </p>
+            <ul style={{ margin: "0.3rem 0 0", fontSize: "0.9rem" }}>
+              {Object.entries(ai.motif_percentiles)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 4)
+                .map(([k, v]) => (
+                  <li key={k}>
+                    {motifLabels[k] ?? k} — 全 {aiCount} 件中の上位{" "}
+                    {Math.max(1, Math.round((1 - v) * 100))} %
+                  </li>
+                ))}
+            </ul>
+            <p style={{ margin: "0.3rem 0 0", fontSize: "0.8rem", color: "var(--ink-mute)" }}>
+              生のコサイン類似度は 0.78〜0.88 の狭い帯に収まるので、そのまま並べると
+              12 個が同じに見える。ここでは<strong>そのモチーフの分布の中でどこにいるか</strong>を出している。
+            </p>
+            <p style={{ margin: "0.4rem 0 0", fontSize: "0.85rem", color: "var(--ink-mute)" }}>
+              {ai.cluster.id === -1
+                ? "どのクラスタにも入らない"
+                : `クラスタ ${ai.cluster.id}(番号に歴史学上の意味は無い)`}
+              {" ／ "}
+              <Link href={`/similar/${s.id}/`}>由緒が似た神社</Link>
+              {" ／ "}
+              <Link href="/ai-space/">意味空間で見る</Link>
+            </p>
+            <p style={{ margin: "0.4rem 0 0", fontSize: "0.8rem", color: "var(--ink-mute)" }}>
+              解析に使った文章の由来:{" "}
+              <a href={ai.source.url} rel="noreferrer" target="_blank">
+                {ai.source.title}
+              </a>{" "}
+              — 日本語版ウィキペディア(版 {ai.source.revid}、{ai.source.license})。
+              本文は再配布していない。
+            </p>
+          </>
+        ) : (
+          <p style={{ margin: 0, color: "var(--ink-mute)" }}>
+            この神社には AI 意味分析が付いていない(由緒の記事が無いか、短すぎる)。
+            <Link href="/about-ai/">AI について</Link>
+          </p>
+        )}
       </div>
 
       <h2>出典</h2>

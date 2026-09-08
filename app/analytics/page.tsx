@@ -1,18 +1,10 @@
-import fs from "node:fs";
-import path from "node:path";
 import type { Metadata } from "next";
-import { jp, readBuildReport } from "@/lib/data";
+import { jp, readBuildReport, readFamilyLabels, readGeoChecks } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "統計 | Jinja Origin Atlas AI",
   description: "ビルドごとのデータ品質指標。",
 };
-
-function readFamilyLabels(): Record<string, string> {
-  const p = path.join(process.cwd(), "public", "data", "catalog", "families.min.json");
-  if (!fs.existsSync(p)) return {};
-  return JSON.parse(fs.readFileSync(p, "utf-8")).labels ?? {};
-}
 
 const BASIS_JA: Record<string, string> = {
   structured: "構造化データ",
@@ -26,6 +18,7 @@ const BASIS_JA: Record<string, string> = {
 export default function AnalyticsPage() {
   const r = readBuildReport();
   const labels = readFamilyLabels();
+  const geo = readGeoChecks();
 
   if (!r) {
     return (
@@ -223,6 +216,58 @@ export default function AnalyticsPage() {
         </>
       )}
 
+      {geo && geo.length > 0 && (
+        <>
+          <h2>由緒の文章と、土地の条件は合っているか</h2>
+          <p>
+            モチーフのスコアは由緒の文章から出ており、標高は国土地理院の DEM、
+            河川距離は国土数値情報から出ている。互いを参照していないので、
+            この照合は循環しない。
+          </p>
+          <div className="scroll-x">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">照合</th>
+                  <th scope="col">件数</th>
+                  <th scope="col">順位相関</th>
+                  <th scope="col">並べ替え検定の p</th>
+                  <th scope="col">結果</th>
+                </tr>
+              </thead>
+              <tbody>
+                {geo.map((g) => (
+                  <tr key={g.label}>
+                    <th scope="row">{g.label}</th>
+                    <td>{g.n ? jp(g.n) : "—"}</td>
+                    <td>{g.spearman === undefined ? "—" : g.spearman.toFixed(3)}</td>
+                    <td>{g.permutation_p === undefined ? "—" : g.permutation_p.toFixed(4)}</td>
+                    <td>
+                      {g.spearman === undefined
+                        ? (g.note ?? "—")
+                        : !g.sign_matches
+                          ? "期待と逆向き。成り立たない"
+                          : g["significant_at_0.01"]
+                            ? "向きも有意性も期待どおり"
+                            : "向きは合うが有意でない"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p style={{ fontSize: "0.9rem" }}>
+            <strong>三つのうち成り立ったのは一つだけである。</strong>
+            「山岳・自然」の由緒が強い神社は実際に標高が高い。
+            一方「水・河川」は向きこそ合うが効果はごく小さく、
+            「海・航海」にいたっては<strong>期待と逆向き</strong>で有意でもない。
+            対象が東京都・京都府・山梨県で、山梨は内陸、東京の島嶼部はむしろ標高が高い
+            火山島であることが効いている可能性がある。
+            <strong>当たらなかった照合も消さずに載せている。</strong>
+          </p>
+        </>
+      )}
+
       <h2>出荷ファイルの大きさ</h2>
       <div className="scroll-x">
         <table>
@@ -236,8 +281,8 @@ export default function AnalyticsPage() {
       <h2>まだ測っていないもの</h2>
       <ul>
         <li>海岸距離(F-15。C23 の利用条件のため V1.1 送り)</li>
+        <li>AI クラスタの解釈(番号は付いたが、何を表すかは人が読んで確かめていない)</li>
         <li>創建時代別の件数(成立日を持つのが {jp(r.with_inception)} 件しかない)</li>
-        <li>AI クラスタの分布(コーパスの構築が済んでいない)</li>
       </ul>
       <p style={{ fontSize: "0.85rem", color: "var(--ink-mute)" }}>
         測っていない欄は空欄のままにする。仮の数値を置かない。

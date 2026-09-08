@@ -1,0 +1,43 @@
+{
+ "corpus": 701,
+ "corpus_dropped": {
+  "本文なし": 0,
+  "120 字未満": 28,
+  "版 ID なし": 0
+ },
+ "model": "intfloat/multilingual-e5-base",
+ "revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+ "embedding_dim": 768,
+ "clusters": 12,
+ "noise": 123,
+ "cluster_sizes": {
+  "-1": 123,
+  "0": 36,
+  "1": 22,
+  "2": 25,
+  "3": 57,
+  "4": 108,
+  "5": 15,
+  "6": 158,
+  "7": 42,
+  "8": 30,
+  "9": 39,
+  "10": 26,
+  "11": 20
+ },
+ "motif_control": {
+  "control_max": 0.811722993850708,
+  "corpus_median_max": 0.8544309735298157,
+  "corpus_min_max": 0.8277835249900818,
+  "passes": true
+ },
+ "motif_score_band": {
+  "min": 0.7804386019706726,
+  "max": 0.882027268409729,
+  "within_doc_spread_median": 0.04168182611465454
+ },
+ "truncated_docs": 110,
+ "bytes_ai": 678451,
+ "bytes_similarity": 412864,
+ "seconds": 253.5
+}

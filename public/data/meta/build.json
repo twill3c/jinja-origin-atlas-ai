@@ -40,6 +40,8 @@
   "name": 818,
   "none": 1818
  },
+ "with_ai": 701,
+ "without_ai": 2451,
  "elevation_oracle": {
   "n": 54,
   "median_abs_diff_m": 0.14,
@@ -70,8 +72,8 @@
   "disagree": 3,
   "rate": 0.9913
  },
- "bytes_geojson": 618859,
- "bytes_catalog": 2573890,
+ "bytes_geojson": 618158,
+ "bytes_catalog": 2607861,
  "japan_bbox": [
   122.0,
   20.2,

@@ -3,6 +3,7 @@ import Link from "next/link";
 const NAV: [string, string][] = [
   ["/", "ホーム"],
   ["/map/", "地図"],
+  ["/ai-space/", "意味空間"],
   ["/analytics/", "統計"],
   ["/sources/", "出典・ライセンス"],
   ["/about-ai/", "AI について"],

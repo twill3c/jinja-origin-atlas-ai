@@ -1,22 +1,14 @@
-import fs from "node:fs";
-import path from "node:path";
 import type { Metadata } from "next";
 import JinjaMap from "@/components/map/JinjaMap";
+import { readFamilyCounts, readFamilyLabels } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "地図 | Jinja Origin Atlas AI",
   description: "公開データから生成した神社の位置レイヤー。背景は国土地理院標準地図。",
 };
 
-function readFamilies() {
-  const p = path.join(process.cwd(), "public", "data", "catalog", "families.min.json");
-  if (!fs.existsSync(p)) return { labels: {}, counts: {} };
-  const d = JSON.parse(fs.readFileSync(p, "utf-8"));
-  return { labels: d.labels ?? {}, counts: d.counts ?? {} };
-}
-
 export default function MapPage() {
-  const families = readFamilies();
+  const families = { labels: readFamilyLabels(), counts: readFamilyCounts() };
   return (
     <main>
       <h1>神社の分布</h1>

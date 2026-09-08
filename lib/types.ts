@@ -65,6 +65,8 @@ export type BuildReport = {
   with_ja_wikipedia: number;
   family_counts: Record<string, number>;
   family_basis: Record<string, number>;
+  with_ai: number;
+  without_ai: number;
   with_elevation: number;
   without_elevation: number;
   with_river_distance: number;
@@ -92,6 +94,8 @@ export const BUILD_REPORT_NUMERIC_KEYS = [
   "with_inception",
   "with_parent",
   "with_ja_wikipedia",
+  "with_ai",
+  "without_ai",
   "with_elevation",
   "without_elevation",
   "with_river_distance",

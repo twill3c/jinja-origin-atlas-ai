@@ -241,10 +241,59 @@ async function main() {
       check("名寄せに直リンクを使っていないことが書かれている", body.includes("使っていない"));
     }
 
+    // --- 意味空間(UMAP)-------------------------------------------------
+    console.log("意味空間");
+    await page.goto(`${base}/ai-space/`, { waitUntil: "networkidle" });
+    await page.waitForSelector("svg circle", { timeout: 30000 });
+    const ai = JSON.parse(await readFile(path.join(OUT, "data/ai/ai.min.json"), "utf-8"));
+    const scatter = await page.evaluate(() => {
+      const svg = document.querySelector("svg[role='img']");
+      const cs = [...svg.querySelectorAll("circle")];
+      const vb = svg.getAttribute("viewBox").split(/\s+/).map(Number);
+      const outside = cs.filter((c) => {
+        const x = +c.getAttribute("cx"), y = +c.getAttribute("cy");
+        return x < vb[0] || x > vb[0] + vb[2] || y < vb[1] || y > vb[1] + vb[3];
+      }).length;
+      const fills = new Set(cs.map((c) => c.getAttribute("fill")));
+      return { n: cs.length, outside, fills: [...fills] };
+    });
+    check("散布図の点の数がデータと一致する", scatter.n === ai.shrines.length,
+      `描画=${scatter.n} データ=${ai.shrines.length}`);
+    check("点がすべて viewBox の中にある(切れていない)", scatter.outside === 0,
+      `外=${scatter.outside}`);
+    check("しぼる前は単色である(カテゴリを色で塗り分けていない)", scatter.fills.length === 1,
+      JSON.stringify(scatter.fills));
+
+    // モチーフを選ぶと濃淡がつく(到達の証拠)
+    await page.selectOption("fieldset select >> nth=0", { index: 1 });
+    await page.waitForTimeout(400);
+    const ramped = await page.evaluate(() => {
+      const cs = [...document.querySelectorAll("svg[role='img'] circle")];
+      return new Set(cs.map((c) => c.getAttribute("fill"))).size;
+    });
+    check("モチーフを選ぶと濃淡が複数段になる", ramped >= 3, `色数=${ramped}`);
+
+    const aiText = await page.locator("body").innerText();
+    check("意味空間に免責が出ている", aiText.includes("史実の関係ではない") ||
+      aiText.includes("歴史的事実"));
+    check("本文を配っていないことが書かれている", aiText.includes("本文も埋め込みベクトルも") ||
+      aiText.includes("本文は配っていない"));
+
+    // --- 類似神社 ---------------------------------------------------------
+    console.log("類似神社");
+    const someId = ai.shrines[0].id;
+    const r3 = await page.goto(`${base}/similar/${someId}/`, { waitUntil: "domcontentloaded" });
+    check("類似ページが開く", r3?.status() === 200, `${someId} status=${r3?.status()}`);
+    const simText = await page.locator("body").innerText();
+    check("勧請の推論をしないと書いてある", simText.includes("勧請された、という意味ではない"));
+    check("順位で表示している", simText.includes("上位") && simText.includes("全体の中での位置"));
+    const rows = await page.locator("table >> nth=0 >> tbody tr").count();
+    check("類似の一覧に行がある", rows > 0, `行=${rows}`);
+
     // --- 複数の画面幅で横溢れを見る(HC-078) ------------------------------
     console.log("画面幅");
     for (const [w, h] of [[360, 780], [768, 900], [1280, 900], [1680, 1000]]) {
-      for (const route of ["/", "/map/", "/sources/", "/analytics/", "/about-ai/"]) {
+      for (const route of ["/", "/map/", "/ai-space/", "/sources/", "/analytics/", "/about-ai/"]) {
         await page.setViewportSize({ width: w, height: h });
         await page.goto(`${base}${route}`, { waitUntil: "domcontentloaded" });
         await page.waitForTimeout(250);

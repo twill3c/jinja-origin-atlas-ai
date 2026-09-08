@@ -4,6 +4,17 @@ import { jp, readBuildReport } from "@/lib/data";
 export default function Home() {
   const report = readBuildReport();
 
+  if (!report) {
+    return (
+      <main>
+        <h1>Jinja Origin Atlas AI</h1>
+        <p className="notice">
+          公開データがまだ生成されていない。<code>python -m export.build_public</code> を実行する。
+        </p>
+      </main>
+    );
+  }
+
   return (
     <main>
       <h1>Jinja Origin Atlas AI</h1>
@@ -14,7 +25,6 @@ export default function Home() {
       </p>
 
       <h2>いま出せているもの</h2>
-      {report ? (
         <div className="scroll-x">
           <table>
             <caption style={{ captionSide: "bottom", fontSize: "0.8rem", color: "var(--ink-mute)", textAlign: "left", paddingTop: "0.4rem" }}>
@@ -33,8 +43,18 @@ export default function Home() {
               </tr>
               <tr>
                 <th scope="row">AI 由緒分析つき</th>
-                <td>0 件</td>
-                <td>後続の実装で結合する</td>
+                <td>{jp(report.with_ai)} 件</td>
+                <td>由緒の記事があり、短すぎないもの</td>
+              </tr>
+              <tr>
+                <th scope="row">自動結合できた属性</th>
+                <td>{jp(report.matched_auto)} 件</td>
+                <td>祭神 {jp(report.with_deities)} / 社格 {jp(report.with_rank)}</td>
+              </tr>
+              <tr>
+                <th scope="row">標高 / 河川距離</th>
+                <td>{jp(report.with_elevation)} / {jp(report.with_river_distance)} 件</td>
+                <td>国土地理院 DEM / 国土数値情報 W05</td>
               </tr>
               <tr>
                 <th scope="row">全国の母集団(実測)</th>
@@ -44,9 +64,6 @@ export default function Home() {
             </tbody>
           </table>
         </div>
-      ) : (
-        <p className="notice">公開データがまだ生成されていない。<code>python -m export.build_geojson</code> を実行する。</p>
-      )}
 
       <p style={{ marginTop: "1rem" }}>
         <Link href="/map/">地図を開く →</Link>
@@ -90,7 +107,14 @@ export default function Home() {
         <li>
           <strong>権利条件の明確な由緒本文はほとんど無い。</strong>
           ジャパンサーチで「神社 AND 由緒」は 1,892 件だが、
-          先頭 100 件で「再利用可 かつ 100 字以上」は 5 件だった
+          先頭 100 件で「再利用可 かつ 100 字以上」は 5 件だった。
+          そのため由緒の意味解析には日本語版ウィキペディアを使い、
+          本文も埋め込みも配らずスコアだけを配っている
+        </li>
+        <li>
+          <strong>成立年代はほとんど取れない。</strong>
+          Wikidata の成立日(P571)を持つのは 3 都府県で {jp(report.with_inception)} 件。
+          時代スライダーはこの密度では成立しない
         </li>
       </ul>
 

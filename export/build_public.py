@@ -22,6 +22,7 @@ from export.build_geojson import JAPAN_BBOX, in_japan
 CATALOG_IN = pathlib.Path("public/data/catalog/shrines.min.json")
 ELEVATION_IN = pathlib.Path("data/interim/elevation.json")
 RIVER_IN = pathlib.Path("data/interim/river_distance.json")
+AI_IN = pathlib.Path("public/data/ai/ai.min.json")
 CATALOG_OUT = pathlib.Path("public/data/catalog/shrines.min.json")
 GEOJSON_OUT = pathlib.Path("public/data/osm/shrines.min.geojson")
 BUILD_OUT = pathlib.Path("public/data/meta/build.json")
@@ -42,6 +43,10 @@ def merge(osm: list[dict[str, Any]], wd: dict[str, dict[str, Any]]) -> dict[str,
     matches = {m.osm_id: m for m in resolve(osm, wd_list)}
 
     elevation, rivers = load_geo()
+    # AI の対象になっている神社(§59 —— 位置レイヤーと分けて数える)
+    ai_ids: set[str] = set()
+    if AI_IN.exists():
+        ai_ids = {x["id"] for x in json.loads(AI_IN.read_text(encoding="utf-8"))["shrines"]}
     stats = {
         "matched_auto": 0, "matched_review": 0, "unmatched": 0,
         "with_deities": 0, "with_rank": 0, "with_inception": 0,
@@ -153,6 +158,7 @@ def merge(osm: list[dict[str, Any]], wd: dict[str, dict[str, Any]]) -> dict[str,
                 geo["nearest_river_note"] = v["reason"]
         # 海岸距離は V1.0 では測らない(C23 の非商用条項。SPEC F-15)
         geo["coast_distance_m"] = None
+        rec["ai"] = r["id"] in ai_ids
         if geo:
             rec["geography"] = geo
             if "elevation_m" in geo or "nearest_river_distance_m" in geo:
@@ -206,7 +212,7 @@ def feature(rec: dict[str, Any]) -> dict[str, Any]:
             "name": rec["name"]["ja"],
             "prefecture": rec["location"]["prefecture"],
             "family": fam.get("label", "unknown"),
-            "ai": False,
+            "ai": bool(rec.get("ai")),
         },
     }
 
@@ -247,6 +253,8 @@ def main() -> int:
         **merged["stats"],
         "family_counts": merged["family_counts"],
         "family_basis": merged["basis_counts"],
+        "with_ai": sum(1 for r in recs if r.get("ai")),
+        "without_ai": sum(1 for r in recs if not r.get("ai")),
         "elevation_oracle": merged["elevation_oracle"],
         "elevation_quantiles": merged["elevation_quantiles"],
         "river_distance_quantiles": merged["river_distance_quantiles"],

@@ -19,10 +19,12 @@ AI が文章から測ったことを、画面の上で混ぜない。
 | ✅ | 権利ゲート(fail-closed、ジャパンサーチ全 18 コードを網羅) |
 | ✅ | 国土地理院 DEM からの標高取得(層ごとの配信ズームを実測済み) |
 | ✅ | 出典・ライセンス画面、AI 免責画面 |
-| 🚧 | Wikidata の構造化属性(祭神・社格・成立日)の結合 |
-| 🚧 | 名寄せ(OSM × Wikidata) |
-| 🚧 | 河川距離・統計画面 |
-| 🚧 | Embedding・類似神社・モチーフ・HDBSCAN・UMAP |
+| ✅ | Wikidata の構造化属性(祭神 P825・社格 P13723・母院 P612)の結合 |
+| ✅ | 名寄せ(OSM × Wikidata)。非循環オラクル 825 組で較正 |
+| ✅ | 標高(国土地理院 DEM)・最寄り河川距離(国土数値情報 W05)・統計画面 |
+| ✅ | Embedding・類似神社 Top20・12 モチーフ・HDBSCAN・UMAP |
+| 🚧 | 全国 40,776 件への展開(いまは東京都・京都府・山梨県の 3,152 件) |
+| 🚧 | Vercel へのデプロイ |
 
 ## Architecture
 
@@ -74,6 +76,17 @@ uv sync --group dev
 python -m etl.fetch_osm              # 段階 1: 東京都・京都府・山梨県
 python -m etl.fetch_osm --all-japan  # 段階 3: 全国(40,776 件)
 python -m export.build_geojson       # 公開 GeoJSON / カタログ / ビルドレポート
+
+python -m etl.fetch_wikidata         # 祭神・社格・成立日・母院ほか(9 クエリ)
+python -m etl.fetch_elevation        # 国土地理院 DEM(タイルはディスクにキャッシュ)
+python -m etl.fetch_rivers           # 国土数値情報 W05
+python -m etl.river_distance         # 最寄り河川距離(二経路で照合)
+python -m etl.fetch_wikipedia        # 由緒本文(版 ID つき。本文は配らない)
+python -m ml.pipeline                # 埋め込み・モチーフ・クラスタ・UMAP・類似
+python -m export.build_public        # 結合して公開アーティファクトを作る
+
+python -m quality.calibrate_matching  # 名寄せ閾値の較正(較正半分だけを見る)
+python -m quality.motif_vs_geography  # モチーフと地理条件の照合(循環しない)
 ```
 
 Overpass の公共インスタンスは連続投入で 429 を返す(2026-09-08 実測)。

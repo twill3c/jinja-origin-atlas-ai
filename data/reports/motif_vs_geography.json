@@ -1,0 +1,37 @@
+{
+ "results": [
+  {
+   "label": "山岳・自然のスコアと標高",
+   "motif": "mountain_nature",
+   "geography": "elevation_m",
+   "n": 701,
+   "spearman": 0.3606,
+   "expected_sign": 1,
+   "sign_matches": true,
+   "permutation_p": 0.0005,
+   "significant_at_0.01": true
+  },
+  {
+   "label": "水・河川のスコアと河川距離",
+   "motif": "water_river",
+   "geography": "nearest_river_distance_m",
+   "n": 691,
+   "spearman": -0.0962,
+   "expected_sign": -1,
+   "sign_matches": true,
+   "permutation_p": 0.0105,
+   "significant_at_0.01": false
+  },
+  {
+   "label": "海・航海のスコアと標高(低いほうへ出るはず)",
+   "motif": "sea_navigation",
+   "geography": "elevation_m",
+   "n": 701,
+   "spearman": 0.0523,
+   "expected_sign": -1,
+   "sign_matches": false,
+   "permutation_p": 0.1854,
+   "significant_at_0.01": false
+  }
+ ]
+}

@@ -140,6 +140,89 @@ export default function AnalyticsPage() {
         実際、この照合を最初に走らせたときは 3 件が分類器の欠陥で、直したうえでの数字がこれである。
       </p>
 
+      <h2>地理条件</h2>
+      <div className="scroll-x">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">項目</th>
+              <th scope="col">付いた件数</th>
+              <th scope="col">最小</th>
+              <th scope="col">中央</th>
+              <th scope="col">75%</th>
+              <th scope="col">95%</th>
+              <th scope="col">最大</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">標高(m)</th>
+              <td>{jp(r.with_elevation)}</td>
+              {r.elevation_quantiles ? (
+                <>
+                  <td>{r.elevation_quantiles.min}</td>
+                  <td>{r.elevation_quantiles.median}</td>
+                  <td>{r.elevation_quantiles.p75}</td>
+                  <td>{r.elevation_quantiles.p95}</td>
+                  <td>{r.elevation_quantiles.max}</td>
+                </>
+              ) : (
+                <td colSpan={5}>—</td>
+              )}
+            </tr>
+            <tr>
+              <th scope="row">最寄り河川距離(m)</th>
+              <td>{jp(r.with_river_distance)}</td>
+              {r.river_distance_quantiles ? (
+                <>
+                  <td>{r.river_distance_quantiles.min}</td>
+                  <td>{r.river_distance_quantiles.median}</td>
+                  <td>{r.river_distance_quantiles.p75}</td>
+                  <td>{r.river_distance_quantiles.p95}</td>
+                  <td>{r.river_distance_quantiles.max}</td>
+                </>
+              ) : (
+                <td colSpan={5}>—</td>
+              )}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style={{ fontSize: "0.9rem" }}>
+        標高は国土地理院の標高タイルから求めた。河川距離は国土数値情報 W05 を
+        都道府県ごとの平面直角座標系へ投影して測っている(緯度経度のままでは測らない)。
+        <strong>
+          河川距離が付かなかった {jp(r.without_river_distance)} 件は島嶼部で、
+          W05 に近くの河川が無い。
+        </strong>
+        本土の川までの距離を書くと「近くに川がある」という嘘になるので、空欄にしてある。
+      </p>
+      <p style={{ fontSize: "0.9rem" }}>
+        海岸距離は V1.0 では測っていない。国土数値情報の海岸線(C23)の公開ページに
+        非商用の旨の記載があり、再配布する派生データに条件を持ち込むためである。
+      </p>
+
+      {r.elevation_oracle && (
+        <>
+          <h2>標高の裏づけ</h2>
+          <p>
+            OpenStreetMap の投稿者が記録した標高(<code>ele</code> タグ)と突き合わせた。
+            この値は標高の計算には使っていないので、一致は循環しない。
+          </p>
+          <div className="scroll-x">
+            <table>
+              <tbody>
+                <tr><th scope="row">突き合わせられた件数</th><td>{jp(r.elevation_oracle.n)}</td></tr>
+                <tr><th scope="row">差の中央値</th><td>{r.elevation_oracle.median_abs_diff_m} m</td></tr>
+                <tr><th scope="row">1 m 以内</th><td>{jp(r.elevation_oracle.within_1m)}</td></tr>
+                <tr><th scope="row">10 m 以内</th><td>{jp(r.elevation_oracle.within_10m)}</td></tr>
+                <tr><th scope="row">最大の差</th><td>{r.elevation_oracle.max_abs_diff_m} m</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+
       <h2>出荷ファイルの大きさ</h2>
       <div className="scroll-x">
         <table>
@@ -152,7 +235,7 @@ export default function AnalyticsPage() {
 
       <h2>まだ測っていないもの</h2>
       <ul>
-        <li>標高・河川距離の分布(地理特徴量の計算が済んでいない)</li>
+        <li>海岸距離(F-15。C23 の利用条件のため V1.1 送り)</li>
         <li>創建時代別の件数(成立日を持つのが {jp(r.with_inception)} 件しかない)</li>
         <li>AI クラスタの分布(コーパスの構築が済んでいない)</li>
       </ul>

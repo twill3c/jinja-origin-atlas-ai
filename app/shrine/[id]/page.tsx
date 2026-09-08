@@ -20,6 +20,14 @@ type Shrine = {
   shrine_rank?: { labels: string[]; source_ids: string[] };
   foundation?: { structured?: { year_min: number; year_max: number; source_ids: string[] } };
   documented_parents?: { qids: string[]; source_ids: string[] };
+  geography?: {
+    elevation_m?: number;
+    elevation_source?: string;
+    nearest_river_distance_m?: number;
+    nearest_river_name?: string;
+    nearest_river_note?: string;
+    coast_distance_m: number | null;
+  };
   ja_wikipedia?: string;
   match?: { score: number; distance_m: number; name_similarity: number; decision: string };
   sources: string[];
@@ -137,7 +145,9 @@ export default async function ShrinePage({ params }: { params: Promise<{ id: str
                       ? `${s.foundation.structured.year_min} 年`
                       : `${s.foundation.structured.year_min}–${s.foundation.structured.year_max} 年`}
                   </td>
-                  <td>Wikidata(P571)。**社伝の年代ではない**</td>
+                  <td>
+                    Wikidata(P571)。<strong>社伝の年代ではない</strong>
+                  </td>
                 </tr>
               )}
               {s.documented_parents && (
@@ -147,6 +157,35 @@ export default async function ShrinePage({ params }: { params: Promise<{ id: str
                   <td>Wikidata(P612)。実線で描く関係</td>
                 </tr>
               )}
+              {s.geography?.elevation_m !== undefined && (
+                <tr>
+                  <th scope="row">標高</th>
+                  <td>{s.geography.elevation_m.toFixed(1)} m</td>
+                  <td>国土地理院 標高タイル({s.geography.elevation_source})</td>
+                </tr>
+              )}
+              {s.geography?.nearest_river_distance_m !== undefined && (
+                <tr>
+                  <th scope="row">最寄り河川</th>
+                  <td>
+                    {s.geography.nearest_river_name} まで{" "}
+                    {Math.round(s.geography.nearest_river_distance_m).toLocaleString("ja-JP")} m
+                  </td>
+                  <td>国土数値情報 W05。平面直角座標系で計測</td>
+                </tr>
+              )}
+              {s.geography?.nearest_river_note && (
+                <tr>
+                  <th scope="row">最寄り河川</th>
+                  <td>—</td>
+                  <td>{s.geography.nearest_river_note}</td>
+                </tr>
+              )}
+              <tr>
+                <th scope="row">海岸距離</th>
+                <td>—</td>
+                <td>V1.0 では測っていない(海岸線データの利用条件のため)</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -186,6 +225,22 @@ export default async function ShrinePage({ params }: { params: Promise<{ id: str
               Wikidata {s.external_ids.wikidata}
             </a>{" "}
             — CC0
+          </li>
+        )}
+        {s.geography?.elevation_m !== undefined && (
+          <li>
+            <a href="https://maps.gsi.go.jp/development/ichiran.html" rel="noreferrer" target="_blank">
+              国土地理院 標高タイル
+            </a>{" "}
+            — 出典:国土地理院ウェブサイト(標高値を復号して利用)
+          </li>
+        )}
+        {s.geography?.nearest_river_distance_m !== undefined && (
+          <li>
+            <a href="https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-W05.html" rel="noreferrer" target="_blank">
+              国土数値情報 河川(W05)
+            </a>{" "}
+            — 出典:国土交通省 国土数値情報ダウンロードサイト(距離を計算して利用)
           </li>
         )}
         {s.ja_wikipedia && (

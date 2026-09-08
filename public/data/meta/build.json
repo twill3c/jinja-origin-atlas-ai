@@ -12,6 +12,10 @@
  "with_inception": 2,
  "with_parent": 43,
  "with_ja_wikipedia": 729,
+ "with_elevation": 3152,
+ "without_elevation": 0,
+ "with_river_distance": 3098,
+ "without_river_distance": 54,
  "family_counts": {
   "inari": 504,
   "tenjin": 106,
@@ -36,6 +40,30 @@
   "name": 818,
   "none": 1818
  },
+ "elevation_oracle": {
+  "n": 54,
+  "median_abs_diff_m": 0.14,
+  "within_1m": 47,
+  "within_5m": 52,
+  "within_10m": 53,
+  "max_abs_diff_m": 59.56
+ },
+ "elevation_quantiles": {
+  "min": -2.5,
+  "p25": 16.7,
+  "median": 42.9,
+  "p75": 126.4,
+  "p95": 570.8,
+  "max": 3716.8
+ },
+ "river_distance_quantiles": {
+  "min": 0.6,
+  "p25": 133.6,
+  "median": 293.7,
+  "p75": 579.1,
+  "p95": 1546.9,
+  "max": 6641.0
+ },
  "signal_agreement": {
   "both_known": 343,
   "agree": 340,
@@ -43,7 +71,7 @@
   "rate": 0.9913
  },
  "bytes_geojson": 618859,
- "bytes_catalog": 1714832,
+ "bytes_catalog": 2573890,
  "japan_bbox": [
   122.0,
   20.2,

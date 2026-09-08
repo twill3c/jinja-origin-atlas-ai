@@ -15,6 +15,7 @@ import argparse
 import glob
 import json
 import pathlib
+import re
 from typing import Any, Iterable
 
 from etl.normalize import normalize_name
@@ -29,6 +30,16 @@ OUT_BUILD = pathlib.Path("public/data/meta/build.json")
 JAPAN_BBOX = (122.0, 20.2, 154.1, 45.8)
 
 _ID_PREFIX = {"node": "n", "way": "w", "relation": "r"}
+
+_ELE = re.compile(r"^\s*(-?\d+(?:\.\d+)?)")
+
+
+def _parse_ele(value: Any) -> float | None:
+    """OSM の `ele` タグを数値にする。解釈できなければ None(推測で埋めない)。"""
+    if value is None:
+        return None
+    m = _ELE.match(str(value))
+    return float(m.group(1)) if m else None
 
 
 def shrine_id(el: dict[str, Any]) -> str:
@@ -105,6 +116,9 @@ def to_records(elements: Iterable[dict[str, Any]]) -> tuple[list[dict[str, Any]]
                     "osm_wikidata_tag": t.get("wikidata"),
                     "wikipedia": t.get("wikipedia"),
                 },
+                # **標高のオラクル専用**(T-082)。OSM 投稿者が記録した標高であり、
+                # DEM から求める標高の計算には一切使わない。使えば循環する。
+                "osm_ele": _parse_ele(t.get("ele")),
                 "website": t.get("website"),
                 "sources": ["src_osm"],
             }
@@ -143,12 +157,14 @@ def build(pattern: str = RAW_GLOB) -> dict[str, Any]:
 
     named = sum(1 for r in records if r["name"]["ja"])
     with_wd_tag = sum(1 for r in records if r["external_ids"]["osm_wikidata_tag"])
+    with_ele = sum(1 for r in records if r.get("osm_ele") is not None)
     report = {
         "osm_elements_read": len(elements),
         "shrines": len(records),
         "with_name": named,
         "without_name": len(records) - named,
         "with_osm_wikidata_tag": with_wd_tag,
+        "with_osm_ele_tag": with_ele,
         "dropped": dropped,
         "bytes_geojson": OUT_GEOJSON.stat().st_size,
         "bytes_catalog": OUT_CATALOG.stat().st_size,

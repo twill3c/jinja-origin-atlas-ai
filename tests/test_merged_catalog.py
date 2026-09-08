@@ -120,3 +120,94 @@ def test_t074c_geojson_and_catalog_agree(artifacts):
     fams_cat = {r["id"]: r["shrine_family"]["label"] for r in artifacts["catalog"]}
     for f in artifacts["geojson"]["features"]:
         assert f["properties"]["family"] == fams_cat[f["properties"]["id"]]
+
+
+#: T-082 の床。2026-09-08 実測は 54 件・中央差 0.14 m・1 m 以内 47 件。
+#: 床は余裕を見て置く。**下回ったら、率ではなく差の大きい個体を読むこと。**
+ELE_ORACLE_MIN_N = 20
+ELE_ORACLE_MEDIAN_MAX_M = 2.0
+ELE_ORACLE_WITHIN_10M_RATE = 0.90
+
+
+@pytest.mark.validation
+def test_t081_elevation_counts_are_reported(artifacts):
+    """T-081: 標高が付いた件数・付かなかった件数を数える。黙って null にしない。"""
+    b = artifacts["build"]
+    assert b["with_elevation"] + b["without_elevation"] == b["shrines"]
+    assert b["with_elevation"] > 0, "標高が 1 件も付いていない"
+    q = b["elevation_quantiles"]
+    assert q is not None
+    # 日本の陸地の標高としてありえない値が混じっていないこと
+    assert -20.0 <= q["min"] <= q["median"] <= q["max"] <= 3800.0, q
+
+
+@pytest.mark.validation
+def test_t082_elevation_against_osm_ele_oracle(artifacts):
+    """T-082 / G-14 非循環オラクル: DEM 由来の標高 vs OSM の `ele` タグ。
+
+    `ele` は OSM の投稿者が記録した標高で、DEM からの計算には**使っていない**。
+    したがってこの一致は循環しない。
+
+    2026-09-08 実測: 54 件、差の中央値 0.14 m、1 m 以内 47 件、10 m 以内 53 件。
+    外れた 1 件(59.56 m)は名称タグの無い地物で `ele=600.0` という丸い値だった。
+    """
+    o = artifacts["build"]["elevation_oracle"]
+    assert o is not None, "オラクルの突き合わせが行われていない"
+    assert o["n"] >= ELE_ORACLE_MIN_N, f"照合できたのが {o['n']} 件しかない"
+    assert o["median_abs_diff_m"] <= ELE_ORACLE_MEDIAN_MAX_M, o
+    assert o["within_10m"] / o["n"] >= ELE_ORACLE_WITHIN_10M_RATE, o
+
+
+@pytest.mark.validation
+def test_t082b_osm_ele_is_not_used_to_compute_elevation(artifacts):
+    """T-082 循環の禁止: `ele` タグを持つ神社の標高が、タグの値そのままではないこと。
+
+    そのまま写していたら差は常に 0 になり、オラクルは恒等式になる(HC-045)。
+    """
+    exact = 0
+    n = 0
+    for r in artifacts["catalog"]:
+        a = r.get("osm_ele")
+        b = (r.get("geography") or {}).get("elevation_m")
+        if a is None or b is None:
+            continue
+        n += 1
+        if a == b:
+            exact += 1
+    assert n >= ELE_ORACLE_MIN_N
+    assert exact < n, "標高が ele タグの写しになっている(オラクルが循環している)"
+
+
+@pytest.mark.validation
+def test_t086_river_distances_are_sane(artifacts):
+    """T-086: 河川距離は非負・上限内、河川名が空でない。落としたものは理由つき。"""
+    b = artifacts["build"]
+    assert b["with_river_distance"] + b["without_river_distance"] == b["shrines"]
+    q = b["river_distance_quantiles"]
+    assert q is not None and q["min"] >= 0.0
+    # 上限を超えたものは null にしてあるはず(SPEC の MAX_MEANINGFUL_M)
+    from etl.river_distance import MAX_MEANINGFUL_M
+
+    assert q["max"] <= MAX_MEANINGFUL_M, q
+
+    for r in artifacts["catalog"]:
+        g = r.get("geography") or {}
+        if g.get("nearest_river_distance_m") is not None:
+            assert g["nearest_river_distance_m"] >= 0.0, r["id"]
+            assert g.get("nearest_river_name"), f"{r['id']}: 距離はあるのに河川名が空"
+            assert "src_ksj_w05" in r["sources"], r["id"]
+        elif "nearest_river_note" in g:
+            assert g["nearest_river_note"], r["id"]
+
+
+@pytest.mark.validation
+def test_t087_coast_distance_is_explicitly_null(artifacts):
+    """T-087 / F-15: 海岸距離は V1.0 では測らない。**欄を作って null と言う。**
+
+    欄ごと無いと「測ったが 0 だった」と区別できない。
+    """
+    with_geo = [r for r in artifacts["catalog"] if r.get("geography")]
+    assert with_geo
+    for r in with_geo:
+        assert "coast_distance_m" in r["geography"], r["id"]
+        assert r["geography"]["coast_distance_m"] is None, r["id"]

@@ -31,6 +31,24 @@ export type SignalAgreement = {
   rate: number | null;
 };
 
+export type Quantiles = {
+  min: number;
+  p25: number;
+  median: number;
+  p75: number;
+  p95: number;
+  max: number;
+};
+
+export type ElevationOracle = {
+  n: number;
+  median_abs_diff_m: number;
+  within_1m: number;
+  within_5m: number;
+  within_10m: number;
+  max_abs_diff_m: number;
+};
+
 export type BuildReport = {
   shrines: number;
   with_name: number;
@@ -47,6 +65,13 @@ export type BuildReport = {
   with_ja_wikipedia: number;
   family_counts: Record<string, number>;
   family_basis: Record<string, number>;
+  with_elevation: number;
+  without_elevation: number;
+  with_river_distance: number;
+  without_river_distance: number;
+  elevation_quantiles: Quantiles | null;
+  river_distance_quantiles: Quantiles | null;
+  elevation_oracle: ElevationOracle | null;
   signal_agreement: SignalAgreement;
   bytes_geojson: number;
   bytes_catalog: number;
@@ -67,6 +92,10 @@ export const BUILD_REPORT_NUMERIC_KEYS = [
   "with_inception",
   "with_parent",
   "with_ja_wikipedia",
+  "with_elevation",
+  "without_elevation",
+  "with_river_distance",
+  "without_river_distance",
   "bytes_geojson",
   "bytes_catalog",
 ] as const;

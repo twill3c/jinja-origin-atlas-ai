@@ -1,0 +1,55 @@
+{
+ "stamp": "0367ade3ae23561184b62f48a6ed008e",
+ "generated_at": "2026-09-08T22:58:29.510Z",
+ "files": [
+  {
+   "file": "public/data/meta/build.json",
+   "present": true,
+   "bytes": 1467,
+   "sha256": "6e33184e0e458982"
+  },
+  {
+   "file": "public/data/catalog/shrines.min.json",
+   "present": true,
+   "bytes": 2505691,
+   "sha256": "ec3cc258554a4d16"
+  },
+  {
+   "file": "public/data/catalog/families.min.json",
+   "present": true,
+   "bytes": 779,
+   "sha256": "58522ffdd80a3e75"
+  },
+  {
+   "file": "public/data/osm/shrines.min.geojson",
+   "present": true,
+   "bytes": 591961,
+   "sha256": "9a230b3954463a6d"
+  },
+  {
+   "file": "public/data/ai/ai.min.json",
+   "present": true,
+   "bytes": 661177,
+   "sha256": "714c70e7ff5b2d5a"
+  },
+  {
+   "file": "public/data/ai/similarity.min.json",
+   "present": true,
+   "bytes": 412864,
+   "sha256": "6452146610241715"
+  },
+  {
+   "file": "data/reports/ai_pipeline.json",
+   "present": true,
+   "bytes": 802,
+   "sha256": "44705e4d87c49434"
+  },
+  {
+   "file": "data/reports/motif_vs_geography.json",
+   "present": true,
+   "bytes": 770,
+   "sha256": "87d2a95bc1f02a88"
+  }
+ ],
+ "note": "画面が読むデータの内容から作った刻印。改行を LF に揃えてから測っている。"
+}

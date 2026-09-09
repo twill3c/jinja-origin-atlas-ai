@@ -1,0 +1,42 @@
+# 送る中身を先に測ってから書いた(2026-09-09 実測):
+#   data/raw 199MB / node_modules 461MB / out 72MB / .venv 数百MB
+# これを書かずに送ると、ファイル数の上限(無料枠 5,000 件/24h)にも
+# 容量にも当たる。前例あり([[vercel-deploy-quirks]])。
+
+# 依存とビルド生成物(Vercel 側で作られる)
+node_modules
+.next
+out
+*.tsbuildinfo
+
+# Python の環境と生データ
+.venv
+data/raw
+data/interim
+data/processed
+__pycache__
+.pytest_cache
+*.pyc
+
+# 手元の検品出力
+artifacts
+
+# ビルドに要らないもの
+tests
+tests-js
+etl
+ml
+export
+quality
+harness
+logs
+.wt
+.scaffold
+schema
+pytest.ini
+pyproject.toml
+uv.lock
+vitest.config.ts
+
+# **data/reports だけは残す** —— 統計画面と AI 画面がビルド時に読む
+!data/reports

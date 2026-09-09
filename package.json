@@ -12,7 +12,10 @@
     "test:watch": "vitest",
     "smoke": "node harness/smoke.mjs",
     "smoke:shot": "node harness/smoke.mjs --shot",
-    "verify": "npm run typecheck && npm run test && npm run build"
+    "verify": "npm run typecheck && npm run test && npm run build && node harness/smoke.mjs",
+    "stamp": "node scripts/build_stamp.mjs",
+    "prebuild": "node scripts/build_stamp.mjs",
+    "live": "node harness/live.mjs"
   },
   "dependencies": {
     "maplibre-gl": "^5.6.0",

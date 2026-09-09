@@ -104,6 +104,28 @@ pytest -q                   # 単体・結合(外部ネットワークは除外)
 pytest -q -m network        # 外部に触れる検算(GSI DEM の既知点など)
 ```
 
+## Deployment
+
+```bash
+npm run build          # prebuild で public/data/meta/stamp.json を作る
+node harness/smoke.mjs # out/ を配信して実ブラウザで確かめる
+vercel deploy --prod --yes --scope twill3c-8670s-projects
+node harness/live.mjs https://<本番ホスト>
+```
+
+**`.vercelignore` を先に書いてある。** 送る中身を測ると `data/raw` 199MB /
+`node_modules` 461MB / `out` 72MB あり、そのまま送ると無料枠のファイル数上限
+(5,000 件/24h)に当たる。除外後は約 9MB。
+**`--archive=tgz` は `.vercelignore` をローカルで適用しない**ので使わない。
+
+**`harness/live.mjs` は最初に刻印を照合し、合わなければ他を一切見ずに止める。**
+本番検品は「健やかか」しか答えず、「新しいか」は別の仕掛けが要る。デプロイが
+上限で拒否されても本番は健やかなままなので、健やかさの項目をいくら増やしても
+反映の有無は分からない —— むしろ「全部緑」という誤った安心が出る。
+
+刻印は**改行を LF に揃えてから**測っている。この機は `core.autocrlf=true` なので、
+生のバイト列で測ると同じ内容でも手元と本番で必ず食い違う。
+
 ## Data Caveats
 
 - **伝承年代と史料確認年代は別物である。** 「創建 660 年」と一行で書かない

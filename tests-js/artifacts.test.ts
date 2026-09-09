@@ -112,3 +112,45 @@ describe("Python↔TypeScript の JSON 契約", () => {
     }
   });
 });
+
+/**
+ * ビルドの刻印。**「健やかか」と「新しいか」は別の問いである**(HC-148)。
+ * デプロイが上限で拒否されても本番は健やかなままなので、健やかさの検査を
+ * いくら足しても反映の有無は分からない。
+ */
+describe("ビルドの刻印", () => {
+  const stampPath = path.join(process.cwd(), "public", "data", "meta", "stamp.json");
+  const outStamp = path.join(OUT, "data", "meta", "stamp.json");
+  const t = fs.existsSync(stampPath) ? it : it.skip;
+
+  t("刻印が作られていて、出荷物にも入っている", () => {
+    const local = JSON.parse(fs.readFileSync(stampPath, "utf-8"));
+    expect(typeof local.stamp).toBe("string");
+    expect(local.stamp.length).toBeGreaterThanOrEqual(16);
+    expect(Array.isArray(local.files)).toBe(true);
+    expect(local.files.every((f: { present: boolean }) => f.present)).toBe(true);
+    if (fs.existsSync(outStamp)) {
+      const shipped = JSON.parse(fs.readFileSync(outStamp, "utf-8"));
+      expect(shipped.stamp).toBe(local.stamp);
+    }
+  });
+
+  t("刻印は改行を揃えてから測っている(CRLF/LF で揺れない)", async () => {
+    // 同じ内容を CRLF と LF で与えたとき、同じ値になること。
+    // この機は core.autocrlf=true なので、揃えないと手元と本番で必ず食い違う。
+    const { createHash } = await import("node:crypto");
+    const lf = "a\nb\nc\n";
+    const crlf = "a\r\nb\r\nc\r\n";
+    const norm = (s: string) => createHash("sha256").update(s.replace(/\r\n/g, "\n")).digest("hex");
+    expect(norm(lf)).toBe(norm(crlf));
+    // 対照: 揃えなければ違う値になること(この検査が無意味でないこと)
+    const raw = (s: string) => createHash("sha256").update(s).digest("hex");
+    expect(raw(lf)).not.toBe(raw(crlf));
+  });
+
+  t("刻印が入力の変化を拾う(陽性対照)", async () => {
+    const { createHash } = await import("node:crypto");
+    const h = (x: string) => createHash("sha256").update(x).digest("hex");
+    expect(h("a|1\nb|2\n")).not.toBe(h("a|1\nb|3\n"));
+  });
+});

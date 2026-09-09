@@ -9,7 +9,9 @@ AI が文章から測ったことを、画面の上で混ぜない。
 
 ## Demo
 
-(未デプロイ)
+**https://jinja-origin-atlas-ai.vercel.app**
+
+app-menu(フリートの玄関口)にも掲載: https://app-menu-amber.vercel.app/
 
 ## Features
 
@@ -24,7 +26,6 @@ AI が文章から測ったことを、画面の上で混ぜない。
 | ✅ | 標高(国土地理院 DEM)・最寄り河川距離(国土数値情報 W05)・統計画面 |
 | ✅ | Embedding・類似神社 Top20・12 モチーフ・HDBSCAN・UMAP |
 | 🚧 | 全国 40,776 件への展開(いまは東京都・京都府・山梨県の 3,152 件) |
-| 🚧 | Vercel へのデプロイ |
 
 ## Architecture
 

@@ -148,6 +148,18 @@ describe("ビルドの刻印", () => {
     expect(raw(lf)).not.toBe(raw(crlf));
   });
 
+  t("刻印がデータだけでなく画面のソースも対象にしている", () => {
+    // **データだけを測っていて足りなかった。** フッタのリンクを直しても刻印が
+    // 変わらず、本番検品が古い版に「刻印が一致」を返した(2026-09-09)。
+    const local = JSON.parse(fs.readFileSync(stampPath, "utf-8"));
+    const files: string[] = local.files.map((f: { file: string }) => f.file);
+    expect(files.some((f) => f.startsWith("public/data/"))).toBe(true);
+    expect(files).toContain("components/common/SiteChrome.tsx");
+    expect(files.filter((f) => f.endsWith(".tsx")).length).toBeGreaterThanOrEqual(5);
+    // 対象に挙げたファイルが実在すること(欠けたまま刻印を作らない)
+    expect(local.files.every((f: { present: boolean }) => f.present)).toBe(true);
+  });
+
   t("刻印が入力の変化を拾う(陽性対照)", async () => {
     const { createHash } = await import("node:crypto");
     const h = (x: string) => createHash("sha256").update(x).digest("hex");

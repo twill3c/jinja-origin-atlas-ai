@@ -313,6 +313,47 @@ async function main() {
     const footerVisible = await page.locator(".site-footer").isVisible();
     check("フッタが表示されている", footerVisible);
 
+    // フリート共通のフッタ規約。**HTML を文字列で grep しない** ——
+    // MIT License のリンク先(github.com/.../LICENSE)が GitHub 項目より先に当たり、
+    // 「並びが規約と違う」を大量にでっち上げる。描画して DOM の innerText で見る。
+    const footer = await page.evaluate(() => {
+      const f = document.querySelector(".site-footer");
+      return {
+        text: f ? f.innerText.replace(/\s+/g, " ").trim() : "",
+        links: f ? [...f.querySelectorAll("a")].map((a) => [a.innerText.trim(), a.href]) : [],
+        fixed: f ? getComputedStyle(f).position : "",
+      };
+    });
+    check("フッタが下部固定である", footer.fixed === "fixed", footer.fixed);
+    check("フッタに MIT License がある", footer.text.includes("MIT License"));
+    check("フッタに App Menu がある", footer.text.includes("App Menu"));
+    const appMenu = footer.links.find(([t]) => t === "App Menu");
+    check(
+      "App Menu が本番(app-menu-amber)を指している",
+      !!appMenu && appMenu[1].includes("app-menu-amber.vercel.app"),
+      appMenu ? appMenu[1] : "(リンクが無い)",
+    );
+    const gh = footer.links.find(([t]) => t === "GitHub");
+    check(
+      "GitHub がこのリポジトリを指している",
+      !!gh && gh[1].includes("github.com/twill3c/jinja-origin-atlas-ai"),
+      gh ? gh[1] : "(リンクが無い)",
+    );
+    // 宛先の無いリンクを残さない。最初の実装は `https://github.com/`(ドメインだけ)で、
+    // 押しても GitHub のトップに飛ぶだけだった。
+    // **「ドメイン直下は全部だめ」とは書けない** —— App Menu はドメイン直下が正しい宛先である。
+    // 捕まえるのは「そのサービスの中で個別のものを指していないリンク」に限る。
+    const NEEDS_PATH = ["github.com", "wikipedia.org", "wikidata.org"];
+    const bare = footer.links.filter(([, href]) => {
+      try {
+        const u = new URL(href);
+        return NEEDS_PATH.some((h) => u.hostname.endsWith(h)) && u.pathname.replace(/\/+$/, "") === "";
+      } catch {
+        return true;
+      }
+    });
+    check("フッタに宛先のないリンクが無い", bare.length === 0, JSON.stringify(bare));
+
     check("コンソールエラーが無い", consoleErrors.length === 0, consoleErrors.slice(0, 3).join(" | "));
 
     if (WANT_SHOT) {

@@ -13,8 +13,29 @@ import { createHash } from "node:crypto";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 
-/** 画面が読むデータ。ここが変われば配信物も変わるはず。 */
+/**
+ * 刻印の対象。**データだけでは足りない。**
+ *
+ * 最初はデータだけを測っていたが、フッタのリンクを直したときに刻印が変わらず、
+ * 本番検品が古い版に対して「刻印が一致」を返した(2026-09-09)。
+ * 「新しいか」を判定するつもりの検査が、コードの変更については何も言わなかった。
+ * 画面を作るソースも対象に入れる。
+ */
 const SOURCES = [
+  "components/common/SiteChrome.tsx",
+  "components/map/JinjaMap.tsx",
+  "components/ai/UmapExplorer.tsx",
+  "app/page.tsx",
+  "app/map/page.tsx",
+  "app/ai-space/page.tsx",
+  "app/analytics/page.tsx",
+  "app/sources/page.tsx",
+  "app/about-ai/page.tsx",
+  "app/shrine/[id]/page.tsx",
+  "app/similar/[id]/page.tsx",
+  "app/globals.css",
+  "lib/data.ts",
+  "lib/types.ts",
   "public/data/meta/build.json",
   "public/data/catalog/shrines.min.json",
   "public/data/catalog/families.min.json",

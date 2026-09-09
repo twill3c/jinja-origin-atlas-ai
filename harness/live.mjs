@@ -85,7 +85,24 @@ async function main() {
       one.source?.license === "CC BY-SA 4.0");
   }
 
-  // --- 6. 個別ページ -----------------------------------------------------
+  // --- 6. フッタ規約(コードの変更が本番へ届いたかの実測) ---------------
+  // **刻印だけに頼らない。** 刻印はデータとソースの指紋であって、
+  // 「その通りに配信されたか」までは言わない。宛先そのものを本文で確かめる。
+  const home = await get("/");
+  check(
+    "App Menu が本番(app-menu-amber)を指している",
+    home.body.includes("app-menu-amber.vercel.app"),
+  );
+  check(
+    "App Menu が他者のドメインを指していない",
+    !/https:\/\/app-menu\.vercel\.app/.test(home.body),
+  );
+  check(
+    "GitHub がこのリポジトリを指している",
+    home.body.includes("github.com/twill3c/jinja-origin-atlas-ai"),
+  );
+
+  // --- 7. 個別ページ -----------------------------------------------------
   const id = aij.body?.shrines?.[0]?.id;
   if (id) {
     const d = await get(`/shrine/${id}/`);

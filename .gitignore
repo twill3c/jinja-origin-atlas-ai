@@ -22,3 +22,5 @@ artifacts/screenshots/
 # 環境
 .env*
 !.env.example
+
+.vercel

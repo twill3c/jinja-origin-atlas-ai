@@ -23,18 +23,30 @@ export function SiteNav() {
 }
 
 /* fleet: fixed footer */
+/* フリート共通のフッタ規約(5 項目・この並び・下部固定)。
+ * **App Menu の本番は app-menu-amber.vercel.app である。**
+ * app-menu.vercel.app は他者の別サービスなので、そこへ送ってはならない。 */
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <span>MIT License © 2026 坂田哲朗</span>
+      <a
+        href="https://github.com/twill3c/jinja-origin-atlas-ai/blob/main/LICENSE"
+        rel="noreferrer"
+        target="_blank"
+      >
+        MIT License
+      </a>
+      <span> © 2026 坂田哲朗</span>
       <span aria-hidden="true">・</span>
-      <a href="https://github.com/" rel="noreferrer">
+      <a href="https://github.com/twill3c/jinja-origin-atlas-ai" rel="noreferrer" target="_blank">
         GitHub
       </a>
       <span aria-hidden="true">・</span>
-      <Link href="/sources/">出典</Link>
+      <Link href="/sources/">出典とライセンス</Link>
       <span aria-hidden="true">・</span>
-      <a href="https://app-menu.vercel.app/" rel="noreferrer">
+      <Link href="/about-ai/">AI の読み方</Link>
+      <span aria-hidden="true">・</span>
+      <a href="https://app-menu-amber.vercel.app/" rel="noreferrer" target="_blank">
         App Menu
       </a>
     </footer>

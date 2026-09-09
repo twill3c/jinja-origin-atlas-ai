@@ -1,7 +1,91 @@
 {
- "stamp": "0367ade3ae23561184b62f48a6ed008e",
- "generated_at": "2026-09-08T22:58:29.510Z",
+ "stamp": "6e9b1a64c7a94f7e94ec852d95517658",
+ "generated_at": "2026-09-09T16:07:29.021Z",
  "files": [
+  {
+   "file": "components/common/SiteChrome.tsx",
+   "present": true,
+   "bytes": 1472,
+   "sha256": "63d09ca10bf1743f"
+  },
+  {
+   "file": "components/map/JinjaMap.tsx",
+   "present": true,
+   "bytes": 11292,
+   "sha256": "30d43d3b93f761ac"
+  },
+  {
+   "file": "components/ai/UmapExplorer.tsx",
+   "present": true,
+   "bytes": 7449,
+   "sha256": "c2045e54afa37bde"
+  },
+  {
+   "file": "app/page.tsx",
+   "present": true,
+   "bytes": 3880,
+   "sha256": "4e1af01433a4e291"
+  },
+  {
+   "file": "app/map/page.tsx",
+   "present": true,
+   "bytes": 890,
+   "sha256": "98e30e36b795c6ae"
+  },
+  {
+   "file": "app/ai-space/page.tsx",
+   "present": true,
+   "bytes": 1334,
+   "sha256": "fa7ee9cc497b6934"
+  },
+  {
+   "file": "app/analytics/page.tsx",
+   "present": true,
+   "bytes": 9840,
+   "sha256": "c33527dd06272d01"
+  },
+  {
+   "file": "app/sources/page.tsx",
+   "present": true,
+   "bytes": 3258,
+   "sha256": "2467ad4f98d1d43f"
+  },
+  {
+   "file": "app/about-ai/page.tsx",
+   "present": true,
+   "bytes": 5333,
+   "sha256": "2101666811477fd5"
+  },
+  {
+   "file": "app/shrine/[id]/page.tsx",
+   "present": true,
+   "bytes": 9710,
+   "sha256": "3c79a28dcf64aac2"
+  },
+  {
+   "file": "app/similar/[id]/page.tsx",
+   "present": true,
+   "bytes": 5184,
+   "sha256": "32e057f66648e9da"
+  },
+  {
+   "file": "app/globals.css",
+   "present": true,
+   "bytes": 2582,
+   "sha256": "b7f25ddc06ad8b39"
+  },
+  {
+   "file": "lib/data.ts",
+   "present": true,
+   "bytes": 4550,
+   "sha256": "057df3a390c0da85"
+  },
+  {
+   "file": "lib/types.ts",
+   "present": true,
+   "bytes": 2379,
+   "sha256": "db2d8ad046b30b46"
+  },
   {
    "file": "public/data/meta/build.json",
    "present": true,

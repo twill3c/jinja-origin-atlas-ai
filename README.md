@@ -24,10 +24,10 @@ app-menu(フリートの玄関口)にも掲載: https://app-menu-amber.vercel.ap
 | ✅ | Wikidata の構造化属性(祭神 P825・社格 P13723・母院 P612)の結合 |
 | ✅ | 名寄せ(OSM × Wikidata)。非循環オラクル 825 組で較正 |
 | ✅ | 標高(国土地理院 DEM)・最寄り河川距離(国土数値情報 W05)・統計画面 |
-| ✅ | Embedding・類似神社 Top20・12 モチーフ・HDBSCAN・UMAP |
+| ✅ | Embedding・類似神社 Top20・12 モチーフ・HDBSCAN・UMAP(**記事単位**で計算。同じ記事を持つ神社を類似に出さない) |
 | ✅ | **全国 47 都道府県 40,792 件**の位置・属性・系統(県ごとのチャンク配信 + クライアント描画) |
 | ✅ | 全国の標高 40,787 件・最寄り河川距離 40,652 件(島嶼部など 10 km 超の 140 件は理由つきで空欄) |
-| 🚧 | 全国の AI 由緒分析(いまは 701 件。ja.wikipedia 記事は全国で 6,145 件) |
+| ✅ | 全国の AI 由緒分析 **3,175 記事 / 3,356 社**(ja.wikipedia。120 字未満の 146 記事は理由つきで除外) |
 
 ## Architecture
 
@@ -85,7 +85,7 @@ python -m etl.fetch_elevation        # 国土地理院 DEM(タイルはディス
 python -m etl.fetch_rivers --all     # 国土数値情報 W05(47 都道府県)
 python -m etl.river_distance         # 最寄り河川距離(二経路で照合)
 python -m etl.fetch_wikipedia        # 由緒本文(版 ID つき。本文は配らない)
-python -m ml.pipeline                # 埋め込み・モチーフ・クラスタ・UMAP・類似
+python -m ml.pipeline                # 埋め込み・モチーフ・クラスタ・UMAP・類似(記事単位・D-07)
 python -m export.build_public        # 結合 → 都道府県チャンク + 索引(D-06)
 
 python -m quality.calibrate_matching  # 名寄せ閾値の較正(較正半分だけを見る)
@@ -98,6 +98,12 @@ Overpass の公共インスタンスは連続投入で 429 を返す(2026-09-08 
 **県ごとに取る理由**(D-06): OSM の `addr:province` は 3 都府県で 162/3,152 件にしか
 付いていなかった。県別に問い合わせれば、県の帰属は取得の経路からそのまま決まる。
 県境の神社は二つの県に返るので、最初の県に帰属させて重複として数える。
+
+**AI は神社ではなく記事を単位に計算する**(D-07)。名寄せで神門や手水舎、同じ社の node と way が
+一つの Wikidata 項目に結合されるので、同じ記事を持つ神社がある(全国で 151 記事 / 332 社)。
+神社単位で埋め込むと類似の 1 位がただの自己一致になる —— 3 都府県版では 701 件中 71 件がそうだった。
+埋め込みは**文書単位で保存**する(`data/processed/embeddings/origin_e5_store/`)。記事を足しても
+既存の分は作り直さず、止まっても保存済みから再開する。
 
 **全カタログは配らない**(D-06)。全国では 33.7 MB になる。配るのは都道府県チャンク
 `public/data/shrines/NN.json` と索引 `public/data/shrines/index.json`、

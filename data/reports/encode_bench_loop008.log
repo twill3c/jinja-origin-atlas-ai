@@ -1,0 +1,6 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+torch threads 4 cpu 8 chars 12933
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 2687.94it/s]
+model load s 59.9
+encode 32 docs s 18.5 docs/s 1.726
+vs stored cos min 0.9999998807907104 max abs diff 4.5821070671081543e-07

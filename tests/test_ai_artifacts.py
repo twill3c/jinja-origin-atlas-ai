@@ -268,3 +268,90 @@ def test_corpus_selection_drops_are_counted():
     d = json.loads(p.read_text(encoding="utf-8"))
     assert isinstance(d["corpus_dropped"], dict) and d["corpus_dropped"]
     assert d["corpus"] > 0
+
+
+def same_article_violations(ai_doc: dict, sim_doc: dict) -> list[tuple[str, str, str]]:
+    """類似の表のうち、相手が自分と同じ記事を持つもの・同じ記事が二度出るものを返す。"""
+    url = {r["id"]: r["source"]["url"] for r in ai_doc["shrines"]}
+    bad: list[tuple[str, str, str]] = []
+    for sid, lst in sim_doc["neighbors"].items():
+        seen: set[str] = set()
+        for other, _ in lst:
+            u = url.get(other)
+            if u == url.get(sid):
+                bad.append((sid, other, "自分と同じ記事"))
+            elif u in seen:
+                bad.append((sid, other, "リスト内で同じ記事が二度"))
+            seen.add(u)
+    return bad
+
+
+@pytest.mark.validation
+def test_t121_similar_never_returns_the_same_article(sim, ai):
+    """T-121: 類似の相手に、自分と同じ ja.wikipedia 記事を持つ神社を出さない。
+
+    名寄せで社の部分(神門・手水舎)や同じ社の node と way が一つの Wikidata 項目に
+    結合されると、同じ本文から同じ埋め込みが出て、類似の 1 位がただの自己一致になる。
+    loop_008 で実測したら 701 件中 71 件の 1 位がこれだった。**全件を走査する。**
+    """
+    bad = same_article_violations(ai, sim)
+    assert bad == [], f"{len(bad)} 組。例: {bad[:5]}"
+
+
+@pytest.mark.validation
+def test_t121b_positive_and_negative_controls():
+    """T-121 の対照: 同記事を混ぜた表で落ち、混ぜていない表では落ちない。"""
+    ai_doc = {"shrines": [
+        {"id": "a", "source": {"url": "u1"}},
+        {"id": "a2", "source": {"url": "u1"}},
+        {"id": "b", "source": {"url": "u2"}},
+        {"id": "b2", "source": {"url": "u2"}},
+        {"id": "c", "source": {"url": "u3"}},
+    ]}
+    dirty = {"neighbors": {"a": [["a2", 1.0], ["b", 0.9]], "c": [["b", 0.9], ["b2", 0.9]]}}
+    kinds = sorted(k for _, _, k in same_article_violations(ai_doc, dirty))
+    assert kinds == sorted(["自分と同じ記事", "リスト内で同じ記事が二度"]), kinds
+    clean = {"neighbors": {"a": [["b", 0.9], ["c", 0.8]], "c": [["a", 0.8], ["b", 0.7]]}}
+    assert same_article_violations(ai_doc, clean) == []
+
+
+@pytest.mark.validation
+def test_t121c_shipped_similar_files_never_return_the_same_article():
+    """T-121: 画面が実際に読む `public/data/similar/NN.json` でも同じことが成り立つ。"""
+    chunk_dir = pathlib.Path("public/data/shrines")
+    sim_dir = pathlib.Path("public/data/similar")
+    if not sim_dir.exists():
+        pytest.skip("類似ファイルが未生成")
+    url: dict[str, str] = {}
+    for p in sorted(chunk_dir.glob("[0-9][0-9].json")):
+        for r in json.loads(p.read_text(encoding="utf-8"))["shrines"]:
+            if r.get("ai_scores"):
+                url[r["id"]] = r["ai_scores"]["source"]["url"]
+    assert url, "AI 欄を持つ神社がチャンクに無い(検査が空振りする)"
+    bad = []
+    for p in sorted(sim_dir.glob("[0-9][0-9].json")):
+        for sid, lst in json.loads(p.read_text(encoding="utf-8"))["similar"].items():
+            us = [url.get(e["id"]) for e in lst]
+            if url.get(sid) in us or len(set(us)) != len(us):
+                bad.append(sid)
+    assert bad == [], f"{len(bad)} 件。例: {bad[:5]}"
+
+
+@pytest.mark.validation
+def test_t122_shrines_sharing_an_article_share_all_scores(ai):
+    """T-122: 同じ記事を共有する神社は、スコア・順位・クラスタ・座標がすべて同一。
+
+    記事単位で一度だけ計算していれば必ず成り立つ。違えば、重複した記事が
+    クラスタリングや順位の分母に二重に入っている。
+    """
+    groups: dict[str, list[dict]] = {}
+    for r in ai["shrines"]:
+        groups.setdefault(r["source"]["url"], []).append(r)
+    bad = []
+    for g in (g for g in groups.values() if len(g) > 1):
+        first = g[0]
+        for r in g[1:]:
+            for k in ("motifs", "motif_percentiles", "cluster", "umap"):
+                if r[k] != first[k]:
+                    bad.append((first["id"], r["id"], k))
+    assert bad == [], f"{len(bad)} 件。例: {bad[:5]}"

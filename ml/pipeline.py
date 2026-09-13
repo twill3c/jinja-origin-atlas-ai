@@ -10,8 +10,13 @@
 
 仕様書からの逸脱:
 - `hdbscan` パッケージではなく scikit-learn の `HDBSCAN` を使う(同じ手法。依存が減る)
-- FAISS を使わない。対象が 1,000 件未満では numpy の総当たりのほうが速く、
+- FAISS を使わない。対象は全国で約 3,300 記事で、numpy の総当たり(3,300² の内積)で足りる。
   仕様書 §23 も FAISS を「ビルド時の道具」としか要求していない
+
+**計算の単位は神社ではなく記事である**(T-121 / T-122)。名寄せで社の部分(神門・手水舎)や
+同じ社の node と way が一つの Wikidata 項目に結合されるので、同じ記事を持つ神社がある
+(全国で 157 記事 / 346 件)。神社単位で埋め込むと類似の 1 位がただの自己一致になり、
+順位とクラスタの分母にも同じ記事が二重に入る。
 
     python -m ml.pipeline
 """
@@ -27,7 +32,8 @@ import time
 
 import numpy as np
 
-from ml.corpus import load_corpus
+from ml.corpus import Doc, load_corpus
+from ml.embed_store import EmbeddingStore
 
 MODEL_NAME = "intfloat/multilingual-e5-base"
 MOTIF_FILE = pathlib.Path("ml/labels/motifs.json")
@@ -108,6 +114,52 @@ def load_or_encode(name: str, texts: list[str], model_name: str, revision: str,
     return v, False
 
 
+NAMES_FROM = pathlib.Path("data/interim/catalog_osm.json")
+
+
+def _base_title(title: str) -> str:
+    """記事題名の曖昧さ回避の括弧を外す(「氷川神社 (目黒区八雲)」→「氷川神社」)。"""
+    return title.split(" (")[0].strip()
+
+
+def representative(members: list[str], title: str, names: dict[str, str]) -> str:
+    """記事を共有する神社のうち、類似の表で**その記事の代表として出す**神社を決める。
+
+    題名(括弧を外したもの)と名前が一致する神社 → 名前が題名に含まれる神社 → 名前の短い神社、
+    の順に選び、残った同点は ID で決める(決定的)。
+    「北海道神宮」と「北海道神宮神門」なら前者を選ぶ。
+    """
+    base = _base_title(title)
+
+    def rank(sid: str) -> tuple:
+        n = names.get(sid, "")
+        return (n != base, not (n and n in title), len(n) if n else 10**6, sid)
+
+    return min(members, key=rank)
+
+
+def group_by_article(docs: list[Doc]) -> tuple[list[Doc], dict[str, list[str]], int]:
+    """神社単位の文書を記事単位にまとめる。
+
+    同じ記事でも取得した時期が違えば版が違うことがある。そのときは**新しい版の本文**を使い、
+    食い違った記事の数を返す(黙って片方を選ばない)。
+    :returns: (記事ごとの代表文書, 記事 URL → 神社 ID の昇順, 版が食い違った記事の数)
+    """
+    groups: dict[str, list[Doc]] = {}
+    for d in docs:
+        groups.setdefault(d.url, []).append(d)
+    arts: list[Doc] = []
+    members: dict[str, list[str]] = {}
+    mismatched = 0
+    for url in sorted(groups):
+        g = groups[url]
+        if len({(d.revid, d.text) for d in g}) > 1:
+            mismatched += 1
+        arts.append(max(g, key=lambda d: (d.revid, d.shrine_id)))
+        members[url] = sorted(d.shrine_id for d in g)
+    return arts, members, mismatched
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="AI パイプライン")
     ap.add_argument("--limit", type=int, default=0)
@@ -117,9 +169,15 @@ def main(argv: list[str] | None = None) -> int:
     docs, dropped = load_corpus()
     if args.limit:
         docs = docs[: args.limit]
-    print(f"コーパス {len(docs)} 件(落とした内訳 {dropped})", file=sys.stderr)
-    if len(docs) < MIN_CLUSTER_SIZE * 2:
-        raise RuntimeError(f"コーパスが {len(docs)} 件しかない。クラスタリングが成立しない")
+    arts, members, rev_mismatch = group_by_article(docs)
+    shared = sum(1 for m in members.values() if len(m) > 1)
+    print(f"コーパス 神社 {len(docs)} 件 / 記事 {len(arts)} 件(複数の神社が共有する記事 {shared}・"
+          f"版の食い違い {rev_mismatch})(落とした内訳 {dropped})", file=sys.stderr)
+    if len(arts) < MIN_CLUSTER_SIZE * 2:
+        raise RuntimeError(f"記事が {len(arts)} 件しかない。クラスタリングが成立しない")
+    names = {r["id"]: (r.get("name") or {}).get("ja") or ""
+             for r in json.loads(NAMES_FROM.read_text(encoding="utf-8"))["shrines"]}
+    rep_of = {a.url: representative(members[a.url], a.title, names) for a in arts}
 
     revision = resolve_revision(MODEL_NAME)
     print(f"モデル {MODEL_NAME} @ {revision[:12]}", file=sys.stderr)
@@ -134,10 +192,11 @@ def main(argv: list[str] | None = None) -> int:
         return _model[0]
 
     # --- 埋め込み(E5 の入力形式に従う) ---
-    passages = [f"passage: {d.text}" for d in docs]
-    emb, reused = load_or_encode("origin_e5", passages, MODEL_NAME, revision, model_factory)
-    print(f"埋め込み {emb.shape} {'(再利用)' if reused else ''} ({time.time() - t0:.0f}s)",
-          file=sys.stderr)
+    # 文書単位で保存し、足りない分だけ計算する(T-123)。止まっても保存済みから再開する
+    passages = [f"passage: {a.text}" for a in arts]
+    store = EmbeddingStore(EMB_DIR / "origin_e5_store", MODEL_NAME, revision)
+    emb = store.encode_all(passages, lambda xs: encode(xs, model_factory()), batch_size=32)
+    print(f"埋め込み {emb.shape} ({time.time() - t0:.0f}s)", file=sys.stderr)
 
     # --- モチーフ(定義文の重心とのコサイン類似度) ---
     spec = json.loads(MOTIF_FILE.read_text(encoding="utf-8"))["motifs"]
@@ -172,18 +231,18 @@ def main(argv: list[str] | None = None) -> int:
     from sklearn.decomposition import PCA
     import umap
 
-    pca = PCA(n_components=min(PCA_DIM, len(docs) - 1, emb.shape[1]), random_state=20260908)
+    pca = PCA(n_components=min(PCA_DIM, len(arts) - 1, emb.shape[1]), random_state=20260908)
     reduced = pca.fit_transform(emb)
     u10 = umap.UMAP(n_components=UMAP_CLUSTER_DIM, random_state=20260908,
                     n_neighbors=15, min_dist=0.0).fit_transform(reduced)
     hdb = HDBSCAN(min_cluster_size=MIN_CLUSTER_SIZE, min_samples=MIN_SAMPLES, metric="euclidean")
     labels = hdb.fit_predict(u10)
-    probs = getattr(hdb, "probabilities_", np.zeros(len(docs)))
+    probs = getattr(hdb, "probabilities_", np.zeros(len(arts)))
 
     u2 = umap.UMAP(n_components=2, random_state=20260908,
                    n_neighbors=15, min_dist=0.1).fit_transform(emb)
 
-    # --- 類似神社 Top-K(numpy の総当たり。729 件では FAISS は要らない) ---
+    # --- 類似 Top-K(記事どうしの総当たり。相手はすべて別の記事になる) ---
     sim = emb @ emb.T
     np.fill_diagonal(sim, -np.inf)  # 自己を除く
     order = np.argsort(-sim, axis=1)[:, :TOP_K]
@@ -195,14 +254,15 @@ def main(argv: list[str] | None = None) -> int:
     # そこで**モチーフごとの分布に対する順位(パーセンタイル)**を併せて出す。
     # 生スコアは再現性のために残す。
     ranks = motif_scores.argsort(axis=0).argsort(axis=0)  # 各列で昇順の順位
-    pct = ranks / max(1, len(docs) - 1)  # 0..1
+    pct = ranks / max(1, len(arts) - 1)  # 0..1
 
     # --- 公開アーティファクト(**スコアだけ**) ---
     now = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
     shrines = []
-    for i, d in enumerate(docs):
-        shrines.append({
-            "id": d.shrine_id,
+    for i, d in enumerate(arts):
+        for sid in members[d.url]:
+            shrines.append({
+            "id": sid,
             "motifs": {k: round(float(motif_scores[i, j]), 4) for j, k in enumerate(motif_keys)},
             "motif_percentiles": {k: round(float(pct[i, j]), 4) for j, k in enumerate(motif_keys)},
             "cluster": {"id": int(labels[i]),
@@ -211,11 +271,13 @@ def main(argv: list[str] | None = None) -> int:
             "source": {"title": d.title, "revid": d.revid, "url": d.url,
                        "license": d.license, "sections": list(d.used_sections)[:6],
                        "truncated": d.truncated},
-        })
-    neighbors = {
-        docs[i].shrine_id: [[docs[j].shrine_id, round(float(sim[i, j]), 4)] for j in order[i]]
-        for i in range(len(docs))
-    }
+          })
+    # 記事を共有する神社には同じ表を配る。相手の記事は、その記事の代表の神社で指す
+    neighbors = {}
+    for i, a in enumerate(arts):
+        lst = [[rep_of[arts[j].url], round(float(sim[i, j]), 4)] for j in order[i]]
+        for sid in members[a.url]:
+            neighbors[sid] = lst
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     OUT_AI.write_text(json.dumps({
@@ -235,7 +297,12 @@ def main(argv: list[str] | None = None) -> int:
 
     n_clusters = len({int(x) for x in labels if x != -1})
     report = {
-        "corpus": len(docs),
+        "corpus": len(arts),
+        "corpus_unit": "記事(ja.wikipedia)。神社単位ではない",
+        "shrines_with_ai": len(docs),
+        "articles_shared_by_multiple_shrines": shared,
+        "shrines_on_shared_articles": sum(len(m) for m in members.values() if len(m) > 1),
+        "article_revision_mismatch": rev_mismatch,
         "corpus_dropped": dropped,
         "model": MODEL_NAME,
         "revision": revision,
@@ -250,7 +317,7 @@ def main(argv: list[str] | None = None) -> int:
             "within_doc_spread_median": float(np.median(
                 motif_scores.max(axis=1) - motif_scores.min(axis=1))),
         },
-        "truncated_docs": sum(1 for d in docs if d.truncated),
+        "truncated_docs": sum(1 for d in arts if d.truncated),
         "bytes_ai": OUT_AI.stat().st_size,
         "bytes_similarity": OUT_SIM.stat().st_size,
         "seconds": round(time.time() - t0, 1),

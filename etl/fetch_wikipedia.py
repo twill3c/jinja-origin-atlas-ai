@@ -31,7 +31,7 @@ RAW_DIR = pathlib.Path("data/raw/wikipedia")
 OUT = pathlib.Path("data/raw/wikipedia/_index.json")
 
 API = "https://ja.wikipedia.org/w/api.php"
-USER_AGENT = "JinjaOriginAtlasAI/0.1 (https://github.com/; contact via repository)"
+USER_AGENT = "JinjaOriginAtlasAI/0.2 (https://github.com/twill3c/jinja-origin-atlas-ai)"
 LICENSE = "CC BY-SA 4.0"
 LICENSE_URL = "https://creativecommons.org/licenses/by-sa/4.0/"
 
@@ -81,8 +81,13 @@ def main(argv: list[str] | None = None) -> int:
     RAW_DIR.mkdir(parents=True, exist_ok=True)
 
     index: dict[str, dict] = {}
-    fetched = cached = missing = 0
+    fetched = cached = missing = reused = 0
+    # 一つの記事が複数の神社に結合されている(全国で 157 記事 / 346 件、2026-09-14 実測)。
+    # 同じ記事を同じ実行の中で二度取りに行かない。
+    seen: dict[str, dict | None] = {}
     t0 = time.time()
+    # 累計の経過秒だけでは停滞と遅さを区別できない(HC-264)。区間の速度を出す。
+    t_seg, i_seg = t0, 0
     with httpx.Client(timeout=60.0, headers={"User-Agent": USER_AGENT}) as client:
         for i, r in enumerate(recs, 1):
             path = RAW_DIR / f"{r['id']}.json"
@@ -90,9 +95,15 @@ def main(argv: list[str] | None = None) -> int:
                 d = json.loads(path.read_text(encoding="utf-8"))
                 cached += 1
             else:
-                d = fetch_one(client, title_of(r["ja_wikipedia"]))
-                fetched += 1
-                time.sleep(args.sleep)
+                title = title_of(r["ja_wikipedia"])
+                if title in seen:
+                    d = seen[title]
+                    reused += 1
+                else:
+                    d = fetch_one(client, title)
+                    seen[title] = d
+                    fetched += 1
+                    time.sleep(args.sleep)
                 if d is None:
                     missing += 1
                     continue
@@ -101,16 +112,20 @@ def main(argv: list[str] | None = None) -> int:
                 "chars": len(d.get("text", ""))
             }
             if i % 100 == 0:
-                print(f"  {i}/{len(recs)} 取得 {fetched} / キャッシュ {cached} "
-                      f"({time.time() - t0:.0f}s)", file=sys.stderr)
+                now = time.time()
+                rate = (i - i_seg) / max(now - t_seg, 1e-9)
+                print(f"  {i}/{len(recs)} 取得 {fetched} / キャッシュ {cached} / 同記事 {reused} "
+                      f"({now - t0:.0f}s / 区間 {rate:.1f} 件/s)", file=sys.stderr, flush=True)
+                t_seg, i_seg = now, i
 
     OUT.write_text(json.dumps({"articles": index, "fetched": fetched,
-                               "from_cache": cached, "missing": missing},
+                               "from_cache": cached, "missing": missing,
+                               "same_article_reused": reused},
                               ensure_ascii=False), encoding="utf-8")
     chars = sorted(v["chars"] for v in index.values())
     print(json.dumps({
         "対象": len(recs), "取れた": len(index), "取れなかった": missing,
-        "取得": fetched, "キャッシュ": cached,
+        "取得": fetched, "キャッシュ": cached, "同記事の再利用": reused,
         "本文長": {"最小": chars[0], "中央": chars[len(chars) // 2], "最大": chars[-1]} if chars else None,
         "秒": round(time.time() - t0, 1),
     }, ensure_ascii=False, indent=1))

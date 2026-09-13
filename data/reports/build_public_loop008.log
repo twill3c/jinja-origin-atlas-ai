@@ -1,0 +1,77 @@
+{
+ "shrines": 40792,
+ "with_name": 30228,
+ "without_name": 10564,
+ "with_osm_wikidata_tag": 5027,
+ "wikidata_records_with_coord": 16908,
+ "matched_auto": 6409,
+ "matched_review": 1064,
+ "unmatched": 33319,
+ "with_deities": 3909,
+ "with_rank": 3114,
+ "with_inception": 2,
+ "with_parent": 277,
+ "with_ja_wikipedia": 3502,
+ "with_elevation": 40787,
+ "without_elevation": 5,
+ "with_river_distance": 40652,
+ "without_river_distance": 140,
+ "family_basis": {
+  "none": 27636,
+  "name": 10427,
+  "deity": 2729
+ },
+ "with_ai": 3356,
+ "without_ai": 37436,
+ "similar_missing_neighbors": 0,
+ "osm_dropped": {
+  "座標なし": 0,
+  "日本の外接矩形外": 0,
+  "ID 重複": 5
+ },
+ "elevation_oracle": {
+  "n": 371,
+  "median_abs_diff_m": 0.31,
+  "within_1m": 288,
+  "within_5m": 346,
+  "within_10m": 362,
+  "max_abs_diff_m": 926.63
+ },
+ "elevation_quantiles": {
+  "min": -2.5,
+  "p25": 12.1,
+  "median": 35.2,
+  "p75": 105.7,
+  "p95": 468.6,
+  "max": 3716.8
+ },
+ "river_distance_quantiles": {
+  "min": 0.0,
+  "p25": 114.2,
+  "median": 242.0,
+  "p75": 477.1,
+  "p95": 1181.4,
+  "max": 9929.5
+ },
+ "signal_agreement": {
+  "both_known": 1872,
+  "agree": 1852,
+  "disagree": 20,
+  "rate": 0.9893
+ },
+ "bytes_geojson": 8590609,
+ "bytes_catalog": 33724452,
+ "chunks": 47,
+ "bytes_chunks": 33724452,
+ "bytes_chunk_max": 2404013,
+ "bytes_index": 1013156,
+ "similar_files": 47,
+ "bytes_similar": 13504679,
+ "shrines_with_similar": 3356,
+ "japan_bbox": [
+  122.0,
+  20.2,
+  154.1,
+  45.8
+ ]
+}

@@ -51,7 +51,18 @@ export default function AboutAiPage() {
                   <td><code>{r.revision}</code></td>
                 </tr>
                 <tr><th scope="row">ベクトルの次元</th><td>{r.embedding_dim}</td></tr>
-                <tr><th scope="row">解析した由緒</th><td>{r.corpus.toLocaleString("ja-JP")} 件</td></tr>
+                <tr>
+                  <th scope="row">解析した由緒(記事)</th>
+                  <td>{r.corpus.toLocaleString("ja-JP")} 件</td>
+                </tr>
+                <tr>
+                  <th scope="row">AI の欄が付いた神社</th>
+                  <td>
+                    {r.shrines_with_ai.toLocaleString("ja-JP")} 件(うち{" "}
+                    {r.shrines_on_shared_articles.toLocaleString("ja-JP")} 件は、神門と本社のように
+                    ほかの神社と同じ記事を共有する。記事ごとに一度だけ計算し、類似の相手には同じ記事を出さない)
+                  </td>
+                </tr>
                 <tr>
                   <th scope="row">見つかったクラスタ</th>
                   <td>

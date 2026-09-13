@@ -427,8 +427,15 @@ async function main() {
 
     if (WANT_SHOT) {
       await mkdir(SHOTS, { recursive: true });
-      for (const [route, name] of [["/", "home"], ["/map/", "map"], ["/sources/", "sources"]]) {
+      // AI の画面も撮る。撮影の一覧に無い画面は、中身が大きく変わっても(701 → 3,356 点)
+      // 目で見られないまま出荷される(loop_008 で ai_space.png が 5 日前のままだった)。
+      for (const [route, name] of [
+        ["/", "home"], ["/map/", "map"], ["/sources/", "sources"],
+        ["/ai-space/", "ai_space"], [`/similar/?id=${someId}`, "similar"], ["/about-ai/", "about_ai"],
+      ]) {
         await page.goto(`${base}${route}`, { waitUntil: "networkidle" });
+        if (route === "/ai-space/") await page.waitForSelector("svg circle", { timeout: 30000 });
+        if (route.startsWith("/similar/")) await page.waitForSelector("table tbody tr", { timeout: 30000 });
         if (route === "/map/") {
           await page.waitForFunction(() => window.__jinjaMap?.isStyleLoaded?.() === true, { timeout: 30000 });
           // 撮影の前に再描画を強制する。WebGL の描画バッファは保持されないので、

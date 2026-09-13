@@ -57,7 +57,12 @@ export const readGeoChecks = once((): GeoCheck[] =>
 );
 
 export type PipelineReport = {
+  /** 記事の数(D-07: 計算の単位は神社ではなく記事) */
   corpus: number;
+  shrines_with_ai: number;
+  articles_shared_by_multiple_shrines: number;
+  shrines_on_shared_articles: number;
+  article_revision_mismatch: number;
   corpus_dropped: Record<string, number>;
   model: string;
   revision: string;

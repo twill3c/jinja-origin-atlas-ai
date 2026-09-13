@@ -127,6 +127,9 @@ vercel deploy --prod --yes --scope twill3c-8670s-projects
 node harness/live.mjs https://<本番ホスト>
 ```
 
+**`main` への push はそのまま本番に出る**(Vercel の Git 連携。2026-09-14 に確認)。
+CLI のデプロイは連携が使えないときの手段で、送る前に本番の刻印を引いて、既に一致していれば送らない。
+
 **`.vercelignore` を先に書いてある。** 送る中身を測ると `data/raw` 199MB /
 `node_modules` 461MB / `out` 72MB あり、そのまま送ると無料枠のファイル数上限
 (5,000 件/24h)に当たる。除外後は約 9MB。

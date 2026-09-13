@@ -22,7 +22,7 @@ import httpx
 
 from etl.gsi_dem import LAYER_ZOOM, TILE_URL, decode_rgb, lonlat_to_tile_pixel
 
-CATALOG = pathlib.Path("public/data/catalog/shrines.min.json")
+CATALOG = pathlib.Path("data/interim/catalog_osm.json")  # D-06: 全カタログは公開物に置かない
 CACHE_DIR = pathlib.Path("data/raw/gsi_dem")
 OUT = pathlib.Path("data/interim/elevation.json")
 
@@ -96,6 +96,9 @@ def main(argv: list[str] | None = None) -> int:
     out: dict[str, dict] = {}
     by_layer: dict[str, int] = {}
     t0 = time.time()
+    # 累計の経過秒だけでは、1 区間の停滞と全体の遅さを区別できない(HC-264)。
+    # 区間ごとの速度を並べて出す。
+    t_seg, i_seg = t0, 0
     with httpx.Client(timeout=60.0, headers={"User-Agent": USER_AGENT}) as client:
         cache = DiskTileCache(client, sleep=args.sleep)
         for i, r in enumerate(recs, 1):
@@ -103,8 +106,12 @@ def main(argv: list[str] | None = None) -> int:
             out[r["id"]] = {"elevation_m": None if h is None else round(h, 2), "source": layer}
             by_layer[layer or "(取れず)"] = by_layer.get(layer or "(取れず)", 0) + 1
             if i % 250 == 0:
+                now = time.time()
+                rate = (i - i_seg) / max(now - t_seg, 1e-9)
                 print(f"  {i}/{len(recs)} 取得 {cache.fetched} / キャッシュ {cache.from_cache} "
-                      f"/ 不在 {cache.missing}  ({time.time() - t0:.0f}s)", file=sys.stderr)
+                      f"/ 不在 {cache.missing}  ({now - t0:.0f}s / 区間 {rate:.1f} 件/s)",
+                      file=sys.stderr)
+                t_seg, i_seg = now, i
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({"elevation": out, "by_layer": by_layer,

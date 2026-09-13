@@ -22,8 +22,14 @@ from etl.normalize import normalize_name
 
 RAW_GLOB = "data/raw/osm/shrines_overpass_*.json"
 OUT_GEOJSON = pathlib.Path("public/data/osm/shrines.min.geojson")
-OUT_CATALOG = pathlib.Path("public/data/catalog/shrines.min.json")
-OUT_BUILD = pathlib.Path("public/data/meta/build.json")
+#: **全カタログは公開物に置かない**(D-06)。全国では 33.7 MB になり、画面が丸ごと
+#: 読むことは無い。配るのは都道府県チャンク(export/build_public.py が作る)。
+OUT_CATALOG = pathlib.Path("data/interim/catalog_osm.json")
+#: この段の報告は中間物に置く。公開の build.json は export/build_public.py が書き、
+#: ここで落とした件数(県境の重複など)はそちらが引き継いで載せる。
+OUT_BUILD = pathlib.Path("data/interim/osm_report.json")
+
+_PREF_FILE = re.compile(r"shrines_overpass_(JP(?:-\d{2})?)\.json$")
 
 #: 日本の外接矩形(G-04)。与那国島(東経 122.9)〜南鳥島(153.98)、
 #: 沖ノ鳥島(北緯 20.42)〜択捉島北端(45.55)を含む。
@@ -40,6 +46,12 @@ def _parse_ele(value: Any) -> float | None:
         return None
     m = _ELE.match(str(value))
     return float(m.group(1)) if m else None
+
+
+def _pref_name(code: str | None) -> str | None:
+    from etl.prefectures import PREF_CODE_NAME
+
+    return PREF_CODE_NAME.get(code) if code else None
 
 
 def shrine_id(el: dict[str, Any]) -> str:
@@ -61,10 +73,32 @@ def in_japan(lon: float, lat: float) -> bool:
     return x0 <= lon <= x1 and y0 <= lat <= y1
 
 
+def pref_code_from_path(path: str) -> str | None:
+    """取得ファイル名から県コードを取る。全国ファイル(`_JP.json`)は県を持たない。"""
+    from etl.prefectures import code_from_area
+
+    m = _PREF_FILE.search(str(path).replace("\\", "/"))
+    if not m or m.group(1) == "JP":
+        return None
+    return code_from_area(m.group(1))
+
+
 def load_raw(pattern: str = RAW_GLOB) -> list[dict[str, Any]]:
+    """取得ファイルを読み、各要素に**どの県の問い合わせで返ったか**(`_pref_code`)を付ける。
+
+    OSM の `addr:province` は 3 都府県で 162/3,152 件にしか付いていなかった。
+    県ごとに取れば、県の帰属は取得の経路からそのまま決まる。
+    """
+    paths = sorted(glob.glob(pattern))
+    codes = [pref_code_from_path(p) for p in paths]
+    if None in codes and any(c is not None for c in codes):
+        # 全国ファイルと県別ファイルを混ぜると、同じ神社が二重に入り県も付かない
+        raise RuntimeError("全国ファイル(_JP.json)と県別ファイルが混在している。どちらかを退けること")
     els: list[dict[str, Any]] = []
-    for p in sorted(glob.glob(pattern)):
-        els += json.loads(pathlib.Path(p).read_text(encoding="utf-8"))["elements"]
+    for p, code in zip(paths, codes):
+        for el in json.loads(pathlib.Path(p).read_text(encoding="utf-8"))["elements"]:
+            el["_pref_code"] = code
+            els.append(el)
     return els
 
 
@@ -106,8 +140,11 @@ def to_records(elements: Iterable[dict[str, Any]]) -> tuple[list[dict[str, Any]]
                 "location": {
                     "lat": round(lat, 7),
                     "lon": round(lon, 7),
-                    "prefecture": t.get("addr:province"),
+                    # 県名は取得の経路から決めた県コードを優先する。`addr:province` は
+                    # 自由記述で「Tokyo」「東京」なども入りうるので、無いときの代わりにだけ使う。
+                    "prefecture": (_pref_name(el.get("_pref_code")) or t.get("addr:province")),
                     "municipality": t.get("addr:city"),
+                    "pref_code": el.get("_pref_code"),
                 },
                 "external_ids": {
                     "osm_type": el["type"],

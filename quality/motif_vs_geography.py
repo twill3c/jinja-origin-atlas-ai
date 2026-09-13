@@ -22,7 +22,7 @@ import pathlib
 import random
 
 AI = pathlib.Path("public/data/ai/ai.min.json")
-CATALOG = pathlib.Path("public/data/catalog/shrines.min.json")
+CATALOG = pathlib.Path("data/interim/catalog_full.json")  # 地理特徴量は結合後にしか無い
 REPORT = pathlib.Path("data/reports/motif_vs_geography.json")
 
 

@@ -1,6 +1,6 @@
 {
- "stamp": "6e9b1a64c7a94f7e94ec852d95517658",
- "generated_at": "2026-09-09T16:07:29.021Z",
+ "stamp": "e8e44976d73bb708405b1bb0267bbed9",
+ "generated_at": "2026-09-13T20:00:02.929Z",
  "files": [
   {
    "file": "components/common/SiteChrome.tsx",
@@ -11,14 +11,14 @@
   {
    "file": "components/map/JinjaMap.tsx",
    "present": true,
-   "bytes": 11292,
-   "sha256": "30d43d3b93f761ac"
+   "bytes": 11644,
+   "sha256": "a52acb812860d79d"
   },
   {
    "file": "components/ai/UmapExplorer.tsx",
    "present": true,
-   "bytes": 7449,
-   "sha256": "c2045e54afa37bde"
+   "bytes": 7455,
+   "sha256": "fffd28dc79ff79ab"
   },
   {
    "file": "app/page.tsx",
@@ -57,16 +57,52 @@
    "sha256": "2101666811477fd5"
   },
   {
-   "file": "app/shrine/[id]/page.tsx",
+   "file": "app/shrine/page.tsx",
    "present": true,
-   "bytes": 9710,
-   "sha256": "3c79a28dcf64aac2"
+   "bytes": 660,
+   "sha256": "5635bede10086165"
   },
   {
-   "file": "app/similar/[id]/page.tsx",
+   "file": "app/similar/page.tsx",
    "present": true,
-   "bytes": 5184,
-   "sha256": "32e057f66648e9da"
+   "bytes": 547,
+   "sha256": "30a726ecba0f5c78"
+  },
+  {
+   "file": "app/not-found.tsx",
+   "present": true,
+   "bytes": 378,
+   "sha256": "912fcdcb00d5f086"
+  },
+  {
+   "file": "components/shrine/ShrineDetail.tsx",
+   "present": true,
+   "bytes": 9235,
+   "sha256": "942d45824e585511"
+  },
+  {
+   "file": "components/shrine/SimilarList.tsx",
+   "present": true,
+   "bytes": 5223,
+   "sha256": "da5785070f5cc875"
+  },
+  {
+   "file": "components/shrine/useShrine.ts",
+   "present": true,
+   "bytes": 2436,
+   "sha256": "fbf7a77121e20abe"
+  },
+  {
+   "file": "components/common/LegacyRedirect.tsx",
+   "present": true,
+   "bytes": 514,
+   "sha256": "57943a8515e02afd"
+  },
+  {
+   "file": "lib/shrine-types.ts",
+   "present": true,
+   "bytes": 2990,
+   "sha256": "17e148163dcf6922"
   },
   {
    "file": "app/globals.css",
@@ -77,8 +113,8 @@
   {
    "file": "lib/data.ts",
    "present": true,
-   "bytes": 4550,
-   "sha256": "057df3a390c0da85"
+   "bytes": 2224,
+   "sha256": "217c1ce3391f2ec2"
   },
   {
    "file": "lib/types.ts",
@@ -89,26 +125,26 @@
   {
    "file": "public/data/meta/build.json",
    "present": true,
-   "bytes": 1467,
-   "sha256": "6e33184e0e458982"
+   "bytes": 1787,
+   "sha256": "0fb80756cd1784e9"
   },
   {
-   "file": "public/data/catalog/shrines.min.json",
+   "file": "public/data/shrines/index.json",
    "present": true,
-   "bytes": 2505691,
-   "sha256": "ec3cc258554a4d16"
+   "bytes": 1012745,
+   "sha256": "b344a65d98ab0372"
   },
   {
    "file": "public/data/catalog/families.min.json",
    "present": true,
-   "bytes": 779,
-   "sha256": "58522ffdd80a3e75"
+   "bytes": 801,
+   "sha256": "1083edf91baeea30"
   },
   {
    "file": "public/data/osm/shrines.min.geojson",
    "present": true,
-   "bytes": 591961,
-   "sha256": "9a230b3954463a6d"
+   "bytes": 8065035,
+   "sha256": "c256f78a187a7d30"
   },
   {
    "file": "public/data/ai/ai.min.json",
@@ -133,6 +169,306 @@
    "present": true,
    "bytes": 770,
    "sha256": "87d2a95bc1f02a88"
+  },
+  {
+   "file": "public/data/shrines/01.json",
+   "present": true,
+   "bytes": 862222,
+   "sha256": "096936865a4d185d"
+  },
+  {
+   "file": "public/data/shrines/02.json",
+   "present": true,
+   "bytes": 335486,
+   "sha256": "f312a680acc4b610"
+  },
+  {
+   "file": "public/data/shrines/03.json",
+   "present": true,
+   "bytes": 312881,
+   "sha256": "08646f226fb9600e"
+  },
+  {
+   "file": "public/data/shrines/04.json",
+   "present": true,
+   "bytes": 950332,
+   "sha256": "1190f9202d10506e"
+  },
+  {
+   "file": "public/data/shrines/05.json",
+   "present": true,
+   "bytes": 2309155,
+   "sha256": "3db6d089cbca103f"
+  },
+  {
+   "file": "public/data/shrines/06.json",
+   "present": true,
+   "bytes": 518055,
+   "sha256": "4d2157ef1f5bc81d"
+  },
+  {
+   "file": "public/data/shrines/07.json",
+   "present": true,
+   "bytes": 431357,
+   "sha256": "ea2dddbfd5098a8e"
+  },
+  {
+   "file": "public/data/shrines/08.json",
+   "present": true,
+   "bytes": 1019872,
+   "sha256": "a7216545f5625485"
+  },
+  {
+   "file": "public/data/shrines/09.json",
+   "present": true,
+   "bytes": 335656,
+   "sha256": "07bd429e488d6124"
+  },
+  {
+   "file": "public/data/shrines/10.json",
+   "present": true,
+   "bytes": 412778,
+   "sha256": "ed225d8909ea3572"
+  },
+  {
+   "file": "public/data/shrines/11.json",
+   "present": true,
+   "bytes": 1147605,
+   "sha256": "b3266b37c56feb78"
+  },
+  {
+   "file": "public/data/shrines/12.json",
+   "present": true,
+   "bytes": 1257118,
+   "sha256": "a8097246dbc06bc3"
+  },
+  {
+   "file": "public/data/shrines/13.json",
+   "present": true,
+   "bytes": 1882913,
+   "sha256": "214cb5e148df9ab4"
+  },
+  {
+   "file": "public/data/shrines/14.json",
+   "present": true,
+   "bytes": 1521506,
+   "sha256": "9d08cb6002bc1384"
+  },
+  {
+   "file": "public/data/shrines/15.json",
+   "present": true,
+   "bytes": 727652,
+   "sha256": "21e58461d932ddad"
+  },
+  {
+   "file": "public/data/shrines/16.json",
+   "present": true,
+   "bytes": 444445,
+   "sha256": "80999d8894e10916"
+  },
+  {
+   "file": "public/data/shrines/17.json",
+   "present": true,
+   "bytes": 414007,
+   "sha256": "055be7991904c05a"
+  },
+  {
+   "file": "public/data/shrines/18.json",
+   "present": true,
+   "bytes": 560730,
+   "sha256": "d4960688037ab95b"
+  },
+  {
+   "file": "public/data/shrines/19.json",
+   "present": true,
+   "bytes": 228277,
+   "sha256": "0700fa0864caf9df"
+  },
+  {
+   "file": "public/data/shrines/20.json",
+   "present": true,
+   "bytes": 973025,
+   "sha256": "1d81090b0db4fdcc"
+  },
+  {
+   "file": "public/data/shrines/21.json",
+   "present": true,
+   "bytes": 550226,
+   "sha256": "a84016079d2be58c"
+  },
+  {
+   "file": "public/data/shrines/22.json",
+   "present": true,
+   "bytes": 1093989,
+   "sha256": "2506014ab00946be"
+  },
+  {
+   "file": "public/data/shrines/23.json",
+   "present": true,
+   "bytes": 1524596,
+   "sha256": "76f595045f141f38"
+  },
+  {
+   "file": "public/data/shrines/24.json",
+   "present": true,
+   "bytes": 386391,
+   "sha256": "aba726a6cd07843d"
+  },
+  {
+   "file": "public/data/shrines/25.json",
+   "present": true,
+   "bytes": 718531,
+   "sha256": "d0dbcfbce7611cb0"
+  },
+  {
+   "file": "public/data/shrines/26.json",
+   "present": true,
+   "bytes": 833675,
+   "sha256": "38aa0708b4897d98"
+  },
+  {
+   "file": "public/data/shrines/27.json",
+   "present": true,
+   "bytes": 711449,
+   "sha256": "d6f57ce298606d4c"
+  },
+  {
+   "file": "public/data/shrines/28.json",
+   "present": true,
+   "bytes": 1139187,
+   "sha256": "c274d2d2900a1b1b"
+  },
+  {
+   "file": "public/data/shrines/29.json",
+   "present": true,
+   "bytes": 415122,
+   "sha256": "0fff9fd16fc0a668"
+  },
+  {
+   "file": "public/data/shrines/30.json",
+   "present": true,
+   "bytes": 248340,
+   "sha256": "23c398d102ab38dd"
+  },
+  {
+   "file": "public/data/shrines/31.json",
+   "present": true,
+   "bytes": 359333,
+   "sha256": "3fe745f1cd002634"
+  },
+  {
+   "file": "public/data/shrines/32.json",
+   "present": true,
+   "bytes": 572335,
+   "sha256": "8479d33ca702faf8"
+  },
+  {
+   "file": "public/data/shrines/33.json",
+   "present": true,
+   "bytes": 580280,
+   "sha256": "e47ba690ade5f318"
+  },
+  {
+   "file": "public/data/shrines/34.json",
+   "present": true,
+   "bytes": 939766,
+   "sha256": "78699afaefedf636"
+  },
+  {
+   "file": "public/data/shrines/35.json",
+   "present": true,
+   "bytes": 315658,
+   "sha256": "ad1a717fb0b6bb70"
+  },
+  {
+   "file": "public/data/shrines/36.json",
+   "present": true,
+   "bytes": 258542,
+   "sha256": "efcdba281edfacaa"
+  },
+  {
+   "file": "public/data/shrines/37.json",
+   "present": true,
+   "bytes": 417397,
+   "sha256": "7573c80aa2a8c6e4"
+  },
+  {
+   "file": "public/data/shrines/38.json",
+   "present": true,
+   "bytes": 530899,
+   "sha256": "4585bb9f399f8915"
+  },
+  {
+   "file": "public/data/shrines/39.json",
+   "present": true,
+   "bytes": 394265,
+   "sha256": "05ab762ff4b7f322"
+  },
+  {
+   "file": "public/data/shrines/40.json",
+   "present": true,
+   "bytes": 698236,
+   "sha256": "f5edeb247b27e1be"
+  },
+  {
+   "file": "public/data/shrines/41.json",
+   "present": true,
+   "bytes": 408280,
+   "sha256": "ee2e560e0a610720"
+  },
+  {
+   "file": "public/data/shrines/42.json",
+   "present": true,
+   "bytes": 272841,
+   "sha256": "3eb5e78a08d00992"
+  },
+  {
+   "file": "public/data/shrines/43.json",
+   "present": true,
+   "bytes": 251750,
+   "sha256": "895d62ad7d9bfdda"
+  },
+  {
+   "file": "public/data/shrines/44.json",
+   "present": true,
+   "bytes": 177295,
+   "sha256": "2e9cfeaff268e757"
+  },
+  {
+   "file": "public/data/shrines/45.json",
+   "present": true,
+   "bytes": 146461,
+   "sha256": "e76961fd7e350947"
+  },
+  {
+   "file": "public/data/shrines/46.json",
+   "present": true,
+   "bytes": 353594,
+   "sha256": "7213b9a5d4cec8ec"
+  },
+  {
+   "file": "public/data/shrines/47.json",
+   "present": true,
+   "bytes": 64381,
+   "sha256": "55b8317db6fe9571"
+  },
+  {
+   "file": "public/data/similar/13.json",
+   "present": true,
+   "bytes": 1792165,
+   "sha256": "0ef220de69e54e5f"
+  },
+  {
+   "file": "public/data/similar/19.json",
+   "present": true,
+   "bytes": 124516,
+   "sha256": "5085f96c2b96c067"
+  },
+  {
+   "file": "public/data/similar/26.json",
+   "present": true,
+   "bytes": 584033,
+   "sha256": "275d9589fc87dbb2"
   }
  ],
  "note": "画面が読むデータの内容から作った刻印。改行を LF に揃えてから測っている。"

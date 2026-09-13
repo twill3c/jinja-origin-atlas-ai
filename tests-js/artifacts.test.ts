@@ -111,6 +111,63 @@ describe("Python↔TypeScript の JSON 契約", () => {
       expect(Object.keys(fam.labels), `families.min.json に ${k} のラベルが無い`).toContain(k);
     }
   });
+
+  /* D-06: 画面は索引で県を引き、その県のチャンクだけを読む。
+   * **境界をまたぐ契約は、両側から触れる場所に置く**(HC-190)。 */
+  t("索引とチャンクの形が、画面の読む型と合っている(D-06)", () => {
+    const idx = JSON.parse(fs.readFileSync(path.join(dataDir, "shrines", "index.json"), "utf-8"));
+    expect(typeof idx.ids).toBe("object");
+    expect(typeof idx.ai_count).toBe("number");
+    expect(typeof idx.motif_labels).toBe("object");
+
+    const [someId, someP] = Object.entries(idx.ids)[0] as [string, string];
+    expect(someId).toMatch(/^jinja_[nwr]\d+$/);
+    expect(someP).toMatch(/^\d{2}$/);
+
+    const chunk = JSON.parse(
+      fs.readFileSync(path.join(dataDir, "shrines", `${someP}.json`), "utf-8"),
+    );
+    expect(chunk.pref_code).toBe(someP);
+    expect(typeof chunk.prefecture).toBe("string");
+    expect(typeof chunk.ai_count).toBe("number");
+    expect(typeof chunk.motif_labels).toBe("object");
+
+    const rec = chunk.shrines.find((x: { id: string }) => x.id === someId);
+    expect(rec, `${someId} が ${someP} のチャンクに無い`).toBeTruthy();
+    expect(rec.location.pref_code).toBe(someP);
+    // 類似は別ファイル(詳細だけ見る人に配らない)
+    expect(rec).not.toHaveProperty("similar");
+  });
+
+  t("GeoJSON の properties に県コードがある(詳細へのリンクが索引を引かずに済む)", () => {
+    const fc = JSON.parse(
+      fs.readFileSync(path.join(dataDir, "osm", "shrines.min.geojson"), "utf-8"),
+    );
+    const p = fc.features[0].properties;
+    expect(p.p).toMatch(/^\d{2}$/);
+    expect(typeof p.ai).toBe("boolean");
+  });
+
+  t("類似の表の形が SimilarEntry と合っている", () => {
+    const idx = JSON.parse(fs.readFileSync(path.join(dataDir, "shrines", "index.json"), "utf-8"));
+    const dir = path.join(dataDir, "similar");
+    const files = fs.existsSync(dir)
+      ? fs.readdirSync(dir).filter((f) => /^\d{2}\.json$/.test(f))
+      : [];
+    if (files.length === 0) {
+      // AI が 1 件も無いビルドなら表が無いのは正しい。**黙って飛ばさず、整合を言う。**
+      expect(idx.ai_count).toBe(0);
+      return;
+    }
+    const doc = JSON.parse(fs.readFileSync(path.join(dir, files[0]), "utf-8"));
+    expect(doc.pref_code).toBe(files[0].replace(".json", ""));
+    const [sid, lst] = Object.entries(doc.similar)[0] as [string, Record<string, unknown>[]];
+    expect(sid).toMatch(/^jinja_[nwr]\d+$/);
+    expect(lst.length).toBeGreaterThan(0);
+    for (const key of ["id", "score", "name", "p", "prefecture", "family_ja", "top3", "cluster"]) {
+      expect(lst[0], `類似の相手に ${key} が無い`).toHaveProperty(key);
+    }
+  });
 });
 
 /**

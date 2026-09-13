@@ -14,7 +14,7 @@
  *   node harness/smoke.mjs --shot    スクリーンショットも撮る
  */
 import { createServer } from "node:http";
-import { readFile, mkdir, stat } from "node:fs/promises";
+import { readFile, readdir, mkdir, stat } from "node:fs/promises";
 import path from "node:path";
 import { chromium } from "playwright";
 
@@ -54,6 +54,16 @@ function serve() {
       res.writeHead(200, { "content-type": MIME[path.extname(file)] ?? "application/octet-stream" });
       res.end(body);
     } catch {
+      // Vercel は存在しない経路に 404.html を 404 で返す。同じ振る舞いにする ——
+      // 旧 URL の転送は 404 ページの中で行うので、これが無いと検品できない(D-06)。
+      for (const cand of ["404.html", path.join("404", "index.html")]) {
+        const body404 = await readFile(path.join(OUT, cand)).catch(() => null);
+        if (body404) {
+          res.writeHead(404, { "content-type": "text/html; charset=utf-8" });
+          res.end(body404);
+          return;
+        }
+      }
       res.writeHead(404, { "content-type": "text/plain" });
       res.end("not found");
     }
@@ -79,6 +89,13 @@ async function main() {
       if (m.type() === "error") consoleErrors.push(m.text());
     });
     page.on("pageerror", (e) => consoleErrors.push(String(e)));
+    // **どの資源が落ちたかを URL で言えるようにする。** コンソールの本文は
+    // 「Failed to load resource: 404」としか言わず、意図的に踏んだ旧 URL の副作用なのか
+    // 本物の欠落なのか区別できない。
+    const badResponses = [];
+    page.on("response", (r) => {
+      if (r.status() >= 400) badResponses.push({ status: r.status(), url: r.url() });
+    });
 
     // --- 地図ページ -------------------------------------------------------
     console.log("地図ページ");
@@ -223,23 +240,59 @@ async function main() {
     check("しぼりを外すと元に戻る",
       cleared.rendered === 0 && cleared.clusterColor === "#b7410e", JSON.stringify(cleared));
 
-    // --- 神社詳細ページ ---------------------------------------------------
+    // --- 神社詳細(クライアント描画・D-06)-----------------------------------
+    // HTML は殻で、中身は画面が県のチャンクを引いて描く。**描き終わるのを待ってから**見る。
     console.log("神社詳細");
-    const shrineIds = Object.keys(
-      JSON.parse(await readFile(path.join(OUT, "data/catalog/shrines.min.json"), "utf-8"))
-        .shrines.filter((s) => s.external_ids.wikidata && s.name.ja)
-        .slice(0, 1)
-        .reduce((a, s) => ({ ...a, [s.id]: 1 }), {}),
-    );
-    if (shrineIds.length) {
-      const r2 = await page.goto(`${base}/shrine/${shrineIds[0]}/`, { waitUntil: "domcontentloaded" });
-      check("詳細ページが開く", r2?.status() === 200, `${shrineIds[0]} status=${r2?.status()}`);
-      const body = await page.locator("body").innerText();
-      check("詳細に三区分の見出しが出ている",
-        body.includes("公開データで確認できること") && body.includes("社伝") && body.includes("AI が文章から測ったこと"));
-      check("詳細に出典が出ている", body.includes("OpenStreetMap") && body.includes("Wikidata"));
-      check("名寄せに直リンクを使っていないことが書かれている", body.includes("使っていない"));
+    const settled = () =>
+      page.waitForFunction(() => !document.body.innerText.includes("読み込み中"), { timeout: 30000 });
+    const chunkFiles = (await readdir(path.join(OUT, "data/shrines")))
+      .filter((f) => /^\d{2}\.json$/.test(f))
+      .sort();
+    check("都道府県チャンクが出荷物にある", chunkFiles.length > 0, `チャンク ${chunkFiles.length}`);
+    // 県の違う神社を選ぶ(先頭・中ほど・末尾のチャンクから、Wikidata に結合したものを 1 件ずつ)
+    const pickFrom = [...new Set([chunkFiles[0], chunkFiles[Math.floor(chunkFiles.length / 2)],
+                                  chunkFiles[chunkFiles.length - 1]])];
+    const picks = [];
+    for (const f of pickFrom) {
+      const ch = JSON.parse(await readFile(path.join(OUT, "data/shrines", f), "utf-8"));
+      const s = ch.shrines.find((x) => x.external_ids.wikidata && x.name.ja) ?? ch.shrines[0];
+      picks.push({ id: s.id, p: ch.pref_code, name: s.name.ja ?? "名称のタグが無い神社", matched: !!s.match });
     }
+    for (const pk of picks) {
+      const r2 = await page.goto(`${base}/shrine/?id=${pk.id}&p=${pk.p}`, { waitUntil: "networkidle" });
+      check(`詳細ページが開く(県 ${pk.p})`, r2?.status() === 200, `${pk.id} status=${r2?.status()}`);
+      await settled();
+      const body = await page.locator("body").innerText();
+      const h1 = (await page.locator("h1").first().innerText()).trim();
+      check(`詳細の見出しがその神社の名前(県 ${pk.p})`, h1 === pk.name, `h1=${h1} 期待=${pk.name}`);
+      check(`詳細に三区分の見出しが出ている(県 ${pk.p})`,
+        body.includes("公開データで確認できること") && body.includes("社伝") && body.includes("AI が文章から測ったこと"));
+      check(`詳細に出典が出ている(県 ${pk.p})`, body.includes("OpenStreetMap"));
+      if (pk.matched) {
+        check(`名寄せに直リンクを使っていないことが書かれている(県 ${pk.p})`, body.includes("使っていない"));
+      }
+      const title = await page.title();
+      check(`タブの題名が神社名になる(県 ${pk.p})`, title.startsWith(pk.name), title);
+    }
+    // 県コード無し(索引を引く経路)と、外れた県コード(索引へ引き直す経路)でも同じ神社が開くこと
+    const pk0 = picks[0];
+    const wrongP = picks.find((x) => x.p !== pk0.p)?.p ?? "99";
+    for (const [label, url] of [["県コード無し", `/shrine/?id=${pk0.id}`],
+                                ["外れた県コード", `/shrine/?id=${pk0.id}&p=${wrongP}`]]) {
+      await page.goto(`${base}${url}`, { waitUntil: "networkidle" });
+      await settled();
+      const h1 = (await page.locator("h1").first().innerText()).trim();
+      check(`${label}でも同じ神社が開く`, h1 === pk0.name, `h1=${h1}`);
+    }
+    // 陽性対照: 実在しない ID は「見つかりません」になる(何でも開いてしまう検査ではないこと)
+    await page.goto(`${base}/shrine/?id=jinja_n1`, { waitUntil: "networkidle" });
+    await settled();
+    check("陽性対照: 実在しない ID は見つからないと言う",
+      (await page.locator("h1").first().innerText()).includes("見つかりません"));
+    // 旧 URL(/shrine/<id>/)は 404 ページの中で新しい形へ送られる
+    await page.goto(`${base}/shrine/${pk0.id}/`, { waitUntil: "networkidle" });
+    await page.waitForURL(/\/shrine\/\?id=/, { timeout: 15000 }).catch(() => {});
+    check("旧 URL が新しい形へ送られる", page.url().includes(`/shrine/?id=${pk0.id}`), page.url());
 
     // --- 意味空間(UMAP)-------------------------------------------------
     console.log("意味空間");
@@ -282,13 +335,18 @@ async function main() {
     // --- 類似神社 ---------------------------------------------------------
     console.log("類似神社");
     const someId = ai.shrines[0].id;
-    const r3 = await page.goto(`${base}/similar/${someId}/`, { waitUntil: "domcontentloaded" });
+    const r3 = await page.goto(`${base}/similar/?id=${someId}`, { waitUntil: "networkidle" });
     check("類似ページが開く", r3?.status() === 200, `${someId} status=${r3?.status()}`);
+    await settled();
     const simText = await page.locator("body").innerText();
     check("勧請の推論をしないと書いてある", simText.includes("勧請された、という意味ではない"));
     check("順位で表示している", simText.includes("上位") && simText.includes("全体の中での位置"));
     const rows = await page.locator("table >> nth=0 >> tbody tr").count();
     check("類似の一覧に行がある", rows > 0, `行=${rows}`);
+    // 相手が詳細へのリンクになっていること(県コード付き。到達の証拠)
+    const href = await page.locator("table >> nth=0 >> tbody tr >> nth=0 >> a").first().getAttribute("href");
+    check("類似の相手が詳細へのリンクになっている", !!href && /^\/shrine\/\?id=jinja_[nwr]\d+&p=\d{2}$/.test(href),
+      String(href));
 
     // --- 複数の画面幅で横溢れを見る(HC-078) ------------------------------
     console.log("画面幅");
@@ -354,7 +412,18 @@ async function main() {
     });
     check("フッタに宛先のないリンクが無い", bare.length === 0, JSON.stringify(bare));
 
-    check("コンソールエラーが無い", consoleErrors.length === 0, consoleErrors.slice(0, 3).join(" | "));
+    // 旧 URL は**意図的に**踏んでいる(D-06 の転送はその 404 の上で成り立つ)。
+    // その 1 件だけを織り込み、**ほかの 404 は落とす**。
+    const isLegacy = (r) => /\/(shrine|similar)\/jinja_[nwr]\d+\/?$/.test(new URL(r.url).pathname);
+    const legacy404 = badResponses.filter(isLegacy);
+    const unexpected = badResponses.filter((r) => !isLegacy(r));
+    check("旧 URL が実際に 404 を返している(転送はその上で働く)", legacy404.length > 0,
+      JSON.stringify(badResponses.slice(0, 3)));
+    check("ほかに 404 になった資源が無い", unexpected.length === 0,
+      JSON.stringify(unexpected.slice(0, 3)));
+    const realErrors = consoleErrors.filter((t) => !/Failed to load resource/.test(t));
+    check("コンソールエラーが無い(資源の 404 を除く)", realErrors.length === 0,
+      realErrors.slice(0, 3).join(" | "));
 
     if (WANT_SHOT) {
       await mkdir(SHOTS, { recursive: true });

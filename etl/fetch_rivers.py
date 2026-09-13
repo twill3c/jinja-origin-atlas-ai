@@ -73,8 +73,12 @@ def download(client: httpx.Client, code: str, ver: str, rel: str) -> pathlib.Pat
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="国土数値情報 W05(河川)を取得する")
     ap.add_argument("--pref", action="append", help="都道府県コード(既定: 13 26 19)")
+    ap.add_argument("--all", action="store_true", help="47 都道府県すべて")
     args = ap.parse_args(argv)
-    codes = tuple(args.pref) if args.pref else STAGE1_PREF_CODES
+    if args.all:
+        codes = tuple(f"{i:02d}" for i in range(1, 48))
+    else:
+        codes = tuple(args.pref) if args.pref else STAGE1_PREF_CODES
 
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     with httpx.Client(timeout=300.0, headers={"User-Agent": USER_AGENT}, follow_redirects=True) as client:

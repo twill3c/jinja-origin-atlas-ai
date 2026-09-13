@@ -26,7 +26,7 @@ import urllib.parse
 
 import httpx
 
-CATALOG = pathlib.Path("public/data/catalog/shrines.min.json")
+CATALOG = pathlib.Path("data/interim/catalog_full.json")  # ja_wikipedia は結合後にしか無い
 RAW_DIR = pathlib.Path("data/raw/wikipedia")
 OUT = pathlib.Path("data/raw/wikipedia/_index.json")
 

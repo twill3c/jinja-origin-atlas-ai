@@ -1,6 +1,9 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
-import { jp, readAi, readCatalog, readCatalogIndex } from "@/lib/data";
+import { useEffect } from "react";
+import { similarHref, topMotifs, upperPercent } from "@/lib/shrine-types";
+import { useShrine } from "./useShrine";
 
 const BASIS_JA: Record<string, string> = {
   structured: "構造化データ(包括団体)",
@@ -11,59 +14,40 @@ const BASIS_JA: Record<string, string> = {
   none: "根拠なし",
 };
 
-/** 静的書き出しなので、詳細ページを作るのは属性を持つ神社だけにする。
- *  全件ぶん HTML を作ると出荷物が無用に膨らむ。
- *
- *  **データはモジュール水準で一度だけ読む**(lib/data.ts)。ページごとに読み直すと
- *  1,665 ページ × 3.3 MB を JSON.parse することになり、静的書き出しが十数分に伸びる。 */
-function detailed() {
-  return readCatalog().filter((s) => s.external_ids.wikidata && s.name.ja);
-}
+export default function ShrineDetail() {
+  const st = useShrine();
+  const title = st.status === "ready" ? (st.shrine.name.ja ?? "名称のタグが無い神社") : null;
 
-export function generateStaticParams() {
-  return detailed().map((s) => ({ id: s.id }));
-}
+  // 神社ごとの HTML を作らない(D-06)ので、タブの題名はここで付け直す
+  useEffect(() => {
+    if (title) document.title = `${title} | Jinja Origin Atlas AI`;
+  }, [title]);
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}): Promise<Metadata> {
-  const { id } = await params;
-  const s = readCatalogIndex().get(id);
-  if (!s?.name.ja) return { title: "神社 | Jinja Origin Atlas AI" };
-  return {
-    title: `${s.name.ja} | Jinja Origin Atlas AI`,
-    description: `${s.name.ja}の所在地・祭神・社格・地理情報。公開データに基づく。`,
-  };
-}
-
-export default async function ShrinePage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
-  const s = readCatalogIndex().get(id);
-  if (!s || !s.name.ja || !s.external_ids.wikidata) {
+  if (st.status === "loading") return <p role="status">読み込み中…</p>;
+  if (st.status === "error") {
     return (
-      <main>
+      <>
         <h1>見つかりません</h1>
+        <p role="status">{st.message}</p>
         <p>
-          この神社の詳細ページは作られていない。<Link href="/map/">地図</Link>から探すこと。
+          <Link href="/map/">地図</Link>から探すこと。
         </p>
-      </main>
+      </>
     );
   }
 
+  const s = st.shrine;
   const fam = s.shrine_family;
-  const { labels: motifLabels, byId: aiById, shrines: aiAll } = readAi();
-  const ai = aiById.get(s.id) ?? null;
-  const aiCount = aiAll.length;
+  const ai = s.ai_scores ?? null;
   const osmUrl = `https://www.openstreetmap.org/${s.external_ids.osm_type}/${s.external_ids.osm_id}`;
 
   return (
-    <main>
-      <h1>{s.name.ja}</h1>
+    <>
+      <h1>{title}</h1>
       <p className="lede">
         {s.name.kana ? `${s.name.kana} ／ ` : ""}
-        {[s.location.prefecture, s.location.municipality].filter(Boolean).join(" ") || "所在地の詳細タグなし"}
+        {[s.location.prefecture, s.location.municipality].filter(Boolean).join(" ") ||
+          "所在地の詳細タグなし"}
       </p>
 
       <div className="band band-evidence">
@@ -176,26 +160,24 @@ export default async function ShrinePage({ params }: { params: Promise<{ id: str
               由緒モチーフの<strong>相対的な強さ</strong>(全体の中での位置。確率ではない):
             </p>
             <ul style={{ margin: "0.3rem 0 0", fontSize: "0.9rem" }}>
-              {Object.entries(ai.motif_percentiles)
-                .sort((a, b) => b[1] - a[1])
-                .slice(0, 4)
-                .map(([k, v]) => (
-                  <li key={k}>
-                    {motifLabels[k] ?? k} — 全 {aiCount} 件中の上位{" "}
-                    {Math.max(1, Math.round((1 - v) * 100))} %
-                  </li>
-                ))}
+              {topMotifs(ai.motif_percentiles, 4).map((k) => (
+                <li key={k}>
+                  {st.chunk.motif_labels[k] ?? k} — 全 {st.chunk.ai_count.toLocaleString("ja-JP")}{" "}
+                  件中の上位 {upperPercent(ai.motif_percentiles[k])} %
+                </li>
+              ))}
             </ul>
             <p style={{ margin: "0.3rem 0 0", fontSize: "0.8rem", color: "var(--ink-mute)" }}>
-              生のコサイン類似度は 0.78〜0.88 の狭い帯に収まるので、そのまま並べると
-              12 個が同じに見える。ここでは<strong>そのモチーフの分布の中でどこにいるか</strong>を出している。
+              生のコサイン類似度は 0.78〜0.88 の狭い帯に収まるので、そのまま並べると 12 個が
+              同じに見える。しかも生スコアで最上位になるモチーフは 3 分の 2 の神社で同じものに
+              なってしまう。ここでは<strong>そのモチーフの分布の中でどこにいるか</strong>を出している。
             </p>
             <p style={{ margin: "0.4rem 0 0", fontSize: "0.85rem", color: "var(--ink-mute)" }}>
               {ai.cluster.id === -1
                 ? "どのクラスタにも入らない"
                 : `クラスタ ${ai.cluster.id}(番号に歴史学上の意味は無い)`}
               {" ／ "}
-              <Link href={`/similar/${s.id}/`}>由緒が似た神社</Link>
+              <Link href={similarHref(s.id, s.location.pref_code)}>由緒が似た神社</Link>
               {" ／ "}
               <Link href="/ai-space/">意味空間で見る</Link>
             </p>
@@ -238,7 +220,11 @@ export default async function ShrinePage({ params }: { params: Promise<{ id: str
         )}
         {s.geography?.elevation_m !== undefined && (
           <li>
-            <a href="https://maps.gsi.go.jp/development/ichiran.html" rel="noreferrer" target="_blank">
+            <a
+              href="https://maps.gsi.go.jp/development/ichiran.html"
+              rel="noreferrer"
+              target="_blank"
+            >
               国土地理院 標高タイル
             </a>{" "}
             — 出典:国土地理院ウェブサイト(標高値を復号して利用)
@@ -246,7 +232,11 @@ export default async function ShrinePage({ params }: { params: Promise<{ id: str
         )}
         {s.geography?.nearest_river_distance_m !== undefined && (
           <li>
-            <a href="https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-W05.html" rel="noreferrer" target="_blank">
+            <a
+              href="https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-W05.html"
+              rel="noreferrer"
+              target="_blank"
+            >
               国土数値情報 河川(W05)
             </a>{" "}
             — 出典:国土交通省 国土数値情報ダウンロードサイト(距離を計算して利用)
@@ -280,6 +270,6 @@ export default async function ShrinePage({ params }: { params: Promise<{ id: str
       <p style={{ marginTop: "1.5rem" }}>
         <Link href="/map/">← 地図へ戻る</Link>
       </p>
-    </main>
+    </>
   );
 }

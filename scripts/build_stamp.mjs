@@ -10,7 +10,7 @@
  * 狼少年になった検査は、無視する癖がつくぶん何もしない検査より悪い。
  */
 import { createHash } from "node:crypto";
-import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { readFile, readdir, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 
 /**
@@ -31,13 +31,20 @@ const SOURCES = [
   "app/analytics/page.tsx",
   "app/sources/page.tsx",
   "app/about-ai/page.tsx",
-  "app/shrine/[id]/page.tsx",
-  "app/similar/[id]/page.tsx",
+  "app/shrine/page.tsx",
+  "app/similar/page.tsx",
+  "app/not-found.tsx",
+  "components/shrine/ShrineDetail.tsx",
+  "components/shrine/SimilarList.tsx",
+  "components/shrine/useShrine.ts",
+  "components/common/LegacyRedirect.tsx",
+  "lib/shrine-types.ts",
   "app/globals.css",
   "lib/data.ts",
   "lib/types.ts",
   "public/data/meta/build.json",
-  "public/data/catalog/shrines.min.json",
+  // D-06: 全カタログは配らない。索引を入れ、チャンクは下で実在するものを全部足す
+  "public/data/shrines/index.json",
   "public/data/catalog/families.min.json",
   "public/data/osm/shrines.min.geojson",
   "public/data/ai/ai.min.json",
@@ -51,7 +58,19 @@ const OUT = "public/data/meta/stamp.json";
 async function main() {
   const h = createHash("sha256");
   const parts = [];
-  for (const rel of SOURCES) {
+  // 都道府県チャンク(D-06)は数が決まっていないので、実在するものを全部足す
+  const chunks = [];
+  for (const dir of ["shrines", "similar"]) {
+    try {
+      const names = (await readdir(path.join(process.cwd(), "public", "data", dir)))
+        .filter((f) => /^\d{2}\.json$/.test(f))
+        .sort();
+      chunks.push(...names.map((f) => `public/data/${dir}/${f}`));
+    } catch {
+      /* まだ作られていない */
+    }
+  }
+  for (const rel of [...SOURCES, ...chunks]) {
     let text;
     try {
       text = await readFile(path.join(process.cwd(), rel), "utf-8");

@@ -1,0 +1,48 @@
+
+> jinja-origin-atlas-ai@0.1.0 prebuild
+> node scripts/build_stamp.mjs
+
+刻印 e8e44976d73bb708405b1bb0267bbed9 → public/data/meta/stamp.json
+
+> jinja-origin-atlas-ai@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.25
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 4.1s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/11) ...
+   Generating static pages (2/11) 
+   Generating static pages (5/11) 
+   Generating static pages (8/11) 
+ ✓ Generating static pages (11/11)
+   Finalizing page optimization ...
+   Collecting build traces ...
+   Exporting (0/2) ...
+ ✓ Exporting (2/2)
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                      165 B         106 kB
+├ ○ /_not-found                            131 B         103 kB
+├ ○ /about-ai                              165 B         106 kB
+├ ○ /ai-space                            2.44 kB         109 kB
+├ ○ /analytics                             131 B         103 kB
+├ ○ /map                                  276 kB         382 kB
+├ ○ /shrine                              4.32 kB         110 kB
+├ ○ /similar                             2.96 kB         109 kB
+└ ○ /sources                               131 B         103 kB
++ First Load JS shared by all             103 kB
+  ├ chunks/255-a85cef9cc3a04b12.js       46.5 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  └ other shared chunks (total)          2.01 kB
+
+
+○  (Static)  prerendered as static content
+
+npm notice
+npm notice New minor version of npm available! 11.8.0 -> 11.19.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.19.1
+npm notice To update run: npm install -g npm@11.19.1
+npm notice

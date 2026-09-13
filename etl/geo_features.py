@@ -36,19 +36,24 @@ PREF_CRS: dict[str, str] = {
 
 #: 平面直角座標系 → 突き合わせ用の UTM。**別の投影で解き直して一致を見る**(T-084)。
 #: 日本は UTM 51〜55N に跨がるが、二経路一致の検算には概ねの帯で足りる。
+#:
+#: **帯は各系の原点経度から決めた。番号を記憶で書かないこと。** 最初の版は注記が 1 帯ずれ
+#: (6689 を 51N と書いたが実物は 52N)、II 系を 53N に割り当てる誤りもあった(2026-09-10)。
+#: 表と原点経度の突き合わせは tests/test_geo_features.py が pyproj で行う。
+#: EPSG:6689 = JGD2011 / UTM 52N(126〜132E)/ 6690 = 53N(132〜138E)/ 6691 = 54N(138〜144E)
 UTM_CRS: dict[str, str] = {
-    "EPSG:6669": "EPSG:6689",  # I 系  → UTM 51N
-    "EPSG:6670": "EPSG:6690",  # II 系 → UTM 52N
-    "EPSG:6671": "EPSG:6690",
-    "EPSG:6672": "EPSG:6690",
-    "EPSG:6673": "EPSG:6690",
-    "EPSG:6674": "EPSG:6690",
-    "EPSG:6675": "EPSG:6690",
-    "EPSG:6676": "EPSG:6691",  # VIII 系 → UTM 53N
-    "EPSG:6677": "EPSG:6691",  # IX 系
-    "EPSG:6678": "EPSG:6691",
-    "EPSG:6680": "EPSG:6691",
-    "EPSG:6683": "EPSG:6689",
+    "EPSG:6669": "EPSG:6689",  # I 系(原点 129.5E)  → UTM 52N
+    "EPSG:6670": "EPSG:6689",  # II 系(131.0E)     → UTM 52N
+    "EPSG:6671": "EPSG:6690",  # III 系(132.17E)   → UTM 53N
+    "EPSG:6672": "EPSG:6690",  # IV 系(133.5E)     → UTM 53N
+    "EPSG:6673": "EPSG:6690",  # V 系(134.33E)     → UTM 53N
+    "EPSG:6674": "EPSG:6690",  # VI 系(136.0E)     → UTM 53N
+    "EPSG:6675": "EPSG:6690",  # VII 系(137.17E)   → UTM 53N
+    "EPSG:6676": "EPSG:6691",  # VIII 系(138.5E)   → UTM 54N
+    "EPSG:6677": "EPSG:6691",  # IX 系(139.83E)    → UTM 54N
+    "EPSG:6678": "EPSG:6691",  # X 系(140.83E)     → UTM 54N
+    "EPSG:6680": "EPSG:6691",  # XII 系(142.25E)   → UTM 54N
+    "EPSG:6683": "EPSG:6689",  # XV 系(127.5E)     → UTM 52N
 }
 
 

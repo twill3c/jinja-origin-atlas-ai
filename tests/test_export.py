@@ -68,8 +68,43 @@ def test_t030d_way_uses_center():
     """T-030: way / relation は `out center` の center を座標に使う。"""
     els = [{"type": "way", "id": 9, "center": {"lat": 34.5, "lon": 135.5}, "tags": {"name": "社"}}]
     recs, dropped = to_records(els)
-    assert recs[0]["location"] == {"lat": 34.5, "lon": 135.5, "prefecture": None, "municipality": None}
+    assert recs[0]["location"] == {"lat": 34.5, "lon": 135.5, "prefecture": None,
+                                   "municipality": None, "pref_code": None}
     assert sum(dropped.values()) == 0
+
+
+@pytest.mark.unit
+def test_t117_prefecture_from_fetch_path_and_border_duplicates():
+    """T-117: 県は取得の経路(どの県の問い合わせで返ったか)から決める。
+
+    県をまたぐ神社は二つの県の問い合わせに返ってくる。**最初の県に帰属させ、
+    重複として数える**(黙って捨てない)。`addr:province` があれば名前はそちらを優先する。
+    """
+    els = [
+        {"type": "way", "id": 7, "center": {"lat": 35.0, "lon": 135.7},
+         "tags": {"name": "境の社"}, "_pref_code": "26"},
+        {"type": "way", "id": 7, "center": {"lat": 35.0, "lon": 135.7},
+         "tags": {"name": "境の社"}, "_pref_code": "25"},
+        {"type": "node", "id": 8, "lat": 35.68, "lon": 139.76,
+         "tags": {"name": "都の社", "addr:province": "東京都"}, "_pref_code": "13"},
+    ]
+    recs, dropped = to_records(els)
+    by_id = {r["id"]: r for r in recs}
+    assert by_id["jinja_w7"]["location"]["pref_code"] == "26"
+    assert by_id["jinja_w7"]["location"]["prefecture"] == "京都府"
+    assert by_id["jinja_n8"]["location"]["pref_code"] == "13"
+    assert by_id["jinja_n8"]["location"]["prefecture"] == "東京都"
+    assert dropped["ID 重複"] == 1
+
+
+@pytest.mark.unit
+def test_t117b_pref_code_from_path():
+    """T-117: ファイル名から県コードを取る。全国ファイルは県を持たない。"""
+    from export.build_geojson import pref_code_from_path
+
+    assert pref_code_from_path("data/raw/osm/shrines_overpass_JP-13.json") == "13"
+    assert pref_code_from_path("data/raw/osm/shrines_overpass_JP-47.json") == "47"
+    assert pref_code_from_path("data/raw/osm/shrines_overpass_JP.json") is None
 
 
 @pytest.mark.unit

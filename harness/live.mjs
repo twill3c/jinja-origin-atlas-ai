@@ -103,12 +103,26 @@ async function main() {
   );
 
   // --- 7. 個別ページ -----------------------------------------------------
+  // D-06 以後、詳細と類似の HTML は殻である。殻が返ることと、画面が引くデータ
+  // (索引とチャンク)が返ることを見る。旧 URL は 404 ページ(転送役)を返すはず。
   const id = aij.body?.shrines?.[0]?.id;
   if (id) {
-    const d = await get(`/shrine/${id}/`);
-    check("神社詳細が 200 で返る", d.status === 200, `${id} status=${d.status}`);
-    const s = await get(`/similar/${id}/`);
-    check("類似ページが 200 で返る", s.status === 200, `status=${s.status}`);
+    const shell = await get(`/shrine/?id=${id}`);
+    check("神社詳細の殻が 200 で返る", shell.status === 200 && shell.ct.includes("text/html"),
+      `status=${shell.status}`);
+    const idx = await get("/data/shrines/index.json", { json: true });
+    const p = idx.body?.ids?.[id];
+    check("索引が引ける", idx.status === 200 && !!p, `status=${idx.status} p=${p}`);
+    if (p) {
+      const ch = await get(`/data/shrines/${p}.json`, { json: true });
+      check("索引の指すチャンクにその神社がある",
+        ch.status === 200 && (ch.body?.shrines ?? []).some((x) => x.id === id), `status=${ch.status}`);
+    }
+    const sim = await get(`/similar/?id=${id}`);
+    check("類似ページの殻が 200 で返る", sim.status === 200, `status=${sim.status}`);
+    const legacy = await get(`/shrine/${id}/`);
+    check("旧 URL は 404 ページ(転送役)を返す",
+      legacy.status === 404 && legacy.body.includes("URL が変わった"), `status=${legacy.status}`);
   }
 
   console.log("");

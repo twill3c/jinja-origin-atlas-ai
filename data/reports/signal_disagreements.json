@@ -1,5 +1,76 @@
 [
  {
+  "id": "jinja_n7927130421",
+  "name": "増毛厳島神社",
+  "by_deity": "inari",
+  "by_name": "munakata",
+  "deities": [
+   "ウカノミタマ",
+   "スクナビコナ",
+   "保食神",
+   "大国主神",
+   "宗像三女神"
+  ]
+ },
+ {
+  "id": "jinja_n10708785942",
+  "name": "福住厳島神社",
+  "by_deity": "inari",
+  "by_name": "munakata",
+  "deities": [
+   "ウカノミタマ",
+   "市杵島姫",
+   "菅原道真"
+  ]
+ },
+ {
+  "id": "jinja_w863816670",
+  "name": "郷社 横手神明社",
+  "by_deity": "gion_yasaka",
+  "by_name": "shinmei_ise",
+  "deities": [
+   "天照大神",
+   "素戔嗚尊"
+  ]
+ },
+ {
+  "id": "jinja_w863816675",
+  "name": "神明社",
+  "by_deity": "gion_yasaka",
+  "by_name": "shinmei_ise",
+  "deities": [
+   "天照大神",
+   "素戔嗚尊"
+  ]
+ },
+ {
+  "id": "jinja_n9723745117",
+  "name": "隠津島神社",
+  "by_deity": "munakata",
+  "by_name": "gion_yasaka",
+  "deities": [
+   "湍津姫"
+  ]
+ },
+ {
+  "id": "jinja_n12793946680",
+  "name": "滝尾稲荷神社",
+  "by_deity": "munakata",
+  "by_name": "inari",
+  "deities": [
+   "田心姫"
+  ]
+ },
+ {
+  "id": "jinja_w1348689593",
+  "name": "天神社",
+  "by_deity": "shinmei_ise",
+  "by_name": "tenjin",
+  "deities": [
+   "天照大神"
+  ]
+ },
+ {
   "id": "jinja_n5290130609",
   "name": "八坂神社",
   "by_deity": "hachiman",
@@ -27,6 +98,108 @@
   "deities": [
    "伊奘冉尊",
    "菊理媛神"
+  ]
+ },
+ {
+  "id": "jinja_w704534773",
+  "name": "甘縄神明神社",
+  "by_deity": "inari",
+  "by_name": "shinmei_ise",
+  "deities": [
+   "ウカノミタマ",
+   "タケミカヅチ",
+   "伊奘冉尊",
+   "天照大神",
+   "菅原道真"
+  ]
+ },
+ {
+  "id": "jinja_w888511606",
+  "name": "厚木稲荷神社",
+  "by_deity": "gion_yasaka",
+  "by_name": "inari",
+  "deities": [
+   "素戔嗚尊"
+  ]
+ },
+ {
+  "id": "jinja_w435096751",
+  "name": "八幡神社",
+  "by_deity": "gion_yasaka",
+  "by_name": "hachiman",
+  "deities": [
+   "牛頭天王",
+   "素戔嗚尊"
+  ]
+ },
+ {
+  "id": "jinja_w501284734",
+  "name": "津島神社",
+  "by_deity": "kashima_katori",
+  "by_name": "gion_yasaka",
+  "deities": [
+   "タケミカヅチ"
+  ]
+ },
+ {
+  "id": "jinja_w1523518748",
+  "name": "明知神明宮",
+  "by_deity": "konpira",
+  "by_name": "shinmei_ise",
+  "deities": [
+   "金山彦神"
+  ]
+ },
+ {
+  "id": "jinja_w585904224",
+  "name": "奥津島神社",
+  "by_deity": "munakata",
+  "by_name": "gion_yasaka",
+  "deities": [
+   "宗像三女神"
+  ]
+ },
+ {
+  "id": "jinja_w533600358",
+  "name": "春日神社",
+  "by_deity": "inari",
+  "by_name": "kasuga",
+  "deities": [
+   "ウカノミタマ",
+   "天児屋命",
+   "天照大神",
+   "春日神"
+  ]
+ },
+ {
+  "id": "jinja_w801872156",
+  "name": "住吉神社",
+  "by_deity": "hachiman",
+  "by_name": "sumiyoshi",
+  "deities": [
+   "住吉三神",
+   "八幡神",
+   "神功皇后"
+  ]
+ },
+ {
+  "id": "jinja_n10958611494",
+  "name": "玉津島神社",
+  "by_deity": "hachiman",
+  "by_name": "gion_yasaka",
+  "deities": [
+   "神功皇后",
+   "稚日女尊",
+   "衣通姫"
+  ]
+ },
+ {
+  "id": "jinja_w934540615",
+  "name": "熊野大社",
+  "by_deity": "gion_yasaka",
+  "by_name": "kumano",
+  "deities": [
+   "素戔嗚尊"
   ]
  }
 ]

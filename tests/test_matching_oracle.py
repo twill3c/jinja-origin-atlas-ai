@@ -18,7 +18,7 @@ import pytest
 from etl.entity_resolution import AUTO_THRESHOLD, match_score, resolve
 from quality.calibrate_matching import build_oracle, load_osm, split
 
-CATALOG = pathlib.Path("public/data/catalog/shrines.min.json")
+CATALOG = pathlib.Path("data/interim/catalog_osm.json")
 RAW_WD = pathlib.Path("data/raw/wikidata/core.json")
 
 pytestmark = pytest.mark.skipif(

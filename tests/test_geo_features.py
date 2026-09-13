@@ -43,6 +43,91 @@ def test_t083_prefecture_crs_table():
     assert len({PREF_CRS["東京都"], PREF_CRS["京都府"], PREF_CRS["山梨県"]}) == 3
 
 
+@pytest.mark.validation
+def test_t120_elevation_coverage_is_complete_and_losses_are_counted():
+    """T-120: 標高が全カタログを覆い、取れなかったものを数えていること。
+
+    河川では `except: continue` のせいで 2 県がまるごと欠けたまま通っていた(HC-263)。
+    標高には同じ握りつぶしは無いが、**検査が無ければ同じことが起きても気づけない**ので、
+    こちらにも被覆の検査を置く。**県ごとに 1 件も取れていない県が無いこと**まで見る。
+    """
+    import json
+    import pathlib
+
+    p = pathlib.Path("data/interim/elevation.json")
+    cat = pathlib.Path("data/interim/catalog_osm.json")
+    if not (p.exists() and cat.exists()):
+        pytest.skip("標高かカタログがまだ無い")
+    d = json.loads(p.read_text(encoding="utf-8"))
+    recs = json.loads(cat.read_text(encoding="utf-8"))["shrines"]
+    ele = d["elevation"]
+
+    assert set(ele) == {r["id"] for r in recs}, (
+        f"標高の件数がカタログと合わない(標高 {len(ele)} / カタログ {len(recs)})"
+    )
+    # 取れなかったものは黙って null にせず、層別の内訳として数えられていること
+    assert sum(d["by_layer"].values()) == len(ele)
+    for sid, v in ele.items():
+        if v["elevation_m"] is None:
+            assert v["source"] is None, f"{sid}: 標高が無いのに層が付いている"
+
+    # 県ごとに 1 件も取れていない県が無いこと(地域がまるごと欠ける故障を捕まえる)
+    got_by_pref: dict[str, int] = {}
+    total_by_pref: dict[str, int] = {}
+    for r in recs:
+        c = r["location"]["pref_code"]
+        total_by_pref[c] = total_by_pref.get(c, 0) + 1
+        if ele[r["id"]]["elevation_m"] is not None:
+            got_by_pref[c] = got_by_pref.get(c, 0) + 1
+    empty = sorted(c for c in total_by_pref if got_by_pref.get(c, 0) == 0)
+    assert empty == [], f"標高が 1 件も取れていない県がある: {empty}"
+
+
+@pytest.mark.validation
+def test_t119_river_coverage_is_complete_and_losses_are_counted():
+    """T-119: 河川の読み込みが 47 県すべてを覆い、落としたものを数えていること。
+
+    **県がまるごと欠けても、下流からは「近くに川が無かった」と区別が付かない。**
+    実際、`except FileNotFoundError: continue` のせいで北海道と島根の河川が
+    黙って欠けたまま通っていた(2026-09-12)。被覆そのものを検査する。
+    """
+    import json
+    import pathlib
+
+    p = pathlib.Path("data/interim/river_distance.json")
+    if not p.exists():
+        pytest.skip("河川距離がまだ計算されていない")
+    d = json.loads(p.read_text(encoding="utf-8"))
+
+    from etl.prefectures import PREF_CODE_NAME
+
+    assert set(d["streams_per_pref"]) == set(PREF_CODE_NAME), (
+        "河川を読めていない県がある: "
+        f"{sorted(set(PREF_CODE_NAME) - set(d['streams_per_pref']))}"
+    )
+    for code, n in d["streams_per_pref"].items():
+        assert n > 0, f"{code}: 流路が 0 本"
+    # 落としたものは黙って消さず、欄として残っていること(0 件でも欄はある)
+    assert isinstance(d["invalid_geometries_dropped"], dict)
+    assert d["shrines_without_pref"] == 0, f"県コードの無い神社が {d['shrines_without_pref']} 件"
+
+
+@pytest.mark.unit
+def test_t083b_utm_table_matches_plane_origins():
+    """T-083: 平面直角座標系 → UTM の表を、pyproj の定義(原点経度・帯番号)と突き合わせる。
+
+    **番号を記憶で書いた表は、隣の番号も実在するので黙って動く。** 最初の版は注記が
+    1 帯ずれ、II 系を 53N に割り当てていた(2026-09-10)。表の値を実物に当てて確かめる。
+    """
+    from pyproj import CRS
+
+    for plane, utm in UTM_CRS.items():
+        lon0 = CRS.from_user_input(plane).to_dict()["lon_0"]
+        want_zone = int((lon0 + 180.0) // 6.0) + 1
+        got_zone = CRS.from_user_input(utm).to_dict()["zone"]
+        assert got_zone == want_zone, f"{plane}(原点 {lon0}E)→ {utm} は {got_zone} 帯。正しくは {want_zone}"
+
+
 @pytest.mark.unit
 def test_t084_two_projections_agree():
     """T-084 二経路一致: 平面直角座標系と UTM で同じ河川・同じ距離になる。

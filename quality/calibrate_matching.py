@@ -23,7 +23,7 @@ from typing import Any
 from etl.entity_resolution import match_score, resolve
 from etl.wikidata_records import load_oracle_pairs, load_records
 
-CATALOG = pathlib.Path("public/data/catalog/shrines.min.json")
+CATALOG = pathlib.Path("data/interim/catalog_osm.json")  # 名寄せ前の OSM レコード
 REPORT = pathlib.Path("data/reports/matching_calibration.json")
 
 

@@ -1,0 +1,139 @@
+製品ページから 47 都道府県ぶんのリンクを検出
+  01: W05-09 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-09/W05-09_01_GML.zip
+  01: 74.0 MB 展開 (13.2s)
+  02: W05-07 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-07/W05-07_02_GML.zip
+  02: 7.3 MB 展開 (1.4s)
+  03: W05-07 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-07/W05-07_03_GML.zip
+  03: 10.9 MB 展開 (1.9s)
+  04: W05-07 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-07/W05-07_04_GML.zip
+  04: 5.2 MB 展開 (1.1s)
+  05: W05-07 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-07/W05-07_05_GML.zip
+  05: 10.1 MB 展開 (2.3s)
+  06: W05-07 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-07/W05-07_06_GML.zip
+  06: 8.0 MB 展開 (1.5s)
+  07: W05-07 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-07/W05-07_07_GML.zip
+  07: 11.4 MB 展開 (2.1s)
+  08: W05-08 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-08/W05-08_08_GML.zip
+  08: 2.6 MB 展開 (0.7s)
+  09: W05-08 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-08/W05-08_09_GML.zip
+  09: 4.8 MB 展開 (1.1s)
+  10: W05-08 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-08/W05-08_10_GML.zip
+  10: 4.8 MB 展開 (1.0s)
+  11: W05-08 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-08/W05-08_11_GML.zip
+  11: 4.1 MB 展開 (1.1s)
+  12: W05-08 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-08/W05-08_12_GML.zip
+  12: 2.9 MB 展開 (0.7s)
+  13: 展開済み(data\raw\ksj\W05\13)
+  14: W05-08 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-08/W05-08_14_GML.zip
+  14: 1.9 MB 展開 (0.4s)
+  15: W05-07 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-07/W05-07_15_GML.zip
+  15: 11.0 MB 展開 (2.4s)
+  16: W05-07 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-07/W05-07_16_GML.zip
+  16: 3.5 MB 展開 (0.8s)
+  17: W05-07 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-07/W05-07_17_GML.zip
+  17: 3.1 MB 展開 (0.7s)
+  18: W05-07 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-07/W05-07_18_GML.zip
+  18: 2.9 MB 展開 (0.6s)
+  19: 展開済み(data\raw\ksj\W05\19)
+  20: W05-08 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-08/W05-08_20_GML.zip
+  20: 10.4 MB 展開 (2.3s)
+  21: W05-08 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-08/W05-08_21_GML.zip
+  21: 8.3 MB 展開 (1.5s)
+  22: W05-08 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-08/W05-08_22_GML.zip
+  22: 6.8 MB 展開 (1.2s)
+  23: W05-08 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-08/W05-08_23_GML.zip
+  23: 4.6 MB 展開 (1.7s)
+  24: W05-08 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-08/W05-08_24_GML.zip
+  24: 5.5 MB 展開 (1.2s)
+  25: W05-09 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-09/W05-09_25_GML.zip
+  25: 3.2 MB 展開 (0.7s)
+  26: 展開済み(data\raw\ksj\W05\26)
+  27: W05-09 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-09/W05-09_27_GML.zip
+  27: 1.6 MB 展開 (0.5s)
+  28: W05-09 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-09/W05-09_28_GML.zip
+  28: 6.5 MB 展開 (1.5s)
+  29: W05-09 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-09/W05-09_29_GML.zip
+  29: 3.6 MB 展開 (0.8s)
+  30: W05-09 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-09/W05-09_30_GML.zip
+  30: 5.4 MB 展開 (1.1s)
+  31: W05-08 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-08/W05-08_31_GML.zip
+  31: 2.7 MB 展開 (0.7s)
+  32: W05-08 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-08/W05-08_32_GML.zip
+  32: 5.5 MB 展開 (1.3s)
+  33: W05-08 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-08/W05-08_33_GML.zip
+  33: 5.5 MB 展開 (1.6s)
+  34: W05-08 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-08/W05-08_34_GML.zip
+  34: 5.7 MB 展開 (1.3s)
+  35: W05-08 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-08/W05-08_35_GML.zip
+  35: 5.1 MB 展開 (1.4s)
+  36: W05-06 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-06/W05-06_36_GML.zip
+  36: 3.3 MB 展開 (0.8s)
+  37: W05-06 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-06/W05-06_37_GML.zip
+  37: 1.4 MB 展開 (0.5s)
+  38: W05-06 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-06/W05-06_38_GML.zip
+  38: 4.1 MB 展開 (1.0s)
+  39: W05-06 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-06/W05-06_39_GML.zip
+  39: 6.0 MB 展開 (1.7s)
+  40: W05-07 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-07/W05-07_40_GML.zip
+  40: 3.8 MB 展開 (1.0s)
+  41: W05-07 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-07/W05-07_41_GML.zip
+  41: 2.4 MB 展開 (0.7s)
+  42: W05-07 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-07/W05-07_42_GML.zip
+  42: 2.8 MB 展開 (0.8s)
+  43: W05-07 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-07/W05-07_43_GML.zip
+  43: 7.2 MB 展開 (1.9s)
+  44: W05-07 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-07/W05-07_44_GML.zip
+  44: 6.1 MB 展開 (1.5s)
+  45: W05-07 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-07/W05-07_45_GML.zip
+  45: 6.6 MB 展開 (1.6s)
+  46: W05-07 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-07/W05-07_46_GML.zip
+  46: 5.8 MB 展開 (1.3s)
+  47: W05-07 を取得 https://nlftp.mlit.go.jp/ksj/gml/data/W05/W05-07/W05-07_47_GML.zip
+  47: 1.4 MB 展開 (0.4s)
+→ data\raw\ksj\W05\01  (8 ファイル) 例: ['KS-META-W05-09_01-g.xml', 'W05-09_01-g.xml', 'W05-09_01-g_RiverNode.dbf', 'W05-09_01-g_RiverNode.shp']
+→ data\raw\ksj\W05\02  (8 ファイル) 例: ['KS-META-W05-07_02-g.xml', 'W05-07_02-g.xml', 'W05-07_02-g_RiverNode.dbf', 'W05-07_02-g_RiverNode.shp']
+→ data\raw\ksj\W05\03  (8 ファイル) 例: ['KS-META-W05-07_03-g.xml', 'W05-07_03-g.xml', 'W05-07_03-g_RiverNode.dbf', 'W05-07_03-g_RiverNode.shp']
+→ data\raw\ksj\W05\04  (8 ファイル) 例: ['KS-META-W05-07_04-g.xml', 'W05-07_04-g.xml', 'W05-07_04-g_RiverNode.dbf', 'W05-07_04-g_RiverNode.shp']
+→ data\raw\ksj\W05\05  (8 ファイル) 例: ['KS-META-W05-07_05-g.xml', 'W05-07_05-g.xml', 'W05-07_05-g_RiverNode.dbf', 'W05-07_05-g_RiverNode.shp']
+→ data\raw\ksj\W05\06  (8 ファイル) 例: ['KS-META-W05-07_06-g.xml', 'W05-07_06-g.xml', 'W05-07_06-g_RiverNode.dbf', 'W05-07_06-g_RiverNode.shp']
+→ data\raw\ksj\W05\07  (8 ファイル) 例: ['KS-META-W05-07_07-g.xml', 'W05-07_07-g.xml', 'W05-07_07-g_RiverNode.dbf', 'W05-07_07-g_RiverNode.shp']
+→ data\raw\ksj\W05\08  (8 ファイル) 例: ['KS-META-W05-08_08-g.xml', 'W05-08_08-g.xml', 'W05-08_08-g_RiverNode.dbf', 'W05-08_08-g_RiverNode.shp']
+→ data\raw\ksj\W05\09  (8 ファイル) 例: ['KS-META-W05-08_09-g.xml', 'W05-08_09-g.xml', 'W05-08_09-g_RiverNode.dbf', 'W05-08_09-g_RiverNode.shp']
+→ data\raw\ksj\W05\10  (8 ファイル) 例: ['KS-META-W05-08_10-g.xml', 'W05-08_10-g.xml', 'W05-08_10-g_RiverNode.dbf', 'W05-08_10-g_RiverNode.shp']
+→ data\raw\ksj\W05\11  (8 ファイル) 例: ['KS-META-W05-08_11-g.xml', 'W05-08_11-g.xml', 'W05-08_11-g_RiverNode.dbf', 'W05-08_11-g_RiverNode.shp']
+→ data\raw\ksj\W05\12  (8 ファイル) 例: ['KS-META-W05-08_12-g.xml', 'W05-08_12-g.xml', 'W05-08_12-g_RiverNode.dbf', 'W05-08_12-g_RiverNode.shp']
+→ data\raw\ksj\W05\13  (8 ファイル) 例: ['KS-META-W05-08_13-g.xml', 'W05-08_13-g.xml', 'W05-08_13-g_RiverNode.dbf', 'W05-08_13-g_RiverNode.shp']
+→ data\raw\ksj\W05\14  (8 ファイル) 例: ['KS-META-W05-08_14-g.xml', 'W05-08_14-g.xml', 'W05-08_14-g_RiverNode.dbf', 'W05-08_14-g_RiverNode.shp']
+→ data\raw\ksj\W05\15  (8 ファイル) 例: ['KS-META-W05-07_15-g.xml', 'W05-07_15-g.xml', 'W05-07_15-g_RiverNode.dbf', 'W05-07_15-g_RiverNode.shp']
+→ data\raw\ksj\W05\16  (8 ファイル) 例: ['KS-META-W05-07_16-g.xml', 'W05-07_16-g.xml', 'W05-07_16-g_RiverNode.dbf', 'W05-07_16-g_RiverNode.shp']
+→ data\raw\ksj\W05\17  (8 ファイル) 例: ['KS-META-W05-07_17-g.xml', 'W05-07_17-g.xml', 'W05-07_17-g_RiverNode.dbf', 'W05-07_17-g_RiverNode.shp']
+→ data\raw\ksj\W05\18  (8 ファイル) 例: ['KS-META-W05-07_18-g.xml', 'W05-07_18-g.xml', 'W05-07_18-g_RiverNode.dbf', 'W05-07_18-g_RiverNode.shp']
+→ data\raw\ksj\W05\19  (8 ファイル) 例: ['KS-META-W05-08_19-g.xml', 'W05-08_19-g.xml', 'W05-08_19-g_RiverNode.dbf', 'W05-08_19-g_RiverNode.shp']
+→ data\raw\ksj\W05\20  (8 ファイル) 例: ['KS-META-W05-08_20-g.xml', 'W05-08_20-g.xml', 'W05-08_20-g_RiverNode.dbf', 'W05-08_20-g_RiverNode.shp']
+→ data\raw\ksj\W05\21  (8 ファイル) 例: ['KS-META-W05-08_21-g.xml', 'W05-08_21-g.xml', 'W05-08_21-g_RiverNode.dbf', 'W05-08_21-g_RiverNode.shp']
+→ data\raw\ksj\W05\22  (8 ファイル) 例: ['KS-META-W05-08_22-g.xml', 'W05-08_22-g.xml', 'W05-08_22-g_RiverNode.dbf', 'W05-08_22-g_RiverNode.shp']
+→ data\raw\ksj\W05\23  (8 ファイル) 例: ['KS-META-W05-08_23-g.xml', 'W05-08_23-g.xml', 'W05-08_23-g_RiverNode.dbf', 'W05-08_23-g_RiverNode.shp']
+→ data\raw\ksj\W05\24  (8 ファイル) 例: ['KS-META-W05-08_24-g.xml', 'W05-08_24-g.xml', 'W05-08_24-g_RiverNode.dbf', 'W05-08_24-g_RiverNode.shp']
+→ data\raw\ksj\W05\25  (8 ファイル) 例: ['KS-META-W05-09_25-g.xml', 'W05-09_25-g.xml', 'W05-09_25-g_RiverNode.dbf', 'W05-09_25-g_RiverNode.shp']
+→ data\raw\ksj\W05\26  (8 ファイル) 例: ['KS-META-W05-09_26-g.xml', 'W05-09_26-g.xml', 'W05-09_26-g_RiverNode.dbf', 'W05-09_26-g_RiverNode.shp']
+→ data\raw\ksj\W05\27  (8 ファイル) 例: ['KS-META-W05-09_27-g.xml', 'W05-09_27-g.xml', 'W05-09_27-g_RiverNode.dbf', 'W05-09_27-g_RiverNode.shp']
+→ data\raw\ksj\W05\28  (8 ファイル) 例: ['KS-META-W05-09_28-g.xml', 'W05-09_28-g.xml', 'W05-09_28-g_RiverNode.dbf', 'W05-09_28-g_RiverNode.shp']
+→ data\raw\ksj\W05\29  (8 ファイル) 例: ['KS-META-W05-09_29-g.xml', 'W05-09_29-g.xml', 'W05-09_29-g_RiverNode.dbf', 'W05-09_29-g_RiverNode.shp']
+→ data\raw\ksj\W05\30  (8 ファイル) 例: ['KS-META-W05-09_30-g.xml', 'W05-09_30-g.xml', 'W05-09_30-g_RiverNode.dbf', 'W05-09_30-g_RiverNode.shp']
+→ data\raw\ksj\W05\31  (8 ファイル) 例: ['KS-META-W05-08_31-g.xml', 'W05-08_31-g.xml', 'W05-08_31-g_RiverNode.dbf', 'W05-08_31-g_RiverNode.shp']
+→ data\raw\ksj\W05\32  (8 ファイル) 例: ['KS-META-W05-08_32-g.xml', 'W05-08_32-g.xml', 'W05-08_32-g_RiverNode.dbf', 'W05-08_32-g_RiverNode.shp']
+→ data\raw\ksj\W05\33  (8 ファイル) 例: ['KS-META-W05-08_33-g.xml', 'W05-08_33-g.xml', 'W05-08_33-g_RiverNode.dbf', 'W05-08_33-g_RiverNode.shp']
+→ data\raw\ksj\W05\34  (8 ファイル) 例: ['KS-META-W05-08_34-g.xml', 'W05-08_34-g.xml', 'W05-08_34-g_RiverNode.dbf', 'W05-08_34-g_RiverNode.shp']
+→ data\raw\ksj\W05\35  (8 ファイル) 例: ['KS-META-W05-08_35-g.xml', 'W05-08_35-g.xml', 'W05-08_35-g_RiverNode.dbf', 'W05-08_35-g_RiverNode.shp']
+→ data\raw\ksj\W05\36  (8 ファイル) 例: ['KS-META-W05-06_36-g.xml', 'W05-06_36-g.xml', 'W05-06_36-g_RiverNode.dbf', 'W05-06_36-g_RiverNode.shp']
+→ data\raw\ksj\W05\37  (8 ファイル) 例: ['KS-META-W05-06_37-g.xml', 'W05-06_37-g.xml', 'W05-06_37-g_RiverNode.dbf', 'W05-06_37-g_RiverNode.shp']
+→ data\raw\ksj\W05\38  (8 ファイル) 例: ['KS-META-W05-06_38-g.xml', 'W05-06_38-g.xml', 'W05-06_38-g_RiverNode.dbf', 'W05-06_38-g_RiverNode.shp']
+→ data\raw\ksj\W05\39  (8 ファイル) 例: ['KS-META-W05-06_39-g.xml', 'W05-06_39-g.xml', 'W05-06_39-g_RiverNode.dbf', 'W05-06_39-g_RiverNode.shp']
+→ data\raw\ksj\W05\40  (8 ファイル) 例: ['KS-META-W05-07_40-g.xml', 'W05-07_40-g.xml', 'W05-07_40-g_RiverNode.dbf', 'W05-07_40-g_RiverNode.shp']
+→ data\raw\ksj\W05\41  (8 ファイル) 例: ['KS-META-W05-07_41-g.xml', 'W05-07_41-g.xml', 'W05-07_41-g_RiverNode.dbf', 'W05-07_41-g_RiverNode.shp']
+→ data\raw\ksj\W05\42  (8 ファイル) 例: ['KS-META-W05-07_42-g.xml', 'W05-07_42-g.xml', 'W05-07_42-g_RiverNode.dbf', 'W05-07_42-g_RiverNode.shp']
+→ data\raw\ksj\W05\43  (8 ファイル) 例: ['KS-META-W05-07_43-g.xml', 'W05-07_43-g.xml', 'W05-07_43-g_RiverNode.dbf', 'W05-07_43-g_RiverNode.shp']
+→ data\raw\ksj\W05\44  (8 ファイル) 例: ['KS-META-W05-07_44-g.xml', 'W05-07_44-g.xml', 'W05-07_44-g_RiverNode.dbf', 'W05-07_44-g_RiverNode.shp']
+→ data\raw\ksj\W05\45  (8 ファイル) 例: ['KS-META-W05-07_45-g.xml', 'W05-07_45-g.xml', 'W05-07_45-g_RiverNode.dbf', 'W05-07_45-g_RiverNode.shp']
+→ data\raw\ksj\W05\46  (8 ファイル) 例: ['KS-META-W05-07_46-g.xml', 'W05-07_46-g.xml', 'W05-07_46-g_RiverNode.dbf', 'W05-07_46-g_RiverNode.shp']
+→ data\raw\ksj\W05\47  (8 ファイル) 例: ['KS-META-W05-07_47-g.xml', 'W05-07_47-g.xml', 'W05-07_47-g_RiverNode.dbf', 'W05-07_47-g_RiverNode.shp']

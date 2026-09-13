@@ -25,7 +25,9 @@ app-menu(フリートの玄関口)にも掲載: https://app-menu-amber.vercel.ap
 | ✅ | 名寄せ(OSM × Wikidata)。非循環オラクル 825 組で較正 |
 | ✅ | 標高(国土地理院 DEM)・最寄り河川距離(国土数値情報 W05)・統計画面 |
 | ✅ | Embedding・類似神社 Top20・12 モチーフ・HDBSCAN・UMAP |
-| 🚧 | 全国 40,776 件への展開(いまは東京都・京都府・山梨県の 3,152 件) |
+| ✅ | **全国 47 都道府県 40,792 件**の位置・属性・系統(県ごとのチャンク配信 + クライアント描画) |
+| ✅ | 全国の標高 40,787 件・最寄り河川距離 40,652 件(島嶼部など 10 km 超の 140 件は理由つきで空欄) |
+| 🚧 | 全国の AI 由緒分析(いまは 701 件。ja.wikipedia 記事は全国で 6,145 件) |
 
 ## Architecture
 
@@ -74,17 +76,17 @@ uv sync --group dev
 ## ETL
 
 ```bash
-python -m etl.fetch_osm              # 段階 1: 東京都・京都府・山梨県
-python -m etl.fetch_osm --all-japan  # 段階 3: 全国(40,776 件)
-python -m export.build_geojson       # 公開 GeoJSON / カタログ / ビルドレポート
+python -m etl.fetch_osm                                   # 段階 1: 東京都・京都府・山梨県
+python -m etl.fetch_osm --all-prefectures --skip-existing  # 段階 3: 47 都道府県を 1 県ずつ
+python -m export.build_geojson       # 県の帰属つき OSM カタログ(data/interim/)と GeoJSON
 
 python -m etl.fetch_wikidata         # 祭神・社格・成立日・母院ほか(9 クエリ)
 python -m etl.fetch_elevation        # 国土地理院 DEM(タイルはディスクにキャッシュ)
-python -m etl.fetch_rivers           # 国土数値情報 W05
+python -m etl.fetch_rivers --all     # 国土数値情報 W05(47 都道府県)
 python -m etl.river_distance         # 最寄り河川距離(二経路で照合)
 python -m etl.fetch_wikipedia        # 由緒本文(版 ID つき。本文は配らない)
 python -m ml.pipeline                # 埋め込み・モチーフ・クラスタ・UMAP・類似
-python -m export.build_public        # 結合して公開アーティファクトを作る
+python -m export.build_public        # 結合 → 都道府県チャンク + 索引(D-06)
 
 python -m quality.calibrate_matching  # 名寄せ閾値の較正(較正半分だけを見る)
 python -m quality.motif_vs_geography  # モチーフと地理条件の照合(循環しない)
@@ -92,6 +94,17 @@ python -m quality.motif_vs_geography  # モチーフと地理条件の照合(循
 
 Overpass の公共インスタンスは連続投入で 429 を返す(2026-09-08 実測)。
 `etl/fetch_osm.py` は指数バックオフで待ち直す。`OVERPASS_ENDPOINT` で差し替えられる。
+
+**県ごとに取る理由**(D-06): OSM の `addr:province` は 3 都府県で 162/3,152 件にしか
+付いていなかった。県別に問い合わせれば、県の帰属は取得の経路からそのまま決まる。
+県境の神社は二つの県に返るので、最初の県に帰属させて重複として数える。
+
+**全カタログは配らない**(D-06)。全国では 33.7 MB になる。配るのは都道府県チャンク
+`public/data/shrines/NN.json` と索引 `public/data/shrines/index.json`、
+それに類似の相手だけを集めた `public/data/similar/NN.json`。
+**類似を県チャンクに同居させない** —— 東京都で測ると欄の 52.6% を占め、詳細を見るだけの人に
+要らないものを配ることになる(分離で 3.99 MB → 1.97 MB)。
+全カタログは検査と下流の ETL のために `data/interim/catalog_full.json` に置く。
 
 ## Development
 

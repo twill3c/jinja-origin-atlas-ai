@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { shrineHref } from "@/lib/shrine-types";
 import maplibregl, { type Map as MapLibreMap } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 
@@ -21,11 +22,24 @@ const INITIAL = { center: [138.5, 37.0] as [number, number], zoom: 4.6 };
 const ACCENT = "#b7410e";
 const MUTED = "#8a8580";
 
-type Selected = { id: string; name: string | null; prefecture: string | null; family: string };
+type Selected = {
+  id: string;
+  name: string | null;
+  prefecture: string | null;
+  family: string;
+  p: string | null;
+};
 type Feature = {
   type: "Feature";
   geometry: { type: "Point"; coordinates: [number, number] };
-  properties: { id: string; name: string | null; prefecture: string | null; family: string };
+  properties: {
+    id: string;
+    name: string | null;
+    prefecture: string | null;
+    family: string;
+    p: string | null;
+    ai?: boolean;
+  };
 };
 type FamilyMeta = { labels: Record<string, string>; counts: Record<string, number> };
 
@@ -36,6 +50,7 @@ export default function JinjaMap({ families }: { families: FamilyMeta }) {
   const [selected, setSelected] = useState<Selected | null>(null);
   const [picked, setPicked] = useState<string[]>([]);
   const [count, setCount] = useState<number | null>(null);
+  const [aiCount, setAiCount] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const applyFilter = useCallback((keys: string[]) => {
@@ -171,6 +186,7 @@ export default function JinjaMap({ families }: { families: FamilyMeta }) {
               name: p.name ?? null,
               prefecture: p.prefecture ?? null,
               family: p.family ?? "unknown",
+              p: p.p ?? null,
             });
           }
         });
@@ -193,6 +209,7 @@ export default function JinjaMap({ families }: { families: FamilyMeta }) {
       .then((d) => {
         dataRef.current = d.features as Feature[];
         setCount(d.features.length);
+        setAiCount((d.features as Feature[]).filter((f) => f.properties.ai).length);
       })
       .catch((e) => setError(String(e)));
 
@@ -283,7 +300,8 @@ export default function JinjaMap({ families }: { families: FamilyMeta }) {
         {picked.length ? "強調中" : "表示中"}の神社:{" "}
         {count === null ? "読み込み中…" : `${shown.toLocaleString("ja-JP")} 件`}
         {picked.length > 0 && ` / 全 ${(count ?? 0).toLocaleString("ja-JP")} 件`}
-        {" ／ "}AI 由緒分析つき: 0 件(後続の実装で結合する)
+        {" ／ "}AI 由緒分析つき:{" "}
+        {aiCount === null ? "読み込み中…" : `${aiCount.toLocaleString("ja-JP")} 件`}
       </p>
       {selected && (
         <div className="band band-evidence" role="status">
@@ -297,12 +315,9 @@ export default function JinjaMap({ families }: { families: FamilyMeta }) {
           </p>
           <p style={{ margin: "0.2rem 0 0", fontSize: "0.8rem", color: "var(--ink-mute)" }}>
             ID: {selected.id} ／ 出典: OpenStreetMap
-            {selected.name && (
-              <>
-                {" ／ "}
-                <Link href={`/shrine/${selected.id}/`}>詳細を見る</Link>
-              </>
-            )}
+            {" ／ "}
+            {/* D-06 以後は全件に詳細がある(名称の無い神社も含む) */}
+            <Link href={shrineHref(selected.id, selected.p)}>詳細を見る</Link>
           </p>
         </div>
       )}

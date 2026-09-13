@@ -14,7 +14,7 @@ import pytest
 
 from export.build_geojson import in_japan
 
-CATALOG = pathlib.Path("public/data/catalog/shrines.min.json")
+CATALOG = pathlib.Path("data/interim/catalog_full.json")  # D-06: 公開物はチャンクに分かれた
 BUILD = pathlib.Path("public/data/meta/build.json")
 GEOJSON = pathlib.Path("public/data/osm/shrines.min.geojson")
 

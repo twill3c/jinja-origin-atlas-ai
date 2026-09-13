@@ -100,10 +100,19 @@ def fetch_japan(client: httpx.Client | None = None) -> dict:
     return d
 
 
+#: 47 都道府県の ISO3166-2 コード。**都道府県ごとに取ると、どの県の神社かが取得の経路から
+#: そのまま決まる**(OSM の `addr:province` は 3 都府県で 162/3,152 件にしか付いていない)。
+ALL_PREF_AREAS = [f"JP-{i:02d}" for i in range(1, 48)]
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="OSM から神社を取得する")
     ap.add_argument("--area", action="append", help="ISO3166-2 コード(例 JP-13)。複数指定可")
-    ap.add_argument("--all-japan", action="store_true", help="全国を一度に取得する(段階 3)")
+    ap.add_argument("--all-prefectures", action="store_true",
+                    help="47 都道府県を 1 県ずつ取得する(段階 3)。県の帰属が経路から決まる")
+    ap.add_argument("--all-japan", action="store_true",
+                    help="全国を一度に取得する(県の帰属は付かない)")
+    ap.add_argument("--skip-existing", action="store_true", help="取得済みの県は取り直さない")
     ap.add_argument("--sleep", type=float, default=30.0, help="連続問い合わせの間隔(秒)")
     args = ap.parse_args(argv)
 
@@ -116,12 +125,21 @@ def main(argv: list[str] | None = None) -> int:
             print(f"→ {out}")
             return 0
 
-        areas = args.area or STAGE1_AREAS
-        for i, area in enumerate(areas):
-            if i:
+        areas = ALL_PREF_AREAS if args.all_prefectures else (args.area or STAGE1_AREAS)
+        fetched = 0
+        for area in areas:
+            out = RAW_DIR / f"shrines_overpass_{area}.json"
+            if args.skip_existing and out.exists():
+                print(f"  {area}: 取得済み(飛ばす)", file=sys.stderr)
+                continue
+            if fetched:
                 time.sleep(args.sleep)
             d = fetch_area(area, client=client)
-            out = RAW_DIR / f"shrines_overpass_{area}.json"
+            fetched += 1
+            # **0 件は障害として止める。** どの県にも神社はある。0 件が返ったら、
+            # それは「無い」ではなく area の指定が当たっていない(HC-075)。
+            if not d.get("elements"):
+                raise RuntimeError(f"{area}: 0 要素が返った。ISO3166-2 の area が当たっていない疑い")
             out.write_text(json.dumps(d, ensure_ascii=False), encoding="utf-8")
             print(f"→ {out}")
     return 0

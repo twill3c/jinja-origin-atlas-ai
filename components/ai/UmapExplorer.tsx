@@ -184,9 +184,9 @@ export default function UmapExplorer() {
               {" が上位のモチーフ"}
             </p>
             <p style={{ margin: "0.3rem 0 0", fontSize: "0.8rem", color: "var(--ink-mute)" }}>
-              <Link href={`/shrine/${hover.id}/`}>詳細</Link>
+              <Link href={`/shrine/?id=${hover.id}`}>詳細</Link>
               {" ／ "}
-              <Link href={`/similar/${hover.id}/`}>似た由緒</Link>
+              <Link href={`/similar/?id=${hover.id}`}>似た由緒</Link>
               {" ／ 由来: "}
               <a href={hover.source.url} rel="noreferrer" target="_blank">
                 {hover.source.title}

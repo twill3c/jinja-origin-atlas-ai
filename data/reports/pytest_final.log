@@ -1,0 +1,10 @@
+........................................................................ [ 43%]
+........................................................................ [ 87%]
+....................                                                     [100%]
+============================== warnings summary ===============================
+tests/test_geo_features.py::test_t083b_utm_table_matches_plane_origins
+  C:\_ClaudeCode\jinja-origin-atlas-ai\.venv\Lib\site-packages\pyproj\crs\crs.py:1295: UserWarning: You will likely lose important projection information when converting to a PROJ string from another format. See: https://proj.org/faq.html#what-is-the-best-format-for-describing-coordinate-reference-systems
+    proj = self._crs.to_proj4(version=version)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+164 passed, 2 deselected, 1 warning in 70.43s (0:01:10)

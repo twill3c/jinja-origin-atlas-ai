@@ -1,6 +1,6 @@
 {
- "stamp": "94527549c91b16bc165141492d7b8ac7",
- "generated_at": "2026-09-14T12:19:25.815Z",
+ "stamp": "e947d63415f21e5143fcb6d8eda7241f",
+ "generated_at": "2026-09-14T22:08:59.675Z",
  "files": [
   {
    "file": "components/common/SiteChrome.tsx",
@@ -126,7 +126,7 @@
    "file": "public/data/meta/build.json",
    "present": true,
    "bytes": 2095,
-   "sha256": "27a60ca92a321b75"
+   "sha256": "8d824a6821aefc9c"
   },
   {
    "file": "public/data/shrines/index.json",
@@ -173,8 +173,8 @@
   {
    "file": "public/data/shrines/01.json",
    "present": true,
-   "bytes": 882744,
-   "sha256": "797b2b8093e031b5"
+   "bytes": 878210,
+   "sha256": "9f513570f5ce7222"
   },
   {
    "file": "public/data/shrines/02.json",

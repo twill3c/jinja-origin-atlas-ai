@@ -39,3 +39,14 @@ markers = [
 ]
 addopts = "-m 'not network'"
 pythonpath = ["."]
+
+# Linux(GitHub Actions のランナー)では CPU 版の torch を使う(D-09)。
+# PyPI の Linux 版 torch は CUDA の依存(nvidia-* 43 個、数 GB)を引き、ランナーでは使わない。
+# Windows(手元)は PyPI の torch が元から CPU 版なので、印で Linux だけに限る。
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu", marker = "sys_platform == 'linux'" }]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true

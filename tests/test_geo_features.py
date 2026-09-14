@@ -10,6 +10,7 @@
   ここでは**選ばれた河川**という経路も比べている)
 """
 import math
+import re
 
 import pytest
 
@@ -98,6 +99,8 @@ def test_t119_river_coverage_is_complete_and_losses_are_counted():
     if not p.exists():
         pytest.skip("河川距離がまだ計算されていない")
     d = json.loads(p.read_text(encoding="utf-8"))
+    if d.get("mode") == "incremental":
+        pytest.skip("増分で計算した報告(T-134 が見る)")
 
     from etl.prefectures import PREF_CODE_NAME
 
@@ -197,3 +200,46 @@ def test_distance_matches_closed_form_on_a_meridian():
     r = nearest_river((135.0, lat0), rivers, "EPSG:6674")
     assert 1852.0 * 0.995 <= r.distance_m <= 1852.0 * 1.005, r.distance_m
     assert not math.isnan(r.distance_m)
+
+
+#: 日本語の河川名に現れるはずのない字(Latin-1 補助)。Shift_JIS を ISO-8859-1 で読むとここに落ちる
+LATIN1 = re.compile("[" + chr(0x80) + "-" + chr(0xFF) + "]")
+
+
+def garbled_names(names):
+    return [n for n in names if n and LATIN1.search(n)]
+
+
+@pytest.mark.unit
+def test_t137_positive_control_detects_shift_jis_read_as_latin1():
+    """T-137 陽性対照: Shift_JIS のバイト列を ISO-8859-1 で読んだ名前を検出する。正しい名前は通す。"""
+    wrong = "亀田川".encode("cp932").decode("latin-1")
+    assert garbled_names([wrong, "亀田川", "名称不明", None]) == [wrong]
+
+
+@pytest.mark.validation
+def test_t137_river_names_are_not_garbled():
+    """T-137: 河川名に符号化の取り違えが無い(河川距離の報告と、出荷した県チャンクの両方)。
+
+    W05 には .cpg が無く、読み手が dbf から符号化を推定する。北海道だけ ISO-8859-1 と推定され、
+    1,159 社の河川名が化けたまま、うち 1,130 社が本番の詳細画面に出ていた(loop_012 で発見)。
+    """
+    import glob
+    import json
+    import pathlib
+
+    p = pathlib.Path("data/interim/river_distance.json")
+    if not p.exists():
+        pytest.skip("河川距離がまだ計算されていない")
+    riv = json.loads(p.read_text(encoding="utf-8"))["river"]
+    names = [v.get("nearest_river_name") for v in riv.values()]
+    assert sum(1 for n in names if n) > 1000, "走査対象が少なすぎる"
+    bad = garbled_names(names)
+    assert bad == [], f"河川距離の報告に化けた河川名が {len(bad)} 件。例 {bad[:3]}"
+
+    shipped = []
+    for f in sorted(glob.glob("public/data/shrines/[0-9][0-9].json")):
+        for r in json.loads(pathlib.Path(f).read_text(encoding="utf-8"))["shrines"]:
+            shipped.append((r.get("geography") or {}).get("nearest_river_name"))
+    bad = garbled_names(shipped)
+    assert bad == [], f"出荷した県チャンクに化けた河川名が {len(bad)} 件。例 {bad[:3]}"

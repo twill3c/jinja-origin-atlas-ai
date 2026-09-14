@@ -1,0 +1,116 @@
+# 月次のデータ更新 —— SPEC D-09(人間の判断 2026-09-15)
+#
+# 公開データを作り直し、検査を通したうえで PR を開く。**main へ直接 push しない。**
+# 本番に出るのは、人間が PR を見てマージしたときだけ(これまで検査が緑のまま欠陥を通したことが 3 度ある)。
+#
+# 前提(GitHub の一次資料で確かめた):
+# - キャッシュは 7 日アクセスが無いと消える → 月次では毎回冷えた状態で走る。
+#   だから標高・河川距離は data/state/geo_state.jsonl の前回値を再利用し、新しい地物だけ測る
+# - ジョブは最長 6 時間
+# - 定期実行は毎時 0 分に遅延・取りこぼしがある → 23 分にずらす
+# - 公開リポジトリの定期実行は 60 日活動が無いと自動で無効になる → 止まっていないか時々確かめる
+name: monthly-data
+
+on:
+  schedule:
+    - cron: "23 18 1 * *" # 毎月 1 日 18:23 UTC(= 2 日 03:23 JST)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: monthly-data
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    env:
+      USER_AGENT: "JinjaOriginAtlasAI/0.2 (https://github.com/twill3c/jinja-origin-atlas-ai)"
+      HF_HOME: ${{ github.workspace }}/.hf
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: 依存を入れる
+        run: |
+          uv python install 3.12
+          uv sync --group dev --group gis --group ml
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: 前回の出荷物を控える(PR 本文の比較用)
+        run: |
+          mkdir -p "$RUNNER_TEMP/prev"
+          cp public/data/meta/build.json public/data/shrines/index.json "$RUNNER_TEMP/prev/"
+
+      - name: OSM(47 都道府県を 1 県ずつ)
+        run: uv run python -m etl.fetch_osm --all-prefectures
+
+      - name: OSM カタログ
+        run: uv run python -m export.build_geojson
+
+      - name: Wikidata
+        run: uv run python -m etl.fetch_wikidata
+
+      - name: 標高(前回値を再利用し、新しい・動いた地物だけ取る)
+        run: uv run python -m etl.fetch_elevation --reuse-from data/state/geo_state.jsonl
+
+      - name: 河川距離(計算に要る県の W05 だけ取る)
+        run: |
+          PREFS=$(uv run python -m etl.river_distance --reuse-from data/state/geo_state.jsonl --needed-prefs)
+          echo "要る県: ${PREFS:-(なし)}"
+          if [ -n "$PREFS" ]; then
+            ARGS=""
+            for p in $PREFS; do ARGS="$ARGS --pref $p"; done
+            uv run python -m etl.fetch_rivers $ARGS
+          fi
+          uv run python -m etl.river_distance --reuse-from data/state/geo_state.jsonl
+
+      - name: 状態ファイルを更新
+        run: uv run python -m etl.reuse_geography --write-state
+
+      - name: 結合(一巡目)→ 記事 → AI → 結合(二巡目)
+        run: |
+          uv run python -m export.build_public
+          uv run python -m etl.fetch_wikipedia
+          uv run python -m ml.pipeline
+          uv run python -m export.build_public
+          uv run python -m quality.motif_vs_geography
+
+      - name: 出荷ビルドと実ブラウザ検品
+        run: npm run verify
+
+      - name: pytest(出荷物に対する検査を含む)
+        run: uv run pytest -q
+
+      - name: PR を開く
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          MONTH=$(date -u +%Y-%m)
+          BR="data/monthly-$MONTH"
+          uv run python -m scripts.pr_summary --old-build "$RUNNER_TEMP/prev/build.json" \
+            --old-index "$RUNNER_TEMP/prev/index.json" > "$RUNNER_TEMP/pr.md"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BR"
+          git add public data/reports data/state
+          if git diff --cached --quiet; then
+            echo "公開データに変化なし。PR は開かない"
+            exit 0
+          fi
+          git commit -m "data: 月次のデータ更新 $MONTH"
+          git push --force origin "$BR"
+          gh pr create --base main --head "$BR" --title "data: 月次のデータ更新 $MONTH" \
+            --body-file "$RUNNER_TEMP/pr.md" || gh pr edit "$BR" --body-file "$RUNNER_TEMP/pr.md"

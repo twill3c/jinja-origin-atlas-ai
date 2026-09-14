@@ -22,6 +22,14 @@ const OUT = path.join(process.cwd(), "out");
 const SHOTS = path.join(process.cwd(), "artifacts", "screenshots");
 const WANT_SHOT = process.argv.includes("--shot");
 
+// 検品器全体の上限。どこかの待ちが終わらないと、結果を返さないまま止まり続ける
+// (loop_012 で地図の idle を待ったまま 15 分止まった)。止まったら落ちたと言って終わる。
+const WATCHDOG_MS = 20 * 60 * 1000;
+setTimeout(() => {
+  console.error(`検品 NG — 検品器が ${WATCHDOG_MS / 60000} 分を超えた(どこかの待ちが終わっていない)`);
+  process.exit(4);
+}, WATCHDOG_MS).unref();
+
 const MIME = {
   ".html": "text/html; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
@@ -129,7 +137,14 @@ async function main() {
     await page.evaluate((b) => {
       window.__jinjaMap.fitBounds(b, { padding: 40, animate: false });
     }, dataBounds);
-    await page.evaluate(() => new Promise((r) => window.__jinjaMap.once("idle", r)));
+    // once("idle") を登録する前に地図が落ち着いていると、idle は二度と来ずに永久に待つ(loop_012 で 15 分止まった)。
+    // 登録してから再描画を促し、それでも来なければ 15 秒で先へ進む(後の検査が状態を見て落ちる)
+    await page.evaluate(() => new Promise((r) => {
+      const m = window.__jinjaMap;
+      m.once("idle", r);
+      m.triggerRepaint();
+      setTimeout(r, 15000);
+    }));
     await page.waitForTimeout(800);
 
     // --- 幾何: 何が描かれたか(HC-138) -----------------------------------
@@ -180,7 +195,8 @@ async function main() {
     // 対照は「撃たない」形で静かに死ぬ(HC-222)。
     const controlDetects = await page.evaluate(async () => {
       const m = window.__jinjaMap;
-      const idle = () => new Promise((r) => m.once("idle", r));
+      // 登録してから再描画を促し、来なくても 15 秒で先へ進む(永久に待たない)
+      const idle = () => new Promise((r) => { m.once("idle", r); m.triggerRepaint(); setTimeout(r, 15000); });
       const before = m.queryRenderedFeatures({ layers: ["clusters"] }).length;
       m.setLayoutProperty("clusters", "visibility", "none");
       await idle();
@@ -216,7 +232,14 @@ async function main() {
     const label = await page.locator("fieldset label").first().innerText();
     await box.scrollIntoViewIfNeeded();
     await box.check();
-    await page.evaluate(() => new Promise((r) => window.__jinjaMap.once("idle", r)));
+    // once("idle") を登録する前に地図が落ち着いていると、idle は二度と来ずに永久に待つ(loop_012 で 15 分止まった)。
+    // 登録してから再描画を促し、それでも来なければ 15 秒で先へ進む(後の検査が状態を見て落ちる)
+    await page.evaluate(() => new Promise((r) => {
+      const m = window.__jinjaMap;
+      m.once("idle", r);
+      m.triggerRepaint();
+      setTimeout(r, 15000);
+    }));
     await page.waitForTimeout(600);
     // 内部の _data を覗かない。公開 API の querySourceFeatures / queryRenderedFeatures で見る(HC-080)。
     const hl = await page.evaluate(() => {
@@ -232,7 +255,14 @@ async function main() {
     check("強調が実際に描画されている", hl.rendered > 0, `凡例=${label.trim()} 描画=${hl.rendered}`);
 
     await box.uncheck();
-    await page.evaluate(() => new Promise((r) => window.__jinjaMap.once("idle", r)));
+    // once("idle") を登録する前に地図が落ち着いていると、idle は二度と来ずに永久に待つ(loop_012 で 15 分止まった)。
+    // 登録してから再描画を促し、それでも来なければ 15 秒で先へ進む(後の検査が状態を見て落ちる)
+    await page.evaluate(() => new Promise((r) => {
+      const m = window.__jinjaMap;
+      m.once("idle", r);
+      m.triggerRepaint();
+      setTimeout(r, 15000);
+    }));
     const cleared = await page.evaluate(() => ({
       rendered: window.__jinjaMap.queryRenderedFeatures({ layers: ["highlight-point"] }).length,
       clusterColor: window.__jinjaMap.getPaintProperty("clusters", "circle-color"),
@@ -564,7 +594,7 @@ async function main() {
           await page.evaluate(async () => {
             const m = window.__jinjaMap;
             m.resize();
-            await new Promise((r) => m.once("idle", r));
+            await new Promise((r) => { m.once("idle", r); m.triggerRepaint(); setTimeout(r, 15000); });
             await new Promise((r) => { m.triggerRepaint(); m.once("render", r); });
           });
           await page.waitForTimeout(1500);

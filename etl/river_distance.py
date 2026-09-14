@@ -59,6 +59,10 @@ TWO_PATH_REL_TOL = 2.0e-3
 TWO_PATH_ABS_TOL = 1.0
 
 
+#: 日本語の河川名に現れるはずのない字(Latin-1 補助)。Shift_JIS を ISO-8859-1 で読むとここに落ちる
+_LATIN1_SUPPLEMENT = "[" + chr(0x80) + "-" + chr(0xFF) + "]"  # 制御文字をソースに書かない
+
+
 def load_streams(code: str):
     """その県の流路を読む。:returns: (GeoDataFrame, 落とした退化幾何の数)
 
@@ -75,7 +79,15 @@ def load_streams(code: str):
     shps = sorted(glob.glob(str(W05_DIR / code / "**" / "*_Stream.shp"), recursive=True))
     if not shps:
         raise FileNotFoundError(f"{code}: Stream シェープファイルが無い。先に fetch_rivers を実行する")
-    g = pyogrio.read_dataframe(shps[0], on_invalid="ignore")
+    # **符号化を明示する。** W05 には .cpg が無く、読み手が dbf から推定する。北海道(01)だけ
+    # ISO-8859-1 と推定され、流路 49,157 本の名前がすべて化けたまま 1,130 社の詳細に出ていた
+    # (loop_012 で発見)。他の県は cp932 を明示しても名前が一字も変わらないことを確かめてある
+    g = pyogrio.read_dataframe(shps[0], on_invalid="ignore", encoding="cp932")
+    names = g[COL_RIVER_NAME].dropna().astype(str)
+    garbled = names[names.str.contains(_LATIN1_SUPPLEMENT)]
+    if len(garbled):
+        raise RuntimeError(f"{code}: 河川名 {len(garbled)} 件に Latin-1 の文字がある(符号化の取り違えの疑い)。"
+                           f"例 {list(garbled[:3])}")
     n_bad = int(g.geometry.isna().sum())
     if n_bad:
         g = g[g.geometry.notna()].copy()
@@ -97,39 +109,94 @@ def _bbox_hit(a: tuple[float, float, float, float], b: tuple[float, float, float
     return not (a[2] < b[0] or b[2] < a[0] or a[3] < b[1] or b[3] < a[1])
 
 
-def compute(sample_per_pref: int = 20) -> dict:
+BBOX_REF = pathlib.Path("data/reference/w05_stream_bbox.json")
+
+
+def _plan_incremental(recs: list[dict], reuse_from: pathlib.Path):
+    from etl.reuse_geography import load_previous, plan
+
+    return plan(recs, load_previous(reuse_from))
+
+
+def _candidates(rs: list[dict], bboxes: dict[str, tuple]) -> list[str]:
+    """神社ごとの小さな箱(周り SEARCH_PAD_DEG)に掛かる県の和集合。
+
+    県の神社をまとめた大きな箱で選ぶと、あいだにあるだけの県まで候補に入るので、神社ごとに選ぶ。
+    最寄り河川の上限は 10 km で、0.15 度の箱(南北 16.7 km、北緯 45 度でも東西 11.8 km)の外の県は答えを変えない。
+    **ただし実測では読む県は減らなかった**(無作為 30 社で 35 県のまま)。30 社が 22 県に散らばり、
+    神社ごとの箱が自分の県と隣の県(中央値 3 県)を拾うため。月次の新しい神社も全国に散る(SPEC §7.13)。
+    """
+    hit: set[str] = set()
+    for r in rs:
+        lon, lat = r["location"]["lon"], r["location"]["lat"]
+        box = (lon - SEARCH_PAD_DEG, lat - SEARCH_PAD_DEG, lon + SEARCH_PAD_DEG, lat + SEARCH_PAD_DEG)
+        hit |= {c for c, bb in bboxes.items() if _bbox_hit(box, tuple(bb))}
+    return sorted(hit)
+
+
+def needed_prefs(recs: list[dict], todo: set[str]) -> list[str]:
+    """計算する神社の候補になる県(= 読むべき W05)を、県ごとの流路の外接矩形の参照から決める。"""
+    ref = json.loads(BBOX_REF.read_text(encoding="utf-8"))["prefectures"]
+    by_pref: dict[str, list[dict]] = defaultdict(list)
+    for r in recs:
+        if r["id"] in todo and r["location"].get("pref_code"):
+            by_pref[r["location"]["pref_code"]].append(r)
+    boxes = {c: tuple(v["bbox"]) for c, v in ref.items()}
+    need: set[str] = set()
+    for rs in by_pref.values():
+        need |= set(_candidates(rs, boxes))
+    return sorted(need)
+
+
+def compute(sample_per_pref: int = 20, reuse_from: pathlib.Path | None = None) -> dict:
     import geopandas as gpd
     import pandas as pd
     from shapely.geometry import Point
 
     recs = json.loads(CATALOG.read_text(encoding="utf-8"))["shrines"]
+    best: dict[str, dict] = {}
+    todo_recs = recs
+    prefs_to_load = list(PREF_CODE_NAME)
+    if reuse_from is not None:
+        # D-09: ID と位置が変わらない地物は前回の値を引き継ぎ、残りだけを計算する
+        pl = _plan_incremental(recs, reuse_from)
+        best.update(pl.river_reuse)
+        todo = set(pl.river_todo)
+        todo_recs = [r for r in recs if r["id"] in todo]
+        prefs_to_load = needed_prefs(recs, todo)
     by_pref: dict[str, list[dict]] = defaultdict(list)
     no_pref = 0
-    for r in recs:
+    for r in todo_recs:
         c = r["location"].get("pref_code")
         if c:
             by_pref[c].append(r)
         else:
             no_pref += 1
+    if reuse_from is not None:
+        no_pref = sum(1 for r in recs if not r["location"].get("pref_code"))
 
-    # 川は全県ぶん一度だけ読み、県ごとの外接矩形(地理座標)を持っておく
+    # 川は要る県ぶん一度だけ読み、県ごとの外接矩形(地理座標)を持っておく
     t0 = time.time()
     streams = {}
     stream_bbox = {}
     invalid_dropped: dict[str, int] = {}
-    for code in PREF_CODE_NAME:
+    if reuse_from is not None:
+        # 候補の県は参照の外接矩形で選ぶ(読んでいない県の流路を開かずに済むように)
+        stream_bbox = {c: tuple(v["bbox"]) for c, v in
+                       json.loads(BBOX_REF.read_text(encoding="utf-8"))["prefectures"].items()}
+    for code in prefs_to_load:
         # **例外を握りつぶさない。** 県を飛ばすと、その県の神社に河川が付かないまま
         # 「距離なし」として通ってしまう(2026-09-12 に北海道と島根で実際に起きた)。
         g, n_bad = load_streams(code)
         streams[code] = g
         if n_bad:
             invalid_dropped[code] = n_bad
-        stream_bbox[code] = tuple(g.to_crs("EPSG:4326").total_bounds)
+        if reuse_from is None:
+            stream_bbox[code] = tuple(g.to_crs("EPSG:4326").total_bounds)
     print(f"  W05: {len(streams)} 県 {sum(len(g) for g in streams.values())} 本 "
           f"/ 退化した幾何を落とした {sum(invalid_dropped.values())} 本 "
           f"({time.time() - t0:.0f}s)", file=sys.stderr)
 
-    best: dict[str, dict] = {}
     candidates_used: dict[str, list[str]] = {}
     disagreements: list[dict] = []
     checked = 0
@@ -143,9 +210,7 @@ def compute(sample_per_pref: int = 20) -> dict:
             geometry=[Point(r["location"]["lon"], r["location"]["lat"]) for r in rs],
             crs="EPSG:4326",
         )
-        x0, y0, x1, y1 = pts4326.total_bounds
-        box = (x0 - SEARCH_PAD_DEG, y0 - SEARCH_PAD_DEG, x1 + SEARCH_PAD_DEG, y1 + SEARCH_PAD_DEG)
-        cand = [c for c, bb in stream_bbox.items() if _bbox_hit(box, bb)]
+        cand = _candidates(rs, stream_bbox)
         candidates_used[code] = cand
         if not cand:
             continue
@@ -192,7 +257,8 @@ def compute(sample_per_pref: int = 20) -> dict:
 
     # 上限を超えたものは「川が無い」として理由つきで落とす。**黙って捨てない。**
     beyond = sorted((v["nearest_river_distance_m"], k) for k, v in best.items()
-                    if v["nearest_river_distance_m"] > MAX_MEANINGFUL_M)
+                    if v["nearest_river_distance_m"] is not None
+                    and v["nearest_river_distance_m"] > MAX_MEANINGFUL_M)
     for _, k in beyond:
         best[k] = {
             "nearest_river_distance_m": None, "nearest_river_name": None,
@@ -215,16 +281,33 @@ def compute(sample_per_pref: int = 20) -> dict:
         "candidate_prefs": candidates_used,
         "two_path_checked": checked,
         "two_path_disagreements": disagreements,
+        "mode": "incremental" if reuse_from is not None else "full",
+        "reused": sum(1 for v in best.values() if v.get("reused")),
+        "computed": len(todo_recs) - (no_pref if reuse_from is None else
+                                      sum(1 for r in todo_recs if not r["location"].get("pref_code"))),
+        "prefs_needed": prefs_to_load,
     }
 
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="最寄り河川距離を計算する(全国)")
     ap.add_argument("--sample", type=int, default=20, help="県ごとに二経路一致を確かめる標本数")
+    ap.add_argument("--reuse-from", type=pathlib.Path, default=None,
+                    help="前回の地理特徴量(data/state/geo_state.jsonl)。変わらない地物は計算しない(D-09)")
+    ap.add_argument("--needed-prefs", action="store_true",
+                    help="計算に要る県コードを空白区切りで出して終わる(W05 の取得に使う)")
     args = ap.parse_args(argv)
 
+    if args.needed_prefs:
+        if args.reuse_from is None:
+            ap.error("--needed-prefs は --reuse-from と一緒に使う")
+        recs = json.loads(CATALOG.read_text(encoding="utf-8"))["shrines"]
+        todo = set(_plan_incremental(recs, args.reuse_from).river_todo)
+        print(" ".join(needed_prefs(recs, todo)))
+        return 0
+
     t0 = time.time()
-    d = compute(sample_per_pref=args.sample)
+    d = compute(sample_per_pref=args.sample, reuse_from=args.reuse_from)
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(d, ensure_ascii=False), encoding="utf-8")
     summary = {k: v for k, v in d.items() if k not in ("river", "candidate_prefs", "streams_per_pref")}

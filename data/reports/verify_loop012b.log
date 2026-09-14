@@ -1,0 +1,200 @@
+
+> jinja-origin-atlas-ai@0.1.0 verify
+> npm run typecheck && npm run test && npm run build && node harness/smoke.mjs
+
+
+> jinja-origin-atlas-ai@0.1.0 typecheck
+> tsc --noEmit
+
+
+> jinja-origin-atlas-ai@0.1.0 test
+> vitest run
+
+
+[1m[7m[36m RUN [39m[27m[22m [36mv2.1.9 [39m[90mC:/_ClaudeCode/jinja-origin-atlas-ai[39m
+
+ [32m✓[39m tests-js/artifacts.test.ts [2m([22m[2m16 tests[22m[2m)[22m[33m 4354[2mms[22m[39m
+   [33m[2m✓[22m[39m 出荷アーティファクト[2m > [22m課金経路ゼロ(SPEC N-01 / G-05): 有料 API のホスト名が出荷物に無い [33m2315[2mms[22m[39m
+   [33m[2m✓[22m[39m Python↔TypeScript の JSON 契約[2m > [22mfamilies.min.json のラベルが GeoJSON の family 値をすべて覆う [33m729[2mms[22m[39m
+   [33m[2m✓[22m[39m Python↔TypeScript の JSON 契約[2m > [22m索引とチャンクの形が、画面の読む型と合っている(D-06) [33m396[2mms[22m[39m
+   [33m[2m✓[22m[39m Python↔TypeScript の JSON 契約[2m > [22mGeoJSON の properties に県コードがある(詳細へのリンクが索引を引かずに済む) [33m595[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m16 passed[39m[22m[90m (16)[39m
+[2m   Start at [22m 07:08:42
+[2m   Duration [22m 8.01s[2m (transform 270ms, setup 0ms, collect 230ms, tests 4.35s, environment 1ms, prepare 1.19s)[22m
+
+
+> jinja-origin-atlas-ai@0.1.0 prebuild
+> node scripts/build_stamp.mjs
+
+刻印 e947d63415f21e5143fcb6d8eda7241f → public/data/meta/stamp.json
+
+> jinja-origin-atlas-ai@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.25
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 12.6s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/11) ...
+   Generating static pages (2/11) 
+   Generating static pages (5/11) 
+   Generating static pages (8/11) 
+ ✓ Generating static pages (11/11)
+   Finalizing page optimization ...
+   Collecting build traces ...
+   Exporting (0/2) ...
+ ✓ Exporting (2/2)
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                      165 B         106 kB
+├ ○ /_not-found                            131 B         103 kB
+├ ○ /about-ai                              165 B         106 kB
+├ ○ /ai-space                            2.44 kB         109 kB
+├ ○ /analytics                             131 B         103 kB
+├ ○ /map                                  276 kB         382 kB
+├ ○ /shrine                              4.66 kB         111 kB
+├ ○ /similar                             3.08 kB         109 kB
+└ ○ /sources                               131 B         103 kB
++ First Load JS shared by all             103 kB
+  ├ chunks/255-a85cef9cc3a04b12.js       46.5 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  └ other shared chunks (total)          2.01 kB
+
+
+○  (Static)  prerendered as static content
+
+地図ページ
+  OK   HTTP 200 で開く
+  OK   出典 © OpenStreetMap contributors が本文にある
+  OK   背景地図の出典 国土地理院が本文にある
+  OK   地図に何かが描かれている
+  OK   データ全体を視野に入れるとクラスタの合計が総件数と一致する(二重描画・欠落の検出)
+  OK   描かれた要素がすべて表示範囲の中にある
+  OK   キャンバスが器を埋めている(空白の帯がない)
+  OK   陽性対照: 層を隠すと検品器がそれを検出する
+  OK   クラスタを押すと拡大する
+系統のしぼり
+  OK   しぼると強調レイヤーに要素が入る
+  OK   しぼると残りが無彩色に落ちる
+  OK   強調が実際に描画されている
+  OK   しぼりを外すと元に戻る
+神社詳細
+  OK   都道府県チャンクが出荷物にある
+  OK   詳細ページが開く(県 01)
+  OK   詳細の見出しがその神社の名前(県 01)
+  OK   詳細に三区分の見出しが出ている(県 01)
+  OK   詳細に出典が出ている(県 01)
+  OK   名寄せに直リンクを使っていないことが書かれている(県 01)
+  OK   タブの題名が神社名になる(県 01)
+  OK   詳細ページが開く(県 24)
+  OK   詳細の見出しがその神社の名前(県 24)
+  OK   詳細に三区分の見出しが出ている(県 24)
+  OK   詳細に出典が出ている(県 24)
+  OK   名寄せに直リンクを使っていないことが書かれている(県 24)
+  OK   タブの題名が神社名になる(県 24)
+  OK   詳細ページが開く(県 47)
+  OK   詳細の見出しがその神社の名前(県 47)
+  OK   詳細に三区分の見出しが出ている(県 47)
+  OK   詳細に出典が出ている(県 47)
+  OK   名寄せに直リンクを使っていないことが書かれている(県 47)
+  OK   タブの題名が神社名になる(県 47)
+  OK   G-13: AI と祭神・社格を両方持つ神社が出荷物にある
+  OK   G-13: 公開データと AI の意味分析が別の見出しの下にある
+  OK   G-13 陽性対照: AI の項目を公開データの帯へ移すと検出する
+  OK   G-13 陽性対照: AI の帯の見出しを消すと検出する
+  OK   G-13 陽性対照: 祭神の行を AI の帯へ移すと検出する
+  OK   社の部分の印を持つ神社が出荷物にある
+  OK   社の部分の印が詳細に出る
+  OK   印の無い神社には社の部分の注記が出ない
+  OK   県コード無しでも同じ神社が開く
+  OK   外れた県コードでも同じ神社が開く
+  OK   陽性対照: 実在しない ID は見つからないと言う
+  OK   旧 URL が新しい形へ送られる
+  OK   索引に統合の別名がある
+  OK   統合で消えた ID は残った神社を開く
+  OK   アドレス欄が残った神社の ID に置き換わる
+  OK   別名の転送を少なくとも 1 件確かめた
+意味空間
+  OK   散布図の点の数がデータと一致する
+  OK   点がすべて viewBox の中にある(切れていない)
+  OK   しぼる前は単色である(カテゴリを色で塗り分けていない)
+  OK   モチーフを選ぶと濃淡が複数段になる
+  OK   意味空間に免責が出ている
+  OK   本文を配っていないことが書かれている
+類似神社
+  OK   類似ページが開く
+  OK   勧請の推論をしないと書いてある
+  OK   順位で表示している
+  OK   類似の一覧に行がある
+  OK   類似の相手が詳細へのリンクになっている
+画面幅
+  OK   / @360px 横に溢れない
+  OK   / @360px 縦に伸びすぎない
+  OK   /map/ @360px 横に溢れない
+  OK   /map/ @360px 縦に伸びすぎない
+  OK   /ai-space/ @360px 横に溢れない
+  OK   /ai-space/ @360px 縦に伸びすぎない
+  OK   /sources/ @360px 横に溢れない
+  OK   /sources/ @360px 縦に伸びすぎない
+  OK   /analytics/ @360px 横に溢れない
+  OK   /analytics/ @360px 縦に伸びすぎない
+  OK   /about-ai/ @360px 横に溢れない
+  OK   /about-ai/ @360px 縦に伸びすぎない
+  OK   / @768px 横に溢れない
+  OK   / @768px 縦に伸びすぎない
+  OK   /map/ @768px 横に溢れない
+  OK   /map/ @768px 縦に伸びすぎない
+  OK   /ai-space/ @768px 横に溢れない
+  OK   /ai-space/ @768px 縦に伸びすぎない
+  OK   /sources/ @768px 横に溢れない
+  OK   /sources/ @768px 縦に伸びすぎない
+  OK   /analytics/ @768px 横に溢れない
+  OK   /analytics/ @768px 縦に伸びすぎない
+  OK   /about-ai/ @768px 横に溢れない
+  OK   /about-ai/ @768px 縦に伸びすぎない
+  OK   / @1280px 横に溢れない
+  OK   / @1280px 縦に伸びすぎない
+  OK   /map/ @1280px 横に溢れない
+  OK   /map/ @1280px 縦に伸びすぎない
+  OK   /ai-space/ @1280px 横に溢れない
+  OK   /ai-space/ @1280px 縦に伸びすぎない
+  OK   /sources/ @1280px 横に溢れない
+  OK   /sources/ @1280px 縦に伸びすぎない
+  OK   /analytics/ @1280px 横に溢れない
+  OK   /analytics/ @1280px 縦に伸びすぎない
+  OK   /about-ai/ @1280px 横に溢れない
+  OK   /about-ai/ @1280px 縦に伸びすぎない
+  OK   / @1680px 横に溢れない
+  OK   / @1680px 縦に伸びすぎない
+  OK   /map/ @1680px 横に溢れない
+  OK   /map/ @1680px 縦に伸びすぎない
+  OK   /ai-space/ @1680px 横に溢れない
+  OK   /ai-space/ @1680px 縦に伸びすぎない
+  OK   /sources/ @1680px 横に溢れない
+  OK   /sources/ @1680px 縦に伸びすぎない
+  OK   /analytics/ @1680px 横に溢れない
+  OK   /analytics/ @1680px 縦に伸びすぎない
+  OK   /about-ai/ @1680px 横に溢れない
+  OK   /about-ai/ @1680px 縦に伸びすぎない
+範囲の文
+  OK   範囲の検査 陽性対照: 旧範囲の文を検出する
+  OK   範囲の検査 陰性対照: 正しい文は通す
+  OK   / の範囲の文が出荷物(47 都道府県)と合う
+  OK   /map/ の範囲の文が出荷物(47 都道府県)と合う
+  OK   /analytics/ の範囲の文が出荷物(47 都道府県)と合う
+  OK   フッタが表示されている
+  OK   フッタが下部固定である
+  OK   フッタに MIT License がある
+  OK   フッタに App Menu がある
+  OK   App Menu が本番(app-menu-amber)を指している
+  OK   GitHub がこのリポジトリを指している
+  OK   フッタに宛先のないリンクが無い
+  OK   旧 URL が実際に 404 を返している(転送はその上で働く)
+  OK   ほかに 404 になった資源が無い
+  OK   コンソールエラーが無い(資源の 404 を除く)
+
+検品 OK

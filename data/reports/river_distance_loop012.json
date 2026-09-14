@@ -1,0 +1,188 @@
+{
+ "shrines": 40792,
+ "shrines_without_pref": 0,
+ "with_river": 40652,
+ "without_river": 140,
+ "dropped_beyond_limit": 140,
+ "limit_m": 10000.0,
+ "beyond_limit_examples": [
+  {
+   "id": "jinja_n12649957362",
+   "distance_m": 10054.7
+  },
+  {
+   "id": "jinja_n4504433958",
+   "distance_m": 10084.2
+  },
+  {
+   "id": "jinja_n4508716905",
+   "distance_m": 10207.1
+  },
+  {
+   "id": "jinja_n13341599157",
+   "distance_m": 10229.8
+  },
+  {
+   "id": "jinja_n13341686506",
+   "distance_m": 10305.8
+  },
+  {
+   "id": "jinja_n13341686505",
+   "distance_m": 10310.6
+  },
+  {
+   "id": "jinja_n4508716906",
+   "distance_m": 10378.7
+  },
+  {
+   "id": "jinja_n4508716907",
+   "distance_m": 10404.0
+  },
+  {
+   "id": "jinja_n3412041383",
+   "distance_m": 10412.7
+  },
+  {
+   "id": "jinja_n5084182268",
+   "distance_m": 10438.5
+  },
+  {
+   "id": "jinja_n4508552558",
+   "distance_m": 10715.3
+  },
+  {
+   "id": "jinja_n12649957363",
+   "distance_m": 11043.3
+  },
+  {
+   "id": "jinja_n5679059975",
+   "distance_m": 11059.8
+  },
+  {
+   "id": "jinja_n4726087209",
+   "distance_m": 11115.8
+  },
+  {
+   "id": "jinja_n4726087208",
+   "distance_m": 11135.3
+  },
+  {
+   "id": "jinja_n9917746791",
+   "distance_m": 11152.1
+  },
+  {
+   "id": "jinja_n4598143661",
+   "distance_m": 11283.7
+  },
+  {
+   "id": "jinja_n4359590776",
+   "distance_m": 11327.6
+  },
+  {
+   "id": "jinja_n4852670478",
+   "distance_m": 11593.3
+  },
+  {
+   "id": "jinja_n5159038098",
+   "distance_m": 11661.8
+  },
+  {
+   "id": "jinja_n4864161706",
+   "distance_m": 11714.7
+  },
+  {
+   "id": "jinja_n4359590775",
+   "distance_m": 12189.6
+  },
+  {
+   "id": "jinja_n4374486716",
+   "distance_m": 12466.8
+  },
+  {
+   "id": "jinja_n4359590774",
+   "distance_m": 12517.6
+  },
+  {
+   "id": "jinja_w302415838",
+   "distance_m": 12692.6
+  },
+  {
+   "id": "jinja_n4726129808",
+   "distance_m": 12698.3
+  },
+  {
+   "id": "jinja_w389666846",
+   "distance_m": 12709.6
+  },
+  {
+   "id": "jinja_n4508672520",
+   "distance_m": 12758.8
+  },
+  {
+   "id": "jinja_n4508671979",
+   "distance_m": 12870.8
+  },
+  {
+   "id": "jinja_w760903837",
+   "distance_m": 13003.2
+  }
+ ],
+ "invalid_geometries_dropped": {
+  "24": 1
+ },
+ "two_path_checked": 940,
+ "two_path_disagreements": [],
+ "mode": "full",
+ "reused": 0,
+ "computed": 40792,
+ "prefs_needed": [
+  "01",
+  "02",
+  "03",
+  "04",
+  "05",
+  "06",
+  "07",
+  "08",
+  "09",
+  "10",
+  "11",
+  "12",
+  "13",
+  "14",
+  "15",
+  "16",
+  "17",
+  "18",
+  "19",
+  "20",
+  "21",
+  "22",
+  "23",
+  "24",
+  "25",
+  "26",
+  "27",
+  "28",
+  "29",
+  "30",
+  "31",
+  "32",
+  "33",
+  "34",
+  "35",
+  "36",
+  "37",
+  "38",
+  "39",
+  "40",
+  "41",
+  "42",
+  "43",
+  "44",
+  "45",
+  "46",
+  "47"
+ ],
+ "秒": 3789.4
+}

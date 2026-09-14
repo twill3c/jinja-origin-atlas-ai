@@ -26,7 +26,7 @@ CATALOG = pathlib.Path("data/interim/catalog_osm.json")  # D-06: 全カタログ
 CACHE_DIR = pathlib.Path("data/raw/gsi_dem")
 OUT = pathlib.Path("data/interim/elevation.json")
 
-USER_AGENT = "JinjaOriginAtlasAI/0.1 (+https://github.com/; contact via repository)"
+USER_AGENT = "JinjaOriginAtlasAI/0.2 (https://github.com/twill3c/jinja-origin-atlas-ai)"
 
 
 class DiskTileCache:
@@ -87,6 +87,8 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="神社の標高を DEM から取る")
     ap.add_argument("--limit", type=int, default=0, help="先頭 N 件だけ処理する(試走用)")
     ap.add_argument("--sleep", type=float, default=0.05)
+    ap.add_argument("--reuse-from", type=pathlib.Path, default=None,
+                    help="前回の地理特徴量(data/state/geo_state.jsonl)。ID と位置が変わらない地物は取り直さない(D-09)")
     args = ap.parse_args(argv)
 
     recs = json.loads(CATALOG.read_text(encoding="utf-8"))["shrines"]
@@ -95,6 +97,13 @@ def main(argv: list[str] | None = None) -> int:
 
     out: dict[str, dict] = {}
     by_layer: dict[str, int] = {}
+    reuse: dict[str, dict] = {}
+    if args.reuse_from:
+        from etl.reuse_geography import load_previous, plan
+
+        reuse = plan(recs, load_previous(args.reuse_from)).elevation_reuse
+        print(f"  前回値を再利用 {len(reuse)} / 取る {len(recs) - len(reuse)}", file=sys.stderr, flush=True)
+    reused = 0
     t0 = time.time()
     # 累計の経過秒だけでは、1 区間の停滞と全体の遅さを区別できない(HC-264)。
     # 区間ごとの速度を並べて出す。
@@ -102,7 +111,11 @@ def main(argv: list[str] | None = None) -> int:
     with httpx.Client(timeout=60.0, headers={"User-Agent": USER_AGENT}) as client:
         cache = DiskTileCache(client, sleep=args.sleep)
         for i, r in enumerate(recs, 1):
-            h, layer = elevation_for(r["location"]["lon"], r["location"]["lat"], cache)
+            if r["id"] in reuse:
+                h, layer = reuse[r["id"]]["elevation_m"], reuse[r["id"]]["source"]
+                reused += 1
+            else:
+                h, layer = elevation_for(r["location"]["lon"], r["location"]["lat"], cache)
             out[r["id"]] = {"elevation_m": None if h is None else round(h, 2), "source": layer}
             by_layer[layer or "(取れず)"] = by_layer.get(layer or "(取れず)", 0) + 1
             if i % 250 == 0:
@@ -115,13 +128,14 @@ def main(argv: list[str] | None = None) -> int:
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({"elevation": out, "by_layer": by_layer,
+                               "mode": "incremental" if args.reuse_from else "full", "reused": reused,
                                "tiles_fetched": cache.fetched,
                                "tiles_from_cache": cache.from_cache,
                                "tiles_absent": cache.missing},
                               ensure_ascii=False), encoding="utf-8")
     got = sum(1 for v in out.values() if v["elevation_m"] is not None)
     print(json.dumps({"件数": len(out), "標高あり": got, "標高なし": len(out) - got,
-                      "層別": by_layer, "取得タイル": cache.fetched,
+                      "層別": by_layer, "前回値を再利用": reused, "取得タイル": cache.fetched,
                       "キャッシュ命中": cache.from_cache, "不在タイル": cache.missing,
                       "秒": round(time.time() - t0, 1)}, ensure_ascii=False, indent=1))
     return 0

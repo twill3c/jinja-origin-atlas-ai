@@ -34,7 +34,7 @@ import httpx
 
 ENDPOINT = os.environ.get("WIKIDATA_SPARQL_ENDPOINT", "https://query.wikidata.org/sparql")
 USER_AGENT = os.environ.get(
-    "USER_AGENT", "JinjaOriginAtlasAI/0.1 (+https://github.com/; contact via repository)"
+    "USER_AGENT", "JinjaOriginAtlasAI/0.2 (https://github.com/twill3c/jinja-origin-atlas-ai)"
 )
 RAW_DIR = pathlib.Path("data/raw/wikidata")
 

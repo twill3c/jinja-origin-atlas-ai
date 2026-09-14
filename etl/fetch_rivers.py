@@ -24,7 +24,7 @@ import httpx
 PRODUCT_PAGE = "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-W05.html"
 BASE = "https://nlftp.mlit.go.jp/ksj/gml/"
 RAW_DIR = pathlib.Path("data/raw/ksj/W05")
-USER_AGENT = "JinjaOriginAtlasAI/0.1 (+https://github.com/; contact via repository)"
+USER_AGENT = "JinjaOriginAtlasAI/0.2 (https://github.com/twill3c/jinja-origin-atlas-ai)"
 
 #: 段階 1 の対象(仕様書 §66)。都道府県コード。
 STAGE1_PREF_CODES = ("13", "26", "19")  # 東京都 / 京都府 / 山梨県

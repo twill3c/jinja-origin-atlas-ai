@@ -294,6 +294,26 @@ async function main() {
     await page.waitForURL(/\/shrine\/\?id=/, { timeout: 15000 }).catch(() => {});
     check("旧 URL が新しい形へ送られる", page.url().includes(`/shrine/?id=${pk0.id}`), page.url());
 
+    // D-08: 同じ社を指す地物の統合で消えた ID は、残った神社を開き、アドレス欄も置き換わる(T-127)
+    const idxD08 = JSON.parse(await readFile(path.join(OUT, "data/shrines/index.json"), "utf-8"));
+    const aliasEntries = Object.entries(idxD08.aliases ?? {});
+    check("索引に統合の別名がある", aliasEntries.length > 0, `別名=${aliasEntries.length}`);
+    let aliasChecked = false;
+    for (const [oldId, newId] of aliasEntries.slice(0, 20)) {
+      const newP = idxD08.ids[newId];
+      const chunkD08 = JSON.parse(await readFile(path.join(OUT, `data/shrines/${newP}.json`), "utf-8"));
+      const newName = chunkD08.shrines.find((x) => x.id === newId)?.name?.ja;
+      if (!newName) continue; // 名前の無い神社は h1 で照合できない
+      await page.goto(`${base}/shrine/?id=${oldId}`, { waitUntil: "networkidle" });
+      await settled();
+      const h1a = (await page.locator("h1").first().innerText()).trim();
+      check("統合で消えた ID は残った神社を開く", h1a === newName, `${oldId} → h1=${h1a} 期待=${newName}`);
+      check("アドレス欄が残った神社の ID に置き換わる", page.url().includes(`id=${newId}`), page.url());
+      aliasChecked = true;
+      break;
+    }
+    check("別名の転送を少なくとも 1 件確かめた", aliasChecked);
+
     // --- 意味空間(UMAP)-------------------------------------------------
     console.log("意味空間");
     await page.goto(`${base}/ai-space/`, { waitUntil: "networkidle" });

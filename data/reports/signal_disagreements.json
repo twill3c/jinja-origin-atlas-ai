@@ -34,16 +34,6 @@
   ]
  },
  {
-  "id": "jinja_w863816675",
-  "name": "神明社",
-  "by_deity": "gion_yasaka",
-  "by_name": "shinmei_ise",
-  "deities": [
-   "天照大神",
-   "素戔嗚尊"
-  ]
- },
- {
   "id": "jinja_n9723745117",
   "name": "隠津島神社",
   "by_deity": "munakata",
@@ -53,12 +43,12 @@
   ]
  },
  {
-  "id": "jinja_n12793946680",
-  "name": "滝尾稲荷神社",
-  "by_deity": "munakata",
-  "by_name": "inari",
+  "id": "jinja_w479698457",
+  "name": "隠津島神社",
+  "by_deity": "kashima_katori",
+  "by_name": "gion_yasaka",
   "deities": [
-   "田心姫"
+   "タケミカヅチ"
   ]
  },
  {
@@ -68,16 +58,6 @@
   "by_name": "tenjin",
   "deities": [
    "天照大神"
-  ]
- },
- {
-  "id": "jinja_n5290130609",
-  "name": "八坂神社",
-  "by_deity": "hachiman",
-  "by_name": "gion_yasaka",
-  "deities": [
-   "八幡神",
-   "応神天皇"
   ]
  },
  {
@@ -91,16 +71,6 @@
   ]
  },
  {
-  "id": "jinja_w1289569116",
-  "name": "三社稲荷神社",
-  "by_deity": "hakusan",
-  "by_name": "inari",
-  "deities": [
-   "伊奘冉尊",
-   "菊理媛神"
-  ]
- },
- {
   "id": "jinja_w704534773",
   "name": "甘縄神明神社",
   "by_deity": "inari",
@@ -111,34 +81,6 @@
    "伊奘冉尊",
    "天照大神",
    "菅原道真"
-  ]
- },
- {
-  "id": "jinja_w888511606",
-  "name": "厚木稲荷神社",
-  "by_deity": "gion_yasaka",
-  "by_name": "inari",
-  "deities": [
-   "素戔嗚尊"
-  ]
- },
- {
-  "id": "jinja_w435096751",
-  "name": "八幡神社",
-  "by_deity": "gion_yasaka",
-  "by_name": "hachiman",
-  "deities": [
-   "牛頭天王",
-   "素戔嗚尊"
-  ]
- },
- {
-  "id": "jinja_w501284734",
-  "name": "津島神社",
-  "by_deity": "kashima_katori",
-  "by_name": "gion_yasaka",
-  "deities": [
-   "タケミカヅチ"
   ]
  },
  {

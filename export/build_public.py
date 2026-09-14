@@ -22,7 +22,8 @@ import pathlib
 from collections import defaultdict
 from typing import Any
 
-from etl.entity_resolution import MatchDecision, resolve
+from etl.entity_resolution import MatchDecision, resolve, resolve_one_to_one
+from export.dedupe import merge_same_name, part_suffix, same_name_pairs
 from etl.prefectures import PREF_CODE_NAME
 from etl.shrine_family import FAMILY_JA, classify, family_from_deities, family_from_name
 from etl.wikidata_records import load_records
@@ -68,7 +69,17 @@ def top_motifs(percentiles: dict[str, float], n: int = 3) -> list[str]:
 def merge(osm: list[dict[str, Any]], wd: dict[str, dict[str, Any]],
           ai_doc: dict[str, Any] | None = None) -> dict[str, Any]:
     wd_list = [r for r in wd.values() if r.get("coord")]
-    matches = {m.osm_id: m for m in resolve(osm, wd_list)}
+    # D-08: 同じ社を指す地物を先に一つにまとめ、名寄せは一対一で行う。
+    # 多対一の結果は「別の項目どうしだから統合しない」の判定にだけ使う。
+    many = {m.osm_id: m for m in resolve(osm, wd_list)}
+    per_item: dict[str, int] = {}
+    for m in many.values():
+        if m.qid and m.decision is MatchDecision.AUTO:
+            per_item[m.qid] = per_item.get(m.qid, 0) + 1
+    osm_features = len(osm)
+    dd = merge_same_name(osm, many)
+    osm = dd.survivors
+    matches = {m.osm_id: m for m in resolve_one_to_one(osm, wd_list)}
 
     elevation, rivers = load_geo()
     # AI の対象(§59 —— 位置レイヤーと分けて数える)。スコアはチャンクに入れる
@@ -80,6 +91,7 @@ def merge(osm: list[dict[str, Any]], wd: dict[str, dict[str, Any]],
         "with_parent": 0, "with_ja_wikipedia": 0,
         "with_elevation": 0, "without_elevation": 0,
         "with_river_distance": 0, "without_river_distance": 0,
+        "suspected_parts": 0, "ai_without_article": 0,
     }
     elevations: list[float] = []
     river_distances: list[float] = []
@@ -124,6 +136,12 @@ def merge(osm: list[dict[str, Any]], wd: dict[str, dict[str, Any]],
                     )
 
         rec = dict(r)
+        # T-128: 社殿・境内の部分を指す語で終わる名前。**統合はしない**(D-08)
+        suf = part_suffix(r["name"]["ja"])
+        if suf:
+            rec["suspected_part"] = {"suffix": suf,
+                                     "note": "名前が社殿・境内の部分を指す語で終わる。本社とは別に数えている"}
+            stats["suspected_parts"] += 1
         rec["shrine_family"] = {
             "label": fam.label, "label_ja": FAMILY_JA[fam.label],
             "basis": str(fam.basis), "confidence": fam.confidence,
@@ -194,6 +212,10 @@ def merge(osm: list[dict[str, Any]], wd: dict[str, dict[str, Any]],
 
         # --- AI(F-09)。**配るのはスコアと帰属だけ**(D-01) ---
         a = ai_by_id.get(r["id"])
+        if a is not None and not rec.get("ja_wikipedia"):
+            # 名寄せが変わって記事を持たなくなった神社に、前回の AI 結果を付けない
+            stats["ai_without_article"] += 1
+            a = None
         rec["ai"] = a is not None
         if a is not None:
             rec["ai_scores"] = {
@@ -231,7 +253,17 @@ def merge(osm: list[dict[str, Any]], wd: dict[str, dict[str, Any]],
             "elevation_oracle": ele_oracle,
             "elevation_quantiles": quantiles(elevations),
             "river_distance_quantiles": quantiles(river_distances),
-            "basis_counts": basis_counts, "signal_agreement": agree}
+            "basis_counts": basis_counts, "signal_agreement": agree,
+            "aliases": dd.aliases,
+            "dedupe": {
+                "osm_features": osm_features,
+                "merged_features": len(dd.aliases),
+                "merged_components": dd.merged_components,
+                "guarded_pairs": dd.guarded_pairs,
+                "guarded_components": dd.guarded_components,
+                "items_matched_to_multiple_features_before": sum(1 for n in per_item.values() if n > 1),
+                "suspected_parts": stats["suspected_parts"],
+            }}
 
 
 def attach_similar(recs: list[dict[str, Any]], neighbors: dict[str, list]) -> int:
@@ -283,7 +315,8 @@ def feature(rec: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def write_chunks(recs: list[dict[str, Any]], ai_doc: dict[str, Any] | None) -> dict[str, Any]:
+def write_chunks(recs: list[dict[str, Any]], ai_doc: dict[str, Any] | None,
+                 aliases: dict[str, str] | None = None) -> dict[str, Any]:
     """都道府県ごとのチャンクと索引を書く(D-06)。"""
     no_pref = [r["id"] for r in recs if not r["location"].get("pref_code")]
     if no_pref:
@@ -315,6 +348,8 @@ def write_chunks(recs: list[dict[str, Any]], ai_doc: dict[str, Any] | None) -> d
 
     INDEX_OUT.write_text(json.dumps({
         "ids": {r["id"]: r["location"]["pref_code"] for r in recs},
+        # D-08: 統合で消えた ID → 残った ID。旧 URL はこれで残った神社を開く(T-127)
+        "aliases": aliases or {},
         "prefectures": {c: {"name": PREF_CODE_NAME[c], "count": len(groups[c])} for c in sorted(groups)},
         "ai_count": sum(1 for r in recs if r.get("ai")),
         "motif_labels": (ai_doc or {}).get("motif_labels", {}),
@@ -369,7 +404,7 @@ def main() -> int:
     for p in (FULL_OUT, GEOJSON_OUT, BUILD_OUT, FAMILY_OUT):
         p.parent.mkdir(parents=True, exist_ok=True)
     FULL_OUT.write_text(json.dumps({"shrines": recs}, **_COMPACT), encoding="utf-8")
-    chunk_report = write_chunks(recs, ai_doc)
+    chunk_report = write_chunks(recs, ai_doc, merged["aliases"])
     chunk_report |= write_similar(recs)
     if LEGACY_CATALOG.exists():
         LEGACY_CATALOG.unlink()
@@ -396,6 +431,7 @@ def main() -> int:
         "with_ai": sum(1 for r in recs if r.get("ai")),
         "without_ai": sum(1 for r in recs if not r.get("ai")),
         "similar_missing_neighbors": missing_neighbors,
+        "dedupe": {**merged["dedupe"], "guarded_pairs_remaining": len(same_name_pairs(recs))},
         "osm_dropped": osm_report.get("dropped", {}),
         "elevation_oracle": merged["elevation_oracle"],
         "elevation_quantiles": merged["elevation_quantiles"],

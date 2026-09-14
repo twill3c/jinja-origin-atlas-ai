@@ -81,7 +81,7 @@ def main(argv: list[str] | None = None) -> int:
     RAW_DIR.mkdir(parents=True, exist_ok=True)
 
     index: dict[str, dict] = {}
-    fetched = cached = missing = reused = 0
+    fetched = cached = missing = reused = stale = 0
     # 一つの記事が複数の神社に結合されている(全国で 157 記事 / 346 件、2026-09-14 実測)。
     # 同じ記事を同じ実行の中で二度取りに行かない。
     seen: dict[str, dict | None] = {}
@@ -91,11 +91,16 @@ def main(argv: list[str] | None = None) -> int:
     with httpx.Client(timeout=60.0, headers={"User-Agent": USER_AGENT}) as client:
         for i, r in enumerate(recs, 1):
             path = RAW_DIR / f"{r['id']}.json"
-            if path.exists() and not args.refresh:
-                d = json.loads(path.read_text(encoding="utf-8"))
+            title = title_of(r["ja_wikipedia"])
+            d = json.loads(path.read_text(encoding="utf-8")) if path.exists() and not args.refresh else None
+            if d is not None and d.get("requested_title", d.get("title")) != title:
+                # 名寄せが変わって別の記事を指すようになった(D-08)。キャッシュは神社 ID で
+                # 引いているので、確かめないと古い記事をそのまま使ってしまう
+                d = None
+                stale += 1
+            if d is not None:
                 cached += 1
             else:
-                title = title_of(r["ja_wikipedia"])
                 if title in seen:
                     d = seen[title]
                     reused += 1
@@ -107,7 +112,8 @@ def main(argv: list[str] | None = None) -> int:
                 if d is None:
                     missing += 1
                     continue
-                path.write_text(json.dumps(d, ensure_ascii=False), encoding="utf-8")
+                path.write_text(json.dumps(dict(d, requested_title=title), ensure_ascii=False),
+                                encoding="utf-8")
             index[r["id"]] = {k: v for k, v in d.items() if k != "text"} | {
                 "chars": len(d.get("text", ""))
             }
@@ -120,12 +126,12 @@ def main(argv: list[str] | None = None) -> int:
 
     OUT.write_text(json.dumps({"articles": index, "fetched": fetched,
                                "from_cache": cached, "missing": missing,
-                               "same_article_reused": reused},
+                               "same_article_reused": reused, "stale_cache_refetched": stale},
                               ensure_ascii=False), encoding="utf-8")
     chars = sorted(v["chars"] for v in index.values())
     print(json.dumps({
         "対象": len(recs), "取れた": len(index), "取れなかった": missing,
-        "取得": fetched, "キャッシュ": cached, "同記事の再利用": reused,
+        "取得": fetched, "キャッシュ": cached, "同記事の再利用": reused, "古いキャッシュを取り直し": stale,
         "本文長": {"最小": chars[0], "中央": chars[len(chars) // 2], "最大": chars[-1]} if chars else None,
         "秒": round(time.time() - t0, 1),
     }, ensure_ascii=False, indent=1))

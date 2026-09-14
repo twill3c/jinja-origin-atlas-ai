@@ -245,3 +245,59 @@ def resolve(
         out.append(Match(o["id"], best.qid, best.score, decide(best.score),
                          best.distance_m, best.name_sim))
     return out
+
+
+def _qid_number(qid: str) -> int:
+    """Q 番号の数。数えられない ID は最後に回す。"""
+    try:
+        return int(qid[1:])
+    except (ValueError, TypeError):
+        return 10**12
+
+
+def resolve_one_to_one(
+    osm_records: Sequence[Mapping[str, Any]],
+    wd_records: Sequence[Mapping[str, Any]],
+) -> list[Match]:
+    """一つの Wikidata 項目を一つの OSM 地物にだけ結合する(SPEC D-08 / T-124)。
+
+    `resolve` は各地物が最良の項目を取るだけなので、同じ社の node と way、本殿と本社が
+    同じ項目を取り合って多対一になる(loop_009 の実測: 222 項目 / 485 件)。ここでは
+    全候補を得点の降順に並べ、双方が空いている組から貪欲に確定する。負けた地物は
+    空いている次の候補を取り、無ければ分離になる。分離の閾値未満の候補は項目を消費しない。
+
+    **同点は古い項目(QID の数が小さいほう)を先にする。** 同じ社に Wikidata の項目が二つある
+    (後から作られた重複の項目。Q135… 台に多い)と、50 m 以内・名称一致で得点が 0.7 に張り付き、
+    同点になる。距離で決めると数 m 近いだけの新しい重複項目が取り、OSM と相互リンクされた
+    本来の項目が余る。較正半分(2,517 組)で測って決めた: 同点は距離 → 適合率 0.9929 / 再現率 0.9487、
+    **同点は古い項目 → 0.9963 / 0.9519**(従来の多対一は 0.9938 / 0.9511)。その次は距離 → 地物 ID。
+    """
+    cells = _grid(wd_records, lambda w: w.get("coord"))
+    cands: list[Candidate] = []
+    for o in osm_records:
+        lon, lat = o["location"]["lon"], o["location"]["lat"]
+        cy, cx = int(math.floor(lat / _CELL)), int(math.floor(lon / _CELL))
+        for dy in (-1, 0, 1):
+            for dx in (-1, 0, 1):
+                for w in cells.get((cy + dy, cx + dx), ()):
+                    s = match_score(o, w)
+                    if s.total <= 0.0 or decide(s.total) is MatchDecision.SEPARATE:
+                        continue
+                    cands.append(Candidate(osm_id=o["id"], qid=w["qid"], score=s.total,
+                                           distance_m=s.distance_m, name_sim=s.name))
+    cands.sort(key=lambda c: (-c.score, _qid_number(c.qid), c.distance_m, c.osm_id))
+    chosen: dict[str, Candidate] = {}
+    taken: set[str] = set()
+    for c in cands:
+        if c.osm_id in chosen or c.qid in taken:
+            continue
+        chosen[c.osm_id] = c
+        taken.add(c.qid)
+    out: list[Match] = []
+    for o in osm_records:
+        c = chosen.get(o["id"])
+        if c is None:
+            out.append(Match(o["id"], None, 0.0, MatchDecision.SEPARATE, None, None))
+        else:
+            out.append(Match(o["id"], c.qid, c.score, decide(c.score), c.distance_m, c.name_sim))
+    return out

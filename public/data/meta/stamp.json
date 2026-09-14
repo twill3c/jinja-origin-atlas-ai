@@ -1,6 +1,6 @@
 {
- "stamp": "1cb4e42b0e22cf10528f724cf0492a60",
- "generated_at": "2026-09-13T21:39:50.609Z",
+ "stamp": "82d99a88fdcc2d77ce9f947f36378d9b",
+ "generated_at": "2026-09-14T10:28:43.842Z",
  "files": [
   {
    "file": "components/common/SiteChrome.tsx",
@@ -89,8 +89,8 @@
   {
    "file": "components/shrine/useShrine.ts",
    "present": true,
-   "bytes": 2436,
-   "sha256": "fbf7a77121e20abe"
+   "bytes": 2980,
+   "sha256": "52db2a49b1961af9"
   },
   {
    "file": "components/common/LegacyRedirect.tsx",
@@ -101,8 +101,8 @@
   {
    "file": "lib/shrine-types.ts",
    "present": true,
-   "bytes": 2990,
-   "sha256": "17e148163dcf6922"
+   "bytes": 3070,
+   "sha256": "62494e4123d13415"
   },
   {
    "file": "app/globals.css",
@@ -125,614 +125,614 @@
   {
    "file": "public/data/meta/build.json",
    "present": true,
-   "bytes": 1791,
-   "sha256": "d7170e012e5ee472"
+   "bytes": 2095,
+   "sha256": "27a60ca92a321b75"
   },
   {
    "file": "public/data/shrines/index.json",
    "present": true,
-   "bytes": 1012746,
-   "sha256": "a51b17487ff710c3"
+   "bytes": 1019441,
+   "sha256": "a15dc495ed2b9a0b"
   },
   {
    "file": "public/data/catalog/families.min.json",
    "present": true,
    "bytes": 801,
-   "sha256": "1083edf91baeea30"
+   "sha256": "0776fabc44361f0b"
   },
   {
    "file": "public/data/osm/shrines.min.geojson",
    "present": true,
-   "bytes": 8062380,
-   "sha256": "de807af2204cfe64"
+   "bytes": 7969743,
+   "sha256": "7e6355145834b21f"
   },
   {
    "file": "public/data/ai/ai.min.json",
    "present": true,
-   "bytes": 3162841,
-   "sha256": "06b2a92c76d083a8"
+   "bytes": 3002807,
+   "sha256": "f6d1bcecfa123d70"
   },
   {
    "file": "public/data/ai/similarity.min.json",
    "present": true,
-   "bytes": 1981257,
-   "sha256": "65735e47ceb36f84"
+   "bytes": 1880160,
+   "sha256": "ff653e52e086bb06"
   },
   {
    "file": "data/reports/ai_pipeline.json",
    "present": true,
-   "bytes": 1509,
-   "sha256": "b9e5840d1dd68cf8"
+   "bytes": 1434,
+   "sha256": "c31510fb0925d75f"
   },
   {
    "file": "data/reports/motif_vs_geography.json",
    "present": true,
-   "bytes": 771,
-   "sha256": "5d334e584aae6afe"
+   "bytes": 772,
+   "sha256": "c037d461704d9249"
   },
   {
    "file": "public/data/shrines/01.json",
    "present": true,
-   "bytes": 908384,
-   "sha256": "cb6a177e75568233"
+   "bytes": 882744,
+   "sha256": "797b2b8093e031b5"
   },
   {
    "file": "public/data/shrines/02.json",
    "present": true,
-   "bytes": 344545,
-   "sha256": "9c3879fb954a3f81"
+   "bytes": 341675,
+   "sha256": "a7ba9b1ccde90d4f"
   },
   {
    "file": "public/data/shrines/03.json",
    "present": true,
-   "bytes": 321428,
-   "sha256": "9d4b2f54644d56b6"
+   "bytes": 320331,
+   "sha256": "32c906cf8176380c"
   },
   {
    "file": "public/data/shrines/04.json",
    "present": true,
-   "bytes": 986902,
-   "sha256": "75d3c7a5e9c6b978"
+   "bytes": 980946,
+   "sha256": "fa2a14620c105ab8"
   },
   {
    "file": "public/data/shrines/05.json",
    "present": true,
-   "bytes": 2325031,
-   "sha256": "d0c1a9b07e1b9b72"
+   "bytes": 2305903,
+   "sha256": "d666398a1629cb78"
   },
   {
    "file": "public/data/shrines/06.json",
    "present": true,
-   "bytes": 532240,
-   "sha256": "eb6df1fb051ab2b1"
+   "bytes": 520823,
+   "sha256": "4764ef5a976f038d"
   },
   {
    "file": "public/data/shrines/07.json",
    "present": true,
-   "bytes": 451332,
-   "sha256": "0085ebfd4d328584"
+   "bytes": 443723,
+   "sha256": "d1cf3136984a853b"
   },
   {
    "file": "public/data/shrines/08.json",
    "present": true,
-   "bytes": 1053052,
-   "sha256": "7cff76d0e0a0b9c6"
+   "bytes": 1036571,
+   "sha256": "9be744cb7f36ed57"
   },
   {
    "file": "public/data/shrines/09.json",
    "present": true,
-   "bytes": 356618,
-   "sha256": "0e4f2197a22d2565"
+   "bytes": 346356,
+   "sha256": "a73b90ab8170448e"
   },
   {
    "file": "public/data/shrines/10.json",
    "present": true,
-   "bytes": 444175,
-   "sha256": "85d7935f1ad8f4ab"
+   "bytes": 441143,
+   "sha256": "f5350d93d8a44080"
   },
   {
    "file": "public/data/shrines/11.json",
    "present": true,
-   "bytes": 1289926,
-   "sha256": "bd42abccc3af5d41"
+   "bytes": 1269447,
+   "sha256": "135eff31cad591f5"
   },
   {
    "file": "public/data/shrines/12.json",
    "present": true,
-   "bytes": 1334677,
-   "sha256": "6cc5ae07e6ae7ff2"
+   "bytes": 1315451,
+   "sha256": "527511cd5d020488"
   },
   {
    "file": "public/data/shrines/13.json",
    "present": true,
-   "bytes": 1884189,
-   "sha256": "dbcdfc234fb2f0b0"
+   "bytes": 1843899,
+   "sha256": "84935a766bfe0c9a"
   },
   {
    "file": "public/data/shrines/14.json",
    "present": true,
-   "bytes": 1632976,
-   "sha256": "53717c78cd98ba9d"
+   "bytes": 1579315,
+   "sha256": "e156486aaadedeb1"
   },
   {
    "file": "public/data/shrines/15.json",
    "present": true,
-   "bytes": 744536,
-   "sha256": "994cf421e7217424"
+   "bytes": 740590,
+   "sha256": "c1c597077d7e0129"
   },
   {
    "file": "public/data/shrines/16.json",
    "present": true,
-   "bytes": 456186,
-   "sha256": "e855672f82c0cdd8"
+   "bytes": 453315,
+   "sha256": "8fea38ea9cd96595"
   },
   {
    "file": "public/data/shrines/17.json",
    "present": true,
-   "bytes": 426162,
-   "sha256": "9553c4292ab9fa68"
+   "bytes": 422106,
+   "sha256": "c08c9729870e875c"
   },
   {
    "file": "public/data/shrines/18.json",
    "present": true,
-   "bytes": 572295,
-   "sha256": "34612ee055e3281e"
+   "bytes": 568464,
+   "sha256": "abdb98a33376208c"
   },
   {
    "file": "public/data/shrines/19.json",
    "present": true,
-   "bytes": 228385,
-   "sha256": "ba1331cde79dbf5d"
+   "bytes": 222138,
+   "sha256": "b3f9668248c41365"
   },
   {
    "file": "public/data/shrines/20.json",
    "present": true,
-   "bytes": 1006625,
-   "sha256": "216d856ebce8517d"
+   "bytes": 1000420,
+   "sha256": "5a5ad2b060e16260"
   },
   {
    "file": "public/data/shrines/21.json",
    "present": true,
-   "bytes": 579434,
-   "sha256": "2a3fa33b95b0fd71"
+   "bytes": 568820,
+   "sha256": "32c4069d9aec0875"
   },
   {
    "file": "public/data/shrines/22.json",
    "present": true,
-   "bytes": 1151324,
-   "sha256": "71c146c26823253d"
+   "bytes": 1137464,
+   "sha256": "0ae000a7b7c420b9"
   },
   {
    "file": "public/data/shrines/23.json",
    "present": true,
-   "bytes": 1613222,
-   "sha256": "80da872323e73510"
+   "bytes": 1600505,
+   "sha256": "7e44628f56b71475"
   },
   {
    "file": "public/data/shrines/24.json",
    "present": true,
-   "bytes": 423773,
-   "sha256": "ffe6200cd06e1940"
+   "bytes": 414143,
+   "sha256": "d6a423e329a73e3c"
   },
   {
    "file": "public/data/shrines/25.json",
    "present": true,
-   "bytes": 759146,
-   "sha256": "f9282706fc02a28d"
+   "bytes": 742681,
+   "sha256": "b3fe11b532ac94bf"
   },
   {
    "file": "public/data/shrines/26.json",
    "present": true,
-   "bytes": 834300,
-   "sha256": "59c3464626fa9646"
+   "bytes": 818797,
+   "sha256": "1a8f394bdb797f22"
   },
   {
    "file": "public/data/shrines/27.json",
    "present": true,
-   "bytes": 830874,
-   "sha256": "e9c8926c6cf89dc7"
+   "bytes": 828917,
+   "sha256": "4b578ea91ff162c3"
   },
   {
    "file": "public/data/shrines/28.json",
    "present": true,
-   "bytes": 1227922,
-   "sha256": "4ebbaa0d4b694aec"
+   "bytes": 1214118,
+   "sha256": "be7550b748947e82"
   },
   {
    "file": "public/data/shrines/29.json",
    "present": true,
-   "bytes": 467074,
-   "sha256": "67d26161e3b0e0af"
+   "bytes": 462222,
+   "sha256": "74e49900bbb4facd"
   },
   {
    "file": "public/data/shrines/30.json",
    "present": true,
-   "bytes": 269137,
-   "sha256": "dbeda4d5c0615b9f"
+   "bytes": 262444,
+   "sha256": "34dc5c4449bc28ae"
   },
   {
    "file": "public/data/shrines/31.json",
    "present": true,
-   "bytes": 367389,
-   "sha256": "6b329493e420e080"
+   "bytes": 366279,
+   "sha256": "57365bb1b2089366"
   },
   {
    "file": "public/data/shrines/32.json",
    "present": true,
-   "bytes": 597296,
-   "sha256": "557c2d547c98f666"
+   "bytes": 589148,
+   "sha256": "79fa4a4ae21a8a34"
   },
   {
    "file": "public/data/shrines/33.json",
    "present": true,
-   "bytes": 599167,
-   "sha256": "2d39d39f561a24e1"
+   "bytes": 587758,
+   "sha256": "37b7a2d48654c830"
   },
   {
    "file": "public/data/shrines/34.json",
    "present": true,
-   "bytes": 958505,
-   "sha256": "202fc83790096ef7"
+   "bytes": 951487,
+   "sha256": "3a59daa37c61a6d9"
   },
   {
    "file": "public/data/shrines/35.json",
    "present": true,
-   "bytes": 328972,
-   "sha256": "9d02c538ed401f27"
+   "bytes": 327257,
+   "sha256": "5b8833f7e3c913af"
   },
   {
    "file": "public/data/shrines/36.json",
    "present": true,
-   "bytes": 273173,
-   "sha256": "412c283247ac5a04"
+   "bytes": 270420,
+   "sha256": "de995f46e6c4894d"
   },
   {
    "file": "public/data/shrines/37.json",
    "present": true,
-   "bytes": 428617,
-   "sha256": "55bb7237e4969044"
+   "bytes": 426562,
+   "sha256": "6a624f0050ffa64a"
   },
   {
    "file": "public/data/shrines/38.json",
    "present": true,
-   "bytes": 546442,
-   "sha256": "0da2136ac88bf28e"
+   "bytes": 544386,
+   "sha256": "fd153bb750fc5f1e"
   },
   {
    "file": "public/data/shrines/39.json",
    "present": true,
-   "bytes": 403300,
-   "sha256": "df36da95a660d096"
+   "bytes": 377355,
+   "sha256": "c2eee9de99bd9a1f"
   },
   {
    "file": "public/data/shrines/40.json",
    "present": true,
-   "bytes": 724949,
-   "sha256": "06cf451cfe739298"
+   "bytes": 709692,
+   "sha256": "15137ba45dfaed4d"
   },
   {
    "file": "public/data/shrines/41.json",
    "present": true,
-   "bytes": 418261,
-   "sha256": "e857d113166be1ac"
+   "bytes": 417651,
+   "sha256": "7572299d2884ce6f"
   },
   {
    "file": "public/data/shrines/42.json",
    "present": true,
-   "bytes": 283564,
-   "sha256": "7b5f22233b915890"
+   "bytes": 282169,
+   "sha256": "c4e0f354031af638"
   },
   {
    "file": "public/data/shrines/43.json",
    "present": true,
-   "bytes": 267654,
-   "sha256": "9b129775b79c8f25"
+   "bytes": 262852,
+   "sha256": "46f8f22cda637536"
   },
   {
    "file": "public/data/shrines/44.json",
    "present": true,
-   "bytes": 187389,
-   "sha256": "bc339f86f54af0b7"
+   "bytes": 185603,
+   "sha256": "561a8e93b0275bd8"
   },
   {
    "file": "public/data/shrines/45.json",
    "present": true,
-   "bytes": 155866,
-   "sha256": "7359f781cb115edd"
+   "bytes": 153324,
+   "sha256": "a36d778a91af46b2"
   },
   {
    "file": "public/data/shrines/46.json",
    "present": true,
-   "bytes": 376356,
-   "sha256": "6b384999f26f2d80"
+   "bytes": 376445,
+   "sha256": "fbcd38a4ec7b6a69"
   },
   {
    "file": "public/data/shrines/47.json",
    "present": true,
-   "bytes": 72269,
-   "sha256": "fb2466212bf2f280"
+   "bytes": 69173,
+   "sha256": "484fcee2dce69c40"
   },
   {
    "file": "public/data/similar/01.json",
    "present": true,
-   "bytes": 312384,
-   "sha256": "2abea0de23588065"
+   "bytes": 290667,
+   "sha256": "9b2349b23eceea30"
   },
   {
    "file": "public/data/similar/02.json",
    "present": true,
-   "bytes": 60956,
-   "sha256": "72db20629b6f6c3e"
+   "bytes": 53800,
+   "sha256": "50adcf69b66b1342"
   },
   {
    "file": "public/data/similar/03.json",
    "present": true,
-   "bytes": 57424,
-   "sha256": "146a4cdcf4363391"
+   "bytes": 57422,
+   "sha256": "d9afa730a6a4db73"
   },
   {
    "file": "public/data/similar/04.json",
    "present": true,
-   "bytes": 239847,
-   "sha256": "abc8ea95517529fd"
+   "bytes": 239799,
+   "sha256": "fa0ea0e67addda97"
   },
   {
    "file": "public/data/similar/05.json",
    "present": true,
-   "bytes": 107587,
-   "sha256": "a28e3b5c756dfd10"
+   "bytes": 96832,
+   "sha256": "69541c31e55f11ee"
   },
   {
    "file": "public/data/similar/06.json",
    "present": true,
-   "bytes": 92949,
-   "sha256": "a0a850be2e634052"
+   "bytes": 78648,
+   "sha256": "cd78eefbce0e49a7"
   },
   {
    "file": "public/data/similar/07.json",
    "present": true,
-   "bytes": 132793,
-   "sha256": "17da564384ec90f3"
+   "bytes": 125652,
+   "sha256": "8fdaa84255569b26"
   },
   {
    "file": "public/data/similar/08.json",
    "present": true,
-   "bytes": 218430,
-   "sha256": "e012da73e5bf87ca"
+   "bytes": 207648,
+   "sha256": "8636114202d7059d"
   },
   {
    "file": "public/data/similar/09.json",
    "present": true,
-   "bytes": 139917,
-   "sha256": "81aae48896fa6b6b"
+   "bytes": 125550,
+   "sha256": "de3e261090412264"
   },
   {
    "file": "public/data/similar/10.json",
    "present": true,
-   "bytes": 203688,
-   "sha256": "82950c21891cdf30"
+   "bytes": 200106,
+   "sha256": "c5803396be11a0a4"
   },
   {
    "file": "public/data/similar/11.json",
    "present": true,
-   "bytes": 888902,
-   "sha256": "b9e6e53789718a92"
+   "bytes": 852918,
+   "sha256": "cd82f8d341c07770"
   },
   {
    "file": "public/data/similar/12.json",
    "present": true,
-   "bytes": 508502,
-   "sha256": "53b1cb9ea0070ee1"
+   "bytes": 479915,
+   "sha256": "b8eecac7b107f3eb"
   },
   {
    "file": "public/data/similar/13.json",
    "present": true,
-   "bytes": 1798515,
-   "sha256": "57061df881d97c70"
+   "bytes": 1708555,
+   "sha256": "7b7bcd718c0274ff"
   },
   {
    "file": "public/data/similar/14.json",
    "present": true,
-   "bytes": 729581,
-   "sha256": "08f714baae581574"
+   "bytes": 640034,
+   "sha256": "9cbf9aa04b979a0b"
   },
   {
    "file": "public/data/similar/15.json",
    "present": true,
-   "bytes": 110688,
-   "sha256": "a9c578e675c61f10"
+   "bytes": 110659,
+   "sha256": "544e72ac92429817"
   },
   {
    "file": "public/data/similar/16.json",
    "present": true,
-   "bytes": 78748,
-   "sha256": "97c9d4efef259983"
+   "bytes": 71537,
+   "sha256": "3b6ab93217eaf3c7"
   },
   {
    "file": "public/data/similar/17.json",
    "present": true,
-   "bytes": 82219,
-   "sha256": "a2d0f6132d4269de"
+   "bytes": 82193,
+   "sha256": "2e579875a01b5ce2"
   },
   {
    "file": "public/data/similar/18.json",
    "present": true,
-   "bytes": 78509,
-   "sha256": "664e2ac089adea99"
+   "bytes": 71330,
+   "sha256": "351cc38b574e8bf3"
   },
   {
    "file": "public/data/similar/19.json",
    "present": true,
-   "bytes": 124973,
-   "sha256": "1470d912f1192926"
+   "bytes": 103509,
+   "sha256": "ed9b06f1c5b77553"
   },
   {
    "file": "public/data/similar/20.json",
    "present": true,
-   "bytes": 225218,
-   "sha256": "54c26abc90f775ba"
+   "bytes": 214429,
+   "sha256": "5e29b937ca401560"
   },
   {
    "file": "public/data/similar/21.json",
    "present": true,
-   "bytes": 193290,
-   "sha256": "1341ac07c0873612"
+   "bytes": 186152,
+   "sha256": "f86b1df373fa8a94"
   },
   {
    "file": "public/data/similar/22.json",
    "present": true,
-   "bytes": 378391,
-   "sha256": "2fd71983e565f9c3"
+   "bytes": 367705,
+   "sha256": "0b226dff98d41dce"
   },
   {
    "file": "public/data/similar/23.json",
    "present": true,
-   "bytes": 593305,
-   "sha256": "608b76f09213206b"
+   "bytes": 571506,
+   "sha256": "1a87da5b96f73da0"
   },
   {
    "file": "public/data/similar/24.json",
    "present": true,
-   "bytes": 252965,
-   "sha256": "2648971bb7c4ef06"
+   "bytes": 228187,
+   "sha256": "27be1eec0ca637ce"
   },
   {
    "file": "public/data/similar/25.json",
    "present": true,
-   "bytes": 275258,
-   "sha256": "b5f15debf48a5540"
+   "bytes": 246667,
+   "sha256": "5409bbddf4c57399"
   },
   {
    "file": "public/data/similar/26.json",
    "present": true,
-   "bytes": 587214,
-   "sha256": "7f7fbd2f1f26cd04"
+   "bytes": 562130,
+   "sha256": "9ba20c218bd6191f"
   },
   {
    "file": "public/data/similar/27.json",
    "present": true,
-   "bytes": 794918,
-   "sha256": "7e449dc6d07c3526"
+   "bytes": 791339,
+   "sha256": "7eb2ccb00a0c3c9b"
   },
   {
    "file": "public/data/similar/28.json",
    "present": true,
-   "bytes": 589780,
-   "sha256": "4ff7c9bbec18da6f"
+   "bytes": 571883,
+   "sha256": "9754f1a7b6df94e8"
   },
   {
    "file": "public/data/similar/29.json",
    "present": true,
-   "bytes": 343343,
-   "sha256": "8b3c620413ff89c1"
+   "bytes": 336107,
+   "sha256": "63d2f9b07f1eda0f"
   },
   {
    "file": "public/data/similar/30.json",
    "present": true,
-   "bytes": 139422,
-   "sha256": "d9d24d2afa9db63a"
+   "bytes": 132220,
+   "sha256": "ed0d2ed556bc510f"
   },
   {
    "file": "public/data/similar/31.json",
    "present": true,
-   "bytes": 53600,
-   "sha256": "93a166b3fe8c8c5a"
+   "bytes": 53584,
+   "sha256": "d54762aa622b9635"
   },
   {
    "file": "public/data/similar/32.json",
    "present": true,
-   "bytes": 168171,
-   "sha256": "662f597041ee14fc"
+   "bytes": 143049,
+   "sha256": "02c67bc911b02c48"
   },
   {
    "file": "public/data/similar/33.json",
    "present": true,
-   "bytes": 125135,
-   "sha256": "887bd1d0373128d7"
+   "bytes": 125124,
+   "sha256": "6b768f12d83999c0"
   },
   {
    "file": "public/data/similar/34.json",
    "present": true,
-   "bytes": 125375,
-   "sha256": "900ee91c306098f3"
+   "bytes": 125340,
+   "sha256": "62e86b08b79561fb"
   },
   {
    "file": "public/data/similar/35.json",
    "present": true,
-   "bytes": 89660,
-   "sha256": "f6a7c90738f861a6"
+   "bytes": 89647,
+   "sha256": "2261977793170c7b"
   },
   {
    "file": "public/data/similar/36.json",
    "present": true,
-   "bytes": 96549,
-   "sha256": "2e240b27c82eed73"
+   "bytes": 93038,
+   "sha256": "6bc6a0cc1f8f92a3"
   },
   {
    "file": "public/data/similar/37.json",
    "present": true,
-   "bytes": 75113,
-   "sha256": "c45975e59de19058"
+   "bytes": 71535,
+   "sha256": "b9c85addf890a1a5"
   },
   {
    "file": "public/data/similar/38.json",
    "present": true,
-   "bytes": 103702,
-   "sha256": "a8948e68c19e16d0"
+   "bytes": 103701,
+   "sha256": "88e9bb0d9e510591"
   },
   {
    "file": "public/data/similar/39.json",
    "present": true,
-   "bytes": 60768,
-   "sha256": "a768c5419253b3bc"
+   "bytes": 57222,
+   "sha256": "6e08de9659a7d4e4"
   },
   {
    "file": "public/data/similar/40.json",
    "present": true,
-   "bytes": 178998,
-   "sha256": "a56ff16e5b57be15"
+   "bytes": 164611,
+   "sha256": "14208c226f3cfc3a"
   },
   {
    "file": "public/data/similar/41.json",
    "present": true,
-   "bytes": 67940,
-   "sha256": "d8edc007728d9b61"
+   "bytes": 64356,
+   "sha256": "eaaa429ba8506f6e"
   },
   {
    "file": "public/data/similar/42.json",
    "present": true,
-   "bytes": 71627,
-   "sha256": "ba4ed0ad05643f88"
+   "bytes": 71626,
+   "sha256": "0a593387fce56a86"
   },
   {
    "file": "public/data/similar/43.json",
    "present": true,
-   "bytes": 107122,
-   "sha256": "d62c98ec12472500"
+   "bytes": 99974,
+   "sha256": "705f016cd348ea41"
   },
   {
    "file": "public/data/similar/44.json",
    "present": true,
-   "bytes": 68070,
-   "sha256": "ddc1db001aa6f4c2"
+   "bytes": 64447,
+   "sha256": "35f2e72fa1062bba"
   },
   {
    "file": "public/data/similar/45.json",
    "present": true,
-   "bytes": 64580,
-   "sha256": "6f72d86dfeb02534"
+   "bytes": 60989,
+   "sha256": "4bd6cb2173697490"
   },
   {
    "file": "public/data/similar/46.json",
    "present": true,
-   "bytes": 150756,
-   "sha256": "0a75f7d631b63fb0"
+   "bytes": 150754,
+   "sha256": "f2a6600eba3a3262"
   },
   {
    "file": "public/data/similar/47.json",
    "present": true,
-   "bytes": 53887,
-   "sha256": "978d4418ad5151a9"
+   "bytes": 46631,
+   "sha256": "115fa525a557e1a1"
   }
  ],
  "note": "画面が読むデータの内容から作った刻印。改行を LF に揃えてから測っている。"

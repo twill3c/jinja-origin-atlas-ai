@@ -119,3 +119,32 @@ def test_t062c_no_oracle_field_reaches_the_matcher(resolved):
     before = [(m.osm_id, m.qid, round(m.score, 9)) for m in resolved["matches"].values()]
     after = [(m.osm_id, m.qid, round(m.score, 9)) for m in resolve(blinded_osm, list(wd.values()))]
     assert sorted(before) == sorted(after)
+
+
+@pytest.mark.validation
+def test_t124c_shipped_matcher_on_holdout(resolved):
+    """T-124 / G-09 / D-08: **出荷している形**(同名統合 → 一対一)でも取り置きの床を割らない。
+
+    上の T-063 は地物ごとの採点(`resolve`)を測っており、一対一の割り当てと統合は見ない。
+    loop_009 で一対一の同点を距離で決めたところ、単体テストは全部緑のまま、取り置きの
+    適合率が 0.9911 → 0.9873 に落ちた(重複の Wikidata 項目に取られた)。出荷の形を直接測る。
+    統合で消えた地物は、残った神社の結合結果で採点する。
+    """
+    from etl.entity_resolution import resolve_one_to_one
+    from export.dedupe import merge_same_name
+
+    osm, wd, oracle, many = resolved["osm"], resolved["wd"], resolved["oracle"], resolved["matches"]
+    dd = merge_same_name(list(osm.values()), many)
+    shipped = {m.osm_id: m for m in resolve_one_to_one(dd.survivors, list(wd.values()))}
+    hold = [(k, v) for k, v in oracle.items() if split(k) == "holdout"]
+
+    def get(k):
+        return shipped[dd.aliases.get(k, k)]
+
+    kept = [(k, v) for k, v in hold if get(k).qid and get(k).score >= AUTO_THRESHOLD]
+    correct = sum(1 for k, v in kept if get(k).qid == v["qid"])
+    recall = correct / len(hold)
+    precision = correct / len(kept) if kept else 0.0
+    assert dd.aliases, "統合が起きていない(出荷の形を測れていない)"
+    assert recall >= HOLDOUT_RECALL_FLOOR, f"再現率 {recall:.4f} < {HOLDOUT_RECALL_FLOOR}"
+    assert precision >= HOLDOUT_PRECISION_FLOOR, f"適合率 {precision:.4f} < {HOLDOUT_PRECISION_FLOOR}"

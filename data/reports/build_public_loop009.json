@@ -1,0 +1,89 @@
+{
+ "shrines": 40325,
+ "with_name": 29761,
+ "without_name": 10564,
+ "with_osm_wikidata_tag": 4989,
+ "wikidata_records_with_coord": 16908,
+ "matched_auto": 6148,
+ "matched_review": 549,
+ "unmatched": 33628,
+ "with_deities": 3744,
+ "with_rank": 2971,
+ "with_inception": 1,
+ "with_parent": 267,
+ "with_ja_wikipedia": 3307,
+ "with_elevation": 40320,
+ "without_elevation": 5,
+ "with_river_distance": 40185,
+ "without_river_distance": 140,
+ "suspected_parts": 399,
+ "ai_without_article": 0,
+ "family_basis": {
+  "none": 27413,
+  "name": 10293,
+  "deity": 2619
+ },
+ "with_ai": 3171,
+ "without_ai": 37154,
+ "similar_missing_neighbors": 0,
+ "dedupe": {
+  "osm_features": 40792,
+  "merged_features": 467,
+  "merged_components": 448,
+  "guarded_pairs": 3,
+  "guarded_components": 0,
+  "items_matched_to_multiple_features_before": 222,
+  "suspected_parts": 399,
+  "guarded_pairs_remaining": 3
+ },
+ "osm_dropped": {
+  "座標なし": 0,
+  "日本の外接矩形外": 0,
+  "ID 重複": 5
+ },
+ "elevation_oracle": {
+  "n": 360,
+  "median_abs_diff_m": 0.31,
+  "within_1m": 279,
+  "within_5m": 337,
+  "within_10m": 351,
+  "max_abs_diff_m": 926.63
+ },
+ "elevation_quantiles": {
+  "min": -2.5,
+  "p25": 12.1,
+  "median": 35.2,
+  "p75": 105.7,
+  "p95": 470.1,
+  "max": 3716.8
+ },
+ "river_distance_quantiles": {
+  "min": 0.0,
+  "p25": 114.2,
+  "median": 241.8,
+  "p75": 476.3,
+  "p95": 1180.1,
+  "max": 9929.5
+ },
+ "signal_agreement": {
+  "both_known": 1792,
+  "agree": 1778,
+  "disagree": 14,
+  "rate": 0.9922
+ },
+ "bytes_geojson": 8490649,
+ "bytes_catalog": 33255669,
+ "chunks": 47,
+ "bytes_chunks": 33255669,
+ "bytes_chunk_max": 2385081,
+ "bytes_index": 1019851,
+ "similar_files": 47,
+ "bytes_similar": 12759099,
+ "shrines_with_similar": 3171,
+ "japan_bbox": [
+  122.0,
+  20.2,
+  154.1,
+  45.8
+ ]
+}

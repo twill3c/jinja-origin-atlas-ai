@@ -23,9 +23,14 @@ async function getJson<T>(url: string): Promise<T> {
   return (await r.json()) as T;
 }
 
-async function lookupPref(id: string): Promise<string | null> {
+async function lookupPref(id: string): Promise<{ p: string; id: string } | null> {
   const idx = await getJson<IndexDoc>("/data/shrines/index.json");
-  return idx.ids[id] ?? null;
+  const p = idx.ids[id];
+  if (p) return { p, id };
+  // D-08: 同じ社を指す地物を統合して消えた ID は、残った神社を開く(旧 URL を壊さない)
+  const to = idx.aliases?.[id];
+  if (to && idx.ids[to]) return { p: idx.ids[to], id: to };
+  return null;
 }
 
 async function findIn(p: string, id: string): Promise<{ shrine: ShrineRecord; chunk: ChunkDoc } | null> {
@@ -53,11 +58,20 @@ export function useShrine(): ShrineState {
         const hit = await findIn(hinted, id);
         if (hit) return { status: "ready", id, ...hit };
       }
-      const p = await lookupPref(id);
-      if (!p) return { status: "error", id, message: `ID ${id} の神社は見つからない。` };
-      const hit = await findIn(p, id);
-      if (!hit) return { status: "error", id, message: `索引は ${p} を指しているが、そこに ${id} が無い。` };
-      return { status: "ready", id, ...hit };
+      const found = await lookupPref(id);
+      if (!found) return { status: "error", id, message: `ID ${id} の神社は見つからない。` };
+      const hit = await findIn(found.p, found.id);
+      if (!hit) {
+        return { status: "error", id, message: `索引は ${found.p} を指しているが、そこに ${found.id} が無い。` };
+      }
+      if (found.id !== id) {
+        // 統合された ID で来た。アドレス欄を残った神社の URL に置き換える
+        const u = new URL(window.location.href);
+        u.searchParams.set("id", found.id);
+        u.searchParams.set("p", found.p);
+        window.history.replaceState(null, "", u.toString());
+      }
+      return { status: "ready", id: found.id, ...hit };
     }
 
     run()

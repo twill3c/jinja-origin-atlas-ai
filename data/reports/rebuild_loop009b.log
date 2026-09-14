@@ -1,0 +1,60 @@
+== build_public 1
+ok
+== fetch_wikipedia
+  100/3323 取得 0 / キャッシュ 100 / 同記事 0 (1s / 区間 68.0 件/s)
+  200/3323 取得 1 / キャッシュ 199 / 同記事 0 (3s / 区間 61.8 件/s)
+  300/3323 取得 1 / キャッシュ 299 / 同記事 0 (4s / 区間 137.5 件/s)
+  400/3323 取得 1 / キャッシュ 399 / 同記事 0 (4s / 区間 158.6 件/s)
+  500/3323 取得 1 / キャッシュ 499 / 同記事 0 (5s / 区間 173.3 件/s)
+  600/3323 取得 1 / キャッシュ 599 / 同記事 0 (6s / 区間 170.0 件/s)
+  700/3323 取得 1 / キャッシュ 699 / 同記事 0 (6s / 区間 197.2 件/s)
+  800/3323 取得 1 / キャッシュ 799 / 同記事 0 (7s / 区間 172.5 件/s)
+  900/3323 取得 2 / キャッシュ 898 / 同記事 0 (8s / 区間 82.7 件/s)
+  1000/3323 取得 2 / キャッシュ 998 / 同記事 0 (8s / 区間 202.2 件/s)
+  1100/3323 取得 2 / キャッシュ 1098 / 同記事 0 (9s / 区間 134.7 件/s)
+  1200/3323 取得 2 / キャッシュ 1198 / 同記事 0 (10s / 区間 118.3 件/s)
+  1300/3323 取得 2 / キャッシュ 1298 / 同記事 0 (11s / 区間 104.7 件/s)
+  1400/3323 取得 2 / キャッシュ 1398 / 同記事 0 (12s / 区間 133.5 件/s)
+  1500/3323 取得 2 / キャッシュ 1498 / 同記事 0 (12s / 区間 214.3 件/s)
+  1600/3323 取得 2 / キャッシュ 1598 / 同記事 0 (13s / 区間 163.3 件/s)
+  1700/3323 取得 2 / キャッシュ 1698 / 同記事 0 (13s / 区間 164.8 件/s)
+  1800/3323 取得 2 / キャッシュ 1798 / 同記事 0 (14s / 区間 134.7 件/s)
+  1900/3323 取得 2 / キャッシュ 1898 / 同記事 0 (15s / 区間 89.6 件/s)
+  2000/3323 取得 2 / キャッシュ 1998 / 同記事 0 (16s / 区間 88.1 件/s)
+  2100/3323 取得 3 / キャッシュ 2097 / 同記事 0 (18s / 区間 50.3 件/s)
+  2200/3323 取得 3 / キャッシュ 2197 / 同記事 0 (21s / 区間 41.0 件/s)
+  2300/3323 取得 4 / キャッシュ 2296 / 同記事 0 (23s / 区間 43.9 件/s)
+  2400/3323 取得 4 / キャッシュ 2396 / 同記事 0 (29s / 区間 15.7 件/s)
+  2500/3323 取得 4 / キャッシュ 2496 / 同記事 0 (31s / 区間 50.0 件/s)
+  2600/3323 取得 4 / キャッシュ 2596 / 同記事 0 (32s / 区間 96.2 件/s)
+  2700/3323 取得 4 / キャッシュ 2696 / 同記事 0 (33s / 区間 108.1 件/s)
+  2800/3323 取得 4 / キャッシュ 2796 / 同記事 0 (34s / 区間 94.8 件/s)
+  2900/3323 取得 4 / キャッシュ 2896 / 同記事 0 (35s / 区間 132.0 件/s)
+  3000/3323 取得 4 / キャッシュ 2996 / 同記事 0 (36s / 区間 169.2 件/s)
+  3100/3323 取得 4 / キャッシュ 3096 / 同記事 0 (37s / 区間 102.1 件/s)
+  3200/3323 取得 4 / キャッシュ 3196 / 同記事 0 (39s / 区間 41.2 件/s)
+  3300/3323 取得 4 / キャッシュ 3296 / 同記事 0 (40s / 区間 81.8 件/s)
+ok
+== pipeline
+コーパス 神社 3186 件 / 記事 3184 件(複数の神社が共有する記事 2・版の食い違い 0)(落とした内訳 {'本文なし': 0, '120 字未満': 147, '版 ID なし': 0, 'いまのカタログで記事を持たない': 183})
+モデル intfloat/multilingual-e5-base @ d12875059715
+  埋め込み: 保存済み 3182 / 計算する 2
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 2089.87it/s]
+  埋め込み 2/2  (189s / 区間 0.01 件/s)
+埋め込み (3184, 768) (246s)
+  motifs_e5: 既存の埋め込みを再利用((60, 768))
+  control_e5: 既存の埋め込みを再利用((3, 768))
+C:\_ClaudeCode\jinja-origin-atlas-ai\.venv\Lib\site-packages\umap\umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+C:\_ClaudeCode\jinja-origin-atlas-ai\.venv\Lib\site-packages\sklearn\cluster\_hdbscan\hdbscan.py:722: FutureWarning: The default value of `copy` will change from False to True in 1.10. Explicitly set a value for `copy` to silence this warning.
+  warn(
+C:\_ClaudeCode\jinja-origin-atlas-ai\.venv\Lib\site-packages\umap\umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+ok
+== build_public 2
+ok
+== motif_vs_geography
+ok
+== pytest
+pytest_exit=0

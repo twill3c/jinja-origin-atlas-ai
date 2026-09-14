@@ -115,6 +115,7 @@ def load_or_encode(name: str, texts: list[str], model_name: str, revision: str,
 
 
 NAMES_FROM = pathlib.Path("data/interim/catalog_osm.json")
+CATALOG_FULL = pathlib.Path("data/interim/catalog_full.json")
 
 
 def _base_title(title: str) -> str:
@@ -167,6 +168,12 @@ def main(argv: list[str] | None = None) -> int:
 
     t0 = time.time()
     docs, dropped = load_corpus()
+    # D-08: 名寄せが変わると、前回は記事を持っていた神社の文書がキャッシュに残る。
+    # **いまのカタログで ja_wikipedia を持つ神社の文書だけ**を使う
+    current = {r["id"] for r in json.loads(CATALOG_FULL.read_text(encoding="utf-8"))["shrines"]
+               if r.get("ja_wikipedia")}
+    dropped["いまのカタログで記事を持たない"] = sum(1 for d in docs if d.shrine_id not in current)
+    docs = [d for d in docs if d.shrine_id in current]
     if args.limit:
         docs = docs[: args.limit]
     arts, members, rev_mismatch = group_by_article(docs)

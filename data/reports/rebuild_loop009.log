@@ -1,0 +1,97 @@
+== build_public 1
+ok
+== fetch_wikipedia
+  100/3307 取得 1 / キャッシュ 99 / 同記事 0 (3s / 区間 40.0 件/s)
+  200/3307 取得 1 / キャッシュ 199 / 同記事 0 (3s / 区間 162.2 件/s)
+  300/3307 取得 4 / キャッシュ 296 / 同記事 0 (5s / 区間 48.0 件/s)
+  400/3307 取得 4 / キャッシュ 396 / 同記事 0 (6s / 区間 229.5 件/s)
+  500/3307 取得 4 / キャッシュ 496 / 同記事 0 (6s / 区間 169.9 件/s)
+  600/3307 取得 4 / キャッシュ 596 / 同記事 0 (7s / 区間 180.5 件/s)
+  700/3307 取得 5 / キャッシュ 695 / 同記事 0 (8s / 区間 85.0 件/s)
+  800/3307 取得 5 / キャッシュ 795 / 同記事 0 (8s / 区間 203.0 件/s)
+  900/3307 取得 5 / キャッシュ 895 / 同記事 0 (9s / 区間 146.5 件/s)
+  1000/3307 取得 5 / キャッシュ 995 / 同記事 0 (10s / 区間 153.8 件/s)
+  1100/3307 取得 6 / キャッシュ 1094 / 同記事 0 (13s / 区間 36.2 件/s)
+  1200/3307 取得 6 / キャッシュ 1194 / 同記事 0 (13s / 区間 171.2 件/s)
+  1300/3307 取得 6 / キャッシュ 1294 / 同記事 0 (14s / 区間 142.2 件/s)
+  1400/3307 取得 7 / キャッシュ 1393 / 同記事 0 (15s / 区間 81.2 件/s)
+  1500/3307 取得 8 / キャッシュ 1492 / 同記事 0 (16s / 区間 74.5 件/s)
+  1600/3307 取得 9 / キャッシュ 1591 / 同記事 0 (18s / 区間 75.6 件/s)
+  1700/3307 取得 9 / キャッシュ 1691 / 同記事 0 (18s / 区間 143.6 件/s)
+  1800/3307 取得 9 / キャッシュ 1791 / 同記事 0 (19s / 区間 140.0 件/s)
+  1900/3307 取得 9 / キャッシュ 1891 / 同記事 0 (20s / 区間 188.4 件/s)
+  2000/3307 取得 13 / キャッシュ 1987 / 同記事 0 (22s / 区間 38.0 件/s)
+  2100/3307 取得 15 / キャッシュ 2085 / 同記事 0 (24s / 区間 60.0 件/s)
+  2200/3307 取得 16 / キャッシュ 2184 / 同記事 0 (25s / 区間 107.4 件/s)
+  2300/3307 取得 16 / キャッシュ 2284 / 同記事 0 (25s / 区間 251.3 件/s)
+  2400/3307 取得 16 / キャッシュ 2384 / 同記事 0 (26s / 区間 235.9 件/s)
+  2500/3307 取得 16 / キャッシュ 2484 / 同記事 0 (26s / 区間 319.2 件/s)
+  2600/3307 取得 16 / キャッシュ 2584 / 同記事 0 (26s / 区間 257.0 件/s)
+  2700/3307 取得 16 / キャッシュ 2684 / 同記事 0 (27s / 区間 310.2 件/s)
+  2800/3307 取得 16 / キャッシュ 2784 / 同記事 0 (27s / 区間 194.5 件/s)
+  2900/3307 取得 16 / キャッシュ 2884 / 同記事 0 (28s / 区間 191.8 件/s)
+  3000/3307 取得 17 / キャッシュ 2983 / 同記事 0 (29s / 区間 98.7 件/s)
+  3100/3307 取得 17 / キャッシュ 3083 / 同記事 0 (29s / 区間 282.0 件/s)
+  3200/3307 取得 17 / キャッシュ 3183 / 同記事 0 (29s / 区間 292.1 件/s)
+  3300/3307 取得 17 / キャッシュ 3283 / 同記事 0 (30s / 区間 233.0 件/s)
+ok
+== pipeline
+コーパス 神社 3171 件 / 記事 3169 件(複数の神社が共有する記事 2・版の食い違い 0)(落とした内訳 {'本文なし': 0, '120 字未満': 146, '版 ID なし': 0, 'いまのカタログで記事を持たない': 196})
+モデル intfloat/multilingual-e5-base @ d12875059715
+  埋め込み: 保存済み 3159 / 計算する 10
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  23%|██▎       | 45/199 [00:00<00:00, 431.15it/s]Loading weights:  49%|████▉     | 98/199 [00:00<00:00, 484.07it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 782.16it/s]
+  埋め込み 10/10  (179s / 区間 0.06 件/s)
+埋め込み (3169, 768) (195s)
+  motifs_e5: 既存の埋め込みを再利用((60, 768))
+  control_e5: 既存の埋め込みを再利用((3, 768))
+C:\_ClaudeCode\jinja-origin-atlas-ai\.venv\Lib\site-packages\umap\umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+C:\_ClaudeCode\jinja-origin-atlas-ai\.venv\Lib\site-packages\sklearn\cluster\_hdbscan\hdbscan.py:722: FutureWarning: The default value of `copy` will change from False to True in 1.10. Explicitly set a value for `copy` to silence this warning.
+  warn(
+C:\_ClaudeCode\jinja-origin-atlas-ai\.venv\Lib\site-packages\umap\umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+ok
+== build_public 2
+ok
+== motif_vs_geography
+{
+ "results": [
+  {
+   "label": "山岳・自然のスコアと標高",
+   "motif": "mountain_nature",
+   "geography": "elevation_m",
+   "n": 3171,
+   "spearman": 0.2676,
+   "expected_sign": 1,
+   "sign_matches": true,
+   "permutation_p": 0.0005,
+   "significant_at_0.01": true
+  },
+  {
+   "label": "水・河川のスコアと河川距離",
+   "motif": "water_river",
+   "geography": "nearest_river_distance_m",
+   "n": 3158,
+   "spearman": -0.0548,
+   "expected_sign": -1,
+   "sign_matches": true,
+   "permutation_p": 0.002,
+   "significant_at_0.01": true
+  },
+  {
+   "label": "海・航海のスコアと標高(低いほうへ出るはず)",
+   "motif": "sea_navigation",
+   "geography": "elevation_m",
+   "n": 3171,
+   "spearman": -0.0199,
+   "expected_sign": -1,
+   "sign_matches": true,
+   "permutation_p": 0.2609,
+   "significant_at_0.01": false
+  }
+ ]
+}
+ok
+== pytest
+pytest_exit=0

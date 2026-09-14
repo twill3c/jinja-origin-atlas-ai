@@ -77,6 +77,8 @@ export type SimilarDoc = {
 
 export type IndexDoc = {
   ids: Record<string, string>;
+  /** D-08: 同じ社を指す地物を統合して消えた ID → 残った ID */
+  aliases?: Record<string, string>;
   prefectures: Record<string, { name: string; count: number }>;
   ai_count: number;
   motif_labels: Record<string, string>;

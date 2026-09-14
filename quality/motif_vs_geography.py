@@ -12,6 +12,10 @@
 
 **当たらなくても、当たらなかったと書く。** 期待どおりにならない結果を消さない。
 
+**記事単位で数える**(D-07)。モチーフのスコアは記事ごとに一度だけ計算している。記事を共有する
+神社(神門と本社など)を別々に数えると、同じスコアの点が二重に入って p を小さく見せる。
+地理条件は、記事を共有する神社の値の中央値を使う。
+
     python -m quality.motif_vs_geography
 """
 from __future__ import annotations
@@ -75,16 +79,21 @@ def main() -> int:
         ("sea_navigation", "elevation_m", "海・航海のスコアと標高(低いほうへ出るはず)", -1),
     ]
 
+    groups: dict[str, list[dict]] = {}
+    for s in ai["shrines"]:
+        groups.setdefault(s["source"]["url"], []).append(s)
+
     results = []
     for motif, geo_key, label, expect_sign in pairs:
         xs, ys = [], []
-        for s in ai["shrines"]:
-            g = (cat.get(s["id"]) or {}).get("geography") or {}
-            v = g.get(geo_key)
-            if v is None:
+        for members in groups.values():
+            vals = sorted(float(v) for m in members
+                          if (v := ((cat.get(m["id"]) or {}).get("geography") or {}).get(geo_key)) is not None)
+            if not vals:
                 continue
-            xs.append(s["motifs"][motif])
-            ys.append(float(v))
+            mid = len(vals) // 2
+            ys.append(vals[mid] if len(vals) % 2 else (vals[mid - 1] + vals[mid]) / 2)
+            xs.append(members[0]["motifs"][motif])
         if len(xs) < 50:
             results.append({"label": label, "n": len(xs), "note": "標本が少なすぎる"})
             continue
@@ -101,9 +110,9 @@ def main() -> int:
         })
 
     REPORT.parent.mkdir(parents=True, exist_ok=True)
-    REPORT.write_text(json.dumps({"results": results}, ensure_ascii=False, indent=1),
-                      encoding="utf-8")
-    print(json.dumps({"results": results}, ensure_ascii=False, indent=1))
+    doc = {"unit": "記事", "articles": len(groups), "shrines": len(ai["shrines"]), "results": results}
+    REPORT.write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(json.dumps(doc, ensure_ascii=False, indent=1))
     return 0
 
 

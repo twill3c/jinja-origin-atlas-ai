@@ -465,6 +465,27 @@ async function main() {
       }
     }
 
+    // --- 画面の範囲の文が出荷物と合っているか(T-132 / HC-280)----------------
+    // 数値の欄はビルド報告を読むので自動で変わるが、**隣の散文は書き込んだまま残る**。
+    // 全国版を出してから 5 ループ、3 都府県版の範囲と結論の文が本番に出ていた。
+    console.log("範囲の文");
+    const buildRep = JSON.parse(await readFile(path.join(OUT, "data/meta/build.json"), "utf-8"));
+    const STALE = ["東京都・京都府・山梨県", "3 都府県", "段階 1", "成り立ったのは一つだけ"];
+    const scopeProblems = (text) => {
+      const out = [];
+      if (!text.includes(`全国 ${buildRep.chunks} 都道府県`)) out.push(`「全国 ${buildRep.chunks} 都道府県」が無い`);
+      for (const s of STALE) if (text.includes(s)) out.push(`旧範囲の語「${s}」がある`);
+      return out;
+    };
+    check("範囲の検査 陽性対照: 旧範囲の文を検出する",
+      scopeProblems("現在の公開範囲は東京都・京都府・山梨県の 3 都府県").length >= 2);
+    check("範囲の検査 陰性対照: 正しい文は通す", scopeProblems(`全国 ${buildRep.chunks} 都道府県の神社`).length === 0);
+    for (const route of ["/", "/map/", "/analytics/"]) {
+      await page.goto(`${base}${route}`, { waitUntil: "networkidle" });
+      const problems = scopeProblems(await page.locator("main").innerText());
+      check(`${route} の範囲の文が出荷物(${buildRep.chunks} 都道府県)と合う`, problems.length === 0, problems.join(" / "));
+    }
+
     // --- フッタが常時見えるか --------------------------------------------
     await page.setViewportSize({ width: 1280, height: 900 });
     await page.goto(`${base}/`, { waitUntil: "domcontentloaded" });

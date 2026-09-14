@@ -355,3 +355,21 @@ def test_t122_shrines_sharing_an_article_share_all_scores(ai):
                 if r[k] != first[k]:
                     bad.append((first["id"], r["id"], k))
     assert bad == [], f"{len(bad)} 件。例: {bad[:5]}"
+
+
+@pytest.mark.validation
+def test_t097b_counted_per_article_not_per_shrine():
+    """T-097 / D-07: 照合は**記事単位**で数える。
+
+    モチーフのスコアは記事ごとに一度だけ計算している。神社単位で数えると、記事を共有する
+    神社(同じスコアで、ほぼ同じ場所にある)が標本を水増しし、並べ替え検定の p を小さく見せる。
+    """
+    p = pathlib.Path("data/reports/motif_vs_geography.json")
+    if not (p.exists() and AI_JSON.exists()):
+        pytest.skip("照合レポートか AI アーティファクトが未生成")
+    d = json.loads(p.read_text(encoding="utf-8"))
+    ai = json.loads(AI_JSON.read_text(encoding="utf-8"))
+    articles = len({s["source"]["url"] for s in ai["shrines"]})
+    assert d.get("unit") == "記事", f"照合の単位が記事と記録されていない: {d.get('unit')}"
+    for r in d["results"]:
+        assert r["n"] <= articles, f"{r['label']}: n={r['n']} が記事数 {articles} を超える(神社単位で数えている)"

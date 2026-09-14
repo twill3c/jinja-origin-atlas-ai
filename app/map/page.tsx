@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import JinjaMap from "@/components/map/JinjaMap";
-import { readFamilyCounts, readFamilyLabels } from "@/lib/data";
+import { jp, readBuildReport, readFamilyCounts, readFamilyLabels } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "地図 | Jinja Origin Atlas AI",
@@ -9,6 +9,8 @@ export const metadata: Metadata = {
 
 export default function MapPage() {
   const families = { labels: readFamilyLabels(), counts: readFamilyCounts() };
+  // 範囲の文はビルド報告から組み立てる。3 都府県版の文を書き込んだまま全国版を出していた(HC-280)
+  const report = readBuildReport();
   return (
     <main>
       <h1>神社の分布</h1>
@@ -18,10 +20,12 @@ export default function MapPage() {
         系統は Wikidata の祭神・社格と名称規則から決めている。
       </p>
       <JinjaMap families={families} />
-      <div className="notice" style={{ marginTop: "1rem" }}>
-        現在の公開範囲は東京都・京都府・山梨県の 3 都府県(仕様書 §66 の段階 1)。
-        全国 40,776 件の取得は後続の実装で行う。
-      </div>
+      {report && (
+        <div className="notice" style={{ marginTop: "1rem" }}>
+          公開範囲は全国 {jp(report.chunks)} 都道府県の {jp(report.shrines)} 社。OpenStreetMap の地物{" "}
+          {jp(report.dedupe.osm_features)} 件のうち、同じ社を node と way の両方で描いたものなどを一つにまとめている。
+        </div>
+      )}
     </main>
   );
 }

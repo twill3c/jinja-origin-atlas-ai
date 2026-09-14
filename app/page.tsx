@@ -33,8 +33,11 @@ export default function Home() {
             <tbody>
               <tr>
                 <th scope="row">神社位置(公開中)</th>
-                <td>{jp(report.shrines)} 件</td>
-                <td>東京都・京都府・山梨県</td>
+                <td>{jp(report.shrines)} 社</td>
+                <td>
+                  全国 {jp(report.chunks)} 都道府県(OpenStreetMap の地物 {jp(report.dedupe.osm_features)}{" "}
+                  件から、同じ社を指す重複をまとめた)
+                </td>
               </tr>
               <tr>
                 <th scope="row">うち名称タグあり</th>
@@ -113,7 +116,7 @@ export default function Home() {
         </li>
         <li>
           <strong>成立年代はほとんど取れない。</strong>
-          Wikidata の成立日(P571)を持つのは 3 都府県で {jp(report.with_inception)} 件。
+          Wikidata の成立日(P571)を持つのは全国 {jp(report.shrines)} 社のうち {jp(report.with_inception)} 件。
           時代スライダーはこの密度では成立しない
         </li>
       </ul>

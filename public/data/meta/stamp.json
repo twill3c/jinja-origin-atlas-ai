@@ -1,6 +1,6 @@
 {
- "stamp": "c634d1d42011b8754b14f702c5f5c5a4",
- "generated_at": "2026-09-14T11:19:32.882Z",
+ "stamp": "94527549c91b16bc165141492d7b8ac7",
+ "generated_at": "2026-09-14T12:19:25.815Z",
  "files": [
   {
    "file": "components/common/SiteChrome.tsx",
@@ -23,14 +23,14 @@
   {
    "file": "app/page.tsx",
    "present": true,
-   "bytes": 3880,
-   "sha256": "4e1af01433a4e291"
+   "bytes": 4046,
+   "sha256": "2a36034f3db374bf"
   },
   {
    "file": "app/map/page.tsx",
    "present": true,
-   "bytes": 890,
-   "sha256": "98e30e36b795c6ae"
+   "bytes": 1129,
+   "sha256": "9ecf1a85f66eb28f"
   },
   {
    "file": "app/ai-space/page.tsx",
@@ -41,8 +41,8 @@
   {
    "file": "app/analytics/page.tsx",
    "present": true,
-   "bytes": 9840,
-   "sha256": "c33527dd06272d01"
+   "bytes": 10253,
+   "sha256": "70ca1ff73744b173"
   },
   {
    "file": "app/sources/page.tsx",
@@ -119,8 +119,8 @@
   {
    "file": "lib/types.ts",
    "present": true,
-   "bytes": 2379,
-   "sha256": "db2d8ad046b30b46"
+   "bytes": 2796,
+   "sha256": "8bc137773fe3d574"
   },
   {
    "file": "public/data/meta/build.json",
@@ -167,8 +167,8 @@
   {
    "file": "data/reports/motif_vs_geography.json",
    "present": true,
-   "bytes": 772,
-   "sha256": "c037d461704d9249"
+   "bytes": 824,
+   "sha256": "4f142405cf481ec0"
   },
   {
    "file": "public/data/shrines/01.json",

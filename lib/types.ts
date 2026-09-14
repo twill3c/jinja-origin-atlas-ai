@@ -77,6 +77,19 @@ export type BuildReport = {
   signal_agreement: SignalAgreement;
   bytes_geojson: number;
   bytes_catalog: number;
+  /** 都道府県チャンクの数(= 公開範囲の県の数) */
+  chunks: number;
+  /** D-08: 同じ社を指す地物の統合 */
+  dedupe: {
+    osm_features: number;
+    merged_features: number;
+    merged_components: number;
+    guarded_pairs: number;
+    guarded_components: number;
+    items_matched_to_multiple_features_before: number;
+    suspected_parts: number;
+    guarded_pairs_remaining: number;
+  };
 };
 
 /** `BuildReport` に必ず入っているべき数値欄。契約検査が参照する。 */
@@ -102,4 +115,6 @@ export const BUILD_REPORT_NUMERIC_KEYS = [
   "without_river_distance",
   "bytes_geojson",
   "bytes_catalog",
+  // 画面の範囲の文(全国 N 都道府県)がこの欄から組み立てられる(HC-280)
+  "chunks",
 ] as const;

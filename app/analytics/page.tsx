@@ -41,7 +41,11 @@ export default function AnalyticsPage() {
       <div className="scroll-x">
         <table>
           <tbody>
-            <tr><th scope="row">神社レコード</th><td>{jp(r.shrines)}</td><td>東京都・京都府・山梨県</td></tr>
+            <tr>
+              <th scope="row">神社レコード</th>
+              <td>{jp(r.shrines)}</td>
+              <td>全国 {jp(r.chunks)} 都道府県。OSM の地物 {jp(r.dedupe.osm_features)} 件から同じ社の重複 {jp(r.dedupe.merged_features)} 件をまとめた</td>
+            </tr>
             <tr><th scope="row">名称タグあり</th><td>{jp(r.with_name)}</td><td>無い {jp(r.without_name)} 件も地図には出す</td></tr>
             <tr><th scope="row">Wikidata(日本・座標あり)</th><td>{jp(r.wikidata_records_with_coord)}</td><td>名寄せの相手</td></tr>
           </tbody>
@@ -229,7 +233,7 @@ export default function AnalyticsPage() {
               <thead>
                 <tr>
                   <th scope="col">照合</th>
-                  <th scope="col">件数</th>
+                  <th scope="col">記事数</th>
                   <th scope="col">順位相関</th>
                   <th scope="col">並べ替え検定の p</th>
                   <th scope="col">結果</th>
@@ -257,12 +261,16 @@ export default function AnalyticsPage() {
             </table>
           </div>
           <p style={{ fontSize: "0.9rem" }}>
-            <strong>三つのうち成り立ったのは一つだけである。</strong>
-            「山岳・自然」の由緒が強い神社は実際に標高が高い。
-            一方「水・河川」は向きこそ合うが効果はごく小さく、
-            「海・航海」にいたっては<strong>期待と逆向き</strong>で有意でもない。
-            対象が東京都・京都府・山梨県で、山梨は内陸、東京の島嶼部はむしろ標高が高い
-            火山島であることが効いている可能性がある。
+            {/* 文は照合の結果から組み立てる。3 都府県版の結論を文で書き込んでいたら、
+                全国に広げたあとも「成り立ったのは一つだけ」と出し続けていた(loop_011)。 */}
+            <strong>
+              {geo.length} つの照合のうち、向きも有意性も期待どおりだったのは{" "}
+              {geo.filter((g) => g.spearman !== undefined && g.sign_matches && g["significant_at_0.01"]).length}{" "}
+              つ。
+            </strong>
+            数えるのは<strong>記事単位</strong>(同じ記事を共有する神社は一点にまとめる)。
+            標本が大きいので、順位相関が小さくても p は小さくなる。
+            <strong>有意であることと、効果が大きいことは別である</strong> —— 順位相関の値のほうを見ること。
             <strong>当たらなかった照合も消さずに載せている。</strong>
           </p>
         </>

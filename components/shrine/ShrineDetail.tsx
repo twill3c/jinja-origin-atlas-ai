@@ -49,6 +49,13 @@ export default function ShrineDetail() {
         {[s.location.prefecture, s.location.municipality].filter(Boolean).join(" ") ||
           "所在地の詳細タグなし"}
       </p>
+      {s.suspected_part && (
+        <p role="note" style={{ fontSize: "0.88rem", color: "var(--ink-mute)" }}>
+          この地物の名前は社殿・境内の部分を指す語(「{s.suspected_part.suffix}」)で終わる。
+          OpenStreetMap で本社とは別の地物として描かれているため、この地図では本社とは別に数えている。
+          本殿だけが描かれた社もありうるので、本社へまとめることはしていない。
+        </p>
+      )}
 
       <div className="band band-evidence">
         <h3>A — 公開データで確認できること</h3>
@@ -169,8 +176,8 @@ export default function ShrineDetail() {
             </ul>
             <p style={{ margin: "0.3rem 0 0", fontSize: "0.8rem", color: "var(--ink-mute)" }}>
               生のコサイン類似度は 0.78〜0.88 の狭い帯に収まるので、そのまま並べると 12 個が
-              同じに見える。しかも生スコアで最上位になるモチーフは 3 分の 2 の神社で同じものに
-              なってしまう。ここでは<strong>そのモチーフの分布の中でどこにいるか</strong>を出している。
+              同じに見える。しかも生スコアで最上位になるモチーフは、全国の記事の 6 割近く(58.8%)で
+              同じものになってしまう。ここでは<strong>そのモチーフの分布の中でどこにいるか</strong>を出している。
             </p>
             <p style={{ margin: "0.4rem 0 0", fontSize: "0.85rem", color: "var(--ink-mute)" }}>
               {ai.cluster.id === -1

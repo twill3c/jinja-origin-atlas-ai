@@ -1,6 +1,6 @@
 {
- "stamp": "82d99a88fdcc2d77ce9f947f36378d9b",
- "generated_at": "2026-09-14T10:28:43.842Z",
+ "stamp": "c634d1d42011b8754b14f702c5f5c5a4",
+ "generated_at": "2026-09-14T11:19:32.882Z",
  "files": [
   {
    "file": "components/common/SiteChrome.tsx",
@@ -77,8 +77,8 @@
   {
    "file": "components/shrine/ShrineDetail.tsx",
    "present": true,
-   "bytes": 9235,
-   "sha256": "942d45824e585511"
+   "bytes": 9551,
+   "sha256": "1aa9347e20733392"
   },
   {
    "file": "components/shrine/SimilarList.tsx",
@@ -101,8 +101,8 @@
   {
    "file": "lib/shrine-types.ts",
    "present": true,
-   "bytes": 3070,
-   "sha256": "62494e4123d13415"
+   "bytes": 3171,
+   "sha256": "27fef8788c9d7e99"
   },
   {
    "file": "app/globals.css",

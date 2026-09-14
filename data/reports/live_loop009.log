@@ -1,0 +1,33 @@
+本番: https://jinja-origin-atlas-ai.vercel.app
+  OK   刻印が一致 82d99a88fdcc2d77ce9f947f36378d9b
+  OK   / が 200 で返る status=200
+  OK   / が HTML を返す text/html; charset=utf-8
+  OK   /map/ が 200 で返る status=200
+  OK   /map/ が HTML を返す text/html; charset=utf-8
+  OK   /ai-space/ が 200 で返る status=200
+  OK   /ai-space/ が HTML を返す text/html; charset=utf-8
+  OK   /analytics/ が 200 で返る status=200
+  OK   /analytics/ が HTML を返す text/html; charset=utf-8
+  OK   /sources/ が 200 で返る status=200
+  OK   /sources/ が HTML を返す text/html; charset=utf-8
+  OK   /about-ai/ が 200 で返る status=200
+  OK   /about-ai/ が HTML を返す text/html; charset=utf-8
+  OK   地図に OSM の出典がある
+  OK   地図に国土地理院の出典がある
+  OK   出典ページに ODbL がある
+  OK   出典ページに CC BY-SA がある
+  OK   AI 画面に免責がある
+  OK   AI データが JSON で返る status=200
+  OK   本文も埋め込みも配っていない
+  OK   モデルの版が記録されている d128750597153bb5987e10b1c3493a34e5a4502a
+  OK   由来記事の帰属が付いている
+  OK   App Menu が本番(app-menu-amber)を指している
+  OK   App Menu が他者のドメインを指していない
+  OK   GitHub がこのリポジトリを指している
+  OK   神社詳細の殻が 200 で返る status=200
+  OK   索引が引ける status=200 p=27
+  OK   索引の指すチャンクにその神社がある status=200
+  OK   類似ページの殻が 200 で返る status=200
+  OK   旧 URL は 404 ページ(転送役)を返す status=404
+
+本番検品 OK

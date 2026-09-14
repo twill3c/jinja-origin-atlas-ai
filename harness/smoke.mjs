@@ -274,6 +274,86 @@ async function main() {
       const title = await page.title();
       check(`タブの題名が神社名になる(県 ${pk.p})`, title.startsWith(pk.name), title);
     }
+    // --- G-13 史実と AI の非混在(T-129)---------------------------------------
+    // 「公開データの情報」と「AI の意味分析」が同じ見出しの下に出ていないことを DOM で数える。
+    // 文字列の有無ではなく、**どの帯(見出し)の下にあるか**を見る。
+    const g13 = () => page.evaluate(() => {
+      const v = [];
+      const bands = [...document.querySelectorAll(".band")];
+      const ev = bands.filter((b) => b.classList.contains("band-evidence"));
+      const ai = bands.filter((b) => b.classList.contains("band-ai"));
+      if (ev.length !== 1 || ai.length !== 1) v.push(`帯の数 公開データ=${ev.length} AI=${ai.length}`);
+      const AI_MARK = /上位 \d+ %|クラスタ|モチーフ|意味空間|AI 推定|由緒テキスト/;
+      const EV_MARK = /祭神|社格|成立日|文献上の母院|標高|最寄り河川|座標/;
+      for (const b of bands) {
+        const hs = b.querySelectorAll("h2, h3, h4");
+        const head = hs[0]?.textContent ?? "(見出しなし)";
+        if (hs.length !== 1) v.push(`見出しが ${hs.length} 個の帯: ${head}`);
+        const text = [...b.children].filter((n) => !n.matches("h2, h3, h4")).map((n) => n.textContent).join(" ");
+        if (!b.classList.contains("band-ai") && AI_MARK.test(text)) v.push(`AI の内容が「${head}」の下にある`);
+        if (!b.classList.contains("band-evidence") && EV_MARK.test([...b.querySelectorAll("th")].map((t) => t.textContent).join(" "))) {
+          v.push(`公開データの行が「${head}」の下にある`);
+        }
+      }
+      return v;
+    });
+    // AI と祭神・社格が両方ある神社で確かめる(片方しか無い神社では混ざりようがなく、検査が空振りする)
+    let g13Pick = null;
+    let partPick = null;
+    let plainPick = null;
+    for (const f of chunkFiles) {
+      const ch = JSON.parse(await readFile(path.join(OUT, "data/shrines", f), "utf-8"));
+      g13Pick ??= ch.shrines.find((x) => x.ai_scores && x.deities && x.shrine_rank && x.name.ja);
+      partPick ??= ch.shrines.find((x) => x.suspected_part && x.name.ja);
+      plainPick ??= ch.shrines.find((x) => !x.suspected_part && x.name.ja);
+      if (g13Pick && partPick && plainPick) break;
+    }
+    check("G-13: AI と祭神・社格を両方持つ神社が出荷物にある", !!g13Pick);
+    if (g13Pick) {
+      const openG13 = async () => {
+        await page.goto(`${base}/shrine/?id=${g13Pick.id}&p=${g13Pick.location.pref_code}`, { waitUntil: "networkidle" });
+        await settled();
+      };
+      await openG13();
+      const v0 = await g13();
+      check("G-13: 公開データと AI の意味分析が別の見出しの下にある", v0.length === 0, v0.join(" / "));
+      // 陽性対照 1: AI の項目を公開データの帯へ移す
+      await page.evaluate(() => {
+        const li = document.querySelector(".band-ai li");
+        document.querySelector(".band-evidence").appendChild(li);
+      });
+      const v1 = await g13();
+      check("G-13 陽性対照: AI の項目を公開データの帯へ移すと検出する", v1.some((x) => x.startsWith("AI の内容")), v1.join(" / "));
+      // 陽性対照 2: AI の帯の見出しを消す(AI の内容が社伝の見出しの下に続いて見える)
+      await openG13();
+      await page.evaluate(() => document.querySelector(".band-ai h3").remove());
+      const v2 = await g13();
+      check("G-13 陽性対照: AI の帯の見出しを消すと検出する", v2.some((x) => x.startsWith("見出しが 0 個")), v2.join(" / "));
+      // 陽性対照 3: 祭神の行を AI の帯へ移す
+      await openG13();
+      await page.evaluate(() => {
+        const tr = [...document.querySelectorAll(".band-evidence tr")].find((t) => t.textContent.includes("祭神"));
+        const tb = document.createElement("table");
+        tb.appendChild(tr);
+        document.querySelector(".band-ai").appendChild(tb);
+      });
+      const v3 = await g13();
+      check("G-13 陽性対照: 祭神の行を AI の帯へ移すと検出する", v3.some((x) => x.startsWith("公開データの行")), v3.join(" / "));
+    }
+    // D-08 / T-130: 社の部分の印は、印のある神社にだけ出る
+    check("社の部分の印を持つ神社が出荷物にある", !!partPick && !!plainPick);
+    if (partPick && plainPick) {
+      await page.goto(`${base}/shrine/?id=${partPick.id}&p=${partPick.location.pref_code}`, { waitUntil: "networkidle" });
+      await settled();
+      const partBody = await page.locator("body").innerText();
+      check("社の部分の印が詳細に出る", partBody.includes("社殿・境内の部分") && partBody.includes(partPick.suspected_part.suffix),
+        `${partPick.id} ${partPick.name.ja}`);
+      await page.goto(`${base}/shrine/?id=${plainPick.id}&p=${plainPick.location.pref_code}`, { waitUntil: "networkidle" });
+      await settled();
+      check("印の無い神社には社の部分の注記が出ない", !(await page.locator("body").innerText()).includes("社殿・境内の部分"),
+        plainPick.id);
+    }
+
     // 県コード無し(索引を引く経路)と、外れた県コード(索引へ引き直す経路)でも同じ神社が開くこと
     const pk0 = picks[0];
     const wrongP = picks.find((x) => x.p !== pk0.p)?.p ?? "99";

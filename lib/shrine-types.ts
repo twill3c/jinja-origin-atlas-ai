@@ -39,6 +39,8 @@ export type ShrineRecord = {
   };
   deities?: { name: string; wikidata_id: string | null; source_ids: string[] }[];
   shrine_rank?: { labels: string[]; source_ids: string[] };
+  /** D-08: 名前が社殿・境内の部分を指す語で終わる(本社とは別に数えている) */
+  suspected_part?: { suffix: string; note: string };
   foundation?: { structured?: { year_min: number; year_max: number; source_ids: string[] } };
   documented_parents?: { qids: string[]; source_ids: string[] };
   geography?: {

@@ -88,7 +88,10 @@ async function main() {
 
   const server = await serve();
   const base = `http://127.0.0.1:${server.address().port}`;
-  const browser = await chromium.launch();
+  // GPU の無い環境(GitHub Actions の Linux ランナー)では WebGL をソフトウェアで描くしかない。
+  // Chromium は SwiftShader への自動の後退を廃止しつつあり、明示しないと地図の WebGL 文脈が作れない
+  // (Chromium の docs/gpu/swiftshader.md)。GPU のある手元ではこの指定は後退を許すだけで描画は変わらない
+  const browser = await chromium.launch({ args: ["--enable-unsafe-swiftshader"] });
   const consoleErrors = [];
 
   try {

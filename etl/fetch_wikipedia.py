@@ -40,13 +40,37 @@ def title_of(url: str) -> str:
     return urllib.parse.unquote(url.rsplit("/", 1)[-1]).replace("_", " ")
 
 
+#: 429 / 5xx のときの取り直しの上限。上限を超えたら例外で止める(黙って空の記事にしない)
+MAX_ATTEMPTS = 6
+
+
+def _get_with_retry(client: httpx.Client, params: dict) -> httpx.Response:
+    """**429 は障害ではなく「速すぎる」という答え。** Retry-After(無ければ指数的に)だけ待って取り直す。
+
+    月次の二回目の実行で、ランナーは手元より速く(3.3 件/秒)取りに行き、約 680 件目で 429 が返った。
+    手元では一度も踏んでいなかったので、再試行が無いまま出していた(T-139)。
+    """
+    delay = 5.0
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        r = client.get(API, params=params)
+        if r.status_code in (429, 500, 502, 503, 504) and attempt < MAX_ATTEMPTS:
+            ra = (r.headers.get("Retry-After") or "").strip()
+            wait = float(ra) if ra.isdigit() else delay
+            print(f"  HTTP {r.status_code} — {wait:.0f} 秒待つ({attempt}/{MAX_ATTEMPTS})", file=sys.stderr, flush=True)
+            time.sleep(wait)
+            delay = min(delay * 2, 120.0)
+            continue
+        r.raise_for_status()
+        return r
+    raise RuntimeError("到達しない")
+
+
 def fetch_one(client: httpx.Client, title: str) -> dict | None:
-    r = client.get(API, params={
+    r = _get_with_retry(client, {
         "action": "query", "format": "json", "formatversion": "2",
         "prop": "extracts|revisions", "rvprop": "ids|timestamp",
         "explaintext": "1", "redirects": "1", "titles": title,
     })
-    r.raise_for_status()
     pages = r.json().get("query", {}).get("pages") or []
     if not pages or pages[0].get("missing"):
         return None
@@ -70,7 +94,8 @@ def fetch_one(client: httpx.Client, title: str) -> dict | None:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="ja.wikipedia の記事本文を取る")
     ap.add_argument("--limit", type=int, default=0)
-    ap.add_argument("--sleep", type=float, default=0.15)
+    # 手元の 0.15 秒ではランナーが 3.3 件/秒で取りに行き 429 を踏んだ。0.5 秒に広げる(3,328 件で約 35 分)
+    ap.add_argument("--sleep", type=float, default=0.5)
     ap.add_argument("--refresh", action="store_true", help="キャッシュを無視して取り直す")
     args = ap.parse_args(argv)
 

@@ -13,7 +13,10 @@ name: monthly-data
 
 on:
   schedule:
-    - cron: "23 18 1 * *" # 毎月 1 日 18:23 UTC(= 2 日 03:23 JST)
+    # 毎月 1 日 02:23 UTC(= 11:23 JST)。公共の Overpass はドイツにあり、欧州の昼は混む。
+    # 起動時刻と OSM の段の成否(2026-09-15): 22:16 UTC 通過 / 03:35 UTC 通過 / 11:03 UTC で 504 が 23 分続き失敗
+    # (標本 3 回なので決め手ではない。欧州の深夜に寄せておく)
+    - cron: "23 2 1 * *"
   workflow_dispatch:
 
 permissions:
@@ -55,7 +58,14 @@ jobs:
           cp public/data/meta/build.json public/data/shrines/index.json "$RUNNER_TEMP/prev/"
 
       - name: OSM(47 都道府県を 1 県ずつ)
-        run: uv run python -m etl.fetch_osm --all-prefectures
+        # 公共の Overpass は混むと 504 を続けて返す(三回目の実行で 23 分戻らなかった)。
+        # 落ちたら 30 分待ち、取れた県を飛ばして一度だけ取り直す
+        run: |
+          if ! uv run python -m etl.fetch_osm --all-prefectures; then
+            echo "OSM の取得が落ちた。30 分待って、取れていない県だけ取り直す"
+            sleep 1800
+            uv run python -m etl.fetch_osm --all-prefectures --skip-existing
+          fi
 
       - name: OSM カタログ
         run: uv run python -m export.build_geojson

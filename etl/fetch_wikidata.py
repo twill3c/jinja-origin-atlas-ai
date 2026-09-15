@@ -199,21 +199,26 @@ def fold_rows(rows: Iterable[dict[str, Any]]) -> dict[str, dict[str, Any]]:
 
 
 class DeterministicTruncation(RuntimeError):
-    """同じ長さで二度切れた応答。待っても直らないので再試行しない(HC-228)。"""
+    """キャッシュを通らない応答が、同じ長さで二度切れた。待っても直らないので再試行しない(HC-228)。"""
 
 
 def run_query(name: str, query: str, client: httpx.Client, max_attempts: int = 4) -> list[dict[str, Any]]:
     """1 本のクエリを投げる。
 
     **再試行する前に「これは再試行で直る種類か」を判定する**(HC-228)。
-    同じ長さで二度切れたら、それは一時障害ではなく「このクエリは重すぎる」という
-    決定的な応答である。待つ意味が無いので即座に諦め、クエリを軽くするよう促す。
+
+    **切れた本文はエッジのキャッシュに 5 分残る。** 2026-09-16 の実測で、切れた応答が
+    `x-cache-status: hit-local`・`age 62` で返り、同じ文面で取り直すと同じ切れた本文が返った。
+    文面にコメントを足すとキャッシュを通らず、全件(10 MB)が返った。つまり「二度とも同じ長さ」は
+    重すぎる証拠ではなく、**同じキャッシュを二度読んだ証拠**のことがある。そこで取り直しのたびに
+    文面を変え(T-140)、**キャッシュを通らない応答が同じ長さで二度切れたとき**だけ重すぎると判定する。
     """
     delay = 15.0
     truncated_lengths: list[int] = []
+    text = query
     for attempt in range(1, max_attempts + 1):
         t0 = time.time()
-        r = client.get(ENDPOINT, params={"query": query})
+        r = client.get(ENDPOINT, params={"query": text})
         if r.status_code in (429, 500, 502, 503, 504):
             print(f"  {name}: HTTP {r.status_code} — {delay:.0f} 秒待つ({attempt}/{max_attempts})",
                   file=sys.stderr)
@@ -225,16 +230,23 @@ def run_query(name: str, query: str, client: httpx.Client, max_attempts: int = 4
             d = verify_sparql_body(r.content)
         except RuntimeError as exc:
             n = len(r.content)
-            if n in truncated_lengths:
-                raise DeterministicTruncation(
-                    f"{name}: 本文が二度とも {n} バイトで切れた。一時障害ではなく"
-                    "「このクエリは重すぎる」という決定的な応答である。"
-                    "待っても直らないので、クエリの結合を減らすこと。"
-                ) from exc
-            truncated_lengths.append(n)
-            print(f"  {name}: {exc} — {delay:.0f} 秒待つ({attempt}/{max_attempts})", file=sys.stderr)
-            time.sleep(delay)
-            delay = min(delay * 2, 120.0)
+            cached = "hit" in (r.headers.get("x-cache-status") or "").lower()
+            if not cached:
+                if n in truncated_lengths:
+                    raise DeterministicTruncation(
+                        f"{name}: キャッシュを通らない本文が二度とも {n} バイトで切れた。一時障害ではなく"
+                        "「このクエリは重すぎる」という決定的な応答である。"
+                        "待っても直らないので、クエリの結合を減らすこと。"
+                    ) from exc
+                truncated_lengths.append(n)
+            # 文面を変えてキャッシュを避ける(切れた本文はエッジに 5 分残る)
+            text = query + chr(10) + f"# retry {attempt} {time.time_ns()}"
+            wait = 5.0 if cached else delay
+            print(f"  {name}: {exc} — {'キャッシュの切れた本文。' if cached else ''}{wait:.0f} 秒待って文面を変えて取り直す"
+                  f"({attempt}/{max_attempts})", file=sys.stderr)
+            time.sleep(wait)
+            if not cached:
+                delay = min(delay * 2, 120.0)
             continue
         rows = d["results"]["bindings"]
         print(f"  {name}: {len(rows)} 行 {len(r.content) / 1e6:.2f} MB ({time.time() - t0:.1f}s)",

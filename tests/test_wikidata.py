@@ -164,3 +164,51 @@ def test_t138_non_entity_admin_falls_back_to_the_raw_uri():
     rows = compose_core(core, {}, {})
     assert rows[0]["adminLabel"]["value"] == genid
     assert rows[0]["itemLabel"]["value"] == "Q1"
+
+
+def _sparql_client(responses):
+    """(status, body_bytes, x-cache-status) を順に返す偽の SPARQL 端点。受け取った query を記録する。"""
+    import httpx
+
+    seen = []
+
+    def handler(request):
+        seen.append(request.url.params.get("query"))
+        status, body, cache = responses[min(len(seen) - 1, len(responses) - 1)]
+        return httpx.Response(status, content=body, headers={"x-cache-status": cache})
+
+    return httpx.Client(transport=httpx.MockTransport(handler)), seen
+
+
+_FULL = b'{"head":{"vars":["item"]},"results":{"bindings":[{"item":{"type":"uri","value":"x"}}]}}'
+_CUT = _FULL[:40]
+
+
+@pytest.mark.unit
+def test_t140_cached_truncation_is_retried_with_a_cache_bust(monkeypatch):
+    """T-140: 切れた応答がエッジのキャッシュから返っていたら、クエリの文面を変えて取り直す。
+
+    2026-09-16 の実測: 切れた本文(1,613,818 バイト)が x-cache-status=hit-local・age 62 秒で返り、
+    同じ文面で取り直すと 5 分間は同じ切れた本文が返った。**「二度とも同じ長さ」は重すぎる証拠ではなく、
+    キャッシュの証拠だった**(HC-228 の判定の誤り)。コメントを足して文面を変えると全件 10 MB が返った。
+    """
+    import etl.fetch_wikidata as fw
+
+    monkeypatch.setattr(fw.time, "sleep", lambda s: None)
+    client, seen = _sparql_client([(200, _CUT, "hit-local"), (200, _CUT, "hit-local"), (200, _FULL, "pass")])
+    rows = fw.run_query("q", "SELECT ?item WHERE {}", client)
+    assert len(rows) == 1
+    assert seen[0] == "SELECT ?item WHERE {}"
+    assert len(set(seen)) == len(seen), "取り直しで文面を変えていない(キャッシュの切れた本文をもう一度受け取る)"
+
+
+@pytest.mark.unit
+def test_t140_uncached_same_length_truncation_is_still_deterministic(monkeypatch):
+    """キャッシュを通らない応答が二度とも同じ長さで切れたときは、従来どおり重すぎると判定して止まる。"""
+    import etl.fetch_wikidata as fw
+
+    monkeypatch.setattr(fw.time, "sleep", lambda s: None)
+    client, seen = _sparql_client([(200, _CUT, "pass"), (200, _CUT, "miss")])
+    with pytest.raises(fw.DeterministicTruncation):
+        fw.run_query("q", "SELECT ?item WHERE {}", client)
+    assert len(seen) == 2

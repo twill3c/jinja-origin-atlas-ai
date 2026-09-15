@@ -123,3 +123,44 @@ def test_t053b_unknown_precision_is_not_guessed():
     """T-053: 解釈できない精度は None を返す(もっともらしい値を作らない)。"""
     assert parse_time_value("+0927-00-00T00:00:00Z", 3) is None
     assert parse_time_value("よくわからない値", 9) is None
+
+
+@pytest.mark.unit
+def test_t138_core_is_composed_like_the_label_service():
+    """T-138: core を三本の軽いクエリから組み立てても、ラベルサービスと同じ行になる。
+
+    core クエリ(神社 4.3 万件の座標・行政区画にラベルサービスで名前を付ける)は、2026-09-15 に
+    手元でもランナーでも HTTP 200 のまま決定的に切れるようになった(Wikidata の約 60 秒の上限)。
+    ラベルなしの core・神社のラベル・行政区画のラベル(VALUES で 500 件ずつ)に分けて取り、
+    Python で組み立てる。**ラベルサービスの規則は ja → en → QID そのもの。**
+    """
+    from etl.fetch_wikidata import compose_core
+
+    U = "http://www.wikidata.org/entity/"
+    core = [
+        {"item": {"value": U + "Q1"}, "coord": {"value": "Point(135.0 35.0)"}, "admin": {"value": U + "Q10"}},
+        {"item": {"value": U + "Q2"}, "coord": {"value": "Point(136.0 36.0)"}, "admin": {"value": U + "Q11"}},
+        {"item": {"value": U + "Q3"}, "coord": {"value": "Point(137.0 37.0)"}},  # 行政区画が無い
+    ]
+    item_labels = {"Q1": {"ja": "八幡神社", "en": "Hachiman"}, "Q2": {"en": "Inari Shrine"}}
+    admin_labels = {"Q10": {"ja": "鹿島市"}, "Q11": {}}
+    rows = compose_core(core, item_labels, admin_labels)
+
+    assert [r["itemLabel"]["value"] for r in rows] == ["八幡神社", "Inari Shrine", "Q3"]
+    assert rows[0]["adminLabel"]["value"] == "鹿島市"
+    assert rows[1]["adminLabel"]["value"] == "Q11", "ラベルの無い行政区画は QID そのもの"
+    assert "adminLabel" not in rows[2] and "admin" not in rows[2]
+    assert rows[0]["coord"] == core[0]["coord"], "座標はそのまま"
+
+
+@pytest.mark.unit
+def test_t138_non_entity_admin_falls_back_to_the_raw_uri():
+    """「不明な値」の行政区画(空白ノード genid)は、ラベルサービスと同じく URI そのものになる。"""
+    from etl.fetch_wikidata import compose_core
+
+    genid = "http://www.wikidata.org/.well-known/genid/1fd03bc9c191e1bc9017cc3ced04a87f"
+    core = [{"item": {"value": "http://www.wikidata.org/entity/Q1"}, "coord": {"value": "Point(1 2)"},
+             "admin": {"value": genid}}]
+    rows = compose_core(core, {}, {})
+    assert rows[0]["adminLabel"]["value"] == genid
+    assert rows[0]["itemLabel"]["value"] == "Q1"

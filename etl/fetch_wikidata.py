@@ -46,11 +46,13 @@ _TIME = re.compile(r"^([+-])(\d{4,})-(\d{2})-(\d{2})T")
 
 #: 取得するクエリ群。1 本ずつ投げる。
 QUERIES: dict[str, str] = {
-    # 基本(ラベル・座標・行政区画)
+    # 基本(座標・行政区画)。**ラベルサービスを使わない。** 神社 4.3 万件と行政区画に名前を付けると
+    # Wikidata の約 60 秒の上限を越え、HTTP 200 のまま決定的に切れるようになった
+    # (2026-09-15、手元で 12,907,568 バイト・ランナーで 999,417 バイト)。名前は ITEM_LABELS と
+    # 行政区画の VALUES 分割で別に取り、compose_core で組み立てる(T-138。fetch_core を見よ)
     "core": f"""
-SELECT ?item ?itemLabel ?coord ?admin ?adminLabel WHERE {{ {_BASE}
-  OPTIONAL {{ ?item wdt:P131 ?admin }}
-  SERVICE wikibase:label {{ bd:serviceParam wikibase:language "ja,en". }} }}""",
+SELECT ?item ?coord ?admin WHERE {{ {_BASE}
+  OPTIONAL {{ ?item wdt:P131 ?admin }} }}""",
     # 読み仮名・正式名称・別名
     "names": f"""
 SELECT ?item ?kana ?official ?alias WHERE {{ {_BASE}
@@ -241,6 +243,87 @@ def run_query(name: str, query: str, client: httpx.Client, max_attempts: int = 4
     raise RuntimeError(f"{name}: {max_attempts} 回とも取得できなかった")
 
 
+#: 神社のラベル(ja と en)。ラベルサービスを使わずに取る(実測 5.7 秒、2026-09-15)
+ITEM_LABELS = f"""SELECT ?item ?ja ?en WHERE {{ {_BASE}
+  OPTIONAL {{ ?item rdfs:label ?ja FILTER(LANG(?ja)="ja") }}
+  OPTIONAL {{ ?item rdfs:label ?en FILTER(LANG(?en)="en") }} }}"""
+
+#: 行政区画のラベルは QID を VALUES で渡して分割で取る。副問い合わせの DISTINCT で一括に取ると
+#: 41.2 秒かかり上限に近い。500 件ずつなら 1 本 4 秒以内(実測 2,623 件で計 16.4 秒)
+ADMIN_LABEL_BATCH = 500
+
+
+def compose_core(core_rows: list[dict[str, Any]], item_labels: dict[str, dict[str, str]],
+                 admin_labels: dict[str, dict[str, str]]) -> list[dict[str, Any]]:
+    """ラベルなしの core にラベルを付け、ラベルサービスと同じ形の行にする(T-138)。
+
+    ラベルサービスの規則は **ja → en → QID そのもの**。行政区画の無い行には adminLabel を付けない。
+    """
+    def label(uri: str, labels: dict[str, dict[str, str]]) -> str:
+        qid = qid_of(uri)
+        d = labels.get(qid) or {}
+        # ラベルが無いとき、項目なら QID、項目でない値(「不明な値」の空白ノード genid など)は
+        # URI そのものを返す。ラベルサービスがそうしていた(2026-09-15 の突き合わせで 1 件だけ食い違った)
+        fallback = qid if uri.startswith("http://www.wikidata.org/entity/") else uri
+        return d.get("ja") or d.get("en") or fallback
+
+    out = []
+    for r in core_rows:
+        row = dict(r)
+        row["itemLabel"] = {"type": "literal", "value": label(r["item"]["value"], item_labels)}
+        if "admin" in r:
+            row["adminLabel"] = {"type": "literal", "value": label(r["admin"]["value"], admin_labels)}
+        out.append(row)
+    return out
+
+
+def _label_map(rows: list[dict[str, Any]], key: str) -> dict[str, dict[str, str]]:
+    m: dict[str, dict[str, str]] = {}
+    for r in rows:
+        d = m.setdefault(qid_of(r[key]["value"]), {})
+        for lang in ("ja", "en"):
+            if lang in r and lang not in d:
+                d[lang] = r[lang]["value"]
+    return m
+
+
+def _post_query(name: str, query: str, client: httpx.Client, max_attempts: int = 4) -> list[dict[str, Any]]:
+    """VALUES を並べた長いクエリは POST で送る(URL の長さの上限を避ける)。"""
+    delay = 15.0
+    for attempt in range(1, max_attempts + 1):
+        t0 = time.time()
+        r = client.post(ENDPOINT, data={"query": query})
+        if r.status_code in (429, 500, 502, 503, 504):
+            print(f"  {name}: HTTP {r.status_code} — {delay:.0f} 秒待つ({attempt}/{max_attempts})", file=sys.stderr)
+            time.sleep(delay)
+            delay = min(delay * 2, 120.0)
+            continue
+        r.raise_for_status()
+        rows = verify_sparql_body(r.content)["results"]["bindings"]
+        print(f"  {name}: {len(rows)} 行 ({time.time() - t0:.1f}s)", file=sys.stderr)
+        return rows
+    raise RuntimeError(f"{name}: {max_attempts} 回とも取得できなかった")
+
+
+def fetch_core(client: httpx.Client, sleep: float = 3.0) -> list[dict[str, Any]]:
+    """core を三本の軽いクエリから組み立てる(ラベルなしの core / 神社のラベル / 行政区画のラベル)。"""
+    core = run_query("core", QUERIES["core"], client)
+    time.sleep(sleep)
+    items = _label_map(run_query("core_item_labels", ITEM_LABELS, client), "item")
+    admins = sorted({qid_of(r["admin"]["value"]) for r in core if "admin" in r})
+    admin_rows: list[dict[str, Any]] = []
+    for i in range(0, len(admins), ADMIN_LABEL_BATCH):
+        time.sleep(sleep)
+        vals = " ".join(f"wd:{q}" for q in admins[i:i + ADMIN_LABEL_BATCH])
+        q = f"""SELECT ?admin ?ja ?en WHERE {{ VALUES ?admin {{ {vals} }}
+  OPTIONAL {{ ?admin rdfs:label ?ja FILTER(LANG(?ja)="ja") }}
+  OPTIONAL {{ ?admin rdfs:label ?en FILTER(LANG(?en)="en") }} }}"""
+        admin_rows += _post_query(f"core_admin_labels[{i // ADMIN_LABEL_BATCH}]", q, client)
+    rows = compose_core(core, items, _label_map(admin_rows, "admin"))
+    print(f"  core(組み立て): {len(rows)} 行 / 神社のラベル {len(items)} / 行政区画 {len(admins)}", file=sys.stderr)
+    return rows
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Wikidata から神社の構造化属性を取得する")
     ap.add_argument("--only", action="append", help="このクエリ名だけ実行する")
@@ -256,7 +339,7 @@ def main(argv: list[str] | None = None) -> int:
         for i, name in enumerate(names):
             if i:
                 time.sleep(args.sleep)
-            rows = run_query(name, QUERIES[name], client)
+            rows = fetch_core(client, args.sleep) if name == "core" else run_query(name, QUERIES[name], client)
             out = RAW_DIR / f"{name}.json"
             out.write_text(json.dumps(rows, ensure_ascii=False), encoding="utf-8")
             print(f"→ {out}")

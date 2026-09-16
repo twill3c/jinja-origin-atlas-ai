@@ -194,3 +194,20 @@ def test_t134_needed_prefectures_are_chosen_per_shrine(tmp_path, monkeypatch):
     recs = [_cat("s1", 33.1, 130.1, pref="99"), _cat("s2", 38.1, 140.1, pref="99"), _cat("s3", 36.0, 136.0)]
     assert rd.needed_prefs(recs, {"s1", "s2"}) == ["A", "B"]
     assert rd.needed_prefs(recs, set()) == []
+
+
+@pytest.mark.unit
+def test_t141_model_cache_is_outside_the_working_tree():
+    """T-141: モデルのキャッシュを作業ツリーの中に置かない。
+
+    五回目の実行で、HF_HOME を `${{ github.workspace }}/.hf` に置いたため、字種検査(G-11)が
+    モデルの tokenizer.json を走査して違反 37,084 件を出し、pytest だけが落ちた(データは健全)。
+    検査器は「人が書いた文」を見るもので、依存のキャッシュは対象外にする —— 置き場所で外す。
+    """
+    t = WORKFLOW.read_text(encoding="utf-8")
+    hf = [ln.strip() for ln in t.splitlines() if "HF_HOME" in ln]
+    assert hf, "HF_HOME を指定していない(既定の置き場所は環境で変わる)"
+    for ln in hf:
+        assert "github.workspace" not in ln and "$GITHUB_WORKSPACE" not in ln, \
+            f"モデルのキャッシュが作業ツリーの中にある: {ln}"
+        assert "runner.temp" in ln or "RUNNER_TEMP" in ln, f"ランナーの一時領域を使っていない: {ln}"

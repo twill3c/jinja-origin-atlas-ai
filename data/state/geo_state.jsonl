@@ -5197,6 +5197,8 @@
 {"id":"jinja_n14161769480","lat":35.1329827,"lon":136.7690429,"elevation_m":-1.62,"elevation_source":"dem5a_png","nearest_river_distance_m":375.6,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_n14161827829","lat":37.8233491,"lon":138.9229131,"elevation_m":2.86,"elevation_source":"dem5a_png","nearest_river_distance_m":37.2,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_n14161860460","lat":37.8237336,"lon":138.9336459,"elevation_m":2.04,"elevation_source":"dem5a_png","nearest_river_distance_m":58.1,"nearest_river_name":"名称不明","nearest_river_note":null}
+{"id":"jinja_n14161955934","lat":35.7652417,"lon":139.4419331,"elevation_m":89.19,"elevation_source":"dem5a_png","nearest_river_distance_m":307.9,"nearest_river_name":"北川","nearest_river_note":null}
+{"id":"jinja_n14162444066","lat":35.7362693,"lon":139.2367114,"elevation_m":275.34,"elevation_source":"dem5a_png","nearest_river_distance_m":569.0,"nearest_river_name":"三内川","nearest_river_note":null}
 {"id":"jinja_n14165268293","lat":42.902704,"lon":141.5586832,"elevation_m":35.82,"elevation_source":"dem_png","nearest_river_distance_m":588.8,"nearest_river_name":"柏木川","nearest_river_note":null}
 {"id":"jinja_n14165466797","lat":37.8159566,"lon":138.9190266,"elevation_m":2.34,"elevation_source":"dem5a_png","nearest_river_distance_m":168.2,"nearest_river_name":"西川","nearest_river_note":null}
 {"id":"jinja_n14165518051","lat":37.8138885,"lon":138.9199412,"elevation_m":1.74,"elevation_source":"dem5a_png","nearest_river_distance_m":371.8,"nearest_river_name":"西川","nearest_river_note":null}
@@ -5204,7 +5206,30 @@
 {"id":"jinja_n14168616545","lat":37.8498343,"lon":138.9656004,"elevation_m":0.08,"elevation_source":"dem5a_png","nearest_river_distance_m":136.0,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_n14168643201","lat":34.383001,"lon":133.3819543,"elevation_m":2.62,"elevation_source":"dem5a_png","nearest_river_distance_m":1642.3,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_n14171040190","lat":37.803223,"lon":138.8793915,"elevation_m":8.26,"elevation_source":"dem5a_png","nearest_river_distance_m":238.9,"nearest_river_name":"名称不明","nearest_river_note":null}
+{"id":"jinja_n14174762765","lat":35.8377236,"lon":139.3448837,"elevation_m":81.9,"elevation_source":"dem5a_png","nearest_river_distance_m":129.6,"nearest_river_name":"入間川","nearest_river_note":null}
+{"id":"jinja_n14174836100","lat":33.5213376,"lon":130.4422817,"elevation_m":30.12,"elevation_source":"dem5a_png","nearest_river_distance_m":725.9,"nearest_river_name":"名称不明","nearest_river_note":null}
+{"id":"jinja_n14174878777","lat":33.5059941,"lon":130.4610149,"elevation_m":61.9,"elevation_source":"dem5a_png","nearest_river_distance_m":711.0,"nearest_river_name":"平野川","nearest_river_note":null}
+{"id":"jinja_n14174889217","lat":33.4428451,"lon":130.3882105,"elevation_m":552.22,"elevation_source":"dem5a_png","nearest_river_distance_m":15.9,"nearest_river_name":"名称不明","nearest_river_note":null}
+{"id":"jinja_n14174889225","lat":33.4894776,"lon":130.4059484,"elevation_m":78.88,"elevation_source":"dem5a_png","nearest_river_distance_m":403.5,"nearest_river_name":"名称不明","nearest_river_note":null}
+{"id":"jinja_n14174889226","lat":33.5142027,"lon":130.4550738,"elevation_m":56.03,"elevation_source":"dem5a_png","nearest_river_distance_m":16.1,"nearest_river_name":"名称不明","nearest_river_note":null}
+{"id":"jinja_n14174920220","lat":33.5197033,"lon":130.4700033,"elevation_m":30.48,"elevation_source":"dem5a_png","nearest_river_distance_m":99.0,"nearest_river_name":"牛頸川","nearest_river_note":null}
+{"id":"jinja_n14175584701","lat":35.6587767,"lon":139.5736197,"elevation_m":37.04,"elevation_source":"dem5a_png","nearest_river_distance_m":357.7,"nearest_river_name":"入間川","nearest_river_note":null}
+{"id":"jinja_n14177354883","lat":35.747292,"lon":139.4895188,"elevation_m":66.32,"elevation_source":"dem5a_png","nearest_river_distance_m":378.2,"nearest_river_name":"黒目川","nearest_river_note":null}
+{"id":"jinja_n14177605959","lat":33.4618726,"lon":130.4258362,"elevation_m":78.97,"elevation_source":"dem5a_png","nearest_river_distance_m":103.6,"nearest_river_name":"那珂川","nearest_river_note":null}
+{"id":"jinja_n14177605960","lat":33.4928749,"lon":130.4394172,"elevation_m":49.93,"elevation_source":"dem5a_png","nearest_river_distance_m":76.1,"nearest_river_name":"梶原川","nearest_river_note":null}
+{"id":"jinja_n14177605963","lat":33.51118,"lon":130.4306339,"elevation_m":26.04,"elevation_source":"dem5a_png","nearest_river_distance_m":306.3,"nearest_river_name":"梶原川","nearest_river_note":null}
+{"id":"jinja_n14177605964","lat":33.509496,"lon":130.4331732,"elevation_m":28.02,"elevation_source":"dem5a_png","nearest_river_distance_m":299.7,"nearest_river_name":"梶原川","nearest_river_note":null}
+{"id":"jinja_n14177605974","lat":33.4571202,"lon":130.4260058,"elevation_m":82.52,"elevation_source":"dem5a_png","nearest_river_distance_m":39.4,"nearest_river_name":"那珂川","nearest_river_note":null}
+{"id":"jinja_n14177636554","lat":35.7517106,"lon":139.4816363,"elevation_m":70.71,"elevation_source":"dem5a_png","nearest_river_distance_m":276.7,"nearest_river_name":"出水川","nearest_river_note":null}
+{"id":"jinja_n14177745710","lat":33.4863955,"lon":130.4271316,"elevation_m":114.11,"elevation_source":"dem5a_png","nearest_river_distance_m":367.6,"nearest_river_name":"名称不明","nearest_river_note":null}
+{"id":"jinja_n14177915656","lat":38.3868836,"lon":140.8610893,"elevation_m":40.62,"elevation_source":"dem5a_png","nearest_river_distance_m":68.8,"nearest_river_name":"竹林川","nearest_river_note":null}
+{"id":"jinja_n14178808107","lat":33.4995614,"lon":130.4106834,"elevation_m":123.78,"elevation_source":"dem5a_png","nearest_river_distance_m":41.5,"nearest_river_name":"妙見川","nearest_river_note":null}
 {"id":"jinja_n1417894918","lat":35.6969502,"lon":139.8013138,"elevation_m":1.65,"elevation_source":"dem5a_png","nearest_river_distance_m":652.7,"nearest_river_name":"大横川","nearest_river_note":null}
+{"id":"jinja_n14179828678","lat":37.7958497,"lon":138.868027,"elevation_m":8.53,"elevation_source":"dem5a_png","nearest_river_distance_m":404.2,"nearest_river_name":"名称不明","nearest_river_note":null}
+{"id":"jinja_n14179896198","lat":37.7969274,"lon":138.872572,"elevation_m":9.7,"elevation_source":"dem5a_png","nearest_river_distance_m":182.1,"nearest_river_name":"名称不明","nearest_river_note":null}
+{"id":"jinja_n14179934811","lat":33.834015,"lon":132.7320465,"elevation_m":9.74,"elevation_source":"dem5a_png","nearest_river_distance_m":17.8,"nearest_river_name":"宮前川","nearest_river_note":null}
+{"id":"jinja_n14179977042","lat":37.7889505,"lon":138.8701661,"elevation_m":7.28,"elevation_source":"dem5a_png","nearest_river_distance_m":68.4,"nearest_river_name":"名称不明","nearest_river_note":null}
+{"id":"jinja_n14184165443","lat":35.1215921,"lon":136.7635568,"elevation_m":-2.07,"elevation_source":"dem5a_png","nearest_river_distance_m":452.6,"nearest_river_name":"善太川","nearest_river_note":null}
 {"id":"jinja_n1418856124","lat":35.4879698,"lon":139.634337,"elevation_m":40.01,"elevation_source":"dem5a_png","nearest_river_distance_m":752.1,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_n1420635277","lat":34.8964649,"lon":135.4073481,"elevation_m":88.71,"elevation_source":"dem5a_png","nearest_river_distance_m":51.9,"nearest_river_name":"一庫・大路次川","nearest_river_note":null}
 {"id":"jinja_n1420692927","lat":35.753194,"lon":139.9509921,"elevation_m":17.12,"elevation_source":"dem5a_png","nearest_river_distance_m":843.8,"nearest_river_name":"大柏川","nearest_river_note":null}
@@ -7978,7 +8003,7 @@
 {"id":"jinja_n3412041319","lat":33.9465951,"lon":132.2176054,"elevation_m":50.93,"elevation_source":"dem5a_png","nearest_river_distance_m":327.5,"nearest_river_name":"吉野川","nearest_river_note":null}
 {"id":"jinja_n3412041320","lat":33.9466859,"lon":132.3500148,"elevation_m":5.27,"elevation_source":"dem5a_png","nearest_river_distance_m":4408.9,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_n3412041324","lat":33.9473779,"lon":132.2037381,"elevation_m":6.81,"elevation_source":"dem5a_png","nearest_river_distance_m":520.5,"nearest_river_name":"三浦川","nearest_river_note":null}
-{"id":"jinja_n3412041325","lat":33.9474524,"lon":132.268821,"elevation_m":2.53,"elevation_source":"dem5a_png","nearest_river_distance_m":85.0,"nearest_river_name":"津原川","nearest_river_note":null}
+{"id":"jinja_n3412041325","lat":33.9476303,"lon":132.2685841,"elevation_m":2.61,"elevation_source":"dem5a_png","nearest_river_distance_m":113.2,"nearest_river_name":"津原川","nearest_river_note":null}
 {"id":"jinja_n3412041330","lat":33.9535059,"lon":132.2128906,"elevation_m":3.6,"elevation_source":"dem5a_png","nearest_river_distance_m":553.7,"nearest_river_name":"三浦川","nearest_river_note":null}
 {"id":"jinja_n3412041337","lat":33.9575507,"lon":132.2263516,"elevation_m":15.94,"elevation_source":"dem5a_png","nearest_river_distance_m":258.0,"nearest_river_name":"椋野中川","nearest_river_note":null}
 {"id":"jinja_n3412041340","lat":33.9592475,"lon":132.3506422,"elevation_m":13.93,"elevation_source":"dem5a_png","nearest_river_distance_m":5788.4,"nearest_river_name":"長浜川","nearest_river_note":null}
@@ -8006,7 +8031,7 @@
 {"id":"jinja_n3424225859","lat":37.2094138,"lon":140.9955095,"elevation_m":24.57,"elevation_source":"dem5a_png","nearest_river_distance_m":456.2,"nearest_river_name":"浅見川","nearest_river_note":null}
 {"id":"jinja_n3427650168","lat":33.5063633,"lon":130.424512,"elevation_m":24.4,"elevation_source":"dem5a_png","nearest_river_distance_m":115.4,"nearest_river_name":"城ノ谷川","nearest_river_note":null}
 {"id":"jinja_n3441697764","lat":34.3163564,"lon":135.6115909,"elevation_m":82.06,"elevation_source":"dem5a_png","nearest_river_distance_m":24.1,"nearest_river_name":"橋本川","nearest_river_note":null}
-{"id":"jinja_n3447886577","lat":35.1275559,"lon":136.7596552,"elevation_m":-1.91,"elevation_source":"dem5a_png","nearest_river_distance_m":187.3,"nearest_river_name":"善太川","nearest_river_note":null}
+{"id":"jinja_n3447886577","lat":35.1276118,"lon":136.7596586,"elevation_m":-2.12,"elevation_source":"dem5a_png","nearest_river_distance_m":186.1,"nearest_river_name":"善太川","nearest_river_note":null}
 {"id":"jinja_n3450095565","lat":37.7442578,"lon":140.487147,"elevation_m":82.6,"elevation_source":"dem5a_png","nearest_river_distance_m":296.7,"nearest_river_name":"くるみ川","nearest_river_note":null}
 {"id":"jinja_n3450095566","lat":37.7443306,"lon":140.487171,"elevation_m":83.11,"elevation_source":"dem5a_png","nearest_river_distance_m":291.4,"nearest_river_name":"くるみ川","nearest_river_note":null}
 {"id":"jinja_n3450095568","lat":37.7443496,"lon":140.4872881,"elevation_m":83.85,"elevation_source":"dem5a_png","nearest_river_distance_m":281.1,"nearest_river_name":"くるみ川","nearest_river_note":null}
@@ -8869,7 +8894,7 @@
 {"id":"jinja_n4031385018","lat":35.4958367,"lon":134.2267173,"elevation_m":5.43,"elevation_source":"dem5a_png","nearest_river_distance_m":269.9,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_n4032206223","lat":37.3696243,"lon":138.8964139,"elevation_m":257.5,"elevation_source":"dem5a_png","nearest_river_distance_m":27.0,"nearest_river_name":"太田川","nearest_river_note":null}
 {"id":"jinja_n4032263914","lat":34.5079353,"lon":135.7835625,"elevation_m":61.44,"elevation_source":"dem5a_png","nearest_river_distance_m":335.8,"nearest_river_name":"高取川","nearest_river_note":null}
-{"id":"jinja_n4032278470","lat":35.1246097,"lon":136.8577607,"elevation_m":0.1,"elevation_source":"dem5a_png","nearest_river_distance_m":191.9,"nearest_river_name":"荒子川","nearest_river_note":null}
+{"id":"jinja_n4032278470","lat":35.1247205,"lon":136.8577687,"elevation_m":-0.08,"elevation_source":"dem5a_png","nearest_river_distance_m":195.3,"nearest_river_name":"荒子川","nearest_river_note":null}
 {"id":"jinja_n4034822502","lat":35.122752,"lon":136.8620745,"elevation_m":-0.62,"elevation_source":"dem5a_png","nearest_river_distance_m":66.7,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_n4035880183","lat":35.1205206,"lon":136.8610064,"elevation_m":-0.1,"elevation_source":"dem5a_png","nearest_river_distance_m":202.8,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_n4036225096","lat":34.039415,"lon":131.8722788,"elevation_m":65.98,"elevation_source":"dem5a_png","nearest_river_distance_m":118.2,"nearest_river_name":"名称不明","nearest_river_note":null}
@@ -13735,7 +13760,7 @@
 {"id":"jinja_n5535252423","lat":38.2306095,"lon":140.3568672,"elevation_m":236.39,"elevation_source":"dem5a_png","nearest_river_distance_m":295.1,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_n5535328500","lat":35.7851064,"lon":139.7834833,"elevation_m":2.89,"elevation_source":"dem5a_png","nearest_river_distance_m":2330.1,"nearest_river_name":"毛長川","nearest_river_note":null}
 {"id":"jinja_n5535554754","lat":35.8051192,"lon":139.7789117,"elevation_m":3.48,"elevation_source":"dem5a_png","nearest_river_distance_m":286.1,"nearest_river_name":"毛長川","nearest_river_note":null}
-{"id":"jinja_n5535554786","lat":35.7994032,"lon":139.782931,"elevation_m":3.34,"elevation_source":"dem5a_png","nearest_river_distance_m":788.3,"nearest_river_name":"毛長川","nearest_river_note":null}
+{"id":"jinja_n5535554786","lat":35.7993987,"lon":139.7829446,"elevation_m":3.3,"elevation_source":"dem5a_png","nearest_river_distance_m":788.7,"nearest_river_name":"毛長川","nearest_river_note":null}
 {"id":"jinja_n5536012329","lat":35.8097652,"lon":139.7696411,"elevation_m":4.09,"elevation_source":"dem5a_png","nearest_river_distance_m":618.0,"nearest_river_name":"毛長川","nearest_river_note":null}
 {"id":"jinja_n5536012536","lat":35.8109455,"lon":139.7734306,"elevation_m":3.69,"elevation_source":"dem5a_png","nearest_river_distance_m":266.3,"nearest_river_name":"毛長川","nearest_river_note":null}
 {"id":"jinja_n5536304130","lat":33.8963429,"lon":130.7429803,"elevation_m":20.47,"elevation_source":"dem5a_png","nearest_river_distance_m":78.4,"nearest_river_name":"熊本川","nearest_river_note":null}
@@ -20468,7 +20493,6 @@
 {"id":"jinja_n8921279959","lat":35.3012107,"lon":137.8972076,"elevation_m":402.43,"elevation_source":"dem5a_png","nearest_river_distance_m":261.5,"nearest_river_name":"遠山川","nearest_river_note":null}
 {"id":"jinja_n8921521015","lat":33.5425555,"lon":130.3810297,"elevation_m":18.81,"elevation_source":"dem5a_png","nearest_river_distance_m":81.5,"nearest_river_name":"一本松川","nearest_river_note":null}
 {"id":"jinja_n8922894889","lat":36.6826198,"lon":137.3565307,"elevation_m":32.63,"elevation_source":"dem5a_png","nearest_river_distance_m":209.8,"nearest_river_name":"名称不明","nearest_river_note":null}
-{"id":"jinja_n892732726","lat":35.7525259,"lon":139.8022537,"elevation_m":1.19,"elevation_source":"dem5a_png","nearest_river_distance_m":719.0,"nearest_river_name":"荒川","nearest_river_note":null}
 {"id":"jinja_n892757580","lat":34.3208281,"lon":134.0634529,"elevation_m":6.09,"elevation_source":"dem5a_png","nearest_river_distance_m":505.6,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_n8927872992","lat":32.7844703,"lon":129.7916962,"elevation_m":30.87,"elevation_source":"dem5a_png","nearest_river_distance_m":52.4,"nearest_river_name":"式見川","nearest_river_note":null}
 {"id":"jinja_n8929075372","lat":35.8856388,"lon":139.733265,"elevation_m":19.41,"elevation_source":"dem5a_png","nearest_river_distance_m":542.2,"nearest_river_name":"伝右川","nearest_river_note":null}
@@ -20585,7 +20609,7 @@
 {"id":"jinja_n9036770536","lat":35.7168467,"lon":139.5955551,"elevation_m":51.61,"elevation_source":"dem5a_png","nearest_river_distance_m":296.1,"nearest_river_name":"善福寺川","nearest_river_note":null}
 {"id":"jinja_n9039691901","lat":40.3591793,"lon":141.1110762,"elevation_m":193.94,"elevation_source":"dem5a_png","nearest_river_distance_m":247.7,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_n9039691902","lat":40.360688,"lon":141.1071723,"elevation_m":207.01,"elevation_source":"dem5a_png","nearest_river_distance_m":290.9,"nearest_river_name":"名称不明","nearest_river_note":null}
-{"id":"jinja_n9039691903","lat":40.3615148,"lon":141.1096779,"elevation_m":192.26,"elevation_source":"dem5a_png","nearest_river_distance_m":426.6,"nearest_river_name":"名称不明","nearest_river_note":null}
+{"id":"jinja_n9039691903","lat":40.3615535,"lon":141.1096927,"elevation_m":192.72,"elevation_source":"dem5a_png","nearest_river_distance_m":431.1,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_n9039691904","lat":40.3617619,"lon":141.1104833,"elevation_m":199.19,"elevation_source":"dem5a_png","nearest_river_distance_m":476.9,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_n9042208557","lat":40.166464,"lon":140.7779057,"elevation_m":195.83,"elevation_source":"dem5a_png","nearest_river_distance_m":695.8,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_n9044306554","lat":33.7890337,"lon":130.4887638,"elevation_m":229.26,"elevation_source":"dem5a_png","nearest_river_distance_m":728.6,"nearest_river_name":"名称不明","nearest_river_note":null}
@@ -20881,7 +20905,7 @@
 {"id":"jinja_n9346409413","lat":33.0136245,"lon":132.6746918,"elevation_m":136.21,"elevation_source":"dem5a_png","nearest_river_distance_m":235.3,"nearest_river_name":"大田川","nearest_river_note":null}
 {"id":"jinja_n9346432680","lat":33.002624,"lon":132.6860331,"elevation_m":105.32,"elevation_source":"dem5a_png","nearest_river_distance_m":73.3,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_n9346435819","lat":32.9892287,"lon":132.6829075,"elevation_m":67.57,"elevation_source":"dem5a_png","nearest_river_distance_m":64.2,"nearest_river_name":"長追川","nearest_river_note":null}
-{"id":"jinja_n9346714330","lat":40.6097671,"lon":140.4837335,"elevation_m":28.48,"elevation_source":"dem5a_png","nearest_river_distance_m":48.5,"nearest_river_name":"土淵川","nearest_river_note":null}
+{"id":"jinja_n9346714330","lat":40.6097139,"lon":140.4837405,"elevation_m":28.19,"elevation_source":"dem5a_png","nearest_river_distance_m":51.0,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_n9349768519","lat":36.065172,"lon":140.0891489,"elevation_m":23.38,"elevation_source":"dem5a_png","nearest_river_distance_m":501.7,"nearest_river_name":"蓮沼川","nearest_river_note":null}
 {"id":"jinja_n9349828705","lat":35.0746258,"lon":135.7840541,"elevation_m":112.05,"elevation_source":"dem5a_png","nearest_river_distance_m":37.9,"nearest_river_name":"岩倉川","nearest_river_note":null}
 {"id":"jinja_n9354677416","lat":36.364678,"lon":138.1806678,"elevation_m":489.79,"elevation_source":"dem5a_png","nearest_river_distance_m":102.5,"nearest_river_name":"腰巻川","nearest_river_note":null}
@@ -23492,7 +23516,7 @@
 {"id":"jinja_w1123885101","lat":43.3016447,"lon":141.6488808,"elevation_m":10.86,"elevation_source":"dem5a_png","nearest_river_distance_m":553.9,"nearest_river_name":"篠津運河","nearest_river_note":null}
 {"id":"jinja_w1123890633","lat":34.5648396,"lon":133.6520293,"elevation_m":28.35,"elevation_source":"dem5a_png","nearest_river_distance_m":142.0,"nearest_river_name":"道口川","nearest_river_note":null}
 {"id":"jinja_w1123896629","lat":35.5630448,"lon":133.1380904,"elevation_m":4.67,"elevation_source":"dem5a_png","nearest_river_distance_m":69.8,"nearest_river_name":"千酌川","nearest_river_note":null}
-{"id":"jinja_w1124062011","lat":35.6997333,"lon":139.5462048,"elevation_m":58.84,"elevation_source":"dem5a_png","nearest_river_distance_m":215.3,"nearest_river_name":"仙川","nearest_river_note":null}
+{"id":"jinja_w1124062011","lat":35.6997324,"lon":139.5461889,"elevation_m":58.93,"elevation_source":"dem5a_png","nearest_river_distance_m":216.8,"nearest_river_name":"仙川","nearest_river_note":null}
 {"id":"jinja_w1124138671","lat":35.5138034,"lon":139.3032946,"elevation_m":126.88,"elevation_source":"dem5a_png","nearest_river_distance_m":69.6,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_w1124192877","lat":35.5166816,"lon":139.3029839,"elevation_m":135.18,"elevation_source":"dem5a_png","nearest_river_distance_m":99.1,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_w1124213456","lat":35.4548338,"lon":139.3213437,"elevation_m":54.13,"elevation_source":"dem5a_png","nearest_river_distance_m":149.2,"nearest_river_name":"恩曽川","nearest_river_note":null}
@@ -23653,8 +23677,8 @@
 {"id":"jinja_w1132595390","lat":35.109004,"lon":140.1027213,"elevation_m":5.37,"elevation_source":"dem5a_png","nearest_river_distance_m":365.7,"nearest_river_name":"待崎川","nearest_river_note":null}
 {"id":"jinja_w1132720789","lat":34.9580609,"lon":135.8175005,"elevation_m":34.12,"elevation_source":"dem5a_png","nearest_river_distance_m":119.2,"nearest_river_name":"天田川","nearest_river_note":null}
 {"id":"jinja_w1133016309","lat":32.7862915,"lon":130.2061039,"elevation_m":60.94,"elevation_source":"dem5a_png","nearest_river_distance_m":208.8,"nearest_river_name":"千々石川","nearest_river_note":null}
-{"id":"jinja_w1133064261","lat":35.6999986,"lon":139.5464687,"elevation_m":58.25,"elevation_source":"dem5a_png","nearest_river_distance_m":190.7,"nearest_river_name":"仙川","nearest_river_note":null}
-{"id":"jinja_w1133064262","lat":35.6998584,"lon":139.5462546,"elevation_m":58.59,"elevation_source":"dem5a_png","nearest_river_distance_m":210.5,"nearest_river_name":"仙川","nearest_river_note":null}
+{"id":"jinja_w1133064261","lat":35.7000056,"lon":139.5464783,"elevation_m":58.37,"elevation_source":"dem5a_png","nearest_river_distance_m":189.8,"nearest_river_name":"仙川","nearest_river_note":null}
+{"id":"jinja_w1133064262","lat":35.6998907,"lon":139.5462302,"elevation_m":58.72,"elevation_source":"dem5a_png","nearest_river_distance_m":212.6,"nearest_river_name":"仙川","nearest_river_note":null}
 {"id":"jinja_w1133113568","lat":34.7334323,"lon":135.8102377,"elevation_m":32.92,"elevation_source":"dem5a_png","nearest_river_distance_m":47.9,"nearest_river_name":"鹿川","nearest_river_note":null}
 {"id":"jinja_w1133161625","lat":33.2011519,"lon":130.0559032,"elevation_m":30.55,"elevation_source":"dem5a_png","nearest_river_distance_m":245.5,"nearest_river_name":"六角川","nearest_river_note":null}
 {"id":"jinja_w1133163174","lat":34.0987347,"lon":132.9837893,"elevation_m":2.63,"elevation_source":"dem5a_png","nearest_river_distance_m":790.6,"nearest_river_name":"馴合川","nearest_river_note":null}
@@ -25098,7 +25122,7 @@
 {"id":"jinja_w1237138985","lat":37.4783162,"lon":138.8277409,"elevation_m":18.74,"elevation_source":"dem5a_png","nearest_river_distance_m":341.8,"nearest_river_name":"新道満川","nearest_river_note":null}
 {"id":"jinja_w1237142522","lat":37.4605184,"lon":137.227074,"elevation_m":31.74,"elevation_source":"dem5a_png","nearest_river_distance_m":264.3,"nearest_river_name":"若山川","nearest_river_note":null}
 {"id":"jinja_w1237198679","lat":32.9163739,"lon":130.514067,"elevation_m":14.36,"elevation_source":"dem5a_png","nearest_river_distance_m":570.4,"nearest_river_name":"名称不明","nearest_river_note":null}
-{"id":"jinja_w1237200360","lat":35.7662422,"lon":139.8069496,"elevation_m":-0.14,"elevation_source":"dem5a_png","nearest_river_distance_m":711.0,"nearest_river_name":"荒川","nearest_river_note":null}
+{"id":"jinja_w1237200360","lat":35.766241,"lon":139.8069681,"elevation_m":-0.14,"elevation_source":"dem5a_png","nearest_river_distance_m":711.2,"nearest_river_name":"荒川","nearest_river_note":null}
 {"id":"jinja_w1237208823","lat":35.7668297,"lon":139.7953362,"elevation_m":0.42,"elevation_source":"dem5a_png","nearest_river_distance_m":796.9,"nearest_river_name":"荒川","nearest_river_note":null}
 {"id":"jinja_w1237261743","lat":39.3602544,"lon":140.4674463,"elevation_m":35.19,"elevation_source":"dem5a_png","nearest_river_distance_m":147.9,"nearest_river_name":"油川","nearest_river_note":null}
 {"id":"jinja_w1237288622","lat":34.7404384,"lon":134.1579624,"elevation_m":24.28,"elevation_source":"dem5a_png","nearest_river_distance_m":33.7,"nearest_river_name":"馬場川","nearest_river_note":null}
@@ -26847,6 +26871,7 @@
 {"id":"jinja_w1413444612","lat":28.4403053,"lon":129.5426844,"elevation_m":20.98,"elevation_source":"dem_png","nearest_river_distance_m":156.9,"nearest_river_name":"芦花部川","nearest_river_note":null}
 {"id":"jinja_w1413575152","lat":33.2749257,"lon":131.5047163,"elevation_m":2.58,"elevation_source":"dem5a_png","nearest_river_distance_m":453.5,"nearest_river_name":"朝見川","nearest_river_note":null}
 {"id":"jinja_w1413611187","lat":36.4154384,"lon":138.1998897,"elevation_m":418.24,"elevation_source":"dem5a_png","nearest_river_distance_m":334.9,"nearest_river_name":"信濃川","nearest_river_note":null}
+{"id":"jinja_w1413837277","lat":35.7524607,"lon":139.802306,"elevation_m":1.13,"elevation_source":"dem5a_png","nearest_river_distance_m":723.9,"nearest_river_name":"荒川","nearest_river_note":null}
 {"id":"jinja_w1414228941","lat":35.4165744,"lon":139.3752354,"elevation_m":14.78,"elevation_source":"dem5a_png","nearest_river_distance_m":454.4,"nearest_river_name":"相模川","nearest_river_note":null}
 {"id":"jinja_w1414352451","lat":35.5175896,"lon":133.5574578,"elevation_m":15.28,"elevation_source":"dem5a_png","nearest_river_distance_m":102.8,"nearest_river_name":"下市川","nearest_river_note":null}
 {"id":"jinja_w1414354934","lat":34.3612235,"lon":135.3026866,"elevation_m":54.5,"elevation_source":"dem5a_png","nearest_river_distance_m":210.1,"nearest_river_name":"宮川","nearest_river_note":null}
@@ -26985,6 +27010,12 @@
 {"id":"jinja_w1428944698","lat":32.5918585,"lon":130.6325638,"elevation_m":-0.2,"elevation_source":"dem5a_png","nearest_river_distance_m":871.5,"nearest_river_name":"鏡川","nearest_river_note":null}
 {"id":"jinja_w1429133868","lat":32.824863,"lon":130.7143502,"elevation_m":28.35,"elevation_source":"dem5a_png","nearest_river_distance_m":187.4,"nearest_river_name":"坪井川","nearest_river_note":null}
 {"id":"jinja_w1429423476","lat":36.0482637,"lon":139.3927356,"elevation_m":35.24,"elevation_source":"dem5a_png","nearest_river_distance_m":371.1,"nearest_river_name":"市野川","nearest_river_note":null}
+{"id":"jinja_w1429449436","lat":35.5433417,"lon":139.1284437,"elevation_m":395.98,"elevation_source":"dem5a_png","nearest_river_distance_m":19.6,"nearest_river_name":"唐沢","nearest_river_note":null}
+{"id":"jinja_w1429449437","lat":35.5433842,"lon":139.1283935,"elevation_m":395.74,"elevation_source":"dem5a_png","nearest_river_distance_m":18.3,"nearest_river_name":"唐沢","nearest_river_note":null}
+{"id":"jinja_w1429449438","lat":35.5433685,"lon":139.1284149,"elevation_m":395.85,"elevation_source":"dem5a_png","nearest_river_distance_m":19.0,"nearest_river_name":"唐沢","nearest_river_note":null}
+{"id":"jinja_w1429449439","lat":35.5432443,"lon":139.1284351,"elevation_m":395.96,"elevation_source":"dem5a_png","nearest_river_distance_m":11.4,"nearest_river_name":"唐沢","nearest_river_note":null}
+{"id":"jinja_w1429449537","lat":35.543363,"lon":139.1285697,"elevation_m":395.81,"elevation_source":"dem5a_png","nearest_river_distance_m":28.9,"nearest_river_name":"唐沢","nearest_river_note":null}
+{"id":"jinja_w1429449538","lat":35.5433392,"lon":139.1286032,"elevation_m":394.86,"elevation_source":"dem5a_png","nearest_river_distance_m":26.6,"nearest_river_name":"唐沢","nearest_river_note":null}
 {"id":"jinja_w1429450477","lat":33.6320929,"lon":130.9443873,"elevation_m":58.75,"elevation_source":"dem5a_png","nearest_river_distance_m":222.8,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_w1429473293","lat":35.7552095,"lon":140.0994701,"elevation_m":22.27,"elevation_source":"dem5a_png","nearest_river_distance_m":469.8,"nearest_river_name":"桑納川","nearest_river_note":null}
 {"id":"jinja_w1429498186","lat":33.6262241,"lon":130.9444626,"elevation_m":59.01,"elevation_source":"dem5a_png","nearest_river_distance_m":94.4,"nearest_river_name":"名称不明","nearest_river_note":null}
@@ -27410,7 +27441,7 @@
 {"id":"jinja_w1496870756","lat":35.3904781,"lon":139.3274578,"elevation_m":23.06,"elevation_source":"dem5a_png","nearest_river_distance_m":949.1,"nearest_river_name":"渋田川","nearest_river_note":null}
 {"id":"jinja_w1496903982","lat":36.6698089,"lon":139.2094327,"elevation_m":621.68,"elevation_source":"dem5a_png","nearest_river_distance_m":121.3,"nearest_river_name":"片品川","nearest_river_note":null}
 {"id":"jinja_w1496934792","lat":33.3109927,"lon":130.018457,"elevation_m":83.82,"elevation_source":"dem5a_png","nearest_river_distance_m":63.0,"nearest_river_name":"平山川","nearest_river_note":null}
-{"id":"jinja_w1497034299","lat":31.5833919,"lon":130.5604067,"elevation_m":3.28,"elevation_source":"dem5a_png","nearest_river_distance_m":506.8,"nearest_river_name":"甲突川","nearest_river_note":null}
+{"id":"jinja_w1497034299","lat":31.5834387,"lon":130.5603762,"elevation_m":3.27,"elevation_source":"dem5a_png","nearest_river_distance_m":509.7,"nearest_river_name":"甲突川","nearest_river_note":null}
 {"id":"jinja_w149714788","lat":35.663491,"lon":139.7715493,"elevation_m":3.72,"elevation_source":"dem5a_png","nearest_river_distance_m":285.7,"nearest_river_name":"隅田川","nearest_river_note":null}
 {"id":"jinja_w1497198982","lat":33.8193938,"lon":132.8062045,"elevation_m":106.06,"elevation_source":"dem5a_png","nearest_river_distance_m":472.3,"nearest_river_name":"川附川","nearest_river_note":null}
 {"id":"jinja_w1497218053","lat":35.3700371,"lon":139.2871172,"elevation_m":24.46,"elevation_source":"dem5a_png","nearest_river_distance_m":422.4,"nearest_river_name":"大根川","nearest_river_note":null}
@@ -27733,12 +27764,16 @@
 {"id":"jinja_w1556356003","lat":35.3188841,"lon":139.3610052,"elevation_m":6.79,"elevation_source":"dem5a_png","nearest_river_distance_m":816.4,"nearest_river_name":"相模川","nearest_river_note":null}
 {"id":"jinja_w1557198105","lat":36.4151194,"lon":139.3039293,"elevation_m":140.5,"elevation_source":"dem5a_png","nearest_river_distance_m":852.8,"nearest_river_name":"渡良瀬川","nearest_river_note":null}
 {"id":"jinja_w1557265739","lat":38.6841397,"lon":140.3219562,"elevation_m":94.26,"elevation_source":"dem5a_png","nearest_river_distance_m":89.7,"nearest_river_name":"平沢川","nearest_river_note":null}
+{"id":"jinja_w1557322586","lat":35.7357042,"lon":139.2355389,"elevation_m":310.16,"elevation_source":"dem5a_png","nearest_river_distance_m":446.4,"nearest_river_name":"三内川","nearest_river_note":null}
 {"id":"jinja_w1557370991","lat":36.2005502,"lon":139.8000856,"elevation_m":22.47,"elevation_source":"dem5a_png","nearest_river_distance_m":217.2,"nearest_river_name":"柳川","nearest_river_note":null}
 {"id":"jinja_w1557375693","lat":36.1864903,"lon":139.7953284,"elevation_m":20.94,"elevation_source":"dem5a_png","nearest_river_distance_m":658.6,"nearest_river_name":"柳川","nearest_river_note":null}
 {"id":"jinja_w1557640440","lat":36.5677656,"lon":139.7315469,"elevation_m":168.89,"elevation_source":"dem5a_png","nearest_river_distance_m":196.8,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_w1557779098","lat":39.5779353,"lon":140.6104175,"elevation_m":100.81,"elevation_source":"dem5a_png","nearest_river_distance_m":535.3,"nearest_river_name":"斉藤川","nearest_river_note":null}
 {"id":"jinja_w155797255","lat":35.6603707,"lon":139.7036801,"elevation_m":26.22,"elevation_source":"dem5a_png","nearest_river_distance_m":463.0,"nearest_river_name":"渋谷川","nearest_river_note":null}
+{"id":"jinja_w1558291016","lat":33.5330131,"lon":130.4571801,"elevation_m":28.85,"elevation_source":"dem5a_png","nearest_river_distance_m":738.8,"nearest_river_name":"名称不明","nearest_river_note":null}
+{"id":"jinja_w1558813535","lat":35.0145761,"lon":135.7088285,"elevation_m":41.17,"elevation_source":"dem5a_png","nearest_river_distance_m":512.8,"nearest_river_name":"西高瀬川","nearest_river_note":null}
 {"id":"jinja_w155922780","lat":35.581667,"lon":139.3612804,"elevation_m":132.77,"elevation_source":"dem5a_png","nearest_river_distance_m":1638.7,"nearest_river_name":"境川","nearest_river_note":null}
+{"id":"jinja_w1559237439","lat":40.6480129,"lon":140.5005709,"elevation_m":21.86,"elevation_source":"dem5a_png","nearest_river_distance_m":42.4,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_w155927152","lat":35.1214303,"lon":136.9767114,"elevation_m":15.72,"elevation_source":"dem5a_png","nearest_river_distance_m":296.1,"nearest_river_name":"天白川","nearest_river_note":null}
 {"id":"jinja_w155933658","lat":39.2709511,"lon":141.8548687,"elevation_m":43.99,"elevation_source":"dem5a_png","nearest_river_distance_m":610.7,"nearest_river_name":"甲子川","nearest_river_note":null}
 {"id":"jinja_w155993835","lat":35.65665,"lon":139.433867,"elevation_m":58.47,"elevation_source":"dem5a_png","nearest_river_distance_m":212.3,"nearest_river_name":"名称不明","nearest_river_note":null}
@@ -27978,7 +28013,7 @@
 {"id":"jinja_w205863195","lat":35.0062847,"lon":135.7697598,"elevation_m":38.24,"elevation_source":"dem5a_png","nearest_river_distance_m":59.1,"nearest_river_name":"高瀬川","nearest_river_note":null}
 {"id":"jinja_w206198101","lat":34.6602351,"lon":135.5344659,"elevation_m":4.14,"elevation_source":"dem5a_png","nearest_river_distance_m":475.0,"nearest_river_name":"平野川","nearest_river_note":null}
 {"id":"jinja_w207426673","lat":43.7265783,"lon":142.1875018,"elevation_m":87.54,"elevation_source":"dem5a_png","nearest_river_distance_m":433.2,"nearest_river_name":"石狩川","nearest_river_note":null}
-{"id":"jinja_w207744651","lat":36.5660146,"lon":136.6554033,"elevation_m":26.27,"elevation_source":"dem5a_png","nearest_river_distance_m":297.2,"nearest_river_name":"名称不明","nearest_river_note":null}
+{"id":"jinja_w207744651","lat":36.5659698,"lon":136.6554357,"elevation_m":26.1,"elevation_source":"dem5a_png","nearest_river_distance_m":297.6,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_w207744841","lat":36.5720535,"lon":136.6575761,"elevation_m":17.87,"elevation_source":"dem5a_png","nearest_river_distance_m":430.7,"nearest_river_name":"浅野川","nearest_river_note":null}
 {"id":"jinja_w207822957","lat":34.9445932,"lon":135.7078072,"elevation_m":17.53,"elevation_source":"dem5a_png","nearest_river_distance_m":875.4,"nearest_river_name":"西羽束師川","nearest_river_note":null}
 {"id":"jinja_w209041411","lat":35.1455556,"lon":136.9234146,"elevation_m":14.17,"elevation_source":"dem5a_png","nearest_river_distance_m":1048.5,"nearest_river_name":"新堀川","nearest_river_note":null}
@@ -28554,7 +28589,7 @@
 {"id":"jinja_w305288978","lat":31.5261043,"lon":130.5224998,"elevation_m":6.19,"elevation_source":"dem5a_png","nearest_river_distance_m":168.7,"nearest_river_name":"永田川","nearest_river_note":null}
 {"id":"jinja_w305395576","lat":35.697802,"lon":139.6316155,"elevation_m":41.31,"elevation_source":"dem5a_png","nearest_river_distance_m":290.9,"nearest_river_name":"善福寺川","nearest_river_note":null}
 {"id":"jinja_w305489897","lat":35.8928502,"lon":137.4803682,"elevation_m":3062.74,"elevation_source":"dem5a_png","nearest_river_distance_m":1906.9,"nearest_river_name":"名称不明","nearest_river_note":null}
-{"id":"jinja_w305689256","lat":35.6995599,"lon":139.5747501,"elevation_m":46.58,"elevation_source":"dem5a_png","nearest_river_distance_m":272.6,"nearest_river_name":"神田川","nearest_river_note":null}
+{"id":"jinja_w305689256","lat":35.6995458,"lon":139.5747832,"elevation_m":46.51,"elevation_source":"dem5a_png","nearest_river_distance_m":269.6,"nearest_river_name":"神田川","nearest_river_note":null}
 {"id":"jinja_w305808454","lat":36.591132,"lon":140.6557022,"elevation_m":28.52,"elevation_source":"dem5a_png","nearest_river_distance_m":757.2,"nearest_river_name":"宮田川","nearest_river_note":null}
 {"id":"jinja_w305808455","lat":36.5921869,"lon":140.6552229,"elevation_m":30.02,"elevation_source":"dem5a_png","nearest_river_distance_m":686.1,"nearest_river_name":"宮田川","nearest_river_note":null}
 {"id":"jinja_w305808544","lat":34.988234,"lon":135.9310344,"elevation_m":102.33,"elevation_source":"dem5a_png","nearest_river_distance_m":264.8,"nearest_river_name":"長沢川","nearest_river_note":null}
@@ -28872,7 +28907,6 @@
 {"id":"jinja_w337932446","lat":37.7442423,"lon":140.487161,"elevation_m":82.68,"elevation_source":"dem5a_png","nearest_river_distance_m":296.3,"nearest_river_name":"くるみ川","nearest_river_note":null}
 {"id":"jinja_w338116237","lat":37.0553141,"lon":140.9387835,"elevation_m":32.37,"elevation_source":"dem5a_png","nearest_river_distance_m":301.1,"nearest_river_name":"夏井川","nearest_river_note":null}
 {"id":"jinja_w338129148","lat":37.112358,"lon":140.2188612,"elevation_m":371.19,"elevation_source":"dem5a_png","nearest_river_distance_m":407.6,"nearest_river_name":"南湖","nearest_river_note":null}
-{"id":"jinja_w338428851","lat":35.1215539,"lon":136.7632686,"elevation_m":-2.32,"elevation_source":"dem5a_png","nearest_river_distance_m":462.2,"nearest_river_name":"善太川","nearest_river_note":null}
 {"id":"jinja_w338429549","lat":34.0741236,"lon":134.5671636,"elevation_m":0.93,"elevation_source":"dem5a_png","nearest_river_distance_m":168.4,"nearest_river_name":"住吉島川","nearest_river_note":null}
 {"id":"jinja_w338760306","lat":38.7282426,"lon":139.8244944,"elevation_m":17.77,"elevation_source":"dem5a_png","nearest_river_distance_m":414.8,"nearest_river_name":"内川","nearest_river_note":null}
 {"id":"jinja_w338764548","lat":38.7250396,"lon":139.8220898,"elevation_m":13.61,"elevation_source":"dem5a_png","nearest_river_distance_m":196.7,"nearest_river_name":"内川","nearest_river_note":null}
@@ -30494,7 +30528,7 @@
 {"id":"jinja_w465829162","lat":35.8670154,"lon":139.6042806,"elevation_m":7.28,"elevation_source":"dem5a_png","nearest_river_distance_m":157.3,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_w465836402","lat":34.9699389,"lon":137.1819349,"elevation_m":41.54,"elevation_source":"dem5a_png","nearest_river_distance_m":275.2,"nearest_river_name":"伊賀川","nearest_river_note":null}
 {"id":"jinja_w466008914","lat":34.956132,"lon":137.1591337,"elevation_m":32.65,"elevation_source":"dem5a_png","nearest_river_distance_m":110.5,"nearest_river_name":"伊賀川","nearest_river_note":null}
-{"id":"jinja_w466008952","lat":34.9562732,"lon":137.1627699,"elevation_m":19.75,"elevation_source":"dem5a_png","nearest_river_distance_m":111.9,"nearest_river_name":"乙川","nearest_river_note":null}
+{"id":"jinja_w466008952","lat":34.9562702,"lon":137.1627658,"elevation_m":19.75,"elevation_source":"dem5a_png","nearest_river_distance_m":111.9,"nearest_river_name":"乙川","nearest_river_note":null}
 {"id":"jinja_w466012340","lat":35.4355963,"lon":139.6155655,"elevation_m":2.6,"elevation_source":"dem5a_png","nearest_river_distance_m":35.5,"nearest_river_name":"大岡川","nearest_river_note":null}
 {"id":"jinja_w466017710","lat":35.6680583,"lon":139.7832307,"elevation_m":2.43,"elevation_source":"dem5a_png","nearest_river_distance_m":9.9,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_w466040627","lat":35.1619699,"lon":137.8660396,"elevation_m":314.67,"elevation_source":"dem5a_png","nearest_river_distance_m":345.4,"nearest_river_name":"水窪川","nearest_river_note":null}
@@ -30885,7 +30919,7 @@
 {"id":"jinja_w494417798","lat":36.0240643,"lon":139.3115247,"elevation_m":53.76,"elevation_source":"dem5a_png","nearest_river_distance_m":148.5,"nearest_river_name":"都幾川","nearest_river_note":null}
 {"id":"jinja_w494444780","lat":36.3374098,"lon":139.4030192,"elevation_m":48.44,"elevation_source":"dem5a_png","nearest_river_distance_m":54.4,"nearest_river_name":"矢場川","nearest_river_note":null}
 {"id":"jinja_w494451984","lat":36.0097057,"lon":139.3928916,"elevation_m":36.2,"elevation_source":"dem5a_png","nearest_river_distance_m":121.6,"nearest_river_name":"名称不明","nearest_river_note":null}
-{"id":"jinja_w494463053","lat":36.3004551,"lon":139.3735911,"elevation_m":70.76,"elevation_source":"dem5a_png","nearest_river_distance_m":344.5,"nearest_river_name":"八瀬川","nearest_river_note":null}
+{"id":"jinja_w494463053","lat":36.3004627,"lon":139.3735957,"elevation_m":70.76,"elevation_source":"dem5a_png","nearest_river_distance_m":344.5,"nearest_river_name":"八瀬川","nearest_river_note":null}
 {"id":"jinja_w494463056","lat":36.3020015,"lon":139.3675382,"elevation_m":78.78,"elevation_source":"dem5a_png","nearest_river_distance_m":195.5,"nearest_river_name":"八瀬川","nearest_river_note":null}
 {"id":"jinja_w494463892","lat":36.2982481,"lon":139.3715345,"elevation_m":44.47,"elevation_source":"dem5a_png","nearest_river_distance_m":152.7,"nearest_river_name":"八瀬川","nearest_river_note":null}
 {"id":"jinja_w494465051","lat":36.3060872,"lon":139.3701854,"elevation_m":50.14,"elevation_source":"dem5a_png","nearest_river_distance_m":252.7,"nearest_river_name":"八瀬川","nearest_river_note":null}
@@ -32070,7 +32104,7 @@
 {"id":"jinja_w562763345","lat":34.696541,"lon":136.2700593,"elevation_m":633.92,"elevation_source":"dem5a_png","nearest_river_distance_m":192.1,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_w562787398","lat":43.2369611,"lon":143.3023229,"elevation_m":293.48,"elevation_source":"dem5c_png","nearest_river_distance_m":647.8,"nearest_river_name":"サックシュオルベツ川","nearest_river_note":null}
 {"id":"jinja_w562911843","lat":34.756306,"lon":138.8293133,"elevation_m":29.49,"elevation_source":"dem5a_png","nearest_river_distance_m":68.6,"nearest_river_name":"明伏川","nearest_river_note":null}
-{"id":"jinja_w563014770","lat":35.7936211,"lon":139.7648751,"elevation_m":3.16,"elevation_source":"dem5a_png","nearest_river_distance_m":650.0,"nearest_river_name":"新芝川","nearest_river_note":null}
+{"id":"jinja_w563014770","lat":35.7936186,"lon":139.7648709,"elevation_m":3.16,"elevation_source":"dem5a_png","nearest_river_distance_m":650.0,"nearest_river_name":"新芝川","nearest_river_note":null}
 {"id":"jinja_w563157423","lat":33.5680631,"lon":133.5321337,"elevation_m":1.69,"elevation_source":"dem5a_png","nearest_river_distance_m":383.8,"nearest_river_name":"江ノ口川","nearest_river_note":null}
 {"id":"jinja_w563157424","lat":33.568206,"lon":133.5321828,"elevation_m":1.87,"elevation_source":"dem5a_png","nearest_river_distance_m":391.0,"nearest_river_name":"紅水川","nearest_river_note":null}
 {"id":"jinja_w563343359","lat":35.5885102,"lon":140.4554806,"elevation_m":4.64,"elevation_source":"dem5a_png","nearest_river_distance_m":1568.5,"nearest_river_name":"木戸川","nearest_river_note":null}
@@ -32844,7 +32878,6 @@
 {"id":"jinja_w597754834","lat":36.4265567,"lon":139.0434786,"elevation_m":125.42,"elevation_source":"dem5a_png","nearest_river_distance_m":687.3,"nearest_river_name":"広瀬川","nearest_river_note":null}
 {"id":"jinja_w597841201","lat":34.7822966,"lon":135.3978861,"elevation_m":23.08,"elevation_source":"dem5a_png","nearest_river_distance_m":188.6,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_w597936417","lat":34.7796975,"lon":135.3918973,"elevation_m":22.4,"elevation_source":"dem5a_png","nearest_river_distance_m":319.3,"nearest_river_name":"名称不明","nearest_river_note":null}
-{"id":"jinja_w597945506","lat":35.9501617,"lon":139.4023635,"elevation_m":34.33,"elevation_source":"dem5a_png","nearest_river_distance_m":372.1,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_w597960335","lat":33.5836104,"lon":133.5405973,"elevation_m":21.53,"elevation_source":"dem5a_png","nearest_river_distance_m":390.3,"nearest_river_name":"金谷川","nearest_river_note":null}
 {"id":"jinja_w597991257","lat":33.5839118,"lon":133.5407192,"elevation_m":27.03,"elevation_source":"dem5a_png","nearest_river_distance_m":416.9,"nearest_river_name":"金谷川","nearest_river_note":null}
 {"id":"jinja_w598060366","lat":35.7560784,"lon":139.7333424,"elevation_m":12.95,"elevation_source":"dem5a_png","nearest_river_distance_m":429.1,"nearest_river_name":"石神井川","nearest_river_note":null}
@@ -36419,7 +36452,7 @@
 {"id":"jinja_w795852245","lat":40.16122,"lon":140.3323199,"elevation_m":52.56,"elevation_source":"dem5a_png","nearest_river_distance_m":631.5,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_w795870444","lat":35.4443911,"lon":139.3472072,"elevation_m":48.82,"elevation_source":"dem5a_png","nearest_river_distance_m":503.6,"nearest_river_name":"恩曽川","nearest_river_note":null}
 {"id":"jinja_w795870446","lat":35.4497018,"lon":139.3377619,"elevation_m":59.49,"elevation_source":"dem5a_png","nearest_river_distance_m":600.1,"nearest_river_name":"恩曽川","nearest_river_note":null}
-{"id":"jinja_w795923722","lat":34.8163184,"lon":135.3514441,"elevation_m":78.26,"elevation_source":"dem5a_png","nearest_river_distance_m":65.1,"nearest_river_name":"荒神川","nearest_river_note":null}
+{"id":"jinja_w795923722","lat":34.8163413,"lon":135.351427,"elevation_m":74.67,"elevation_source":"dem5a_png","nearest_river_distance_m":63.2,"nearest_river_name":"荒神川","nearest_river_note":null}
 {"id":"jinja_w795923731","lat":34.8118667,"lon":135.3522109,"elevation_m":50.21,"elevation_source":"dem5a_png","nearest_river_distance_m":77.9,"nearest_river_name":"荒神川","nearest_river_note":null}
 {"id":"jinja_w795982210","lat":34.7627879,"lon":134.8355957,"elevation_m":4.27,"elevation_source":"dem5a_png","nearest_river_distance_m":154.7,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_w796342390","lat":35.8480296,"lon":139.9279035,"elevation_m":18.1,"elevation_source":"dem5a_png","nearest_river_distance_m":168.5,"nearest_river_name":"富士川","nearest_river_note":null}
@@ -39510,7 +39543,7 @@
 {"id":"jinja_w919049205","lat":35.5760348,"lon":139.5129978,"elevation_m":31.35,"elevation_source":"dem5a_png","nearest_river_distance_m":16.5,"nearest_river_name":"早野川","nearest_river_note":null}
 {"id":"jinja_w919053303","lat":35.4545594,"lon":137.8314782,"elevation_m":441.44,"elevation_source":"dem5a_png","nearest_river_distance_m":477.4,"nearest_river_name":"御庵沢川","nearest_river_note":null}
 {"id":"jinja_w919057244","lat":35.4456512,"lon":137.8581759,"elevation_m":574.21,"elevation_source":"dem5a_png","nearest_river_distance_m":38.2,"nearest_river_name":"イタチ川","nearest_river_note":null}
-{"id":"jinja_w919231920","lat":32.2546721,"lon":130.2226591,"elevation_m":3.19,"elevation_source":"dem5a_png","nearest_river_distance_m":1851.2,"nearest_river_name":"名称不明","nearest_river_note":null}
+{"id":"jinja_w919231920","lat":32.2547296,"lon":130.2226435,"elevation_m":2.56,"elevation_source":"dem5a_png","nearest_river_distance_m":1845.3,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_w919313492","lat":43.7288992,"lon":142.1323704,"elevation_m":65.05,"elevation_source":"dem5c_png","nearest_river_distance_m":55.9,"nearest_river_name":"オサナイケップ川","nearest_river_note":null}
 {"id":"jinja_w919646757","lat":32.3522028,"lon":130.358254,"elevation_m":5.16,"elevation_source":"dem5a_png","nearest_river_distance_m":2107.0,"nearest_river_name":"名称不明","nearest_river_note":null}
 {"id":"jinja_w919656254","lat":34.675279,"lon":135.7417908,"elevation_m":102.1,"elevation_source":"dem5a_png","nearest_river_distance_m":84.3,"nearest_river_name":"富雄川","nearest_river_note":null}

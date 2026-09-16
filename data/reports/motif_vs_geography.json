@@ -1,14 +1,14 @@
 {
  "unit": "記事",
- "articles": 3184,
- "shrines": 3186,
+ "articles": 3189,
+ "shrines": 3191,
  "results": [
   {
    "label": "山岳・自然のスコアと標高",
    "motif": "mountain_nature",
    "geography": "elevation_m",
-   "n": 3184,
-   "spearman": 0.2672,
+   "n": 3189,
+   "spearman": 0.2664,
    "expected_sign": 1,
    "sign_matches": true,
    "permutation_p": 0.0005,
@@ -18,22 +18,22 @@
    "label": "水・河川のスコアと河川距離",
    "motif": "water_river",
    "geography": "nearest_river_distance_m",
-   "n": 3171,
-   "spearman": -0.0517,
+   "n": 3176,
+   "spearman": -0.0514,
    "expected_sign": -1,
    "sign_matches": true,
-   "permutation_p": 0.0015,
+   "permutation_p": 0.004,
    "significant_at_0.01": true
   },
   {
    "label": "海・航海のスコアと標高(低いほうへ出るはず)",
    "motif": "sea_navigation",
    "geography": "elevation_m",
-   "n": 3184,
-   "spearman": -0.0194,
+   "n": 3189,
+   "spearman": -0.0215,
    "expected_sign": -1,
    "sign_matches": true,
-   "permutation_p": 0.2674,
+   "permutation_p": 0.2239,
    "significant_at_0.01": false
   }
  ]

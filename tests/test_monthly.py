@@ -211,3 +211,17 @@ def test_t141_model_cache_is_outside_the_working_tree():
         assert "github.workspace" not in ln and "$GITHUB_WORKSPACE" not in ln, \
             f"モデルのキャッシュが作業ツリーの中にある: {ln}"
         assert "runner.temp" in ln or "RUNNER_TEMP" in ln, f"ランナーの一時領域を使っていない: {ln}"
+
+
+@pytest.mark.unit
+def test_t141b_runner_context_is_not_used_outside_steps():
+    """T-141: `${{ runner.* }}` を書かない(環境変数 $RUNNER_TEMP を使う)。
+
+    runner コンテキストは env: の位置では使えず、GitHub はワークフローの解析に失敗して
+    起動そのものを HTTP 422 で拒否する。**手元の検査は文字列として runner.temp を見ていたので緑だった** ——
+    構文として妥当かは見ていなかった。書き方を一つに絞って、誤用の入り口を塞ぐ。
+    """
+    t = WORKFLOW.read_text(encoding="utf-8")
+    bad = [ln.strip() for ln in t.splitlines() if "${{ runner." in ln or "${{runner." in ln]
+    assert bad == [], f"runner コンテキストを使っている(env: では解析に失敗する): {bad}"
+    assert "$RUNNER_TEMP" in t, "ランナーの一時領域を環境変数で参照していない"

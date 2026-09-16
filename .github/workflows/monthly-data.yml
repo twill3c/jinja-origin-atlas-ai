@@ -33,12 +33,15 @@ jobs:
     timeout-minutes: 330
     env:
       USER_AGENT: "JinjaOriginAtlasAI/0.2 (https://github.com/twill3c/jinja-origin-atlas-ai)"
-      # **作業ツリーの中に置かない。** 五回目の実行で字種検査(G-11)がモデルの tokenizer.json を
-      # 走査して違反 37,084 件を出し、pytest だけが落ちた(データは健全だった)。T-141
-      HF_HOME: ${{ runner.temp }}/hf
       PYTHONUNBUFFERED: "1"
     steps:
       - uses: actions/checkout@v4
+
+      - name: モデルのキャッシュを作業ツリーの外に置く(T-141)
+        # **作業ツリーの中に置かない。** 五回目の実行で字種検査(G-11)がモデルの tokenizer.json を
+        # 走査して違反 37,084 件を出し、pytest だけが落ちた(データは健全だった)。
+        # runner コンテキストは env: の位置では使えない(起動が 422 で拒否される)ので、ここで環境変数に書く
+        run: echo "HF_HOME=$RUNNER_TEMP/hf" >> "$GITHUB_ENV"
 
       - uses: actions/setup-node@v4
         with:

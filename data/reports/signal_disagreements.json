@@ -30,7 +30,8 @@
   "by_name": "shinmei_ise",
   "deities": [
    "天照大神",
-   "素戔嗚尊"
+   "素戔嗚尊",
+   "菅原大神"
   ]
  },
  {
@@ -52,6 +53,16 @@
   ]
  },
  {
+  "id": "jinja_w661472637",
+  "name": "愛宕神社",
+  "by_deity": "inari",
+  "by_name": "atago",
+  "deities": [
+   "ウカノミタマ",
+   "愛宕権現"
+  ]
+ },
+ {
   "id": "jinja_w1348689593",
   "name": "天神社",
   "by_deity": "shinmei_ise",
@@ -61,13 +72,53 @@
   ]
  },
  {
-  "id": "jinja_w639207330",
-  "name": "天祖諏訪神社",
-  "by_deity": "shinmei_ise",
-  "by_name": "suwa",
+  "id": "jinja_n3376973010",
+  "name": "神明社",
+  "by_deity": "hachiman",
+  "by_name": "shinmei_ise",
   "deities": [
-   "トヨウケビメ",
-   "天照大神"
+   "天照大神",
+   "応神天皇"
+  ]
+ },
+ {
+  "id": "jinja_n5690522690",
+  "name": "香取神社",
+  "by_deity": "hie_sanno",
+  "by_name": "kashima_katori",
+  "deities": [
+   "大山咋神",
+   "経津主神"
+  ]
+ },
+ {
+  "id": "jinja_n6830635583",
+  "name": "香取神社",
+  "by_deity": "inari",
+  "by_name": "kashima_katori",
+  "deities": [
+   "ウカノミタマ",
+   "天照大神",
+   "経津主神"
+  ]
+ },
+ {
+  "id": "jinja_n3391908114",
+  "name": "神明神社",
+  "by_deity": "gion_yasaka",
+  "by_name": "shinmei_ise",
+  "deities": [
+   "天照大神",
+   "素戔嗚尊"
+  ]
+ },
+ {
+  "id": "jinja_w321601685",
+  "name": "住吉神社",
+  "by_deity": "hachiman",
+  "by_name": "sumiyoshi",
+  "deities": [
+   "神功皇后"
   ]
  },
  {
@@ -84,11 +135,33 @@
   ]
  },
  {
-  "id": "jinja_w1523518748",
-  "name": "明知神明宮",
-  "by_deity": "konpira",
+  "id": "jinja_n7104784998",
+  "name": "熊野若宮神社",
+  "by_deity": "hachiman",
+  "by_name": "kumano",
+  "deities": [
+   "伊奘諾尊",
+   "神功皇后"
+  ]
+ },
+ {
+  "id": "jinja_n4264129114",
+  "name": "神明神社",
+  "by_deity": "inari",
   "by_name": "shinmei_ise",
   "deities": [
+   "ウカノミタマ",
+   "大土御祖神社",
+   "天照大神"
+  ]
+ },
+ {
+  "id": "jinja_w1523518748",
+  "name": "明知神明宮",
+  "by_deity": "hachiman",
+  "by_name": "shinmei_ise",
+  "deities": [
+   "応神天皇",
    "金山彦神"
   ]
  },
@@ -114,6 +187,15 @@
   ]
  },
  {
+  "id": "jinja_w1053833862",
+  "name": "岸和田天神宮(沼天神)",
+  "by_deity": "gion_yasaka",
+  "by_name": "tenjin",
+  "deities": [
+   "素戔嗚尊"
+  ]
+ },
+ {
   "id": "jinja_w801872156",
   "name": "住吉神社",
   "by_deity": "hachiman",
@@ -121,6 +203,7 @@
   "deities": [
    "住吉三神",
    "八幡神",
+   "年神",
    "神功皇后"
   ]
  },

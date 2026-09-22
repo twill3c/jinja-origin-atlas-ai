@@ -70,6 +70,8 @@ export default function Home() {
 
       <p style={{ marginTop: "1rem" }}>
         <Link href="/map/">地図を開く →</Link>
+        {" ・ "}
+        <Link href="/deity/">祭神を辿る →</Link>
       </p>
 
       <h2>三つの層を混ぜない</h2>

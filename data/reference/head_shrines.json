@@ -1,0 +1,275 @@
+{
+ "_what": "祭神ごとの総本社(その信仰の根本社)の一覧。リフト地図の非循環オラクル(G-16)の正解表。",
+ "_why_not_circular": [
+  "リフトは全国 40,357 社の祭神割り当てから計算する。この表は『ある一社がどの信仰の根本社か』という別個の事実であり、リフトの計算に入力していない。",
+  "総本社そのものが該当県のリフトに寄与する分は 1 社ぶんで、たとえば愛媛県のオオヤマツミ 7 社のうちの 1 社にすぎない。表がリフトを決めているわけではない。"
+ ],
+ "_provenance": {
+  "deity_qid": "県チャンクの deities[].wikidata_id から採った(2026-09-21 実測)",
+  "head_shrine_qid": "data/raw/wikidata/core.json の itemLabel を完全一致で引き、座標で同名の別社と区別した(2026-09-21 実測)",
+  "head_shrine_prefecture": "本ファイルでは主張値。検証は tests/test_deity.py の T-143 が Q-id から OSM カタログを引いて行う",
+  "deity_to_head_shrine": "神道史の通説。エージェントが起草し、人間が承認して凍結する。一意でない祭神は除外した(_excluded を見よ)",
+  "head_shrine_coord": "data/raw/wikidata/core.json の座標(2026-09-21 取得)。地図に総本社のピンを置くために持つ"
+ },
+ "_status": "approved_frozen",
+ "_approved": "2026-09-21 に人間が承認して凍結した(loop_013)。以後の変更は専用コミットで行い、理由をループログに残す。",
+ "_verified": "所在県は 26 件すべて機械で確かめた(2026-09-21 実測)。Q-id で OSM カタログに直接一致したもの 12 件、Wikidata 座標の最寄り社で一致したもの 14 件(最大 371 m)、不一致 0 件。検証は tests/test_deity.py の T-143 が毎回やり直す(data/raw が無い環境では skip する)。",
+ "_excluded": [
+  {
+   "deity": "菅原道真 / 天満大自在天神",
+   "reason": "北野天満宮(京都府)と太宰府天満宮(福岡県)が並立し、総本社が一意に決まらない"
+  },
+  {
+   "deity": "素戔嗚尊",
+   "reason": "八坂神社・須佐神社・氷川神社などに諸説がある。牛頭天王としてなら八坂神社で一意なので、そちらだけ入れた"
+  },
+  {
+   "deity": "伊奘諾尊 / 伊奘冉尊",
+   "reason": "多賀大社・伊弉諾神宮・熊野三山などに諸説がある"
+  },
+  {
+   "deity": "スクナビコナ / 猿田彦神 / 事代主神 / 保食神 / 軻遇突智",
+   "reason": "総本社が一意でない"
+  },
+  {
+   "deity": "日本武尊 / 神功皇后 / 仲哀天皇 / 仁徳天皇",
+   "reason": "人格神で、勧請の根本社という概念が当てはまりにくい"
+  }
+ ],
+ "entries": [
+  {
+   "deity": "天照大神",
+   "deity_qid": "Q455602",
+   "head_shrine": "皇大神宮(伊勢神宮 内宮)",
+   "head_shrine_qid": "Q11581011",
+   "prefecture": "三重県",
+   "lat": 34.454982,
+   "lon": 136.725163
+  },
+  {
+   "deity": "トヨウケビメ",
+   "deity_qid": "Q2983724",
+   "head_shrine": "豊受大神宮(伊勢神宮 外宮)",
+   "head_shrine_qid": "Q11633343",
+   "prefecture": "三重県",
+   "lat": 34.487219,
+   "lon": 136.703328
+  },
+  {
+   "deity": "八幡神",
+   "deity_qid": "Q261637",
+   "head_shrine": "宇佐神宮",
+   "head_shrine_qid": "Q715632",
+   "prefecture": "大分県",
+   "lat": 33.526019,
+   "lon": 131.374627
+  },
+  {
+   "deity": "応神天皇",
+   "deity_qid": "Q317997",
+   "head_shrine": "宇佐神宮",
+   "head_shrine_qid": "Q715632",
+   "prefecture": "大分県",
+   "lat": 33.526019,
+   "lon": 131.374627
+  },
+  {
+   "deity": "稲荷神",
+   "deity_qid": "Q719665",
+   "head_shrine": "伏見稲荷大社",
+   "head_shrine_qid": "Q714828",
+   "prefecture": "京都府",
+   "lat": 34.967202,
+   "lon": 135.773386
+  },
+  {
+   "deity": "ウカノミタマ",
+   "deity_qid": "Q3080728",
+   "head_shrine": "伏見稲荷大社",
+   "head_shrine_qid": "Q714828",
+   "prefecture": "京都府",
+   "lat": 34.967202,
+   "lon": 135.773386
+  },
+  {
+   "deity": "建御名方神",
+   "deity_qid": "Q9150391",
+   "head_shrine": "諏訪大社",
+   "head_shrine_qid": "Q218813",
+   "prefecture": "長野県",
+   "lat": 36.075278,
+   "lon": 138.091389
+  },
+  {
+   "deity": "八坂刀売神",
+   "deity_qid": "Q9150392",
+   "head_shrine": "諏訪大社",
+   "head_shrine_qid": "Q218813",
+   "prefecture": "長野県",
+   "lat": 36.075278,
+   "lon": 138.091389
+  },
+  {
+   "deity": "大国主神",
+   "deity_qid": "Q276944",
+   "head_shrine": "出雲大社",
+   "head_shrine_qid": "Q696362",
+   "prefecture": "島根県",
+   "lat": 35.401944,
+   "lon": 132.685444
+  },
+  {
+   "deity": "牛頭天王",
+   "deity_qid": "Q11570247",
+   "head_shrine": "八坂神社",
+   "head_shrine_qid": "Q692714",
+   "prefecture": "京都府",
+   "lat": 35.003645,
+   "lon": 135.778529
+  },
+  {
+   "deity": "タケミカヅチ",
+   "deity_qid": "Q1502690",
+   "head_shrine": "鹿島神宮",
+   "head_shrine_qid": "Q706499",
+   "prefecture": "茨城県",
+   "lat": 35.968784,
+   "lon": 140.631538
+  },
+  {
+   "deity": "経津主神",
+   "deity_qid": "Q1107286",
+   "head_shrine": "香取神宮",
+   "head_shrine_qid": "Q372380",
+   "prefecture": "千葉県",
+   "lat": 35.886206,
+   "lon": 140.528518
+  },
+  {
+   "deity": "住吉三神",
+   "deity_qid": "Q1114013",
+   "head_shrine": "住吉大社",
+   "head_shrine_qid": "Q705949",
+   "prefecture": "大阪府",
+   "lat": 34.612513,
+   "lon": 135.492934
+  },
+  {
+   "deity": "宗像三女神",
+   "deity_qid": "Q10948069",
+   "head_shrine": "宗像大社",
+   "head_shrine_qid": "Q704962",
+   "prefecture": "福岡県",
+   "lat": 33.830833,
+   "lon": 130.514167
+  },
+  {
+   "deity": "市杵島姫",
+   "deity_qid": "Q11059454",
+   "head_shrine": "厳島神社",
+   "head_shrine_qid": "Q191763",
+   "prefecture": "広島県",
+   "lat": 34.29577,
+   "lon": 132.320105
+  },
+  {
+   "deity": "大山咋神",
+   "deity_qid": "Q10935105",
+   "head_shrine": "日吉大社",
+   "head_shrine_qid": "Q656451",
+   "prefecture": "滋賀県",
+   "lat": 35.071524,
+   "lon": 135.862219
+  },
+  {
+   "deity": "オオヤマツミ",
+   "deity_qid": "Q386563",
+   "head_shrine": "大山祇神社",
+   "head_shrine_qid": "Q703904",
+   "prefecture": "愛媛県",
+   "lat": 34.247887,
+   "lon": 133.005712
+  },
+  {
+   "deity": "菊理媛神",
+   "deity_qid": "Q11619891",
+   "head_shrine": "白山比咩神社",
+   "head_shrine_qid": "Q704702",
+   "prefecture": "石川県",
+   "lat": 36.434886,
+   "lon": 136.635835
+  },
+  {
+   "deity": "熊野権現",
+   "deity_qid": "Q11568925",
+   "head_shrine": "熊野本宮大社",
+   "head_shrine_qid": "Q705035",
+   "prefecture": "和歌山県",
+   "lat": 33.840401,
+   "lon": 135.773553
+  },
+  {
+   "deity": "木花開耶姫",
+   "deity_qid": "Q1781862",
+   "head_shrine": "富士山本宮浅間大社",
+   "head_shrine_qid": "Q653180",
+   "prefecture": "静岡県",
+   "lat": 35.227395,
+   "lon": 138.610167
+  },
+  {
+   "deity": "天児屋命",
+   "deity_qid": "Q2564508",
+   "head_shrine": "春日大社",
+   "head_shrine_qid": "Q714559",
+   "prefecture": "奈良県",
+   "lat": 34.681336,
+   "lon": 135.848348
+  },
+  {
+   "deity": "春日神",
+   "deity_qid": "Q11088805",
+   "head_shrine": "春日大社",
+   "head_shrine_qid": "Q714559",
+   "prefecture": "奈良県",
+   "lat": 34.681336,
+   "lon": 135.848348
+  },
+  {
+   "deity": "愛宕権現",
+   "deity_qid": "Q1101132",
+   "head_shrine": "愛宕神社(愛宕山)",
+   "head_shrine_qid": "Q11493857",
+   "prefecture": "京都府",
+   "lat": 35.041037,
+   "lon": 135.586948
+  },
+  {
+   "deity": "大物主神",
+   "deity_qid": "Q10936701",
+   "head_shrine": "大神神社",
+   "head_shrine_qid": "Q705542",
+   "prefecture": "奈良県",
+   "lat": 34.529098,
+   "lon": 135.853054
+  },
+  {
+   "deity": "賀茂別雷命",
+   "deity_qid": "Q11634943",
+   "head_shrine": "賀茂別雷神社(上賀茂神社)",
+   "head_shrine_qid": "Q700448",
+   "prefecture": "京都府",
+   "lat": 35.060507,
+   "lon": 135.752752
+  },
+  {
+   "deity": "徳川家康",
+   "deity_qid": "Q171977",
+   "head_shrine": "日光東照宮",
+   "head_shrine_qid": "Q696641",
+   "prefecture": "栃木県",
+   "lat": 36.759167,
+   "lon": 139.598611
+  }
+ ]
+}

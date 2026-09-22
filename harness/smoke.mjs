@@ -481,10 +481,144 @@ async function main() {
     check("類似の相手が詳細へのリンクになっている", !!href && /^\/shrine\/\?id=jinja_[nwr]\d+&p=\d{2}$/.test(href),
       String(href));
 
+    // --- 祭神の三面(T-151 / SPEC §7.14)----------------------------------
+    console.log("祭神ページ");
+    await page.setViewportSize({ width: 1280, height: 900 });
+    const rDeity = await page.goto(`${base}/deity/`, { waitUntil: "networkidle" });
+    check("祭神ページが開く", rDeity?.status() === 200, `status=${rDeity?.status()}`);
+
+    const deityReport = JSON.parse(await readFile(path.join(OUT, "data/deity/report.json"), "utf-8"));
+    const deityDetail = JSON.parse(await readFile(path.join(OUT, "data/deity/detail.json"), "utf-8"));
+
+    await page.waitForSelector(".deity-panels h2");
+    await page.waitForFunction(() => window.__deityMap?.isStyleLoaded?.() === true, { timeout: 30000 });
+
+    // 三面が同じ一柱に従うこと。**到達の証拠を取ってから結果を見る**(HC-138) ——
+    // 選び直して見出しが実際に変わったことを確かめてから、地図と表を数える。
+    const before = await page.locator(".deity-panels h2").innerText();
+    const pick = page.locator(".deity-list button", { hasText: "オオヤマツミ" }).first();
+    await pick.scrollIntoViewIfNeeded();
+    await pick.click();
+    await page.waitForFunction(
+      (prev) => document.querySelector(".deity-panels h2")?.innerText !== prev,
+      before,
+      { timeout: 10000 },
+    );
+    const after = await page.locator(".deity-panels h2").innerText();
+    check("一柱を選ぶと見出しが変わる(操作が届いた証拠)", after !== before && after.includes("オオヤマツミ"), after);
+
+    // 面 2: 地図に描かれた数が、出荷したデータの件数と一致する
+    await page.evaluate(() => new Promise((r) => {
+      const m = window.__deityMap;
+      m.once("idle", r);
+      m.triggerRepaint();
+      setTimeout(r, 15000);
+    }));
+    const wantIds = deityDetail.deities.Q386563.ids.length;
+    // **querySourceFeatures はタイルごとに返す。** タイル境界にかかる点は何度も出てくるので、
+    // そのまま数えると実際より多くなる(2026-09-21 に 86 社が 180 と数えられた)。
+    // 数えるのは要素の数ではなく、**別々の社の数**である(HC-080)。
+    const drawn = await page.evaluate(() => {
+      const m = window.__deityMap;
+      const distinct = (src) =>
+        new Set(m.querySourceFeatures(src).map((f) => f.properties.id)).size;
+      return { picked: distinct("picked"), head: distinct("head") };
+    });
+    check("地図に選んだ祭神の社がデータの件数どおり載る", drawn.picked === wantIds,
+      `地図=${drawn.picked} データ=${wantIds}`);
+    check("総本社のピンが 1 つ載る", drawn.head === 1, `head=${drawn.head}`);
+
+    // 面 1: 図の中身が viewBox に収まっているか(HC-159)。**ラベルは描画領域の外に出やすい**
+    const clipped = await page.evaluate(() => {
+      const svg = document.querySelector('.deity-panels svg[role="img"]');
+      if (!svg) return { error: "図が無い" };
+      const vb = svg.viewBox.baseVal;
+      const out = [];
+      for (const el of svg.querySelectorAll("text, circle, line")) {
+        const b = el.getBBox();
+        if (b.x < vb.x - 0.5 || b.y < vb.y - 0.5 ||
+            b.x + b.width > vb.x + vb.width + 0.5 ||
+            b.y + b.height > vb.y + vb.height + 0.5) {
+          out.push(`${el.tagName}:${el.textContent?.slice(0, 8) ?? ""}`);
+        }
+      }
+      return { total: svg.querySelectorAll("text, circle, line").length, outside: out };
+    });
+    check("図の要素が viewBox に収まっている", clipped.outside?.length === 0,
+      JSON.stringify(clipped).slice(0, 300));
+    check("図に要素がある(走査対象が空でない)", (clipped.total ?? 0) > 0, JSON.stringify(clipped.total));
+
+    // **ラベルどうしの重なりを測る**(HC-317)。丸の重なりだけを見ていたせいで、
+    // 「viewBox に収まる」「要素がある」が緑のまま読めない図を二度作った。
+    const labelOverlap = await page.evaluate(() => {
+      const svg = document.querySelector('.deity-panels svg[role="img"]');
+      if (!svg) return { error: "図が無い" };
+      const boxes = [...svg.querySelectorAll("text")].map((el) => ({
+        t: el.textContent ?? "", b: el.getBBox(),
+      }));
+      const hits = [];
+      for (let i = 0; i < boxes.length; i++) {
+        for (let j = i + 1; j < boxes.length; j++) {
+          const a = boxes[i].b, c = boxes[j].b;
+          if (a.x < c.x + c.width && c.x < a.x + a.width &&
+              a.y < c.y + c.height && c.y < a.y + a.height) {
+            hits.push(`${boxes[i].t}×${boxes[j].t}`);
+          }
+        }
+      }
+      return { labels: boxes.length, hits };
+    });
+    check("ラベルどうしが重なっていない", labelOverlap.hits?.length === 0,
+      JSON.stringify(labelOverlap).slice(0, 300));
+    check("ラベルの重なりの検査 陽性対照: 同じ矩形を二つ置けば撃つ",
+      await page.evaluate(() => {
+        const a = { x: 0, y: 0, width: 10, height: 10 };
+        const c = { x: 5, y: 5, width: 10, height: 10 };
+        return a.x < c.x + c.width && c.x < a.x + a.width &&
+          a.y < c.y + c.height && c.y < a.y + a.height;
+      }));
+
+    // 畳みは同一視の対にだけ効く。八幡神は応神天皇と同一視の対なので、
+    // 畳むと中心の名が「八幡神・応神天皇」になる。**到達の証拠は図の中心の名**。
+    const pickHachiman = page.locator(".deity-list button", { hasText: "八幡神" }).first();
+    await pickHachiman.scrollIntoViewIfNeeded();
+    await pickHachiman.click();
+    await page.waitForFunction(
+      () => document.querySelector(".deity-panels h2")?.innerText.includes("八幡神"),
+      null, { timeout: 10000 },
+    );
+    const centreOf = () => page.evaluate(() => {
+      const svg = document.querySelector('.deity-panels svg[role="img"]');
+      return svg?.querySelector("text[font-weight='700']")?.textContent ?? "";
+    });
+    const centreBefore = await centreOf();
+    await page.locator(".deity-toggle input").check();
+    await page.waitForTimeout(400);
+    const centreAfter = await centreOf();
+    check("同一視の対を畳むと中心が一つの柱になる",
+      !centreBefore.includes("応神天皇") && centreAfter.includes("八幡神") &&
+        centreAfter.includes("応神天皇"),
+      `${centreBefore} → ${centreAfter}`);
+    await page.locator(".deity-toggle input").uncheck();
+    await page.waitForTimeout(300);
+    check("畳みを戻すと中心も戻る", (await centreOf()) === centreBefore);
+
+    // **画面の主張はレポートに従う**(HC-079)。測って落ちた予測を、通ったかのように書かない。
+    const deityText = await page.locator("main").innerText();
+    const claims = ["総本社が浮かび上がる", "総本社を当てる", "総本社が浮かぶ"];
+    const claimed = claims.filter((c) => deityText.includes(c));
+    check("G-16 が不合格なのに『総本社が浮かび上がる』と書いていない",
+      deityReport.g16.pass || claimed.length === 0, claimed.join(" / "));
+    check("測った的中数が画面に出ている",
+      deityText.includes(`${deityReport.g16.hit} / ${deityReport.g16.total}`),
+      `${deityReport.g16.hit}/${deityReport.g16.total}`);
+    check("主張の検査 陽性対照: 主張の語があれば撃つ",
+      claims.filter((c) => "ここでは総本社が浮かび上がる".includes(c)).length > 0);
+
     // --- 複数の画面幅で横溢れを見る(HC-078) ------------------------------
     console.log("画面幅");
     for (const [w, h] of [[360, 780], [768, 900], [1280, 900], [1680, 1000]]) {
-      for (const route of ["/", "/map/", "/ai-space/", "/sources/", "/analytics/", "/about-ai/"]) {
+      for (const route of ["/", "/map/", "/deity/", "/ai-space/", "/sources/", "/analytics/", "/about-ai/"]) {
         await page.setViewportSize({ width: w, height: h });
         await page.goto(`${base}${route}`, { waitUntil: "domcontentloaded" });
         await page.waitForTimeout(250);
@@ -586,9 +720,21 @@ async function main() {
       for (const [route, name] of [
         ["/", "home"], ["/map/", "map"], ["/sources/", "sources"],
         ["/ai-space/", "ai_space"], [`/similar/?id=${someId}`, "similar"], ["/about-ai/", "about_ai"],
+        ["/deity/?q=Q386563", "deity"],
       ]) {
         await page.goto(`${base}${route}`, { waitUntil: "networkidle" });
         if (route === "/ai-space/") await page.waitForSelector("svg circle", { timeout: 30000 });
+        if (route.startsWith("/deity/")) {
+          await page.waitForSelector('.deity-panels svg[role="img"] circle', { timeout: 30000 });
+          await page.waitForFunction(() => window.__deityMap?.isStyleLoaded?.() === true, { timeout: 30000 });
+          await page.evaluate(async () => {
+            const m = window.__deityMap;
+            m.resize();
+            await new Promise((r) => { m.once("idle", r); m.triggerRepaint(); setTimeout(r, 15000); });
+            await new Promise((r) => { m.triggerRepaint(); m.once("render", r); });
+          });
+          await page.waitForTimeout(1500);
+        }
         if (route.startsWith("/similar/")) await page.waitForSelector("table tbody tr", { timeout: 30000 });
         if (route === "/map/") {
           await page.waitForFunction(() => window.__jinjaMap?.isStyleLoaded?.() === true, { timeout: 30000 });

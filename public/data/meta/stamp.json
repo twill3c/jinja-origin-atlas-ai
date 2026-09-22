@@ -1,12 +1,12 @@
 {
- "stamp": "f3e41f64cf7071243e4259ac0c03ad8b",
- "generated_at": "2026-09-16T17:27:01.654Z",
+ "stamp": "85b7b7ea58e04409d8e3c25735dfbf83",
+ "generated_at": "2026-09-22T00:03:25.160Z",
  "files": [
   {
    "file": "components/common/SiteChrome.tsx",
    "present": true,
-   "bytes": 1472,
-   "sha256": "63d09ca10bf1743f"
+   "bytes": 1493,
+   "sha256": "670593e02425bcff"
   },
   {
    "file": "components/map/JinjaMap.tsx",
@@ -23,8 +23,8 @@
   {
    "file": "app/page.tsx",
    "present": true,
-   "bytes": 4046,
-   "sha256": "2a36034f3db374bf"
+   "bytes": 4106,
+   "sha256": "ac026e5f501ec55f"
   },
   {
    "file": "app/map/page.tsx",
@@ -47,8 +47,8 @@
   {
    "file": "app/sources/page.tsx",
    "present": true,
-   "bytes": 3258,
-   "sha256": "2467ad4f98d1d43f"
+   "bytes": 4051,
+   "sha256": "4b154e2a2f229771"
   },
   {
    "file": "app/about-ai/page.tsx",
@@ -107,8 +107,8 @@
   {
    "file": "app/globals.css",
    "present": true,
-   "bytes": 2582,
-   "sha256": "b7f25ddc06ad8b39"
+   "bytes": 5395,
+   "sha256": "3b58ba1b3f1992e8"
   },
   {
    "file": "lib/data.ts",

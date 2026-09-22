@@ -152,3 +152,159 @@ th {
   color: var(--ink-mute);
 }
 /* /fleet: fixed footer */
+
+/* ---- 祭神の三面(SPEC §7.14)-------------------------------------------- */
+
+.deity-layout {
+  display: grid;
+  grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+/* 狭い画面では一段にする。列が潰れて一文字ずつ折り返すのを防ぐ(HC-078) */
+@media (max-width: 800px) {
+  .deity-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .deity-list ul {
+    max-height: 14rem;
+  }
+}
+
+.deity-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: min(70vh, 620px);
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+.deity-list li + li {
+  border-top: 1px solid var(--line);
+}
+.deity-list button {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.35rem 0.6rem;
+  font: inherit;
+  font-size: 0.85rem;
+  text-align: left;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--ink);
+}
+.deity-list button:hover,
+.deity-list button:focus-visible {
+  background: #f4f1ea;
+}
+.deity-list button.is-selected {
+  background: var(--vermilion);
+  color: #fff;
+}
+.deity-list button.is-selected .deity-n {
+  color: #fff;
+}
+.deity-n {
+  color: var(--ink-mute);
+  font-variant-numeric: tabular-nums;
+}
+.deity-search {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--ink-mute);
+}
+.deity-search input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 0.2rem;
+  padding: 0.35rem 0.5rem;
+  font: inherit;
+  font-size: 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+.deity-count {
+  margin: 0.35rem 0;
+  font-size: 0.78rem;
+  color: var(--ink-mute);
+}
+
+.deity-panels {
+  min-width: 0;
+}
+.deity-head {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+.deity-head small {
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: var(--ink-mute);
+  display: flex;
+  gap: 0.6rem;
+}
+
+.deity-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.3rem 0 0.5rem;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: #f4f1ea;
+  cursor: pointer;
+}
+
+.deity-map {
+  width: 100%;
+  height: min(60vh, 520px);
+  border: 1px solid var(--line);
+}
+
+.deity-fine {
+  font-size: 0.8rem;
+  color: var(--ink-mute);
+}
+.deity-headmark {
+  color: var(--evidence);
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.net-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 1rem;
+  list-style: none;
+  margin: 0.3rem 0 0;
+  padding: 0;
+  font-size: 0.78rem;
+  color: var(--ink-mute);
+}
+.net-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.linkish {
+  font: inherit;
+  color: var(--evidence);
+  background: none;
+  border: 0;
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}

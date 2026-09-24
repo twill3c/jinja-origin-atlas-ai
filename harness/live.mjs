@@ -153,20 +153,34 @@ async function main() {
       `一覧=${(idx.deities ?? []).length} 総数=${idx.totals?.deities}`);
   }
 
-  // **画面の主張はレポートに従う**(HC-079)。測って落ちた予測を、
-  // 通ったかのように書いていないこと。合否そのものは判定しない ——
-  // 落ちていてよい検査なので、見るのは「文と結果が食い違っていないか」だけ。
+  // **この画面はクライアント描画なので、HTML は殻である**(D-06)。
+  // 殻の本文に数や言い回しを探す検査は書かない —— 見つからないのが当たり前で、
+  // 「書いていないこと」の検査は**空振りのまま緑を返す**(2026-09-21 に実際にそうなった)。
+  // 画面の文と測定結果が食い違っていないかは、JS を実行できる実ブラウザ検品
+  // (`harness/smoke.mjs`)の仕事である。ここでは**配られている数そのもの**を見る。
   const rep = deityDocs.report;
-  if (rep && deityShell.body) {
-    const claims = ["総本社が浮かび上がる", "総本社を当てる", "総本社が浮かぶ"];
-    const claimed = claims.filter((c) => deityShell.body.includes(c));
-    check("G-16 が不合格なら『総本社が浮かび上がる』と書いていない",
-      rep.g16?.pass === true || claimed.length === 0, claimed.join(" / "));
-    check("測った的中数が画面に出ている",
-      deityShell.body.includes(`${rep.g16?.hit} / ${rep.g16?.total}`),
-      `${rep.g16?.hit}/${rep.g16?.total}`);
-    check("主張の検査 陽性対照: 主張の語があれば撃つ",
-      claims.some((c) => "ここでは総本社が浮かび上がる".includes(c)));
+  if (rep) {
+    const g16 = rep.g16 ?? {};
+    check("G-16 の合否が的中数と合格線から導かれている",
+      typeof g16.hit === "number" && typeof g16.total === "number" &&
+        typeof g16.threshold === "number" &&
+        g16.pass === (g16.hit >= g16.threshold),
+      `${g16.hit}/${g16.total} 合格線 ${g16.threshold} pass=${g16.pass}`);
+    check("G-16 の凍結した合格線が書き換えられていない", g16.threshold === 13,
+      `threshold=${g16.threshold}`);
+    check("外れた祭神の記録が消えていない",
+      Array.isArray(g16.rows) && g16.rows.length === g16.total &&
+        g16.rows.filter((r) => !r.hit).length === g16.total - g16.hit,
+      `rows=${g16.rows?.length}`);
+    const g17 = rep.g17 ?? {};
+    check("G-17 の合否が適合率と閾値から導かれている",
+      typeof g17.precision === "number" &&
+        g17.pass === (g17.precision >= g17.threshold),
+      `適合率 ${g17.precision} 閾値 ${g17.threshold} pass=${g17.pass}`);
+    const g20 = rep.g20 ?? {};
+    check("G-20 の帰無分布が配られている",
+      typeof g20.p_value === "number" && g20.trials > 0,
+      `p=${g20.p_value} 試行 ${g20.trials}`);
   }
 
   console.log("");

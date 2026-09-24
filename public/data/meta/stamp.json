@@ -1,36 +1,12 @@
 {
- "stamp": "85b7b7ea58e04409d8e3c25735dfbf83",
- "generated_at": "2026-09-22T00:03:25.160Z",
+ "stamp": "85da2a27678ddcf2017c4b0866563759",
+ "generated_at": "2026-09-24T18:13:45.719Z",
  "files": [
   {
-   "file": "components/common/SiteChrome.tsx",
+   "file": "app/about-ai/page.tsx",
    "present": true,
-   "bytes": 1493,
-   "sha256": "670593e02425bcff"
-  },
-  {
-   "file": "components/map/JinjaMap.tsx",
-   "present": true,
-   "bytes": 11644,
-   "sha256": "a52acb812860d79d"
-  },
-  {
-   "file": "components/ai/UmapExplorer.tsx",
-   "present": true,
-   "bytes": 7455,
-   "sha256": "fffd28dc79ff79ab"
-  },
-  {
-   "file": "app/page.tsx",
-   "present": true,
-   "bytes": 4106,
-   "sha256": "ac026e5f501ec55f"
-  },
-  {
-   "file": "app/map/page.tsx",
-   "present": true,
-   "bytes": 1129,
-   "sha256": "9ecf1a85f66eb28f"
+   "bytes": 5762,
+   "sha256": "a852c06cf5092b59"
   },
   {
    "file": "app/ai-space/page.tsx",
@@ -45,16 +21,40 @@
    "sha256": "70ca1ff73744b173"
   },
   {
-   "file": "app/sources/page.tsx",
+   "file": "app/deity/page.tsx",
    "present": true,
-   "bytes": 4051,
-   "sha256": "4b154e2a2f229771"
+   "bytes": 850,
+   "sha256": "87f060b38d3a0866"
   },
   {
-   "file": "app/about-ai/page.tsx",
+   "file": "app/globals.css",
    "present": true,
-   "bytes": 5762,
-   "sha256": "a852c06cf5092b59"
+   "bytes": 5395,
+   "sha256": "3b58ba1b3f1992e8"
+  },
+  {
+   "file": "app/layout.tsx",
+   "present": true,
+   "bytes": 505,
+   "sha256": "7154943e8eebb3d7"
+  },
+  {
+   "file": "app/map/page.tsx",
+   "present": true,
+   "bytes": 1129,
+   "sha256": "9ecf1a85f66eb28f"
+  },
+  {
+   "file": "app/not-found.tsx",
+   "present": true,
+   "bytes": 378,
+   "sha256": "912fcdcb00d5f086"
+  },
+  {
+   "file": "app/page.tsx",
+   "present": true,
+   "bytes": 4106,
+   "sha256": "ac026e5f501ec55f"
   },
   {
    "file": "app/shrine/page.tsx",
@@ -69,10 +69,52 @@
    "sha256": "30a726ecba0f5c78"
   },
   {
-   "file": "app/not-found.tsx",
+   "file": "app/sources/page.tsx",
    "present": true,
-   "bytes": 378,
-   "sha256": "912fcdcb00d5f086"
+   "bytes": 4051,
+   "sha256": "4b154e2a2f229771"
+  },
+  {
+   "file": "components/ai/UmapExplorer.tsx",
+   "present": true,
+   "bytes": 7455,
+   "sha256": "fffd28dc79ff79ab"
+  },
+  {
+   "file": "components/common/LegacyRedirect.tsx",
+   "present": true,
+   "bytes": 514,
+   "sha256": "57943a8515e02afd"
+  },
+  {
+   "file": "components/common/SiteChrome.tsx",
+   "present": true,
+   "bytes": 1493,
+   "sha256": "670593e02425bcff"
+  },
+  {
+   "file": "components/deity/DeityExplorer.tsx",
+   "present": true,
+   "bytes": 13392,
+   "sha256": "dec40e3517b23f05"
+  },
+  {
+   "file": "components/deity/DeityMap.tsx",
+   "present": true,
+   "bytes": 5403,
+   "sha256": "161b5b4c3371ddad"
+  },
+  {
+   "file": "components/deity/DeityNetwork.tsx",
+   "present": true,
+   "bytes": 6204,
+   "sha256": "2340f65ef28357c9"
+  },
+  {
+   "file": "components/map/JinjaMap.tsx",
+   "present": true,
+   "bytes": 11644,
+   "sha256": "a52acb812860d79d"
   },
   {
    "file": "components/shrine/ShrineDetail.tsx",
@@ -93,28 +135,22 @@
    "sha256": "52db2a49b1961af9"
   },
   {
-   "file": "components/common/LegacyRedirect.tsx",
+   "file": "lib/data.ts",
    "present": true,
-   "bytes": 514,
-   "sha256": "57943a8515e02afd"
+   "bytes": 2409,
+   "sha256": "2a499d8568817ff9"
+  },
+  {
+   "file": "lib/deity-types.ts",
+   "present": true,
+   "bytes": 3538,
+   "sha256": "e84521833e0d41a4"
   },
   {
    "file": "lib/shrine-types.ts",
    "present": true,
    "bytes": 3171,
    "sha256": "27fef8788c9d7e99"
-  },
-  {
-   "file": "app/globals.css",
-   "present": true,
-   "bytes": 5395,
-   "sha256": "3b58ba1b3f1992e8"
-  },
-  {
-   "file": "lib/data.ts",
-   "present": true,
-   "bytes": 2409,
-   "sha256": "2a499d8568817ff9"
   },
   {
    "file": "lib/types.ts",
@@ -733,6 +769,42 @@
    "present": true,
    "bytes": 46632,
    "sha256": "52ae519965228edd"
+  },
+  {
+   "file": "public/data/deity/detail.json",
+   "present": true,
+   "bytes": 249280,
+   "sha256": "bc917188b1cd82f9"
+  },
+  {
+   "file": "public/data/deity/index.json",
+   "present": true,
+   "bytes": 23834,
+   "sha256": "c8e2459ba289c912"
+  },
+  {
+   "file": "public/data/deity/network.json",
+   "present": true,
+   "bytes": 1013606,
+   "sha256": "1ad4b1639d838de7"
+  },
+  {
+   "file": "public/data/deity/pairs.json",
+   "present": true,
+   "bytes": 5497,
+   "sha256": "98d5cab4341b057e"
+  },
+  {
+   "file": "public/data/deity/points.json",
+   "present": true,
+   "bytes": 334774,
+   "sha256": "4b3beaa6827277f7"
+  },
+  {
+   "file": "public/data/deity/report.json",
+   "present": true,
+   "bytes": 7698,
+   "sha256": "149fdcf552ba37c7"
   }
  ],
  "note": "画面が読むデータの内容から作った刻印。改行を LF に揃えてから測っている。"

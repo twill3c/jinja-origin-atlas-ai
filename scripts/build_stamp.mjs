@@ -20,28 +20,20 @@ import path from "node:path";
  * 本番検品が古い版に対して「刻印が一致」を返した(2026-09-09)。
  * 「新しいか」を判定するつもりの検査が、コードの変更については何も言わなかった。
  * 画面を作るソースも対象に入れる。
+ *
+ * **ソースは手書きの一覧にしない**(2026-09-21)。一覧で持っていたとき、
+ * `/deity` を一式(画面・部品・型・データ)足しても刻印は一文字も変わらなかった ——
+ * **書き忘れた対象について、刻印は沈黙する。** 走査して集める形に変えた。
+ * 走査が空振りしていないことは T-153 が数で確かめる。
  */
-const SOURCES = [
-  "components/common/SiteChrome.tsx",
-  "components/map/JinjaMap.tsx",
-  "components/ai/UmapExplorer.tsx",
-  "app/page.tsx",
-  "app/map/page.tsx",
-  "app/ai-space/page.tsx",
-  "app/analytics/page.tsx",
-  "app/sources/page.tsx",
-  "app/about-ai/page.tsx",
-  "app/shrine/page.tsx",
-  "app/similar/page.tsx",
-  "app/not-found.tsx",
-  "components/shrine/ShrineDetail.tsx",
-  "components/shrine/SimilarList.tsx",
-  "components/shrine/useShrine.ts",
-  "components/common/LegacyRedirect.tsx",
-  "lib/shrine-types.ts",
-  "app/globals.css",
-  "lib/data.ts",
-  "lib/types.ts",
+const SOURCE_DIRS = [
+  { dir: "app", exts: [".tsx", ".ts", ".css"] },
+  { dir: "components", exts: [".tsx", ".ts"] },
+  { dir: "lib", exts: [".ts"] },
+];
+
+/** 画面が読むデータ。こちらは数が決まっているので名指しで持つ。 */
+const DATA = [
   "public/data/meta/build.json",
   // D-06: 全カタログは配らない。索引を入れ、チャンクは下で実在するものを全部足す
   "public/data/shrines/index.json",
@@ -52,6 +44,23 @@ const SOURCES = [
   "data/reports/ai_pipeline.json",
   "data/reports/motif_vs_geography.json",
 ];
+
+/** ディレクトリを再帰的に走査して、対象の拡張子のファイルを相対パスで返す。 */
+async function walk(dir, exts) {
+  const out = [];
+  let entries;
+  try {
+    entries = await readdir(path.join(process.cwd(), dir), { withFileTypes: true });
+  } catch {
+    return out;
+  }
+  for (const e of entries.sort((a, b) => (a.name < b.name ? -1 : 1))) {
+    const rel = `${dir}/${e.name}`;
+    if (e.isDirectory()) out.push(...(await walk(rel, exts)));
+    else if (exts.some((x) => e.name.endsWith(x))) out.push(rel);
+  }
+  return out;
+}
 
 const OUT = "public/data/meta/stamp.json";
 
@@ -70,7 +79,24 @@ async function main() {
       /* まだ作られていない */
     }
   }
-  for (const rel of [...SOURCES, ...chunks]) {
+  // 祭神のアーティファクト(§7.14)も数が決まっていないので走査して足す
+  try {
+    const names = (await readdir(path.join(process.cwd(), "public", "data", "deity")))
+      .filter((f) => f.endsWith(".json"))
+      .sort();
+    chunks.push(...names.map((f) => `public/data/deity/${f}`));
+  } catch {
+    /* まだ作られていない */
+  }
+
+  const sources = [];
+  for (const { dir, exts } of SOURCE_DIRS) sources.push(...(await walk(dir, exts)));
+  if (sources.length === 0) {
+    console.error("刻印の走査対象が空。app / components / lib が見つからない");
+    process.exit(2);
+  }
+
+  for (const rel of [...sources, ...DATA, ...chunks]) {
     let text;
     try {
       text = await readFile(path.join(process.cwd(), rel), "utf-8");

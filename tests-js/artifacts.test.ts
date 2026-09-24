@@ -217,6 +217,46 @@ describe("ビルドの刻印", () => {
     expect(local.files.every((f: { present: boolean }) => f.present)).toBe(true);
   });
 
+  t("T-153: 刻印が画面のソースを一つも取りこぼしていない", () => {
+    // **手書きの一覧は、書き忘れた対象について沈黙する。** `/deity` を一式
+    // (画面・部品・型・データ)足しても刻印は一文字も変わらなかった(2026-09-21)。
+    // 走査に変えたので、走査が実際に全部拾っていることをここで数える。
+    const local = JSON.parse(fs.readFileSync(stampPath, "utf-8"));
+    const files = new Set<string>(local.files.map((f: { file: string }) => f.file));
+
+    const walk = (dir: string, exts: string[]): string[] => {
+      const abs = path.join(process.cwd(), dir);
+      if (!fs.existsSync(abs)) return [];
+      return fs.readdirSync(abs, { withFileTypes: true }).flatMap((e) =>
+        e.isDirectory()
+          ? walk(`${dir}/${e.name}`, exts)
+          : exts.some((x) => e.name.endsWith(x))
+            ? [`${dir}/${e.name}`]
+            : [],
+      );
+    };
+
+    const want = [
+      ...walk("app", [".tsx", ".ts", ".css"]),
+      ...walk("components", [".tsx", ".ts"]),
+      ...walk("lib", [".ts"]),
+    ];
+    expect(want.length).toBeGreaterThan(10); // 走査そのものが空振りしていないこと
+    const missing = want.filter((f) => !files.has(f));
+    expect(missing).toEqual([]);
+
+    // 配っている祭神のデータも対象に入っていること(§7.14)
+    const deityDir = path.join(process.cwd(), "public", "data", "deity");
+    if (fs.existsSync(deityDir)) {
+      const deity = fs
+        .readdirSync(deityDir)
+        .filter((f) => f.endsWith(".json"))
+        .map((f) => `public/data/deity/${f}`);
+      expect(deity.length).toBeGreaterThan(0);
+      expect(deity.filter((f) => !files.has(f))).toEqual([]);
+    }
+  });
+
   t("刻印が入力の変化を拾う(陽性対照)", async () => {
     const { createHash } = await import("node:crypto");
     const h = (x: string) => createHash("sha256").update(x).digest("hex");

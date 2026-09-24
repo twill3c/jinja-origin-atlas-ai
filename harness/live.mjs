@@ -125,6 +125,50 @@ async function main() {
       legacy.status === 404 && legacy.body.includes("URL が変わった"), `status=${legacy.status}`);
   }
 
+  // --- 8. 祭神の三面(SPEC §7.14)----------------------------------------
+  // 画面はクライアント描画なので、殻に加えて**画面が引く 6 本すべて**を名指しで取る。
+  // 1 本でも欠けると三面のどれかが黙って空になる。
+  const deityShell = await get("/deity/");
+  check("祭神ページの殻が 200 で返る",
+    deityShell.status === 200 && deityShell.ct.includes("text/html"),
+    `status=${deityShell.status}`);
+  const deityFiles = ["index", "points", "detail", "network", "pairs", "report"];
+  const deityDocs = {};
+  for (const name of deityFiles) {
+    const r = await get(`/data/deity/${name}.json`, { json: true });
+    deityDocs[name] = r.body;
+    check(`祭神の ${name}.json が JSON で返る`, r.status === 200 && !!r.body,
+      `status=${r.status}`);
+  }
+
+  // 件数が保存されているか(G-19)。**本番の数を手元の定数と比べない** ——
+  // 配られている一覧の合計と、配られている総数が合うかを見る。
+  const idx = deityDocs.index;
+  if (idx) {
+    const sum = (idx.deities ?? []).reduce((a, d) => a + d.n, 0);
+    check("祭神一覧の合計が延べ言及数と一致する", sum === idx.totals?.mentions,
+      `一覧=${sum} 総数=${idx.totals?.mentions}`);
+    check("祭神の柱数が一覧の長さと一致する",
+      (idx.deities ?? []).length === idx.totals?.deities,
+      `一覧=${(idx.deities ?? []).length} 総数=${idx.totals?.deities}`);
+  }
+
+  // **画面の主張はレポートに従う**(HC-079)。測って落ちた予測を、
+  // 通ったかのように書いていないこと。合否そのものは判定しない ——
+  // 落ちていてよい検査なので、見るのは「文と結果が食い違っていないか」だけ。
+  const rep = deityDocs.report;
+  if (rep && deityShell.body) {
+    const claims = ["総本社が浮かび上がる", "総本社を当てる", "総本社が浮かぶ"];
+    const claimed = claims.filter((c) => deityShell.body.includes(c));
+    check("G-16 が不合格なら『総本社が浮かび上がる』と書いていない",
+      rep.g16?.pass === true || claimed.length === 0, claimed.join(" / "));
+    check("測った的中数が画面に出ている",
+      deityShell.body.includes(`${rep.g16?.hit} / ${rep.g16?.total}`),
+      `${rep.g16?.hit}/${rep.g16?.total}`);
+    check("主張の検査 陽性対照: 主張の語があれば撃つ",
+      claims.some((c) => "ここでは総本社が浮かび上がる".includes(c)));
+  }
+
   console.log("");
   if (failures.length) {
     console.error(`本番検品 NG — ${failures.length} 件`);
